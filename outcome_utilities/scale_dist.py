@@ -1,4 +1,4 @@
-import numpy as np 
+import numpy as np
 
 def scale_dist(mrs_prob_bins,p_ref,mRS_ref):
     """
@@ -14,7 +14,7 @@ def scale_dist(mrs_prob_bins,p_ref,mRS_ref):
     mrs_prob_bins_sc - np.array. Cumulative prob. dist after scaling.
     """
     # Store the scaled bins in mrs_prob_bins_sc:
-    mrs_prob_bins_sc = np.zeros_like(mrs_prob_bins)
+    mrs_prob_bins_sc = []
 
     for mRS in range(6):
         if mRS<=mRS_ref:
@@ -23,7 +23,7 @@ def scale_dist(mrs_prob_bins,p_ref,mRS_ref):
             # When mRS=mRS_ref, ratio=1.
             ratio = mrs_prob_bins[mRS] / mrs_prob_bins[mRS_ref]
             # Scale the bins:
-            mrs_prob_bins_sc[mRS] = p_ref * ratio
+            mrs_prob_bins_sc.append(p_ref * ratio)
         else:
             # For the points above the new reference p_ref.
             # Find the size ratio of this bin excluding mRS<=mRS_ref,
@@ -33,8 +33,9 @@ def scale_dist(mrs_prob_bins,p_ref,mRS_ref):
             ratio = ((mrs_prob_bins[mRS] - mrs_prob_bins[mRS_ref]) /
                      (1 - mrs_prob_bins[mRS_ref]))
             # Scale the bins:
-            mrs_prob_bins_sc[mRS] =  p_ref + (1-p_ref)*ratio
+            mrs_prob_bins_sc.append(p_ref + (1-p_ref)*ratio)
 
+    mrs_prob_bins_sc = np.array(mrs_prob_bins_sc)
     # Use bins to obtain distribution
     mrs_prob_dist_sc = np.diff(np.concatenate(([0.0],mrs_prob_bins_sc)))
 

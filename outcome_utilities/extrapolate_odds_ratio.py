@@ -1,14 +1,22 @@
-import numpy as np 
+import numpy as np
 
 def extrapolate_odds_ratio(t_1,OR_1,t_2,OR_2,p_2,t_e=0):
     """
+    Use two odds ratios to extrapolate the straight line fit and find
+    the odds ratio at a given time, then convert to probability.
 
-    The second reference probability can be defined at any time,
-    but in practice it is easiest to use the no-effect time t_ne
-    when the
-    t_ref and t_ne MUST use the same units, e.g. hours or minutes.
+    The three time parameters MUST use the same units, e.g. hours.
 
+    Inputs:
+    t_1, t_2   - float. Times for data points 1 and 2.
+    OR_1, OR_2 - float. Odds ratios at times t_1 and t_2.
+    p_2        - float. Probability at time t_2.
+    t_e        - float. Time to extrapolate the line to.
 
+    Returns:
+    OR_e - float. Extrapolated odds ratio at time t_e.
+    p_e  - float. Extrapolated probability at time t_e.
+    a, b - float. Constants for the straight line fit a+bt.
     """
     # Calculate "a", the log(odds ratio) at time t=0:
     a = ((np.log(OR_1) - (t_1/t_2)*np.log(OR_2)) /
@@ -21,7 +29,7 @@ def extrapolate_odds_ratio(t_1,OR_1,t_2,OR_2,p_2,t_e=0):
     OR_e = np.exp( a + b*t_e )
 
     # Rearrange odds ratio formula:
-    # ORe = pe/(1-pe) / p2/(1-p2)
+    # ORe = {pe/(1-pe)} / {p2/(1-p2)}
     # pe/(1-pe) = ORe * p2/(1-p2)
     # Calculate R, the right-hand-side of this equation:
     R = OR_e * p_2 / (1 - p_2)
