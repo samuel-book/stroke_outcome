@@ -9,5 +9,9 @@ temp/
 *.csv
 *.xlsx
 
+# Ignore PyVharm .idea files
+*.idea
+
 # Ignore all checkpoints folders
 **/.ipynb_checkpoints/
+
