@@ -71,6 +71,10 @@ def make_weighted_dist(dists, weights):
     if len(weighted_dist)<7:
         # Add an extra zero on the end for the mRS=6 entry:
         weighted_dist = np.append(weighted_dist, [0.0])
+
+    # Change the dtype because the input weights array had the dtype
+    # 'object' and we needn't retain it.
+    weighted_dist = weighted_dist.astype(float)
     return weighted_dist
 
 # ###############################
