@@ -15,7 +15,7 @@ Each dictionary contains:
 + 'bins'      -
 
 List of dictionaries defined here:
-dict_pre_stroke,
+dict_pre_stroke, dict_pre_stroke_nlvo, dict_pre_stroke_lvo,
 dict_t0_treatment_ich,      dict_no_treatment_ich,
 dict_t0_treatment_nlvo_lvo, dict_no_treatment_nlvo_lvo,
 dict_t0_treatment_lvo,      dict_no_treatment_lvo,
@@ -92,17 +92,33 @@ dict_na['bins'] = dict_na['dist_mrs6']
 # ########## Pre-stroke ##########
 # Source: SAMueL-1 dataset.
 # By definition, probability(mRS=6)=0 here.
+
+# All patients
 dict_pre_stroke = dict()
 # Distribution including mRS=6:
 dict_pre_stroke['dist_mrs6'] = np.array([
-    0.54956819, 0.14895196, 0.0980681,
-    0.11769072, 0.06707674, 0.0186443, 0.0
+    0.533043, 0.156302, 0.1077811,
+    0.121422, 0.063581, 0.017870, 0.0
     ])
 dict_pre_stroke = fill_dict(dict_pre_stroke)
 
+# NIHSS 0-10 (surrogate for nLVO)
+dict_pre_stroke_nlvo = dict()
+dict_pre_stroke_nlvo['dist_mrs6'] = np.array([
+    0.582881, 0.162538, 0.103440,
+    0.102223, 0.041973, 0.006945, 0.0
+    ])
+dict_pre_stroke_nlvo = fill_dict(dict_pre_stroke_nlvo)
 
+# NIHSS 11+ (surrogate for LVO)
+dict_pre_stroke_lvo = dict()
+dict_pre_stroke_lvo['dist_mrs6'] = np.array([
+    0.417894, 0.142959, 0.118430,
+    0.164211, 0.113775, 0.042731, 0.0
+    ])
+dict_pre_stroke_lvo = fill_dict(dict_pre_stroke_lvo)
 
-# ########## Haemorrhaegic ##########
+# ########## Haemorrhagic ##########
 # ---------- t=0 treatment ----------
 # N/A
 dict_t0_treatment_ich = dict_na
@@ -147,10 +163,6 @@ dict_t0_treatment_nlvo_lvo['dist_mrs6'] = (
 
 
 # ########## LVO - untreated ##########
-# ---------- t=0 treatment ----------
-# N/A
-dict_t0_treatment_lvo = dict_na
-
 # ---------- no treatment ----------
 # Source: Goyal et al. 2016, Figure 1 (A Overall, Control population).
 dict_no_treatment_lvo = dict()
@@ -160,7 +172,8 @@ dict_no_treatment_lvo['dist_mrs6'] = np.array([
     0.164, 0.247, 0.135, 0.189
     ])
 dict_no_treatment_lvo = fill_dict(dict_no_treatment_lvo)
-
+# Set t=o treatment as same as untreated
+dict_t0_treatment_lvo = dict_no_treatment_lvo
 
 
 # ########## LVO - thrombolysis only ##########
@@ -175,7 +188,7 @@ weight_pre_stroke_lvo_oly   = 0.18
 weight_no_treatment_lvo_oly = 0.82
 # Distribution including mRS=6:
 dict_t0_treatment_lvo_oly['dist_mrs6'] = make_weighted_dist(
-    np.array([dict_pre_stroke['dist'],
+    np.array([dict_pre_stroke_lvo['dist'],
               dict_no_treatment_lvo['dist']]),
     np.array([[weight_pre_stroke_lvo_oly],
               [weight_no_treatment_lvo_oly]], dtype=object)
@@ -187,35 +200,57 @@ dict_t0_treatment_lvo_oly = fill_dict(dict_t0_treatment_lvo_oly)
 dict_no_treatment_lvo_oly = dict_no_treatment_lvo
 
 
-
 # ########## LVO - thrombectomy ##########
-# ---------- t=0 treatment ----------
-# Use the pre-stroke distribution.
-dict_t0_treatment_lvo_ect = dict_pre_stroke
 
 # ---------- no treatment ----------
 # Use the general LVO distribution.
 dict_no_treatment_lvo_ect = dict_no_treatment_lvo
 
+# ---------- t=0 treatment ----------
+# Distribution is a weighted combination of pre_stroke and
+# no_treatment_lvo excluding their mRS=6 entries.
+# The weights are chosen to match a known data point, probability
+# P(mRS<=2, t=0)=0.68 (Extrapolating Fransen et al 2016 back to 0hrs).
+# Sources: SAMueL-1 dataset (pre-stroke distribution),
+#          Goyal et al. 2016 (LVO no treatment distribution),
+#          Fransen et al 2016 (probability P(mRS<=2, t=0)=0.68).
 
+dict_t0_treatment_lvo_etc = dict()
+# Find the mRS<=1 values:
+p_mrsleq1_pre_stroke           = dict_pre_stroke_lvo['bins'][2]
+p_mrsleq1_no_treatment_lvo_etc = dict_no_treatment_lvo_ect['bins'][2]
+# Define the weights:
+weight_pre_stroke_lvo_etc   = (
+    (0.68 - p_mrsleq1_no_treatment_lvo_etc) /
+    (p_mrsleq1_pre_stroke - p_mrsleq1_no_treatment_lvo_etc)
+    )
+weight_no_treatment_lvo_etc = 1.0 - weight_pre_stroke_lvo_etc
+# Distribution including mRS=6:
+dict_t0_treatment_lvo_etc['dist_mrs6'] = make_weighted_dist(
+    np.array([dict_pre_stroke_lvo['dist'],
+              dict_no_treatment_lvo_ect['dist']]),
+    np.array([[weight_pre_stroke_lvo_etc],
+              [weight_no_treatment_lvo_etc]], dtype=object)
+    )
+dict_t0_treatment_lvo_ect = fill_dict(dict_t0_treatment_lvo_etc)
 
 # ########## nLVO - untreated ##########
-# ---------- t=0 treatment ----------
-# N/A
-dict_t0_treatment_nlvo = dict_na
 
-# ---------- no treatment ----------
 # Distribution is a weighted difference of (nLVO and LVO) and
 # (just LVO) at the no-treatment time, excluding their mRS=6 entries.
 # Then the distribution is scaled to match the
 # P(mRS<=1, t=no-effect-time) data from Holodinsky et al. 2018.
+# Assume 38% ischaemic strokes are LVO
 # Sources: Lees et al. 2010,
 #          Goyal et al. 2016, Figure 1 (A Overall, Control population),
 #          Holodinsky et al. 2018 (probability P(mRS<=1, t=t_ne)=0.46).
+# 
+
+
 dict_no_treatment_nlvo = dict()
 # Define the weights:
 weight_no_treatment_nlvo_lvo = +1.0
-weight_no_treatment_lvo      = -0.4
+weight_no_treatment_lvo      = -0.38
 # Distribution including mRS=6:
 dict_no_treatment_nlvo['dist_mrs6'] = make_weighted_dist(
     np.array([dict_no_treatment_nlvo_lvo['dist'],
@@ -235,6 +270,8 @@ dict_no_treatment_nlvo['dist_mrs6'] = (
     np.append(dict_no_treatment_nlvo['dist'],[0.0]))
 
 
+# Set t=0 same as no tretament
+dict_t0_treatment_nlvo = dict_no_treatment_nlvo
 
 # ########## nLVO - thrombolysis only ##########
 # ---------- no treatment ----------
@@ -252,7 +289,7 @@ dict_no_treatment_nlvo_oly = dict_no_treatment_nlvo
 #          Holodinsky et al. 2018 (probability P(mRS<=1, t=0)=0.63).
 dict_t0_treatment_nlvo_oly = dict()
 # Find the mRS<=1 values:
-p_mrsleq1_pre_stroke            = dict_pre_stroke['bins'][1]
+p_mrsleq1_pre_stroke            = dict_pre_stroke_nlvo['bins'][1]
 p_mrsleq1_no_treatment_nlvo_oly = dict_no_treatment_nlvo_oly['bins'][1]
 # Define the weights:
 weight_pre_stroke_nlvo_oly   = (
@@ -262,12 +299,9 @@ weight_pre_stroke_nlvo_oly   = (
 weight_no_treatment_nlvo_oly = 1.0 - weight_pre_stroke_nlvo_oly
 # Distribution including mRS=6:
 dict_t0_treatment_nlvo_oly['dist_mrs6'] = make_weighted_dist(
-    np.array([dict_pre_stroke['dist'],
+    np.array([dict_pre_stroke_nlvo['dist'],
               dict_no_treatment_nlvo_oly['dist']]),
     np.array([[weight_pre_stroke_nlvo_oly],
               [weight_no_treatment_nlvo_oly]], dtype=object)
     )
 dict_t0_treatment_nlvo_oly = fill_dict(dict_t0_treatment_nlvo_oly)
-
-
-#
