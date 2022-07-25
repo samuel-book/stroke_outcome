@@ -93,12 +93,12 @@ dict_na['bins'] = dict_na['dist_mrs6']
 # Source: SAMueL-1 dataset.
 # By definition, probability(mRS=6)=0 here.
 
-# All patients
+# All ischaemic patients
 dict_pre_stroke = dict()
 # Distribution including mRS=6:
 dict_pre_stroke['dist_mrs6'] = np.array([
-    0.533043, 0.156302, 0.1077811,
-    0.121422, 0.063581, 0.017870, 0.0
+    0.534923, 0.157958, 0.108075,
+    0.119199, 0.062649, 0.017196, 0.0
     ])
 dict_pre_stroke = fill_dict(dict_pre_stroke)
 
