@@ -16,7 +16,7 @@ def scale_dist(mrs_prob_bins,p_ref,mRS_ref):
     # Store the scaled bins in mrs_prob_bins_sc:
     mrs_prob_bins_sc = []
 
-    for mRS in range(6):
+    for mRS in range(7):
         if mRS<=mRS_ref:
             # For the points below the new reference p_ref.
             # Find the size ratio of this bin to the mRS<=mRS_ref bin.
