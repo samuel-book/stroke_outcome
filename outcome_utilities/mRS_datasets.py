@@ -19,6 +19,9 @@ dict_t0_treatment_lvo_ect,  dict_no_treatment_lvo_ect,
 dict_t0_treatment_nlvo,     dict_no_treatment_nlvo,
 dict_t0_treatment_nlvo_oly, dict_no_treatment_nlvo_oly
 """
+
+prop_ischaemnic_stroke_lvo = 0.23
+
 # ###############################
 # ########### IMPORTS ###########
 # ###############################
@@ -102,13 +105,12 @@ dict_pre_stroke_lvo = fill_dict(dict_pre_stroke_lvo)
 dict_t0_treatment_ich = dict_na
 
 # ---------- no treatment ----------
-# Source: YET TO FIND THIS -------------------------------------FIND ME
 dict_no_treatment_ich = dict_na
 
 
 
-# ########## nLVO and LVO combined ##########
-# ---------- no treatment ----------
+# ########## nLVO and LVO combined no treatment ##########
+
 # Source: Lees et al. 2010.
 dict_no_treatment_nlvo_lvo = dict()
 dict_no_treatment_nlvo_lvo['dist_mrs6'] = np.array([
@@ -118,22 +120,9 @@ dict_no_treatment_nlvo_lvo['dist_mrs6'] = np.array([
 dict_no_treatment_nlvo_lvo = fill_dict(dict_no_treatment_nlvo_lvo)
 # This is above t=0 because it is used to calculate the t=0 dist.
 
-# ---------- t=0 treatment ----------
-# Sources: Lees et al. 2010 (no treatment distribution),
-#          SAMueL-1 dataset (pre-stroke distribution),
-#          Emberson et al. 2014 (odds ratio for mRS<=1 at t=1hr).
-dict_t0_treatment_nlvo_lvo = dict()
-# Use the odds ratio at t=1hr and probability at t=(time of No Effect)
-# to find odds ratio and probability at t=0:
-OR, p, a, b = extrapolate_odds_ratio(
-    t_1=60,     OR_1=1.9,                      # t=1hr data
-    t_2=60*6.3, OR_2=1,                        # t=t_ne data
-    p_2=dict_no_treatment_nlvo_lvo['bins'][1], # t=t_ne data
-    t_e=0 )                                    # Extrapolate to time 0.
-# Use the new probability 'p' to scale the pre-stroke bins:
-dict_t0_treatment_nlvo_lvo['dist_mrs6'], dict_t0_treatment_nlvo_lvo['bins'] = (
-    scale_dist(dict_pre_stroke['bins'], p, mRS_ref=1))
-
+# ---------- t=0 treatment  ----------
+# Not currently used
+dict_t0_treatment_nlvo_lvo = dict_na
 
 # ########## LVO - untreated ##########
 # ---------- no treatment ----------
@@ -219,7 +208,7 @@ dict_t0_treatment_lvo_ect = fill_dict(dict_t0_treatment_lvo_etc)
 dict_no_treatment_nlvo = dict()
 # Define the weights:
 weight_no_treatment_nlvo_lvo = 1.0
-weight_no_treatment_lvo      = -0.38
+weight_no_treatment_lvo      = -prop_ischaemnic_stroke_lvo
 # Distribution including mRS=6:
 dict_no_treatment_nlvo['dist_mrs6'] = make_weighted_dist(
     np.array([dict_no_treatment_nlvo_lvo['dist_mrs6'],
@@ -273,4 +262,6 @@ dict_t0_treatment_nlvo_oly['dist_mrs6'] = make_weighted_dist(
               [weight_no_treatment_nlvo_oly]], dtype=object)
     )
 dict_t0_treatment_nlvo_oly = fill_dict(dict_t0_treatment_nlvo_oly)
+
+
 
