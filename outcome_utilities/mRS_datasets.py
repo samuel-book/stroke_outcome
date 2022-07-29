@@ -180,22 +180,20 @@ dict_no_treatment_lvo_ect = dict_no_treatment_lvo
 
 # ---------- t=0 treatment ----------
 # Distribution is a weighted combination of pre_stroke and
-# no_treatment_lvo excluding their mRS=6 entries.
-# The weights are chosen to match a known data point, probability
-# P(mRS<=2, t=0)=0.68 (Extrapolating Fransen et al 2016 back to 0hrs).
-# Sources: SAMueL-1 dataset (pre-stroke distribution),
-#          Goyal et al. 2016 (LVO no treatment distribution),
-#          Fransen et al 2016 (probability P(mRS<=2, t=0)=0.68).
+# no_treatment_lvo  their mRS=6 entries.
+# Hui et al. reported 75% successful recanalisation with thrombectomy.
+# Fransen et al reported on mRS 0-2 outcomes for those successfuly reperfused
+# by thrombectomy. When extrapolting this back to t=0 this gives 68% mRS <= 2,
+# exactly the same as out pre-stroke mRS distribution, giving strength to the
+# vire that reperufion at t=0 would restore pre-stroke disabilty level.
 
 dict_t0_treatment_lvo_etc = dict()
 # Find the mRS<=1 values:
 p_mrsleq1_pre_stroke           = dict_pre_stroke_lvo['bins'][2]
 p_mrsleq1_no_treatment_lvo_etc = dict_no_treatment_lvo_ect['bins'][2]
 # Define the weights:
-weight_pre_stroke_lvo_etc   = (
-    (0.68 - p_mrsleq1_no_treatment_lvo_etc) /
-    (p_mrsleq1_pre_stroke - p_mrsleq1_no_treatment_lvo_etc)
-    )
+weight_pre_stroke_lvo_etc = 0.75
+    
 weight_no_treatment_lvo_etc = 1.0 - weight_pre_stroke_lvo_etc
 # Distribution including mRS=6:
 dict_t0_treatment_lvo_etc['dist_mrs6'] = make_weighted_dist(
