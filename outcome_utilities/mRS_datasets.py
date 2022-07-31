@@ -14,10 +14,10 @@ dict_pre_stroke, dict_pre_stroke_nlvo, dict_pre_stroke_lvo,
 dict_t0_treatment_ich,      dict_no_treatment_ich,
 dict_t0_treatment_nlvo_lvo, dict_no_treatment_nlvo_lvo,
 dict_t0_treatment_lvo,      dict_no_treatment_lvo,
-dict_t0_treatment_lvo_oly,  dict_no_treatment_lvo_oly,
-dict_t0_treatment_lvo_ect,  dict_no_treatment_lvo_ect,
+dict_t0_treatment_lvo_ivt,  dict_no_treatment_lvo_ivt,
+dict_t0_treatment_lvo_mt,  dict_no_treatment_lvo_mt,
 dict_t0_treatment_nlvo,     dict_no_treatment_nlvo,
-dict_t0_treatment_nlvo_oly, dict_no_treatment_nlvo_oly
+dict_t0_treatment_nlvo_ivt, dict_no_treatment_nlvo_ivt
 """
 
 prop_ischaemnic_stroke_lvo = 0.23
@@ -45,7 +45,7 @@ def make_cumulative_probability(dist):
 
 def fill_dict(dict):
     """
-    Populate the dictionary with cumulative probability distribution excluding mRS=6
+    Populate the dictionary with cumulative probability distribution.
     """
     # Cumulative probability distribution:
     dict['bins'] = make_cumulative_probability(dict['dist_mrs6'])
@@ -144,28 +144,28 @@ dict_t0_treatment_lvo = dict_no_treatment_lvo
 # no_treatment_lvo excluding their mRS=6 entries.
 # Sources: SAMueL-1 dataset (pre-stroke distribution),
 #          Goyal et al. 2016 (LVO no treatment distribution).
-dict_t0_treatment_lvo_oly = dict()
+dict_t0_treatment_lvo_ivt = dict()
 # Define the weights:
-weight_pre_stroke_lvo_oly   = 0.18
-weight_no_treatment_lvo_oly = 0.82
+weight_pre_stroke_lvo_ivt   = 0.18
+weight_no_treatment_lvo_ivt = 0.82
 # Distribution including mRS=6:
-dict_t0_treatment_lvo_oly['dist_mrs6'] = make_weighted_dist(
+dict_t0_treatment_lvo_ivt['dist_mrs6'] = make_weighted_dist(
     np.array([dict_pre_stroke_lvo['dist_mrs6'],
               dict_no_treatment_lvo['dist_mrs6']]),
-    np.array([[weight_pre_stroke_lvo_oly],
-              [weight_no_treatment_lvo_oly]], dtype=object)
+    np.array([[weight_pre_stroke_lvo_ivt],
+              [weight_no_treatment_lvo_ivt]], dtype=object)
     )
-dict_t0_treatment_lvo_oly = fill_dict(dict_t0_treatment_lvo_oly)
+dict_t0_treatment_lvo_ivt = fill_dict(dict_t0_treatment_lvo_ivt)
 
 # ---------- no treatment ----------
 # Use the general LVO distribution.
-dict_no_treatment_lvo_oly = dict_no_treatment_lvo
+dict_no_treatment_lvo_ivt = dict_no_treatment_lvo
 
 # ########## LVO - thrombectomy ##########
 
 # ---------- no treatment ----------
 # Use the general LVO distribution.
-dict_no_treatment_lvo_ect = dict_no_treatment_lvo
+dict_no_treatment_lvo_mt = dict_no_treatment_lvo
 
 # ---------- t=0 treatment ----------
 # Distribution is a weighted combination of pre_stroke and
@@ -179,7 +179,7 @@ dict_no_treatment_lvo_ect = dict_no_treatment_lvo
 dict_t0_treatment_lvo_etc = dict()
 # Find the mRS<=1 values:
 p_mrsleq1_pre_stroke           = dict_pre_stroke_lvo['bins'][2]
-p_mrsleq1_no_treatment_lvo_etc = dict_no_treatment_lvo_ect['bins'][2]
+p_mrsleq1_no_treatment_lvo_etc = dict_no_treatment_lvo_mt['bins'][2]
 # Define the weights:
 weight_pre_stroke_lvo_etc = 0.75
     
@@ -187,11 +187,11 @@ weight_no_treatment_lvo_etc = 1.0 - weight_pre_stroke_lvo_etc
 # Distribution including mRS=6:
 dict_t0_treatment_lvo_etc['dist_mrs6'] = make_weighted_dist(
     np.array([dict_pre_stroke_lvo['dist_mrs6'],
-              dict_no_treatment_lvo_ect['dist_mrs6']]),
+              dict_no_treatment_lvo_mt['dist_mrs6']]),
     np.array([[weight_pre_stroke_lvo_etc],
               [weight_no_treatment_lvo_etc]], dtype=object)
     )
-dict_t0_treatment_lvo_ect = fill_dict(dict_t0_treatment_lvo_etc)
+dict_t0_treatment_lvo_mt = fill_dict(dict_t0_treatment_lvo_etc)
 
 # ########## nLVO - untreated ##########
 
@@ -233,7 +233,7 @@ dict_t0_treatment_nlvo = dict_no_treatment_nlvo
 # ########## nLVO - thrombolysis only ##########
 # ---------- no treatment ----------
 # Use the general nLVO distribution.
-dict_no_treatment_nlvo_oly = dict_no_treatment_nlvo
+dict_no_treatment_nlvo_ivt = dict_no_treatment_nlvo
 # This is above t=0 because it is used in the t=0 calculation.
 
 # ---------- t=0 treatment ----------
@@ -244,24 +244,24 @@ dict_no_treatment_nlvo_oly = dict_no_treatment_nlvo
 # Sources: SAMueL-1 dataset (pre-stroke distribution),
 #          Goyal et al. 2016 (LVO no treatment distribution),
 #          Holodinsky et al. 2018 (probability P(mRS<=1, t=0)=0.63).
-dict_t0_treatment_nlvo_oly = dict()
+dict_t0_treatment_nlvo_ivt = dict()
 # Find the mRS<=1 values:
 p_mrsleq1_pre_stroke            = dict_pre_stroke_nlvo['bins'][1]
-p_mrsleq1_no_treatment_nlvo_oly = dict_no_treatment_nlvo_oly['bins'][1]
+p_mrsleq1_no_treatment_nlvo_ivt = dict_no_treatment_nlvo_ivt['bins'][1]
 # Define the weights:
-weight_pre_stroke_nlvo_oly   = (
-    (0.63 - p_mrsleq1_no_treatment_nlvo_oly) /
-    (p_mrsleq1_pre_stroke - p_mrsleq1_no_treatment_nlvo_oly)
+weight_pre_stroke_nlvo_ivt   = (
+    (0.63 - p_mrsleq1_no_treatment_nlvo_ivt) /
+    (p_mrsleq1_pre_stroke - p_mrsleq1_no_treatment_nlvo_ivt)
     )
-weight_no_treatment_nlvo_oly = 1.0 - weight_pre_stroke_nlvo_oly
+weight_no_treatment_nlvo_ivt = 1.0 - weight_pre_stroke_nlvo_ivt
 # Distribution including mRS=6:
-dict_t0_treatment_nlvo_oly['dist_mrs6'] = make_weighted_dist(
+dict_t0_treatment_nlvo_ivt['dist_mrs6'] = make_weighted_dist(
     np.array([dict_pre_stroke_nlvo['dist_mrs6'],
-              dict_no_treatment_nlvo_oly['dist_mrs6']]),
-    np.array([[weight_pre_stroke_nlvo_oly],
-              [weight_no_treatment_nlvo_oly]], dtype=object)
+              dict_no_treatment_nlvo_ivt['dist_mrs6']]),
+    np.array([[weight_pre_stroke_nlvo_ivt],
+              [weight_no_treatment_nlvo_ivt]], dtype=object)
     )
-dict_t0_treatment_nlvo_oly = fill_dict(dict_t0_treatment_nlvo_oly)
+dict_t0_treatment_nlvo_ivt = fill_dict(dict_t0_treatment_nlvo_ivt)
 
 
 
