@@ -2,6 +2,8 @@
 
 This notebook describes the basic methodology for estimating disability outcomes, depending on time to treatment woth intravenous thrombolysis (IVT) or mechanical thrombectomy (MT).
 
+Detailed methodology and code are found in the notebooks on [derivation of mRS distributions at time of stroke onset and time when effect has decayed away](./mRS_datasets_full.ipynb) and [deacy of effect over time](./mRS_outcomes_maths).
+
 ## modified Rankin Scale
 
 Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke.
@@ -86,19 +88,19 @@ The modelled decay of effects of IVT and MT are shown in {numref}`figure {number
 :::{figure-md} nLVO_IVT_time
 <img src="./images/prob_with_time_nlvo_ivt.jpg" width="600">
 
-Expected mRS distribution for nLVO strokes depending on time to treatment with IVT).
+Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.
 :::
 
 :::{figure-md} LVO_IVT_time
 <img src="./images/prob_with_time_lvo_ivt.jpg" width="600">
 
-Expected mRS distribution for LVO strokes depending on time to treatment with IVT).
+Expected mRS distribution for LVO strokes depending on time to treatment with IVT.
 :::
 
 :::{figure-md} LVO_MT_time
 <img src="./images/prob_with_time_lvo_mt.jpg" width="600">
 
-Expected mRS distribution for nLVO strokes depending on time to treatment with MT).
+Expected mRS distribution for nLVO strokes depending on time to treatment with MT.
 :::
 
 ### Proportion of ischaemic patients with LVO
@@ -136,7 +138,7 @@ McMeekin et al. (2017) review the evdidence for estimating the number of UK stro
 * 40% of ischaemic stroke patients have LVO; 80% of which have NIHSS >=6 and say be suitable for thrombectomy. This is equivalent to 32% of admitted patients having LVO suitable for thrombectomy.
 
 
-## References
+## References used in modelling
 
 de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45. 
 
