@@ -54,7 +54,7 @@ The control group in Goyal et al. do not receive MT, but do receive other interv
 
 #### Derived distributions
 
-Distributions for the effect of IVT and MT, given either at time of stroke onset or time when the effect of treatment has decayed to zero, are shown in figures {numref}`figure {number} <nLVO_IVT_dist>` to {numref}`figure {number} <LVO_MT_dist>`. 
+Distributions for the effect of IVT and MT, given either at time of stroke onset or time when the effect of treatment has decayed to zero, are shown in figures {numref}`{number} <nLVO_IVT_dist>` to {numref}`{number} <LVO_MT_dist>`. 
 
 :::{figure-md} nLVO_IVT_dist
 <img src="./images/nLVO-IVT.jpg" width="600">
