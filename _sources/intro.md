@@ -54,15 +54,27 @@ The control group in Goyal et al. do not receive MT, but do receive other interv
 
 #### Derived distributions
 
-({numref}`figure {number} <nLVO_IVT_dist>`). 
+Distributions for the effect of IVT and MT, given either at time of stroke onset or time when the effect of treatment has decayed to zero, are shown in figures {numref}`figure {number} <nLVO_IVT_dist>` to {numref}`figure {number} <LVO_MT_dist>`. 
 
 :::{figure-md} nLVO_IVT_dist
 <img src="./images/nLVO-IVT.jpg" width="450">
 
-Expected mRS distribution if for nLVO strokes if IVT given at time of stroke onset, or if IVT given at time when there effect has decayed to zero (at this point there are still IVT-related excess deaths due to fatal intracranial haemorrhage).
+Expected mRS distribution for nLVO strokes if IVT given at time of stroke onset (*t=0hr*), or if IVT given at time when there effect has decayed to zero (*No effect time*, at this point there are still IVT-related excess deaths due to fatal intracranial haemorrhage).
 :::
 
-## Relationship between time to tretament and effect
+:::{figure-md} LVO_IVT_dist
+<img src="./images/LVO-IVT.jpg" width="450">
+
+Expected mRS distribution for LVO strokes if IVT given at time of stroke onset (*t=0hr*), or if IVT given at time when there effect has decayed to zero (*No effect time*, at this point there are still IVT-related excess deaths due to fatal intracranial haemorrhage).
+:::
+
+::{figure-md} LVO_MT_dist
+<img src="./images/LVO-MT.jpg" width="450">
+
+Expected mRS distribution for LVO strokes if MT given at time of stroke onset (*t=0hr*), or if MT given at time when there effect has decayed to zero (*No effect time*, at this point there are still MT-related excess deaths).
+:::
+
+## Relationship between time to treatment and effect
 
 
 
