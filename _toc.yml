@@ -1,0 +1,6 @@
+format: jb-book
+root: intro
+chapters:
+- file: mRS_datasets_full.ipynb
+- file: mRS_outcomes_maths
+

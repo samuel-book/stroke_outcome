@@ -1,0 +1,15 @@
+# book settings
+title: Stroke outcome modelling
+author: Anna Laws & Michael Allen
+#logo: images/logo.png
+
+#only build files specified in table of contents file
+only_build_toc_files: true
+
+execute:
+  execute_notebooks: 'off' #cache output from .ipynb files for faster build or use auto
+  timeout: -1 #no time restriction on notebook execution
+  
+launch_buttons:
+  notebook_interface        : classic  
+  binderhub_url             : ""
