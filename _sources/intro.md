@@ -1,4 +1,6 @@
-# Predicting granular disability outcomes after treatment of stroke with thrombolysis or thrombectomy
+# Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+
+This notebook describes the basic methodology for estimating disability outcomes, depending on time to treatment woth intravenous thrombolysis (IVT) or mechanical thrombectomy (MT).
 
 ## modified Rankin Scale
 
@@ -50,11 +52,11 @@ Excess deaths due to IVT are assumed to occur independently of time. Differing r
 |---------|---------|--------|
 | 18.9%   | 15.3%   | 3.6%   |
 
-The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effectivbe) already includes IVT-related excess deaths. 
+The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effective) already includes IVT-related excess deaths. 
 
 #### Derived distributions
 
-Distributions for the effect of IVT and MT, given either at time of stroke onset or time when the effect of treatment has decayed to zero, are shown in figures {numref}`{number} <nLVO_IVT_dist>` to {numref}`{number} <LVO_MT_dist>`. 
+Distributions for the effect of IVT and MT as described above, given either at time of stroke onset or time when the effect of treatment has decayed to zero, are shown in {numref}`figure {number} <nLVO_IVT_dist>` to {numref}`figure {number} <LVO_MT_dist>`. 
 
 :::{figure-md} nLVO_IVT_dist
 <img src="./images/nLVO-IVT.jpg" width="600">
@@ -76,8 +78,28 @@ Expected mRS distribution for LVO strokes if MT given at time of stroke onset (*
 
 ## Relationship between time to treatment and effect
 
+Modelling of the effect of IVT or MT after any given treatment time assumes that the log odds decay uniformly over time between stroke onset and the time to no effect (as modelled by Emberson et al. for IVT, and Fransen et al. for MT). The time to no-effect treatment is take as 6.3 hours for IVT (Emberson et al.) and 8 hours for MT (Fransen et al). Note: the time to no effect from Fransen et al. did not incldue those patients who may be selected for late treatment based on advanced imaging. In this method we do not include late-presenting patients in our outcome modelling.
+
+The modelled decay of effects of IVT and MT are shown in {numref}`figure {number} <nLVO_IVT_time>` to {numref}`figure {number} <LVO_MT_time>`. 
 
 
+:::{figure-md} nLVO_IVT_time
+<img src="./images/prob_with_time_nlvo_ivt.jpg" width="600">
+
+Expected mRS distribution for nLVO strokes depending on time to treatment with IVT).
+:::
+
+:::{figure-md} LVO_IVT_time
+<img src="./images/prob_with_time_lvo_ivt.jpg" width="600">
+
+Expected mRS distribution for LVO strokes depending on time to treatment with IVT).
+:::
+
+:::{figure-md} LVO_MT_time
+<img src="./images/prob_with_time_lvo_mt.jpg" width="600">
+
+Expected mRS distribution for nLVO strokes depending on time to treatment with MT).
+:::
 
 ### Proportion of ischaemic patients with LVO
 
@@ -112,3 +134,22 @@ A breakdown on stroke type from , 20the design of the RACE test for pre-hopsital
 McMeekin et al. (2017) review the evdidence for estimating the number of UK stroke patients eligible for endovascular thrombectomy. They estimate:
 
 * 40% of ischaemic stroke patients have LVO; 80% of which have NIHSS >=6 and say be suitable for thrombectomy. This is equivalent to 32% of admitted patients having LVO suitable for thrombectomy.
+
+
+## References
+
+de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45. 
+
+Emberson J, Lees KR, Lyden P, et al. _Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials._ The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5
+
+Fransen, P., Berkhemer, O., Lingsma, H. et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol. 2016 Feb 1;73(2):190–6. DOI: 10.1001/jamaneurol.2015.3886
+
+Goyal M, Menon BK, van Zwam WH, et al. _Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials._ The Lancet 2016;387:1723-1731. doi:10.1016/S0140-6736(16)00163-X
+
+Hui W, Wu C, Zhao W, Sun H, Hao J, Liang H, et al. Efficacy and Safety of Recanalization Therapy for Acute Ischemic Stroke With Large Vessel Occlusion. Stroke. 2020 Jul;51(7):2026–35. 
+
+Lees KR, Bluhmki E, von Kummer R, et al. _Time to treatment with intravenous alteplase and outcome in stroke: an updated pooled analysis of ECASS, ATLANTIS, NINDS, and EPITHET trials_. The Lancet 2010;375:1695-703. doi:10.1016/S0140-6736(10)60491-6
+
+McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26. 
+
+SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Predicting granular disability outcomes after treatment of stroke with thrombolysis or thrombectomy &#8212; Stroke outcome modelling</title>
+    <title>Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT) &#8212; Stroke outcome modelling</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -103,7 +103,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Predicting granular disability outcomes after treatment of stroke with thrombolysis or thrombectomy
+                    Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
                 </a>
             </li>
         </ul>
@@ -313,6 +313,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -322,7 +327,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Predicting granular disability outcomes after treatment of stroke with thrombolysis or thrombectomy</h1>
+                <h1>Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -395,6 +400,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -405,8 +415,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="predicting-granular-disability-outcomes-after-treatment-of-stroke-with-thrombolysis-or-thrombectomy">
-<h1>Predicting granular disability outcomes after treatment of stroke with thrombolysis or thrombectomy<a class="headerlink" href="#predicting-granular-disability-outcomes-after-treatment-of-stroke-with-thrombolysis-or-thrombectomy" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="predicting-granular-disability-outcomes-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt">
+<h1>Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)<a class="headerlink" href="#predicting-granular-disability-outcomes-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt" title="Permalink to this headline">#</a></h1>
+<p>This notebook describes the basic methodology for estimating disability outcomes, depending on time to treatment woth intravenous thrombolysis (IVT) or mechanical thrombectomy (MT).</p>
 <section id="modified-rankin-scale">
 <h2>modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this headline">#</a></h2>
 <p>Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke.</p>
@@ -499,11 +510,11 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effectivbe) already includes IVT-related excess deaths.</p>
+<p>The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effective) already includes IVT-related excess deaths.</p>
 </section>
 <section id="derived-distributions">
 <h4>Derived distributions<a class="headerlink" href="#derived-distributions" title="Permalink to this headline">#</a></h4>
-<p>Distributions for the effect of IVT and MT, given either at time of stroke onset or time when the effect of treatment has decayed to zero, are shown in figures <a class="reference internal" href="#nlvo-ivt-dist"><span class="std std-numref">1</span></a> to <a class="reference internal" href="#lvo-mt-dist"><span class="std std-numref">3</span></a>.</p>
+<p>Distributions for the effect of IVT and MT as described above, given either at time of stroke onset or time when the effect of treatment has decayed to zero, are shown in <a class="reference internal" href="#nlvo-ivt-dist"><span class="std std-numref">figure 1</span></a> to <a class="reference internal" href="#lvo-mt-dist"><span class="std std-numref">figure 3</span></a>.</p>
 <figure class="align-default" id="nlvo-ivt-dist">
 <a class="reference internal image-reference" href="_images/nLVO-IVT.jpg"><img alt="_images/nLVO-IVT.jpg" src="_images/nLVO-IVT.jpg" style="width: 600px;" /></a>
 <figcaption>
@@ -527,6 +538,26 @@ title="Print to PDF"
 </section>
 <section id="relationship-between-time-to-treatment-and-effect">
 <h2>Relationship between time to treatment and effect<a class="headerlink" href="#relationship-between-time-to-treatment-and-effect" title="Permalink to this headline">#</a></h2>
+<p>Modelling of the effect of IVT or MT after any given treatment time assumes that the log odds decay uniformly over time between stroke onset and the time to no effect (as modelled by Emberson et al. for IVT, and Fransen et al. for MT). The time to no-effect treatment is take as 6.3 hours for IVT (Emberson et al.) and 8 hours for MT (Fransen et al). Note: the time to no effect from Fransen et al. did not incldue those patients who may be selected for late treatment based on advanced imaging. In this method we do not include late-presenting patients in our outcome modelling.</p>
+<p>The modelled decay of effects of IVT and MT are shown in <a class="reference internal" href="#nlvo-ivt-time"><span class="std std-numref">figure 4</span></a> to <a class="reference internal" href="#lvo-mt-time"><span class="std std-numref">figure 6</span></a>.</p>
+<figure class="align-default" id="nlvo-ivt-time">
+<a class="reference internal image-reference" href="_images/prob_with_time_nlvo_ivt.jpg"><img alt="_images/prob_with_time_nlvo_ivt.jpg" src="_images/prob_with_time_nlvo_ivt.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Expected mRS distribution for nLVO strokes depending on time to treatment with IVT).</span><a class="headerlink" href="#nlvo-ivt-time" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="lvo-ivt-time">
+<a class="reference internal image-reference" href="_images/prob_with_time_lvo_ivt.jpg"><img alt="_images/prob_with_time_lvo_ivt.jpg" src="_images/prob_with_time_lvo_ivt.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Expected mRS distribution for LVO strokes depending on time to treatment with IVT).</span><a class="headerlink" href="#lvo-ivt-time" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="lvo-mt-time">
+<a class="reference internal image-reference" href="_images/prob_with_time_lvo_mt.jpg"><img alt="_images/prob_with_time_lvo_mt.jpg" src="_images/prob_with_time_lvo_mt.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Expected mRS distribution for nLVO strokes depending on time to treatment with MT).</span><a class="headerlink" href="#lvo-mt-time" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="proportion-of-ischaemic-patients-with-lvo">
 <h3>Proportion of ischaemic patients with LVO<a class="headerlink" href="#proportion-of-ischaemic-patients-with-lvo" title="Permalink to this headline">#</a></h3>
 <section id="analysis-of-samuel-data">
@@ -588,6 +619,17 @@ title="Print to PDF"
 </ul>
 </section>
 </section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<p>de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45.</p>
+<p>Emberson J, Lees KR, Lyden P, et al. <em>Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials.</em> The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
+<p>Fransen, P., Berkhemer, O., Lingsma, H. et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol. 2016 Feb 1;73(2):190–6. DOI: 10.1001/jamaneurol.2015.3886</p>
+<p>Goyal M, Menon BK, van Zwam WH, et al. <em>Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials.</em> The Lancet 2016;387:1723-1731. doi:10.1016/S0140-6736(16)00163-X</p>
+<p>Hui W, Wu C, Zhao W, Sun H, Hao J, Liang H, et al. Efficacy and Safety of Recanalization Therapy for Acute Ischemic Stroke With Large Vessel Occlusion. Stroke. 2020 Jul;51(7):2026–35.</p>
+<p>Lees KR, Bluhmki E, von Kummer R, et al. <em>Time to treatment with intravenous alteplase and outcome in stroke: an updated pooled analysis of ECASS, ATLANTIS, NINDS, and EPITHET trials</em>. The Lancet 2010;375:1695-703. doi:10.1016/S0140-6736(10)60491-6</p>
+<p>McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26.</p>
+<p>SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html">https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html</a></p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
