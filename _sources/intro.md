@@ -105,9 +105,10 @@ Expected mRS distribution for nLVO strokes depending on time to treatment with M
 
 ### Proportion of ischaemic patients with LVO
 
-#### Analysis of SAMueL data
 
-The proportion of ischaemic patients with LVO may be estimated in various ways. Estimates are likely to be swayed by the population being studied (e.g. treatment trial results may under-estimate nLVO as very low severity patients may not be selected for the trial). Below are various estimated of the  relative occurrence of LVO and nLVO:
+The proportion of ischaemic patients with LVO may be estimated in various ways. Estimates are likely to be swayed by the population being studied (e.g. treatment trial results may under-estimate nLVO as very low severity patients may not be selected for the trial). Below are various estimated of the  relative occurrence of LVO and nLVO.
+
+#### Analysis of SAMueL data
 
 Data from SAMueL using NIHSS 11+ as a surrogate for LVO:
 
