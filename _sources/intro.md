@@ -1,6 +1,6 @@
 # Predicting granular disability outcomes after treatment of stroke with thrombolysis or thrombectomy
 
-## Plain English Summary
+## modified Rankin Scale
 
 Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke.
 
@@ -15,11 +15,6 @@ The scale runs from 0-6, running from perfect health without symptoms to death:
 | 4 | Moderately severe disability. Unable to attend to own bodily needs without assistance, and unable to walk unassisted. |
 | 5 | Severe disability. Requires constant nursing care and attention, bedridden, incontinent. |
 | 6 | Dead. |
-
-
-When we predict the outcome of a person who has had a stroke, we want to be able to say what is the likely improvement in disability level they would experience due to the treatment.
-
-The improvement they can get will depend on the time from when their stroke symptoms began and when they receive treatment. The best possible outcome would be if they were treated immediately after they had their stroke. The benefit of treatment reduces over time until the treatment no longer offer any benefit, and they will not be better off than having no treatment.
 
 ## Descriptions of the mRS data sets derived, and basic methodology
 
@@ -37,9 +32,9 @@ The improvement they can get will depend on the time from when their stroke symp
 
 *Extrapolating results of good outcome, when recanalisation has been achieved with thrombectomy, from Fransen et al. 2016 back to t=0, assuming 75% recanalisation, gives the same proportion of patients with mRS <= 2 as the pre-stroke mRS in the SAMueL data (therefore this extrapolation would suggest full recovery of all health with thrombectomy theoretically carried out at t=0).
 
-### Deaths due to treatment
+### Excess deaths due to treatment
 
-IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014): 
+#### IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014): 
 
 | NIHSS | Treated | Control | Excess |
 |-------|---------|---------|--------|
@@ -49,13 +44,28 @@ IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014):
 
 Excess deaths due to IVT are assumed to occur independently of time. Differing risks of death are applied according to whether the patient in assumed nLVO (NIHSS 0-10 as a surrogate for nLVO) or LVO (NIHSS 11+, as a surrogate for LVO).
 
-MT deaths (Goyal et al., 2016):
+#### MT deaths (Goyal et al., 2016):
 
 | Treated | Control | Excess |
 |---------|---------|--------|
 | 18.9%   | 15.3%   | 3.6%   |
 
 The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effectivbe) already includes IVT-related excess deaths. 
+
+#### Derived distributions
+
+({numref}`figure {number} <nLVO_IVT_dist>`). 
+
+:::{figure-md} nLVO_IVT_dist
+<img src="./images/nLVO-IVT.jpg" width="450">
+
+Expected mRS distribution if for nLVO strokes if IVT given at time of stroke onset, or if IVT given at time when there effect has decayed to zero (at this point there are still IVT-related excess deaths due to fatal intracranial haemorrhage).
+:::
+
+## Relationship between time to tretament and effect
+
+
+
 
 ### Proportion of ischaemic patients with LVO
 
