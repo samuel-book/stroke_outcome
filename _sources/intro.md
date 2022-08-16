@@ -105,8 +105,7 @@ Expected mRS distribution for nLVO strokes depending on time to treatment with M
 
 ### Proportion of ischaemic patients with LVO
 
-
-The proportion of ischaemic patients with LVO may be estimated in various ways. Estimates are likely to be swayed by the population being studied (e.g. treatment trial results may under-estimate nLVO as very low severity patients may not be selected for the trial). Below are various estimated of the  relative occurrence of LVO and nLVO.
+The proportion of ischaemic patients with LVO may be estimated in various ways. Estimates are likely to be swayed by the population being studied (e.g. treatment trial results may under-estimate nLVO as very low severity patients may not be selected for the trial). Below are various estimates of the relative occurrence of LVO and nLVO.
 
 #### Analysis of SAMueL data
 
@@ -138,12 +137,16 @@ McMeekin et al. (2017) review the evdidence for estimating the number of UK stro
 
 * 40% of ischaemic stroke patients have LVO; 80% of which have NIHSS >=6 and say be suitable for thrombectomy. This is equivalent to 32% of admitted patients having LVO suitable for thrombectomy.
 
+#### Thrombolysis meta-analysis (Emberson et al.) 
+
+In Emberson's meta-analysis of thrombolysis trials, 52.6% of all participants had a NIHSS of 11+ (a surrogate for nLVO).
+
 #### Proportion LVO calculated in these notebooks
 
 Two of the methods we use here to produce the mRS distributions estimate the proportion of LVO as part of their calculations. 
 
-nLVO baseline (no treatment effect): 33.0% 
-nLVO t=0 treatment with IVT: 38.7% 
+nLVO baseline (no treatment effect) calculation: 33.0% 
+nLVO t=0 treatment with IVT calculation: 38.7% 
 
 
 ## References used in modelling
@@ -167,4 +170,5 @@ SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel
 
 ## Notes
 
+* In Goyal's metanalysis of thrombectomy, 85.1% of patients in the trial had also received thrombolysis. The trial results therefore mostly reflect IVT/MT vs MT alone. 
 
