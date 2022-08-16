@@ -170,5 +170,4 @@ SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel
 
 ## Notes
 
-* In Goyal's metanalysis of thrombectomy, 85.1% of patients in the trial had also received thrombolysis. The trial results therefore mostly reflect IVT/MT vs MT alone. 
-
+* In Goyal's metanalysis of thrombectomy, 85.1% of patients in the trial had also received thrombolysis. The trial results therefore mostly reflect IVT/MT vs MT alone. If patients first attend an IVT-only centre, then it is possible that if they respond well to thrombolysis they will not proceed to MT (they are, arguably, more likely to proceed to MT when IVT and MT are more tightly coupled in time). The oevrall benefit in LVO patients is likely to a conditional sum of IVT and MT benefit - that is patients may first benefit from IVT, and those patients who dot respond well to IVT may benefit from additional MT. Currently in the UK 525 of patients are admitted to an MT-capable centre (Phil White, private communication). 
