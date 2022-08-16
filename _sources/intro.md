@@ -138,6 +138,13 @@ McMeekin et al. (2017) review the evdidence for estimating the number of UK stro
 
 * 40% of ischaemic stroke patients have LVO; 80% of which have NIHSS >=6 and say be suitable for thrombectomy. This is equivalent to 32% of admitted patients having LVO suitable for thrombectomy.
 
+#### Proportion LVO calculated in these notebooks
+
+Two of the methods we use here to produce the mRS distributions estimate the proportion of LVO as part of their calculations. 
+
+[nLVO baseline](./mRS_datasets_full.ipynb/#nLVO_baseline): 33.0% 
+nLVO t=0 treatment with IVT: 38.7% 
+
 
 ## References used in modelling
 
@@ -156,3 +163,8 @@ Lees KR, Bluhmki E, von Kummer R, et al. _Time to treatment with intravenous alt
 McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26. 
 
 SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html
+
+
+## Notes
+
+

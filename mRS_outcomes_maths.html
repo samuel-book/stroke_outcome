@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment &#8212; Stroke outcome modelling</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -63,7 +62,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,9 +85,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -87,14 +101,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="mRS_datasets_full.html">
    Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset
@@ -108,12 +123,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -121,61 +141,128 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/mRS_outcomes_maths.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/mRS_outcomes_maths.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#modified-rankin-scale">
    Modified Rankin Scale
@@ -376,12 +463,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</h1>
@@ -598,15 +684,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mathematics-for-calculating-odds-and-probabilities-of-mrs-level-outcomes-after-stroke-based-on-time-to-reperfusion-treatment">
-<h1>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment<a class="headerlink" href="#mathematics-for-calculating-odds-and-probabilities-of-mrs-level-outcomes-after-stroke-based-on-time-to-reperfusion-treatment" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mathematics-for-calculating-odds-and-probabilities-of-mrs-level-outcomes-after-stroke-based-on-time-to-reperfusion-treatment">
+<h1>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment<a class="headerlink" href="#mathematics-for-calculating-odds-and-probabilities-of-mrs-level-outcomes-after-stroke-based-on-time-to-reperfusion-treatment" title="Permalink to this headline">#</a></h1>
 <p>In this notebook we explain how to derive various formulae for probability and odds that will be used in predicting modified Rankin Scale (mRS) after stroke, depending on time to treatment.</p>
 <p>The data used in this example correspond to thrombectomy treatment, and can be switched for other data as required without changing the formulae.</p>
-<div class="section" id="modified-rankin-scale">
-<h2>Modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this headline">¶</a></h2>
+<section id="modified-rankin-scale">
+<h2>Modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this headline">#</a></h2>
 <p>The modified Rankin Scale (mRS) is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke or other causes of neurological disability [Saver <em>et al</em>., 2010].</p>
 <p>The scale runs from 0-6, running from perfect health without symptoms to death:</p>
 <table class="colwidths-auto table">
@@ -639,25 +726,25 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="reperfusion-treatment-for-ischaemic-stroke">
-<h2>Reperfusion treatment for ischaemic stroke<a class="headerlink" href="#reperfusion-treatment-for-ischaemic-stroke" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="reperfusion-treatment-for-ischaemic-stroke">
+<h2>Reperfusion treatment for ischaemic stroke<a class="headerlink" href="#reperfusion-treatment-for-ischaemic-stroke" title="Permalink to this headline">#</a></h2>
 <p>Ischaemic stroke is a stroke caused by the blockage of blood supply to an area of the brain, caused by a clot. Ischaemic strokes account for 80-85% of all strokes, with the remainder being <em>haemorrhagic</em> strokes where loss of blood supply is caused by a bleed in the brain.</p>
 <p><em>Reperfusion</em> describes the restoration of blood flow following an ischaemic stroke. There are two potential reperfusion treatments:</p>
 <ul class="simple">
 <li><p><em>Thrombolysis</em> (also known as as <em>intravenous thrombolysis</em>, IVT) is a medical therapy where <em>clot-busting</em> drugs are used to reduce or remove the blood clot. About 20% of all stroke patients are suitable for thrombolysis.</p></li>
 <li><p><em>Thrombectomy</em> (also known as <em>mechanical thrombectomy</em>, MT) is the mechanical removal of a clot, by a mesh device under image guidance. Thrombectomy is suitable only for clots in a large vessel (these generally cause the worst strokes), and is a suitable treatment in about 10% of all stroke patients.</p></li>
 </ul>
-</div>
-<div class="section" id="decay-of-effect-of-reperfusion-treatment">
-<h2>Decay of effect of reperfusion treatment<a class="headerlink" href="#decay-of-effect-of-reperfusion-treatment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="decay-of-effect-of-reperfusion-treatment">
+<h2>Decay of effect of reperfusion treatment<a class="headerlink" href="#decay-of-effect-of-reperfusion-treatment" title="Permalink to this headline">#</a></h2>
 <p>Reperfusion treatment becomes less effective with increasing time after stroke (with the loss of effect occurring over some hours). Emberson <em>et al.</em> and Fransen <em>et al.</em> have described the declining effect as the declining <em>odds ratio</em> of achieving an essentially <em>‘good outcome’</em> following thrombolysis (Emberson) or thrombectomy (Fransen). A <em>‘good outcome’</em> has been described differently with studied on thrombolysis generally using a threshold of mRS 0-1 at 3-6 months, and thrombectomy studies generally using a threshold of mRS 0-2 at 3-6 months. The <em>odds ratio</em> describes the odds of a <em>‘good outcome’</em> relative to the odds of a <em>‘good outcome’</em> in an untreated control group.</p>
 <p>The deacy in effectiveness of reperfusion is shown in the figure below (left panel = odds ratio, right panel = log odds ratio, IVT = thrombolysis, MT = thrombectomy).</p>
 <p><img alt="" src="_images/odds_decay.png" /></p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="notebook-admin">
-<h2>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this headline">¶</a></h2>
+<section id="notebook-admin">
+<h2>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep notebook cleaner once finalised</span>
@@ -686,13 +773,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="define-probability-and-odds">
-<h2>Define probability and odds<a class="headerlink" href="#define-probability-and-odds" title="Permalink to this headline">¶</a></h2>
+<section id="define-probability-and-odds">
+<h2>Define probability and odds<a class="headerlink" href="#define-probability-and-odds" title="Permalink to this headline">#</a></h2>
 <p>We define outcome in terms of probability distributions of mRS scores. These models assume overall mortality is not affected by reperfusion treatment, and so model the distrubition of mRS scores 0-5.</p>
-<div class="section" id="probability">
-<h3>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h3>
+<section id="probability">
+<h3>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">#</a></h3>
 <p>Firstly we will define some probability distributions in terms of <span class="math notranslate nohighlight">\(x\)</span>, which is a given modified Rankin Scale (mRS), and <span class="math notranslate nohighlight">\(t\)</span>, the time from onset to treatment.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(\mathrm{mRS}=x\ |\ t)\)</span>, the probability distribution of mRS.</p></li>
@@ -705,12 +792,12 @@ const thebe_selector_output = ".output, .cell_output"
 $<span class="math notranslate nohighlight">\( P(\mathrm{mRS}&gt;x\ |\ t) = 1.0 - P(\mathrm{mRS}\leq x\ |\ t) \)</span>$</p></li>
 </ul>
 <p>Also, we are not considering mRS=6, so the probability of mRS<span class="math notranslate nohighlight">\(\leq5\)</span> is always equal to 1: <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq5)=1\)</span> at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
-</div>
-<div class="section" id="odds-and-odds-ratio">
-<h3>Odds and odds ratio<a class="headerlink" href="#odds-and-odds-ratio" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="odds-and-odds-ratio">
+<h3>Odds and odds ratio<a class="headerlink" href="#odds-and-odds-ratio" title="Permalink to this headline">#</a></h3>
 <p>The above mRS probability distributions can be used to define odds and the odds ratio for a given mRS <span class="math notranslate nohighlight">\(x\)</span> at a time <span class="math notranslate nohighlight">\(t\)</span> before the no-effect time <span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span>. To make the maths easier, we will also consider the natural log<span class="math notranslate nohighlight">\(^{*}\)</span> versions of odds and odds ratio. <span class="math notranslate nohighlight">\(^{*}\)</span>Whenever this notebook says “log”, it means natural log.</p>
-<div class="section" id="odds-o">
-<h4>Odds, <span class="math notranslate nohighlight">\(O\)</span>:<a class="headerlink" href="#odds-o" title="Permalink to this headline">¶</a></h4>
+<section id="odds-o">
+<h4>Odds, <span class="math notranslate nohighlight">\(O\)</span>:<a class="headerlink" href="#odds-o" title="Permalink to this headline">#</a></h4>
 <p>The odds are an alternative way of expressing the likeliness of an event occurring, for example a patient attaining a good outcome. Odds are expressed in terms of how much more likely it is that the good outcome will be attained rather than the bad outcome (or vice-versa, when the odds are less than one). Here we will calculate odds directly from probabilities, and so the odds will be given as non-integer positive numbers rather than fractions.</p>
 <p>By definition:</p>
 <ul class="simple">
@@ -730,9 +817,9 @@ $<span class="math notranslate nohighlight">\( P(\mathrm{mRS}&gt;x\ |\ t) = 1.0 
 <li><p>At the time when odds=1, only half of the outcomes will be good.</p></li>
 <li><p>When odds=1, log(odds)=0.</p></li>
 </ul>
-</div>
-<div class="section" id="odds-ratio-or">
-<h4>Odds ratio, <span class="math notranslate nohighlight">\(OR\)</span>:<a class="headerlink" href="#odds-ratio-or" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="odds-ratio-or">
+<h4>Odds ratio, <span class="math notranslate nohighlight">\(OR\)</span>:<a class="headerlink" href="#odds-ratio-or" title="Permalink to this headline">#</a></h4>
 <p>The odds ratio is a way to express how much more likely it is that a good outcome will occur if the patient is treated than if they receive no treatment. In either of the two cases, we would expect at least some of the patients to have a good outcome. This odds ratio is a measure of how effective the treatment is at increasing the number of good outcomes compared with the baseline.</p>
 <p>By definition:</p>
 <ul class="simple">
@@ -750,12 +837,12 @@ $<span class="math notranslate nohighlight">\( P(\mathrm{mRS}&gt;x\ |\ t) = 1.0 
 <ul class="simple">
 <li><p>At <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>, the no-effect time, for all mRS the two terms on the right-hand-side of the odds ratio equation are the same, and so <span class="math notranslate nohighlight">\(OR(t=t_{\mathrm{ne}})=1\)</span> and  <span class="math notranslate nohighlight">\(\log\bigl[OR(t=t_{\mathrm{ne}})\bigr]=0\)</span> by definition.</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="collect-the-data">
-<h2>Collect the data<a class="headerlink" href="#collect-the-data" title="Permalink to this headline">¶</a></h2>
+<section id="collect-the-data">
+<h2>Collect the data<a class="headerlink" href="#collect-the-data" title="Permalink to this headline">#</a></h2>
 <p>Throughout this notebook, variable names contain the following strings:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">dist</span></code> - the mRS probability distributions.</p></li>
@@ -763,8 +850,8 @@ $<span class="math notranslate nohighlight">\( P(\mathrm{mRS}&gt;x\ |\ t) = 1.0 
 <li><p><code class="docutils literal notranslate"><span class="pre">t0_treatment</span></code> - treatment at time <span class="math notranslate nohighlight">\(t=0\)</span>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">no_treatment</span></code> - treatment at the no-effect time <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>.</p></li>
 </ul>
-<div class="section" id="gather-probabilities-from-the-literature">
-<h3>Gather probabilities from the literature<a class="headerlink" href="#gather-probabilities-from-the-literature" title="Permalink to this headline">¶</a></h3>
+<section id="gather-probabilities-from-the-literature">
+<h3>Gather probabilities from the literature<a class="headerlink" href="#gather-probabilities-from-the-literature" title="Permalink to this headline">#</a></h3>
 <p>For <span class="math notranslate nohighlight">\(t=0\,\)</span>hr, the data comes from the SAMueL-1 full sample:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -797,9 +884,9 @@ $<span class="math notranslate nohighlight">\( P(\mathrm{mRS}&gt;x\ |\ t) = 1.0 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="convert-probability-to-odds-and-odds-ratio">
-<h3>Convert probability to odds and odds ratio<a class="headerlink" href="#convert-probability-to-odds-and-odds-ratio" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="convert-probability-to-odds-and-odds-ratio">
+<h3>Convert probability to odds and odds ratio<a class="headerlink" href="#convert-probability-to-odds-and-odds-ratio" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to odds:</span>
@@ -844,9 +931,9 @@ $<span class="math notranslate nohighlight">\( P(\mathrm{mRS}&gt;x\ |\ t) = 1.0 
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plot-our-known-data">
-<h3>Plot our known data<a class="headerlink" href="#plot-our-known-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="plot-our-known-data">
+<h3>Plot our known data<a class="headerlink" href="#plot-our-known-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_lists</span> <span class="o">=</span> <span class="p">[</span>
@@ -888,11 +975,11 @@ $<span class="math notranslate nohighlight">\(O(\mathrm{mRS}\leq5) = \frac{P(\ma
 <li><p>log(odds ratio)=0 at the no-treatment-time <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span> for all mRS, by definition (see maths cell above).</p></li>
 <li><p>The data for probability, odds and log(odds) show the mRS points stacked on top of each other with increasing mRS, but the log(odds ratio) show the points in a different order at <span class="math notranslate nohighlight">\(t=0\)</span>.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="aims">
-<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
 <p>We know all about the probabilities and odds of mRS at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span> from the data above.
 Now say we want to know a patient’s expected mRS at a generic time <span class="math notranslate nohighlight">\(t\)</span> when they received treatment.
 We need to use the data we have at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span> to create models to describe probability and odds at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -901,8 +988,8 @@ we only need to find a formula for one of these distributions.
 That formula can then be converted into the forms required to find the other quantities.
 We’ll start with the simplest formula, which is for log odds ratio.</p>
 <p>In the literature, the log odds ratio has been presented at regular time intervals and falls off approximately linearly with time <span class="math notranslate nohighlight">\(t\)</span>. This allows it to be modelled as a straight line. For example, from Allen.pdf pseudocode paper §2.4.1, for an odds ratio <span class="math notranslate nohighlight">\(OR\)</span> and time in hours from onset to treatment <span class="math notranslate nohighlight">\(t\)</span>, we have <span class="math notranslate nohighlight">\(\log(OR) = 0.746 - 0.12t\)</span>. More generically, the straight line formula is <span class="math notranslate nohighlight">\(\log(OR) = a + bt\)</span> for constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
-<div class="section" id="steps">
-<h3>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h3>
+<section id="steps">
+<h3>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">#</a></h3>
 <p>The steps here are, for mRS<span class="math notranslate nohighlight">\(\leq\)</span>4<span class="math notranslate nohighlight">\(^*\)</span>:</p>
 <ol class="simple">
 <li><p>Define log(odds ratio), a straight-line formula <span class="math notranslate nohighlight">\(a + bt\)</span>. <strong>(Equation 5)</strong></p></li>
@@ -913,8 +1000,8 @@ We’ll start with the simplest formula, which is for log odds ratio.</p>
 <li><p>Define probability as a function of <span class="math notranslate nohighlight">\(t\)</span> by converting odds. <strong>(Equations 16 and 17)</strong></p></li>
 </ol>
 <p><span class="math notranslate nohighlight">\(^*\)</span> We cannot include mRS<span class="math notranslate nohighlight">\(\leq\)</span>5 in these calculations as noted above, but luckily we already know that <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq5)=1.0\)</span> at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
-<div class="section" id="constant-reference">
-<h4>Constant reference:<a class="headerlink" href="#constant-reference" title="Permalink to this headline">¶</a></h4>
+<section id="constant-reference">
+<h4>Constant reference:<a class="headerlink" href="#constant-reference" title="Permalink to this headline">#</a></h4>
 <p>(these will be defined throughout the steps above)</p>
 <table class="colwidths-auto table">
 <thead>
@@ -938,9 +1025,9 @@ We’ll start with the simplest formula, which is for log odds ratio.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="step-1-define-straight-line-formula-for-log-odds-ratio">
-<h4>Step 1: Define straight-line formula for log(odds ratio)<a class="headerlink" href="#step-1-define-straight-line-formula-for-log-odds-ratio" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="step-1-define-straight-line-formula-for-log-odds-ratio">
+<h4>Step 1: Define straight-line formula for log(odds ratio)<a class="headerlink" href="#step-1-define-straight-line-formula-for-log-odds-ratio" title="Permalink to this headline">#</a></h4>
 <p>By definition, odds ratio:</p>
 <p>1 : $<span class="math notranslate nohighlight">\( OR(\mathrm{mRS},x,t) = \left\{\frac{P(\mathrm{mRS}\leq x\ |\ t)}{P(\mathrm{mRS}&gt;x\ |\ t)}\right\} \div \left\{\frac{P(\mathrm{mRS}\leq x\ |\ t_{\mathrm{ne}})}{P(\mathrm{mRS}&gt;x\ |\ t_{\mathrm{ne}})}\right\} \)</span>$</p>
 <p>Taking the natural logarithm of both sides, this can be rewritten as:</p>
@@ -959,11 +1046,11 @@ We’ll start with the simplest formula, which is for log odds ratio.</p>
 <p>i.e. <strong><span class="math notranslate nohighlight">\(a\)</span> is log(odds ratio) at t=0</strong>, and <strong><span class="math notranslate nohighlight">\(b\)</span> is the gradient of the slope</strong>. Equating 3 and 4:</p>
 <p>5 : $<span class="math notranslate nohighlight">\( a + bt = (G - B) - (G_{t\mathrm{ne}} - B_{t\mathrm{ne}}) \)</span>$</p>
 <p>This form holds for all <span class="math notranslate nohighlight">\(t\)</span>. To find <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, we need to consider the values of <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(B\)</span> when <span class="math notranslate nohighlight">\(t=0\,\)</span>hr or <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>, as this is the data available to us.</p>
-</div>
-<div class="section" id="step-2-find-a-and-b-using-the-known-probabilities">
-<h4>Step 2: Find <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> using the known probabilities<a class="headerlink" href="#step-2-find-a-and-b-using-the-known-probabilities" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="find-a">
-<h5>Find <span class="math notranslate nohighlight">\(a\)</span><a class="headerlink" href="#find-a" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="step-2-find-a-and-b-using-the-known-probabilities">
+<h4>Step 2: Find <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> using the known probabilities<a class="headerlink" href="#step-2-find-a-and-b-using-the-known-probabilities" title="Permalink to this headline">#</a></h4>
+<section id="find-a">
+<h5>Find <span class="math notranslate nohighlight">\(a\)</span><a class="headerlink" href="#find-a" title="Permalink to this headline">#</a></h5>
 <p>Consider Equation 5 when <span class="math notranslate nohighlight">\(t=0\,\)</span>hr. The equation becomes:</p>
 <p>6: $<span class="math notranslate nohighlight">\( a = (G_{t=0}-B_{t=0}) - (G_{t\mathrm{ne}} - B_{t\mathrm{ne}}) \)</span>$</p>
 <p>We know each of the four terms on the right-hand-side from our data arrays.</p>
@@ -1008,9 +1095,9 @@ We’ll start with the simplest formula, which is for log odds ratio.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="find-b">
-<h5>Find <span class="math notranslate nohighlight">\(b\)</span><a class="headerlink" href="#find-b" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="find-b">
+<h5>Find <span class="math notranslate nohighlight">\(b\)</span><a class="headerlink" href="#find-b" title="Permalink to this headline">#</a></h5>
 <p>Consider Equation 5 when <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ a + bt_{\mathrm{ne}} = (G_{t\mathrm{ne}} - B_{t\mathrm{ne}}) - (G_{t\mathrm{ne}} - B_{t\mathrm{ne}}) \]</div>
@@ -1033,9 +1120,9 @@ We’ll start with the simplest formula, which is for log odds ratio.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">b</span></code> is an array of 5 values, one each for mRS<span class="math notranslate nohighlight">\(\leq\)</span>0,1,2,3,4.
 All of the <span class="math notranslate nohighlight">\(b\)</span> values are negative because log(odds ratio) decreases with time.</p>
-</div>
-<div class="section" id="plot-log-odds-ratio-with-time">
-<h5>Plot log(odds ratio) with time:<a class="headerlink" href="#plot-log-odds-ratio-with-time" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="plot-log-odds-ratio-with-time">
+<h5>Plot log(odds ratio) with time:<a class="headerlink" href="#plot-log-odds-ratio-with-time" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_ne</span><span class="p">)</span>
@@ -1058,10 +1145,10 @@ All of the <span class="math notranslate nohighlight">\(b\)</span> values are ne
 <img alt="_images/mRS_outcomes_maths_56_0.png" src="_images/mRS_outcomes_maths_56_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="step-3-find-formula-for-log-odds">
-<h4>Step 3: Find formula for log(odds)<a class="headerlink" href="#step-3-find-formula-for-log-odds" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="step-3-find-formula-for-log-odds">
+<h4>Step 3: Find formula for log(odds)<a class="headerlink" href="#step-3-find-formula-for-log-odds" title="Permalink to this headline">#</a></h4>
 <p>We eventually want to convert the equation for log(odds ratio), Equation 5, into an equation for probability as a function of <span class="math notranslate nohighlight">\(t\)</span>. The important variables then are <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(n\)</span>. In Equation 5:</p>
 <p>5 : $<span class="math notranslate nohighlight">\( a + bt = (G - B) - (G_{t\mathrm{ne}} - B_{t\mathrm{ne}}) \)</span>$</p>
 <p>where the <span class="math notranslate nohighlight">\((G - B)\)</span> term is equivalent to the log(odds):</p>
@@ -1079,9 +1166,9 @@ All of the <span class="math notranslate nohighlight">\(b\)</span> values are ne
 <p>To find out what <span class="math notranslate nohighlight">\(A\)</span> actually represents, there are two options. We could take Equation 8, rewrite each term as a probability <span class="math notranslate nohighlight">\(P(\mathrm{mRS},t)\)</span>, and cancel out all of the <span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span> terms. Alternatively, we can just consider Equation 11 for the case at time <span class="math notranslate nohighlight">\(t=0\)</span>:</p>
 <p>12: $<span class="math notranslate nohighlight">\( A =  \log\bigl[O(\mathrm{mRS}\leq x\ |\ t=0)\bigr] \)</span>$</p>
 <p>So <strong><span class="math notranslate nohighlight">\(A\)</span> is equal to the log-odds at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr</strong>.</p>
-</div>
-<div class="section" id="step-4-calculate-a">
-<h4>Step 4: Calculate <span class="math notranslate nohighlight">\(A\)</span><a class="headerlink" href="#step-4-calculate-a" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="step-4-calculate-a">
+<h4>Step 4: Calculate <span class="math notranslate nohighlight">\(A\)</span><a class="headerlink" href="#step-4-calculate-a" title="Permalink to this headline">#</a></h4>
 <p>Calculate the values of <span class="math notranslate nohighlight">\(A\)</span> using Equation 9.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1113,8 +1200,8 @@ All of the <span class="math notranslate nohighlight">\(b\)</span> values are ne
 </div>
 </div>
 </div>
-<div class="section" id="plot-log-odds-with-time">
-<h5>Plot log(odds) with time<a class="headerlink" href="#plot-log-odds-with-time" title="Permalink to this headline">¶</a></h5>
+<section id="plot-log-odds-with-time">
+<h5>Plot log(odds) with time<a class="headerlink" href="#plot-log-odds-with-time" title="Permalink to this headline">#</a></h5>
 <p>Plotting Equation 9:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1140,10 +1227,10 @@ All of the <span class="math notranslate nohighlight">\(b\)</span> values are ne
 <img alt="_images/mRS_outcomes_maths_67_0.png" src="_images/mRS_outcomes_maths_67_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="step-5-find-formula-for-odds">
-<h4>Step 5: Find formula for odds:<a class="headerlink" href="#step-5-find-formula-for-odds" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="step-5-find-formula-for-odds">
+<h4>Step 5: Find formula for odds:<a class="headerlink" href="#step-5-find-formula-for-odds" title="Permalink to this headline">#</a></h4>
 <p>Going back to Equation 10, the log(odds):</p>
 <p>10: $<span class="math notranslate nohighlight">\( A + bt = \log\left[\frac{P(\mathrm{mRS}\leq x\ |\ t)}{1 - P(\mathrm{mRS}\leq x\ |\ t)}\right] \)</span>$</p>
 <p>Taking the exponential of both sides gives an equation for odds:</p>
@@ -1155,8 +1242,8 @@ All of the <span class="math notranslate nohighlight">\(b\)</span> values are ne
 <p>and <span class="math notranslate nohighlight">\(A = \log\bigl[O(\mathrm{mRS}\leq x\ |\ t=0)\bigr]\)</span>, so</p>
 <p>15: $<span class="math notranslate nohighlight">\( O(\mathrm{mRS}\leq x\ |\ t) = O(\mathrm{mRS}\leq x\ |\ t=0) \cdot e^{bt} \)</span>$</p>
 <p>Odds will decay exponentially with time because <span class="math notranslate nohighlight">\(b\)</span> is negative.</p>
-<div class="section" id="plot-the-odds">
-<h5>Plot the odds<a class="headerlink" href="#plot-the-odds" title="Permalink to this headline">¶</a></h5>
+<section id="plot-the-odds">
+<h5>Plot the odds<a class="headerlink" href="#plot-the-odds" title="Permalink to this headline">#</a></h5>
 <p>Plotting Equation 14:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1182,10 +1269,10 @@ All of the <span class="math notranslate nohighlight">\(b\)</span> values are ne
 <img alt="_images/mRS_outcomes_maths_71_0.png" src="_images/mRS_outcomes_maths_71_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="step-6-find-formula-for-probability">
-<h4>Step 6: Find formula for probability:<a class="headerlink" href="#step-6-find-formula-for-probability" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="step-6-find-formula-for-probability">
+<h4>Step 6: Find formula for probability:<a class="headerlink" href="#step-6-find-formula-for-probability" title="Permalink to this headline">#</a></h4>
 <p>Now we can solve Equation 13, the odds ratio in exponential form:</p>
 <p>13: $<span class="math notranslate nohighlight">\(e^{A + bt} = \frac{P(\mathrm{mRS}\leq x\ |\ t)}{1 - P(\mathrm{mRS}\leq x\ |\ t)} \)</span>$</p>
 <p>in terms of probability <span class="math notranslate nohighlight">\(P \equiv P(\mathrm{mRS}\leq x\ |\ t)\)</span> and odds <span class="math notranslate nohighlight">\(O=e^{A + bt}\)</span>:</p>
@@ -1216,8 +1303,8 @@ O &amp; = P(1+O) \\
 <p>With one more rearrangement <span class="math notranslate nohighlight">\( A + bt = b\left(t +\frac{A}{b}\right) \)</span>, we have:</p>
 <p>17: $<span class="math notranslate nohighlight">\( P = \frac{1}{1+e^{-b\left(t +\frac{A}{b}\right)}} \)</span>$</p>
 <p>Compared with <span class="math notranslate nohighlight">\(f(x)\)</span> above, <span class="math notranslate nohighlight">\(L=1\)</span>, <span class="math notranslate nohighlight">\(k=b\)</span>, <span class="math notranslate nohighlight">\(x=t\)</span>, and <span class="math notranslate nohighlight">\(x_0 = -\frac{A}{b}\)</span>.</p>
-<div class="section" id="plot-p-as-a-function-of-time">
-<h5>Plot P as a function of time<a class="headerlink" href="#plot-p-as-a-function-of-time" title="Permalink to this headline">¶</a></h5>
+<section id="plot-p-as-a-function-of-time">
+<h5>Plot P as a function of time<a class="headerlink" href="#plot-p-as-a-function-of-time" title="Permalink to this headline">#</a></h5>
 <p>Each mRS value has a different <em>A</em> and <em>b</em> to calculate its probability with time.</p>
 <p>Because all of the calculations so far have used cumulative probability <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq x\ |\ t)\)</span>, the lines should be viewed as being stacked on top of each other.</p>
 <p>We started with the data at t=0 and t=<span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span> and have calculated the lines in between.</p>
@@ -1251,11 +1338,11 @@ O &amp; = P(1+O) \\
 <img alt="_images/mRS_outcomes_maths_78_0.png" src="_images/mRS_outcomes_maths_78_0.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="sidetrack-why-do-the-probability-lines-bend-differently">
-<h3>Sidetrack: Why do the probability lines bend differently?<a class="headerlink" href="#sidetrack-why-do-the-probability-lines-bend-differently" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+</section>
+<section id="sidetrack-why-do-the-probability-lines-bend-differently">
+<h3>Sidetrack: Why do the probability lines bend differently?<a class="headerlink" href="#sidetrack-why-do-the-probability-lines-bend-differently" title="Permalink to this headline">#</a></h3>
 <blockquote>
 <div><p>This section isn’t essential to understanding the probability calculation or the outcome model.</p>
 </div></blockquote>
@@ -1357,9 +1444,9 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="sidetrack-2-what-do-a-and-b-mean">
-<h3>Sidetrack 2: What do A and b mean?<a class="headerlink" href="#sidetrack-2-what-do-a-and-b-mean" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sidetrack-2-what-do-a-and-b-mean">
+<h3>Sidetrack 2: What do A and b mean?<a class="headerlink" href="#sidetrack-2-what-do-a-and-b-mean" title="Permalink to this headline">#</a></h3>
 <blockquote>
 <div><p>This section also isn’t essential to understanding the probability calculation or the outcome model.</p>
 </div></blockquote>
@@ -1484,15 +1571,15 @@ O &amp; = P(1+O) \\
 </div>
 <p>Each line has a different slope because of the changed <em>b</em>, but also a different x-offset - the lines cross <span class="math notranslate nohighlight">\(P(t)=0.5\)</span> at different times. The darkest line uses the only combination of <em>A</em> and <em>b</em> that will pass through both data points simultaneously.</p>
 <p>Since our calculated <span class="math notranslate nohighlight">\(P(\mathrm{mRS})\)</span> lines all use different values of <em>A</em> and <em>b</em>, we end up plotting each line with a different slope and x-offset.</p>
-</div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <p>Emberson J, Lees KR, Lyden P, et al. Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials. The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
 <p>Fransen PSS, Berkhemer OA, Lingsma HF, et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol 2016;73:190–6. doi:10.1001/jamaneurol.2015.3886</p>
 <p>Saver JL, Filip B, Hamilton S, et al. Improving the Reliability of Stroke Disability Grading in Clinical Trials and Clinical Practice. Stroke 2010;41:992–5. doi:10.1161/STROKEAHA.109.571364</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1516,9 +1603,11 @@ O &amp; = P(1+O) \\
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="mRS_datasets_full.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1527,24 +1616,28 @@ O &amp; = P(1+O) \\
         </div>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Anna Laws & Michael Allen<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Anna Laws & Michael Allen<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
