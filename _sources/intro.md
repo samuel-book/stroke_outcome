@@ -142,7 +142,7 @@ McMeekin et al. (2017) review the evdidence for estimating the number of UK stro
 
 Two of the methods we use here to produce the mRS distributions estimate the proportion of LVO as part of their calculations. 
 
-[nLVO baseline](./mRS_datasets_full.ipynb/#nLVO_baseline): 33.0% 
+nLVO baseline (no treatment effect): 33.0% 
 nLVO t=0 treatment with IVT: 38.7% 
 
 
