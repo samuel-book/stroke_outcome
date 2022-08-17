@@ -24,13 +24,13 @@ The scale runs from 0-6, running from perfect health without symptoms to death:
 
 **Pre-stroke mRS distributions**: Pre-stroke mRS distributions give the best possible outcome (i.e. 100% effective treatment). These distributions come from the SAMueL data set, and may be stratified by haemorrgage vs. infarction (ischaemic), and by NIHSS on arrival where, for ischaemic stroke, NIHSS 0-10 is taken as a surrogate for nLVO, and NIHSS 11+ is taken as a surrogate for LVO.
 
-**nLVO baseline (no treatment effect)**: The weighted combination of the untreated control group of combined nLVO/LVO data from Lees et al. 2010 (100%) and the untreated control group of LVO-only data from Goyal et al. 2016. Weightings are chosen to match the P(mRS <= 1) of 46% (from the control group in Emberson with NIHSS of 0-10). This distribution is then corrected for the excess deaths due to treatment with IVT.
+**nLVO baseline (no treatment effect)**: The weighted combination of the untreated control group of combined nLVO/LVO data from Lees et al. 2010 (67%) and the untreated control group of LVO-only data from Goyal et al. 2016 (33%). Weightings are chosen to match the P(mRS <= 1) of 46% (from the control group in Emberson with NIHSS of 0-10). This distribution is then corrected for the excess deaths due to treatment with IVT.
 
-**nLVO t=0 treatment with IVT**: The weighted combination of pre-stroke mRS for patients with NIHSS 0-10 (87%) and untreated control group of nLVO (13%) distributions, where weights are chosen to match the P(mRS <= 1, t=0)=0.63. 63% is estimated from Emberson et al. 2014, where 46% of untreated patients with NIHSS 0-10 had mRS 0-1, and the odds ratio of mRS 0-1 extrapolates back to 2.0 at t=0. Pre-stroke mRS is for ischaemic stroke with NIHSS 0-10 (from the SAMueL data set). This distribution is then corrected for the excess deaths due to treatment with IVT,
+**nLVO t=0 treatment with IVT**: The weighted combination of pre-stroke mRS for patients with NIHSS 0-10 (61%) and untreated control group of nLVO (39%) distributions, where weights are chosen to match the P(mRS <= 1, t=0)=0.63. 63% is estimated from Emberson et al. 2014, where 46% of untreated patients with NIHSS 0-10 had mRS 0-1, and the odds ratio of mRS 0-1 extrapolates back to 2.0 at t=0. Pre-stroke mRS is for ischaemic stroke with NIHSS 0-10 (from the SAMueL data set). This distribution is then corrected for the excess deaths due to treatment with IVT,
 
 **LVO baseline (no treatment effect)**: The control population from Goyal et al. 2016. This distribution is then corrected for the deaths due to treatment with IVT,
 
-**LVO t=0 treatment with IVT**: Weighted combination of the no treatment LVO data from Goyal et al. 2016 and the pre-stroke mRS distribution (for ischaemic stroke with NIHSS 11+, from the SAMueL data set). The weights are chosen to match P(mRS <= 1) of 0.20 which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ from Emberson et al. 2014 back to a predicted odds ratio of mRS 0-1 of 2.0 at t=0. This distribution is then corrected for the excess deaths due to treatment with IVT.
+**LVO t=0 treatment with IVT**: Weighted combination of the no treatment LVO data from Goyal et al. 2016 (82%) and the pre-stroke mRS distribution (18%, for ischaemic stroke with NIHSS 11+, from the SAMueL data set). The weights are chosen to match P(mRS <= 1) of 0.20 which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ from Emberson et al. 2014 back to a predicted odds ratio of mRS 0-1 of 2.0 at t=0. This distribution is then corrected for the excess deaths due to treatment with IVT.
 
 **LVO t=0 treatment with MT**: The weighted combination of pre-stroke (75%) and untreated LVO at no-effect-time (25%). Hui et al. 2020 reported 75% successful recanalisation with thrombectomy. We assume that recanalisation at t=0 restores all pre-stroke function*. Pre-stroke mRS is for ischaemic stroke with NIHSS 11+ (from the SAMueL data set). This distribution is then corrected for the excess deaths due to treatment with MT.
 
@@ -113,7 +113,7 @@ Data from SAMueL using NIHSS 11+ as a surrogate for LVO:
 
 | Admission type                       | All arrivals | Arrival within 6 hrs known onset | Arrival within 4 hrs known onset |
 |--------------------------------------|--------------|----------------------------------|----------------------------------|
-| Proportion all admissions            | 1.0          | 42.9                             | 37.1                             |
+| Proportion all admissions            | 100          | 42.9                             | 37.1                             |
 | Proportion haemorrhagic              | 11.5         | 13.6                             | 14.1                             |
 | Proportion ischaemic                 | 88.5         | 86.4                             | 85.9                             |
 | Proportion ischaemic with NIHSS 0-10 | 74.9         | 67.4                             | 65.7                             |
@@ -143,10 +143,9 @@ In Emberson's meta-analysis of thrombolysis trials, 52.6% of all participants ha
 
 #### Proportion LVO calculated in these notebooks
 
-Two of the methods we use here to produce the mRS distributions estimate the proportion of LVO as part of their calculations. 
+One of the methods we use here to produce the mRS distributions estimate the proportion of LVO as part of their calculations. 
 
 nLVO baseline (no treatment effect) calculation: 33.0% 
-nLVO t=0 treatment with IVT calculation: 38.7% 
 
 
 ## References used in modelling
