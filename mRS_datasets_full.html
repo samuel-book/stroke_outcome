@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset &#8212; Stroke outcome modelling</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -62,7 +61,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +84,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -86,14 +100,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset
@@ -107,12 +122,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -120,61 +140,128 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/mRS_datasets_full.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/mRS_datasets_full.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plain-english-summary">
    Plain English Summary
@@ -343,12 +430,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</h1>
@@ -533,13 +619,14 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="defining-modified-rankin-scale-mrs-probability-distributions-for-untreated-patients-and-predicted-distributions-if-treatment-given-at-time-of-stroke-onset">
-<h1>Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset<a class="headerlink" href="#defining-modified-rankin-scale-mrs-probability-distributions-for-untreated-patients-and-predicted-distributions-if-treatment-given-at-time-of-stroke-onset" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="plain-english-summary">
-<h2>Plain English Summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="defining-modified-rankin-scale-mrs-probability-distributions-for-untreated-patients-and-predicted-distributions-if-treatment-given-at-time-of-stroke-onset">
+<h1>Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset<a class="headerlink" href="#defining-modified-rankin-scale-mrs-probability-distributions-for-untreated-patients-and-predicted-distributions-if-treatment-given-at-time-of-stroke-onset" title="Permalink to this headline">#</a></h1>
+<section id="plain-english-summary">
+<h2>Plain English Summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this headline">#</a></h2>
 <p>Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke.</p>
 <p>The scale runs from 0-6, running from perfect health without symptoms to death:</p>
 <table class="colwidths-auto table">
@@ -575,9 +662,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>When we predict the outcome of a person who has had a stroke, we want to be able to say what is the likely improvement in disability level they would experience due to the treatment.</p>
 <p>The improvement they can get will depend on the time from when their stroke symptoms began and when they receive treatment. The best possible outcome would be if they were treated immediately after they had their stroke. The benefit of treatment reduces over time until the treatment no longer offer any benefit, and they will not be better off than having no treatment.</p>
 <p>In this notebook we describe how we estimate the spread of disability levels if treatment was given immediately after the stroke, and what the spread of disability levels would be if the treatment was given at a time when it was no longer effective. These are two key pieces of information we will later use to estimate the spread of disability levels if we know the time after stroke symptoms began when a person was treated with either thrombolysis (clot-busting medication) or thrombectomy (physical removal of a clot).</p>
-</div>
-<div class="section" id="descriptions-of-the-mrs-data-sets-derived-here-and-basic-methodology">
-<h2>Descriptions of the mRS data sets derived here, and basic methodology<a class="headerlink" href="#descriptions-of-the-mrs-data-sets-derived-here-and-basic-methodology" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="descriptions-of-the-mrs-data-sets-derived-here-and-basic-methodology">
+<h2>Descriptions of the mRS data sets derived here, and basic methodology<a class="headerlink" href="#descriptions-of-the-mrs-data-sets-derived-here-and-basic-methodology" title="Permalink to this headline">#</a></h2>
 <p><strong>Pre-stroke mRS distributions</strong>: Pre-stroke mRS distributions give the best possible outcome (i.e. 100% effective treatment). These distributions come from the SAMueL data set, and may be stratified by haemorrgage vs. infarction (ischaemic), and by NIHSS on arrival where, for ischaemic stroke, NIHSS 0-10 is taken as a surrogate for nLVO, and NIHSS 11+ is taken as a surrogate for LVO.</p>
 <p><strong>nLVO baseline (no treatment effect)</strong>: The weighted combination of the untreated control group of combined nLVO/LVO data from Lees et al. 2010 (67%) and the untreated control group of LVO-only data from Goyal et al. 2016 (33%). Weightings are chosen to match the P(mRS &lt;= 1) of 46% (from the control group in Emberson with NIHSS of 0-10). This distribution is then corrected for the excess deaths due to treatment with IVT.</p>
 <p><strong>nLVO t=0 treatment with IVT</strong>: The weighted combination of pre-stroke mRS for patients with NIHSS 0-10 (61%) and untreated control group of nLVO (39%) distributions, where weights are chosen to match the P(mRS &lt;= 1, t=0)=0.63. 63% is estimated from Emberson et al. 2014, where 46% of untreated patients with NIHSS 0-10 had mRS 0-1, and the odds ratio of mRS 0-1 extrapolates back to 2.0 at t=0. Pre-stroke mRS is for ischaemic stroke with NIHSS 0-10 (from the SAMueL data set). This distribution is then corrected for the excess deaths due to treatment with IVT,</p>
@@ -585,8 +672,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>LVO t=0 treatment with IVT</strong>: Weighted combination of the no treatment LVO data from Goyal et al. 2016 (82%) and the pre-stroke mRS distribution (18%%, for ischaemic stroke with NIHSS 11+, from the SAMueL data set). The weights are chosen to match P(mRS &lt;= 1) of 0.20 which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ from Emberson et al. 2014 back to a predicted odds ratio of mRS 0-1 of 2.0 at t=0. This distribution is then corrected for the excess deaths due to treatment with IVT.</p>
 <p><strong>LVO t=0 treatment with MT</strong>: The weighted combination of pre-stroke (75%) and untreated LVO at no-effect-time (25%). Hui et al. 2020 reported 75% successful recanalisation with thrombectomy. We assume that recanalisation at t=0 restores all pre-stroke function*. Pre-stroke mRS is for ischaemic stroke with NIHSS 11+ (from the SAMueL data set). This distribution is then corrected for the excess deaths due to treatment with MT.</p>
 <p>*Extrapolating results of good outcome, when recanalisation has been achieved with thrombectomy, from Fransen et al. 2016 back to t=0, assuming 75% recanalisation, gives the same proportion of patients with mRS &lt;= 2 as the pre-stroke mRS in the SAMueL data (therefore this extrapolation would suggest full recovery of all health with thrombectomy theoretically carried out at t=0).</p>
-<div class="section" id="deaths-due-to-treatment">
-<h3>Deaths due to treatment<a class="headerlink" href="#deaths-due-to-treatment" title="Permalink to this headline">¶</a></h3>
+<section id="deaths-due-to-treatment">
+<h3>Deaths due to treatment<a class="headerlink" href="#deaths-due-to-treatment" title="Permalink to this headline">#</a></h3>
 <p>IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014):</p>
 <table class="colwidths-auto table">
 <thead>
@@ -631,11 +718,11 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <p>The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effectivbe) already includes IVT-related excess deaths.</p>
-</div>
-<div class="section" id="proportion-of-ischaemic-patients-with-lvo">
-<h3>Proportion of ischaemic patients with LVO<a class="headerlink" href="#proportion-of-ischaemic-patients-with-lvo" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="analysis-of-samuel-data">
-<h4>Analysis of SAMueL data<a class="headerlink" href="#analysis-of-samuel-data" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="proportion-of-ischaemic-patients-with-lvo">
+<h3>Proportion of ischaemic patients with LVO<a class="headerlink" href="#proportion-of-ischaemic-patients-with-lvo" title="Permalink to this headline">#</a></h3>
+<section id="analysis-of-samuel-data">
+<h4>Analysis of SAMueL data<a class="headerlink" href="#analysis-of-samuel-data" title="Permalink to this headline">#</a></h4>
 <p>The proportion of ischaemic patients with LVO may be estimated in various ways. Estimates are likely to be swayed by the population being studied (e.g. treatment trial results may under-estimate nLVO as very low severity patients may not be selected for the trial). Below are various estimated of the  relative occurrence of LVO and nLVO:</p>
 <p>Data from SAMueL using NIHSS 11+ as a surrogate for LVO:</p>
 <table class="colwidths-auto table">
@@ -675,27 +762,27 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <p>For original analysis see: <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/10_using_nihss_10_for_lvo.html">https://samuel-book.github.io/samuel-1/descriptive_stats/10_using_nihss_10_for_lvo.html</a></p>
-</div>
-<div class="section" id="racecat-pre-hospital-diagnosis-of-lvo">
-<h4>RACECAT pre-hospital diagnosis of LVO<a class="headerlink" href="#racecat-pre-hospital-diagnosis-of-lvo" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="racecat-pre-hospital-diagnosis-of-lvo">
+<h4>RACECAT pre-hospital diagnosis of LVO<a class="headerlink" href="#racecat-pre-hospital-diagnosis-of-lvo" title="Permalink to this headline">#</a></h4>
 <p>A breakdown on stroke type from , 20the design of the RACE test for pre-hopsital diagnosis of LVO (de la Ossa Herrero et al., 2013). Note - there appears to be some discrepancies between reporting of the results between the text and the detailed breakdown by RACE score in figure 2 of the paper.</p>
 <ul class="simple">
 <li><p>Trial recruited from patients who presented at the emergency department within 6 hours from symptoms onset.</p></li>
 <li><p>In the text: Of 357 patients in the analysis, the stroke subtype was ischemic stroke in 240 (67.2%), hemorrhagic stroke in 52 (14.6%), transient ischemic attack in 20 (5.6%), and stroke mimic in 45 (12.6%). LVO was detected in 76 patients (31.7% of ischaemic strokes).</p></li>
 <li><p>In figure 2: Of 357 patients in the analysis, the stroke subtype was ischemic stroke in 260 (72.8), hemorrhagic stroke in 52 (14.6%), and stroke mimic in 45 (12.6%). LVO was detected in 99 patients (38.1% of ischaemic strokes). It appears that TIAs may be counted in with ischaemic strokes in this analysis.</p></li>
 </ul>
-</div>
-<div class="section" id="estimating-the-number-of-uk-stroke-patients-eligible-for-endovascular-thrombectomy-review-analysis">
-<h4>Estimating the number of UK stroke patients eligible for endovascular thrombectomy (review/analysis)<a class="headerlink" href="#estimating-the-number-of-uk-stroke-patients-eligible-for-endovascular-thrombectomy-review-analysis" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="estimating-the-number-of-uk-stroke-patients-eligible-for-endovascular-thrombectomy-review-analysis">
+<h4>Estimating the number of UK stroke patients eligible for endovascular thrombectomy (review/analysis)<a class="headerlink" href="#estimating-the-number-of-uk-stroke-patients-eligible-for-endovascular-thrombectomy-review-analysis" title="Permalink to this headline">#</a></h4>
 <p>McMeekin et al. (2017) review the evdidence for estimating the number of UK stroke patients eligible for endovascular thrombectomy. They estimate:</p>
 <ul class="simple">
 <li><p>40% of ischaemic stroke patients have LVO; 80% of which have NIHSS &gt;=6 and say be suitable for thrombectomy. This is equivalent to 32% of admitted patients having LVO suitable for thrombectomy.</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="import-packages">
-<h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="import-packages">
+<h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -709,9 +796,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="set-up-dictionaries-for-results">
-<h2>Set up dictionaries for results<a class="headerlink" href="#set-up-dictionaries-for-results" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="set-up-dictionaries-for-results">
+<h2>Set up dictionaries for results<a class="headerlink" href="#set-up-dictionaries-for-results" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_distributions_bins</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -720,12 +807,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="pre-stroke-mrs-distributions">
-<h2>Pre-stroke mRS distributions<a class="headerlink" href="#pre-stroke-mrs-distributions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pre-stroke-mrs-distributions">
+<h2>Pre-stroke mRS distributions<a class="headerlink" href="#pre-stroke-mrs-distributions" title="Permalink to this headline">#</a></h2>
 <p>Pre-stroke mRS distributions come from SSNAP data. They are used to estimate the best possible outcome from treatment.</p>
-<div class="section" id="nlvo-pre-stroke-mrs-distribution">
-<h3>nLVO pre-stroke mRS distribution<a class="headerlink" href="#nlvo-pre-stroke-mrs-distribution" title="Permalink to this headline">¶</a></h3>
+<section id="nlvo-pre-stroke-mrs-distribution">
+<h3>nLVO pre-stroke mRS distribution<a class="headerlink" href="#nlvo-pre-stroke-mrs-distribution" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pre-stroke nLVO uses pre-stroke mRS from SAMueL wfor patients with ischaemic</span>
@@ -766,8 +853,8 @@ array([0.5829, 0.7454, 0.8489, 0.9511, 0.9931, 1.    , 1.    ])
 </div>
 </div>
 </div>
-<div class="section" id="add-ivt-extra-deaths">
-<h4>Add IVT extra deaths:<a class="headerlink" href="#add-ivt-extra-deaths" title="Permalink to this headline">¶</a></h4>
+<section id="add-ivt-extra-deaths">
+<h4>Add IVT extra deaths:<a class="headerlink" href="#add-ivt-extra-deaths" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_nlvo_bins_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pre_stroke_nlvo_bins</span><span class="p">)</span>
@@ -810,10 +897,10 @@ array([0.5765, 0.7372, 0.8395, 0.9406, 0.9821, 0.989 , 1.    ])
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="lvo-pre-stroke-mrs-distribution">
-<h3>LVO pre-stroke mRS distribution<a class="headerlink" href="#lvo-pre-stroke-mrs-distribution" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="lvo-pre-stroke-mrs-distribution">
+<h3>LVO pre-stroke mRS distribution<a class="headerlink" href="#lvo-pre-stroke-mrs-distribution" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pre-stroke nLVO uses pre-stroke mRS from SAMueL wfor patients with ischaemic</span>
@@ -854,8 +941,8 @@ array([0.4179, 0.5609, 0.6793, 0.8435, 0.9573, 1.    , 1.    ])
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h4>Add IVT extra deaths:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<section id="id1">
+<h4>Add IVT extra deaths:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_lvo_bins_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pre_stroke_lvo_bins</span><span class="p">)</span>
@@ -898,9 +985,9 @@ array([0.4036, 0.5417, 0.6561, 0.8147, 0.9246, 0.9659, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="add-mt-extra-deaths">
-<h4>Add MT extra deaths:<a class="headerlink" href="#add-mt-extra-deaths" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="add-mt-extra-deaths">
+<h4>Add MT extra deaths:<a class="headerlink" href="#add-mt-extra-deaths" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_lvo_bins_mt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pre_stroke_lvo_bins</span><span class="p">)</span>
@@ -943,11 +1030,11 @@ array([0.4028, 0.5407, 0.6548, 0.8131, 0.9228, 0.964 , 1.    ])
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="nlvo-baseline-no-treatment-effect">
-<h2>nLVO baseline (no treatment effect)<a class="headerlink" href="#nlvo-baseline-no-treatment-effect" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="nlvo-baseline-no-treatment-effect">
+<h2>nLVO baseline (no treatment effect)<a class="headerlink" href="#nlvo-baseline-no-treatment-effect" title="Permalink to this headline">#</a></h2>
 <p>The weighted combination of the untreated control group of combined nLVO/LVO data from Lees et al. 2010 (100%) and the untreated control group of LVO-only data from Goyal et al. 2016. Weightings are chosen to match the P(mRS &lt;= 1) of 46% (from the control group in Emberson with NIHSS of 0-10).</p>
 <p>The distribution is corrected for 1.1% excess deaths in the IVT-treated group (from Emberson et al., 2014, using NIHSS 0-10 as a surrogate for nLVO).</p>
 <p>Set up required distributions from data.</p>
@@ -1010,8 +1097,8 @@ array([0.05 , 0.129, 0.265, 0.429, 0.676, 0.811, 1.   ])
 </div>
 </div>
 </div>
-<div class="section" id="add-in-extra-ivt-deaths-combined-nlvo-lvo">
-<h3>Add in extra IVT deaths (combined nLVO/LVO):<a class="headerlink" href="#add-in-extra-ivt-deaths-combined-nlvo-lvo" title="Permalink to this headline">¶</a></h3>
+<section id="add-in-extra-ivt-deaths-combined-nlvo-lvo">
+<h3>Add in extra IVT deaths (combined nLVO/LVO):<a class="headerlink" href="#add-in-extra-ivt-deaths-combined-nlvo-lvo" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_nlvo_lvo_bins_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">no_treatment_nlvo_lvo_bins</span><span class="p">)</span>
@@ -1048,9 +1135,9 @@ array([0.1447, 0.3417, 0.4637, 0.5998, 0.7757, 0.8596, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="add-in-extra-ivt-deaths-lvo">
-<h3>Add in extra IVT deaths (LVO):<a class="headerlink" href="#add-in-extra-ivt-deaths-lvo" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="add-in-extra-ivt-deaths-lvo">
+<h3>Add in extra IVT deaths (LVO):<a class="headerlink" href="#add-in-extra-ivt-deaths-lvo" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_lvo_bins_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">no_treatment_lvo_bins</span><span class="p">)</span>
@@ -1087,12 +1174,12 @@ array([0.0479, 0.1236, 0.2539, 0.411 , 0.6476, 0.7769, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-a-weighted-distribution-of-lvo-and-nlvo">
-<h3>Calculate a weighted distribution of LVO and nLVO<a class="headerlink" href="#calculate-a-weighted-distribution-of-lvo-and-nlvo" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="calculate-a-weighted-distribution-of-lvo-and-nlvo">
+<h3>Calculate a weighted distribution of LVO and nLVO<a class="headerlink" href="#calculate-a-weighted-distribution-of-lvo-and-nlvo" title="Permalink to this headline">#</a></h3>
 <p>Calculate the weights needed to give a distribution with P(mRS &lt;-1, t=tne) = 46%</p>
-<div class="section" id="without-ivt-deaths">
-<h4>Without IVT deaths<a class="headerlink" href="#without-ivt-deaths" title="Permalink to this headline">¶</a></h4>
+<section id="without-ivt-deaths">
+<h4>Without IVT deaths<a class="headerlink" href="#without-ivt-deaths" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_diff</span>  <span class="o">=</span> <span class="p">(</span><span class="mf">0.46</span><span class="p">)</span>  <span class="o">-</span> <span class="n">no_treatment_nlvo_lvo_cumsum</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1160,9 +1247,9 @@ array([0.1971, 0.46  , 0.58  , 0.7078, 0.8557, 0.9177, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="with-ivt-deaths">
-<h4>With IVT deaths<a class="headerlink" href="#with-ivt-deaths" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="with-ivt-deaths">
+<h4>With IVT deaths<a class="headerlink" href="#with-ivt-deaths" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_diff</span>  <span class="o">=</span> <span class="mf">0.46</span>  <span class="o">-</span> <span class="n">no_treatment_nlvo_lvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1233,11 +1320,11 @@ array([0.1973, 0.46  , 0.5776, 0.7023, 0.8452, 0.9045, 1.    ])
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="nlvo-t-0-treatment-with-ivt">
-<h2>nLVO t=0 treatment with IVT<a class="headerlink" href="#nlvo-t-0-treatment-with-ivt" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="nlvo-t-0-treatment-with-ivt">
+<h2>nLVO t=0 treatment with IVT<a class="headerlink" href="#nlvo-t-0-treatment-with-ivt" title="Permalink to this headline">#</a></h2>
 <p>The weighted combination of pre-stroke mRS for patients with NIHSS 0-10 and untreated control group of nLVO distributions, where weights are chosen to match the P(mRS &lt;= 1, t=0)=0.63. 63% is estimated from Emberson et al. 2014, where 46% of untreated patients with NIHSS 0-10 had mRS 0-1, and the odds ratio of mRS 0-1 extrapolates back to 2.0 at t=0. Pre-stroke mRS is for ischaemic stroke with NIHSS 0-10 (from the SAMueL data set).</p>
 <p>The distribution is corrected for 1.1% excess deaths in the IVT-treated group (from Emberson et al., 2014, using NIHSS 0-10 as a surrogate for nLVO).</p>
 <p>Calculate weights</p>
@@ -1303,9 +1390,9 @@ array([0.4298, 0.63  , 0.7382, 0.8484, 0.9292, 0.9563, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lvo-baseline-no-treatment-effect">
-<h2>LVO baseline (no treatment effect)<a class="headerlink" href="#lvo-baseline-no-treatment-effect" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="lvo-baseline-no-treatment-effect">
+<h2>LVO baseline (no treatment effect)<a class="headerlink" href="#lvo-baseline-no-treatment-effect" title="Permalink to this headline">#</a></h2>
 <p>The control population from Goyal et al. 2016, with added MT-related excess deaths.</p>
 <p>No correction for IVT-related deaths is needed when LVO is treated with MT as the Goyal control group includes use of IVT.</p>
 <div class="cell docutils container">
@@ -1337,8 +1424,8 @@ array([0.05 , 0.129, 0.265, 0.429, 0.676, 0.811, 1.   ])
 </div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>With IVT deaths:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3>With IVT deaths:<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LVO Baseline distributions were defined in cell 5</span>
@@ -1370,9 +1457,9 @@ array([0.0479, 0.1236, 0.2539, 0.411 , 0.6476, 0.7769, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="with-mt-deaths">
-<h3>With MT deaths:<a class="headerlink" href="#with-mt-deaths" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="with-mt-deaths">
+<h3>With MT deaths:<a class="headerlink" href="#with-mt-deaths" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_lvo_bins_mt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">no_treatment_lvo_bins</span><span class="p">)</span>
@@ -1440,10 +1527,10 @@ array([0.0476, 0.1229, 0.2524, 0.4086, 0.6439, 0.7725, 1.    ])
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="lvo-t-0-treatment-with-ivt">
-<h2>LVO t=0 treatment with IVT<a class="headerlink" href="#lvo-t-0-treatment-with-ivt" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="lvo-t-0-treatment-with-ivt">
+<h2>LVO t=0 treatment with IVT<a class="headerlink" href="#lvo-t-0-treatment-with-ivt" title="Permalink to this headline">#</a></h2>
 <p>Weighted combination of the no treatment LVO data from Goyal et al. 2016 and the pre-stroke mRS distribution (for ischaemic stroke with NIHSS 11+, from the SAMueL data set). The weights are chosen to match P(mRS &lt;= 1) of 0.20 which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ from Emberson et al. 2014 back to a predicted odds ratio of mRS 0-1 of 2.0 at t=0.</p>
 <p>The distribution is corrected for 3.4% excess deaths in the IVT-treated group (from Emberson et al., 2014, using NIHSS 11+ as a surrogate for LVO).</p>
 <p>Calculate the weights needed to give a distribution with P(mRS &lt;=1, t=0) = 20%.</p>
@@ -1508,9 +1595,9 @@ array([0.1129, 0.2   , 0.3274, 0.4848, 0.6982, 0.8114, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lvo-t-0-treatment-with-mt">
-<h2>LVO t=0 treatment with MT<a class="headerlink" href="#lvo-t-0-treatment-with-mt" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="lvo-t-0-treatment-with-mt">
+<h2>LVO t=0 treatment with MT<a class="headerlink" href="#lvo-t-0-treatment-with-mt" title="Permalink to this headline">#</a></h2>
 <p>The weighted combination of pre-stroke (75%) and untreated LVO at no-effect-time (25%). Hui et al. 2020 reported 75% successful recanalisation with thrombectomy. We assume that recanalisation at t=0 restores all pre-stroke function*. Pre-stroke mRS is for ischaemic stroke with NIHSS 11+ (from the SAMueL data set).</p>
 <p>*Extrapolating results of good outcome, when recanalisation has been achieved with thrombectomy, from Fransen et al. 2016 back to t=0, assuming 75% recanalisation, gives the same proportion of patients with mRS &lt;= 2 as the pre-stroke mRS in the SAMueL data (therefore this extrapolation would suggest full recovery of all health with thrombectomy theoretically carried out at t=0).</p>
 <div class="cell docutils container">
@@ -1569,9 +1656,9 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="show-all-results">
-<h2>Show all results<a class="headerlink" href="#show-all-results" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="show-all-results">
+<h2>Show all results<a class="headerlink" href="#show-all-results" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_distributions_bins_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_distributions_bins</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
@@ -1905,9 +1992,9 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
 </table>
 </div></div>
 </div>
-</div>
-<div class="section" id="plot-distributions">
-<h2>Plot distributions<a class="headerlink" href="#plot-distributions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plot-distributions">
+<h2>Plot distributions<a class="headerlink" href="#plot-distributions" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-colorblind&#39;</span><span class="p">)</span>
@@ -1992,9 +2079,9 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
 <img alt="_images/mRS_datasets_full_61_2.png" src="_images/mRS_datasets_full_61_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <p>de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45.</p>
 <p>Emberson J, Lees KR, Lyden P, et al. <em>Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials.</em> The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
 <p>Fransen, P., Berkhemer, O., Lingsma, H. et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol. 2016 Feb 1;73(2):190–6. DOI: 10.1001/jamaneurol.2015.3886</p>
@@ -2003,8 +2090,8 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
 <p>Lees KR, Bluhmki E, von Kummer R, et al. <em>Time to treatment with intravenous alteplase and outcome in stroke: an updated pooled analysis of ECASS, ATLANTIS, NINDS, and EPITHET trials</em>. The Lancet 2010;375:1695-703. doi:10.1016/S0140-6736(10)60491-6</p>
 <p>McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26.</p>
 <p>SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html">https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2028,9 +2115,11 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2046,24 +2135,28 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Anna Laws & Michael Allen<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Anna Laws & Michael Allen<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

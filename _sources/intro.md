@@ -30,11 +30,12 @@ The scale runs from 0-6, running from perfect health without symptoms to death:
 
 **LVO baseline (no treatment effect)**: The control population from Goyal et al. 2016. This distribution is then corrected for the deaths due to treatment with IVT,
 
-**LVO t=0 treatment with IVT**: Weighted combination of the no treatment LVO data from Goyal et al. 2016 (82%) and the pre-stroke mRS distribution (18%%, for ischaemic stroke with NIHSS 11+, from the SAMueL data set). The weights are chosen to match P(mRS <= 1) of 0.20 which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ from Emberson et al. 2014 back to a predicted odds ratio of mRS 0-1 of 2.0 at t=0. This distribution is then corrected for the excess deaths due to treatment with IVT.
+**LVO t=0 treatment with IVT**: Weighted combination of the no treatment LVO data from Goyal et al. 2016 (82%) and the pre-stroke mRS distribution (18%, for ischaemic stroke with NIHSS 11+, from the SAMueL data set). The weights are chosen to match P(mRS <= 1) of 0.20 which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ from Emberson et al. 2014 back to a predicted odds ratio of mRS 0-1 of 2.0 at t=0. This distribution is then corrected for the excess deaths due to treatment with IVT.
 
 **LVO t=0 treatment with MT**: The weighted combination of pre-stroke (75%) and untreated LVO at no-effect-time (25%). Hui et al. 2020 reported 75% successful recanalisation with thrombectomy. We assume that recanalisation at t=0 restores all pre-stroke function*. Pre-stroke mRS is for ischaemic stroke with NIHSS 11+ (from the SAMueL data set). This distribution is then corrected for the excess deaths due to treatment with MT.
 
 *Extrapolating results of good outcome, when recanalisation has been achieved with thrombectomy, from Fransen et al. 2016 back to t=0, assuming 75% recanalisation, gives the same proportion of patients with mRS <= 2 as the pre-stroke mRS in the SAMueL data (therefore this extrapolation would suggest full recovery of all health with thrombectomy theoretically carried out at t=0).
+
 ### Excess deaths due to treatment
 
 #### IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014): 
@@ -112,7 +113,7 @@ Data from SAMueL using NIHSS 11+ as a surrogate for LVO:
 
 | Admission type                       | All arrivals | Arrival within 6 hrs known onset | Arrival within 4 hrs known onset |
 |--------------------------------------|--------------|----------------------------------|----------------------------------|
-| Proportion all admissions            | 1.0          | 42.9                             | 37.1                             |
+| Proportion all admissions            | 100          | 42.9                             | 37.1                             |
 | Proportion haemorrhagic              | 11.5         | 13.6                             | 14.1                             |
 | Proportion ischaemic                 | 88.5         | 86.4                             | 85.9                             |
 | Proportion ischaemic with NIHSS 0-10 | 74.9         | 67.4                             | 65.7                             |
