@@ -2,9 +2,11 @@
 
 This notebook describes the basic methodology for estimating disability outcomes for stroke patients, depending on time to treatment with intravenous thrombolysis (IVT) or mechanical thrombectomy (MT).
 
-Patients with an ischaemic stroke (a stroke that is caused by a clot) can be further defined by the location of the clot: those with a large vessel occlusion (LVO); and those not with a large vessel occlusion (nLVO). Patients with an nLVO can be treated with thrombolysis (IVT), a clot-busting medication. Patients with an LVO can be treated with either IVT, or also with thrombectomy (MT), which physically removes the clot. The benefit received by the patient from either treatment (IVT and/or MT) are time dependent, such that the sooner they are administered, the better the outcome, with each treatment having no effect after a specified duration (4.5 hours for IVT, and 6.3 hours for MT).
+Patients with an ischaemic stroke (a stroke that is caused by a clot) can be further defined by the location of the clot: those with a large vessel occlusion (LVO); and those not with a large vessel occlusion (nLVO). Patients with an nLVO can be treated with thrombolysis (IVT), a clot-busting medication. Patients with an LVO can be treated with either IVT, or also with thrombectomy (MT), which physically removes the clot. The benefit received by the patient from either treatment (IVT and/or MT) are time dependent, such that the sooner they are administered, the better the outcome, with each treatment having no effect after a specified duration (4.5 hours for IVT, and 6.3 hours for MT). In other words, the sooner a patient recieves treatment the fewer stroke related disabilities they could end up with.
 
-This model calculates disability outcome estimates for three patient-treatment cohorts: 1) nLVO-IVT, 2) LVO-IVT, 3) LVO-MT. The model provides a distribution of disability following reperfusion treatment at any point between these two time stages: 1) receiving treatment as soon as their stroke began (this will be referred to as time zero, and we will use the terminology "t=0"), and 2) receiving treatment at the duration after stroke onset where the treatment has no effect (this will be referred to as time no effect, and we will use the terminology "t=NE").
+Until now, modelling the outcome from stroke reperfusion treatment was a dichotomous affair, with a patient classified as either being disability free, or with stroke related disabilities. This method aims to provide a more granular disability outcome, describing the resulting disability as one of six levels.
+
+This model calculates disability outcome estimates for three patient-treatment cohorts: 1) nLVO-IVT, 2) LVO-IVT, 3) LVO-MT. The model provides a distribution of disability (with 6 levels) following reperfusion treatment at any point between these two time stages: 1) receiving treatment as soon as their stroke began (this will be referred to as time zero, and we will use the terminology "t=0"), and 2) receiving treatment at the duration after stroke onset where the treatment has no effect (this will be referred to as time no effect, and we will use the terminology "t=NE").
 
 The model is built using data from reperfusion clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Hui et al. 2020) and from national stroke databases (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (t=0 & t=NE), and we use interpolation to determine the disability distribution at any point inbetween. 
 
@@ -150,12 +152,12 @@ Expected mRS distribution for LVO strokes if MT given at time of stroke onset (*
 
 Modelling of the effect of MT after any given treatment time assumes that the log odds decay uniformly over time between stroke onset and the time to no effect (as modelled by Fransen et al. for MT). The time to no-effect treatment is taken as 8 hours for MT (Fransen et al). Note: the time to no effect from Fransen et al. did not incldue those patients who may be selected for late treatment based on advanced imaging. In this method we do not include late-presenting patients in our outcome modelling.
 
-The modelled decay of effects of IVT and MT are shown in {numref}`figure {number} <LVO_MT_time>`. 
+The modelled decay of effects of MT are shown in {numref}`figure {number} <LVO_MT_time>`. 
 
-:::{figure-md} LVO_MT_dist
-<img src="./images/LVO-MT.jpg" width="600">
+:::{figure-md} LVO_MT_time
+<img src="./images/prob_with_time_lvo_mt.jpg" width="600">
 
-Expected mRS distribution for LVO strokes if MT given at time of stroke onset (*t=0hr*), or if MT given at time when there effect has decayed to zero (*No effect time*, at this point there are still MT-related excess deaths).
+Expected mRS distribution for LVO strokes depending on time to treatment with MT.
 :::
 
 ### Proportion of ischaemic patients with LVO
