@@ -57,30 +57,20 @@ class Clinical_outcome:
       this analysis did not include late-presenting patients selected by
       advanced imaging).
 
-    1,000 patients are then sampled from the untreated and treated
-    distributions (samples are taken randomly across the distrubutions.
-    This gives sampled mRS distributions. The shift in mRS for each patient
-    between untreated and treated distribution is also calculated. A negative
-    shift is indicative of improvement (lower MRS disability score).
     """
 
-    def __init__(self, mrs_dists, patients=1000):
+    def __init__(self, mrs_dists):
         """
         Constructor for clinical outcome model.
 
-        Input: 
-        ------
-
-        mRS distributions for untreated, t=0 treatment, and treatment at
+        Input: mRS distributions for untreated, t=0 treatment, and treatment at
         time of no effect (which also includes treatment-related excess deaths).
-
-        patients: number of patients to sample from the distributions.
 
         """
         self.name = "Clinical outcome model"
 
         # Set replicates of mRS distribution to perform
-        self.mrs_replicates = patients
+        self.mrs_replicates = 1000
 
         # Store modified Rankin Scale distributions as arrays in dictionary
         self.mrs_distribution_probs = dict()
@@ -212,7 +202,7 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
+        x = np.linspace(0.001, 0.999, self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
@@ -253,7 +243,7 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
+        x = np.linspace(0.001, 0.999, self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
@@ -294,7 +284,7 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
+        x = np.linspace(0.001, 0.999, self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
