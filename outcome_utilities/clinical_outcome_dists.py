@@ -26,14 +26,14 @@ class Clinical_outcome:
     Outputs
     -------
 
-    mRS distributions (bins & cumulative), changes in dists, and mean mRS, for:
+    mRS distributions, and mean mRS, for:
     1) LVO untreated
     2) nLVO untreated
     3) LVO treated with IVT
     4) LVO treated with MT
     5) nLVO treated with IVT
 
-    mRS mean shift (compared with untreated) and proportion of patients with
+    mRS mean shift (compared with untreated) and Proportion of patients with
     improved mRS for:
     1) LVO treated with IVT
     2) LVO treated with MT
@@ -57,30 +57,20 @@ class Clinical_outcome:
       this analysis did not include late-presenting patients selected by
       advanced imaging).
 
-    1,000 patients are then sampled from the untreated and treated
-    distributions (samples are taken randomly across the distrubutions.
-    This gives sampled mRS distributions. The shift in mRS for each patient
-    between untreated and treated distribution is also calculated. A negative
-    shift is indicative of improvement (lower MRS disability score).
     """
 
-    def __init__(self, mrs_dists, patients=1000):
+    def __init__(self, mrs_dists):
         """
         Constructor for clinical outcome model.
 
-        Input: 
-        ------
-
-        mRS distributions for untreated, t=0 treatment, and treatment at
+        Input: mRS distributions for untreated, t=0 treatment, and treatment at
         time of no effect (which also includes treatment-related excess deaths).
-
-        patients: number of patients to sample from the distributions.
 
         """
         self.name = "Clinical outcome model"
 
         # Set replicates of mRS distribution to perform
-        self.mrs_replicates = patients
+        self.mrs_replicates = 1000
 
         # Store modified Rankin Scale distributions as arrays in dictionary
         self.mrs_distribution_probs = dict()
@@ -113,15 +103,14 @@ class Clinical_outcome:
 
         A results dictionary with:
 
-        mRS distributions (bins & cumulative), changes in dists, and mean mRS
-        for:
+        mRS distributions, and mean mRS, for:
             1) LVO untreated
             2) nLVO untreated
             3) LVO treated with IVT
             4) LVO treated with MT
             5) nLVO treated with IVT
 
-        mRS mean shift (compared with untreated) and proportion of patients with
+        mRS mean shift (compared with untreated) and Proportion of patients with
         improved mRS for:
             1) LVO treated with IVT
             2) LVO treated with MT
@@ -148,15 +137,6 @@ class Clinical_outcome:
             lvo_mt_outcomes['treated_mrs'], bins=range(8))[0]
         nlvo_ivt_hist = np.histogram(
             nlvo_ivt_outcomes['treated_mrs'], bins=range(8))[0]
-        
-        # Convert to probabilities and store
-        results['lvo_untreated_probs']  = \
-                lvo_untreated_hist / lvo_untreated_hist.sum()
-        results['nlvo_untreated_probs'] = \
-            nlvo_untreated_hist / nlvo_untreated_hist.sum()
-        results['lvo_ivt_probs'] = lvo_ivt_hist / lvo_ivt_hist.sum()
-        results['lvo_mt_probs'] = lvo_mt_hist / lvo_mt_hist.sum()
-        results['nlvo_ivt_probs'] = nlvo_ivt_hist / nlvo_ivt_hist.sum()
 
         # Get cumulative probabilities and store in results
         results['lvo_untreated_cum_probs']  = \
@@ -169,14 +149,6 @@ class Clinical_outcome:
             np.cumsum(lvo_mt_hist) / lvo_mt_hist.sum()
         results['nlvo_ivt_cum_probs'] = \
             np.cumsum(nlvo_ivt_hist) / nlvo_ivt_hist.sum()
-        
-        # Get shift in mRS probs and store
-        results['lvo_ivt_shift'] = \
-            results['lvo_ivt_probs'] - results['lvo_untreated_probs']
-        results['lvo_mt_shift'] = \
-            results['lvo_mt_probs'] - results['lvo_untreated_probs']
-        results['nlvo_ivt_shift'] = \
-            results['nlvo_ivt_probs'] - results['nlvo_untreated_probs']
 
         # Get average mRS store in results
         results['lvo_untreated_mean_mRS'] = \
@@ -230,7 +202,7 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
+        x = np.linspace(0.001, 0.999, self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
@@ -271,7 +243,7 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
+        x = np.linspace(0.001, 0.999, self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
@@ -312,7 +284,7 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
+        x = np.linspace(0.001, 0.999, self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
