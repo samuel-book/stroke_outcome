@@ -1,6 +1,8 @@
 format: jb-book
 root: intro
 chapters:
-- file: mRS_datasets_full.ipynb
+- file: mRS_datasets_full
 - file: mRS_outcomes_maths
+- file: demo_of_outcome_model
+- file: show_outcome_model_code
 
