@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show outcome model python code &#8212; Stroke outcome modelling</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Example output from stroke outcome model" href="demo_of_outcome_model.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Stroke outcome modelling</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mRS_datasets_full.html">
+   Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mRS_outcomes_maths.html">
+   Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="demo_of_outcome_model.html">
+   Example output from stroke outcome model
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Show outcome model python code
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/show_outcome_model_code.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Show outcome model python code</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="show-outcome-model-python-code">
+<h1>Show outcome model python code<a class="headerlink" href="#show-outcome-model-python-code" title="Permalink to this headline">¶</a></h1>
+<p>This is the outcome model code called by the demonstration of outcome modelling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ./outcome_utilities/clinical_outcome.py</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">class</span> <span class="nc">Clinical_outcome</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Predicts modified Rankin Scale (mRS) distributions for ischaemic stroke</span>
+<span class="sd">    patients depending on time to treatment with intravenous thrombolysis (IVT)</span>
+<span class="sd">    or mechanical thrombectomy (MT). Results are broken down for large vessel</span>
+<span class="sd">    occulusions (LVO) and non large vessel occlusions (nLVO).</span>
+
+<span class="sd">    Inputs</span>
+<span class="sd">    ------</span>
+
+<span class="sd">    A Pandas DataFrame object of mRS distributions for:</span>
+<span class="sd">    1) Untreated nLVO</span>
+<span class="sd">    2) nLVO treated at t=0 (time of stroke onset) with IVT</span>
+<span class="sd">    3) nLVO treated at time of no-effect (includes treatment deaths)</span>
+<span class="sd">    4) Untreated LVO</span>
+<span class="sd">    5) LVO treated at t=0 (time of stroke onset) with IVT</span>
+<span class="sd">    6) LVO treated with IVT at time of no-effect (includes treatment deaths)</span>
+<span class="sd">    7) LVO treated at t=0 (time of stroke onset) with IVT</span>
+<span class="sd">    8) LVO treated with IVT at time of no-effect (includes treatment deaths)</span>
+
+<span class="sd">    Time of IVT and MT.</span>
+
+<span class="sd">    Outputs</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    mRS distributions (bins &amp; cumulative), changes in dists, and mean mRS, for:</span>
+<span class="sd">    1) LVO untreated</span>
+<span class="sd">    2) nLVO untreated</span>
+<span class="sd">    3) LVO treated with IVT</span>
+<span class="sd">    4) LVO treated with MT</span>
+<span class="sd">    5) nLVO treated with IVT</span>
+
+<span class="sd">    mRS mean shift (compared with untreated) and proportion of patients with</span>
+<span class="sd">    improved mRS for:</span>
+<span class="sd">    1) LVO treated with IVT</span>
+<span class="sd">    2) LVO treated with MT</span>
+<span class="sd">    3) nLVO treated with IVT</span>
+
+<span class="sd">    General methodology</span>
+<span class="sd">    -------------------</span>
+
+<span class="sd">    The model assumes that log odds of mRS &lt;= x declines uniformally with time.</span>
+<span class="sd">    The imported distribution give mRS &lt;= x probabilities at t=o (time of</span>
+<span class="sd">    stroke onset) and time of no effect. These two distributions are converted</span>
+<span class="sd">    to log odds and weighted according to the fraction of time, in relation to</span>
+<span class="sd">    when the treatment no longer has an effect, that has passed. The weighted</span>
+<span class="sd">    log odds distribution is converted back to probability of mRS &lt;= x.</span>
+
+<span class="sd">    The time to no-effect is taken as:</span>
+<span class="sd">    1) 6.3 hours for IVT</span>
+<span class="sd">      (from Emberson et al, https://doi.org/10.1016/S0140-6736(14)60584-5.)</span>
+<span class="sd">    2) 8 hours for MT</span>
+<span class="sd">      (from Fransen et al; https://doi.org/10.1001/jamaneurol.2015.3886.</span>
+<span class="sd">      this analysis did not include late-presenting patients selected by</span>
+<span class="sd">      advanced imaging).</span>
+
+<span class="sd">    1,000 patients are then sampled from the untreated and treated</span>
+<span class="sd">    distributions (samples are taken randomly across the distrubutions.</span>
+<span class="sd">    This gives sampled mRS distributions. The shift in mRS for each patient</span>
+<span class="sd">    between untreated and treated distribution is also calculated. A negative</span>
+<span class="sd">    shift is indicative of improvement (lower MRS disability score).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mrs_dists</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor for clinical outcome model.</span>
+
+<span class="sd">        Input: </span>
+<span class="sd">        ------</span>
+
+<span class="sd">        mRS distributions for untreated, t=0 treatment, and treatment at</span>
+<span class="sd">        time of no effect (which also includes treatment-related excess deaths).</span>
+
+<span class="sd">        patients: number of patients to sample from the distributions.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Clinical outcome model&quot;</span>
+
+        <span class="c1"># Set replicates of mRS distribution to perform</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span> <span class="o">=</span> <span class="n">patients</span>
+
+        <span class="c1"># Store modified Rankin Scale distributions as arrays in dictionary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mrs_dists</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+            <span class="c1"># Convert to log odds</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+        <span class="c1"># Set general model parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ivt_time_no_effect</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="mi">60</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mt_time_no_effect</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">60</span>
+
+    <span class="k">def</span> <span class="nf">calculate_outcomes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calls methods to model mRS populations for:</span>
+<span class="sd">        1) LVO untreated</span>
+<span class="sd">        2) nLVO untreated</span>
+<span class="sd">        3) LVO treated with IVT</span>
+<span class="sd">        4) LVO treated with MT</span>
+<span class="sd">        5) nLVO treated with IVT</span>
+
+<span class="sd">        These are converted into cumulative probabilties, mean mRS, mRS shift,</span>
+<span class="sd">        and proportion of patients with improved mRS.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        A results dictionary with:</span>
+
+<span class="sd">        mRS distributions (bins &amp; cumulative), changes in dists, and mean mRS</span>
+<span class="sd">        for:</span>
+<span class="sd">            1) LVO untreated</span>
+<span class="sd">            2) nLVO untreated</span>
+<span class="sd">            3) LVO treated with IVT</span>
+<span class="sd">            4) LVO treated with MT</span>
+<span class="sd">            5) nLVO treated with IVT</span>
+
+<span class="sd">        mRS mean shift (compared with untreated) and proportion of patients with</span>
+<span class="sd">        improved mRS for:</span>
+<span class="sd">            1) LVO treated with IVT</span>
+<span class="sd">            2) LVO treated with MT</span>
+<span class="sd">            3) nLVO treated with IVT</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Set up results dictionary</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="c1"># Get treatment results</span>
+        <span class="n">lvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span>
+        <span class="n">lvo_mt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span>
+        <span class="n">nlvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span>
+
+        <span class="c1"># Get counts by mRS (histograms)</span>
+        <span class="n">lvo_untreated_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+            <span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">nlvo_untreated_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+            <span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">lvo_ivt_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+            <span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">lvo_mt_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+            <span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">nlvo_ivt_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+            <span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># Convert to probabilities and store</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span>  <span class="o">=</span> \
+                <span class="n">lvo_untreated_hist</span> <span class="o">/</span> <span class="n">lvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">nlvo_untreated_hist</span> <span class="o">/</span> <span class="n">nlvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_ivt_hist</span> <span class="o">/</span> <span class="n">lvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_mt_hist</span> <span class="o">/</span> <span class="n">lvo_mt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nlvo_ivt_hist</span> <span class="o">/</span> <span class="n">nlvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># Get cumulative probabilities and store in results</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_cum_probs&#39;</span><span class="p">]</span>  <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">lvo_untreated_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">lvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">nlvo_untreated_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">nlvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">lvo_ivt_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">lvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">lvo_mt_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">lvo_mt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">nlvo_ivt_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">nlvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        
+        <span class="c1"># Get shift in mRS probs and store</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_shift&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_shift&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_shift&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_probs&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Get average mRS store in results</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">])</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">])</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">])</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">])</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Get average shifts and store in results</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+        <span class="c1"># Get average improved mRS proportion</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_improved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_improved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_improved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Models populations of patients (default=1000) for:</span>
+<span class="sd">        1) Untreated LVO</span>
+<span class="sd">        2) LVO treated with IVT at given time</span>
+<span class="sd">        3) Shift in mRS between untreated and treated</span>
+
+<span class="sd">        Inputs:</span>
+<span class="sd">        Time to IVT</span>
+
+<span class="sd">        Outputs:</span>
+<span class="sd">        A dictionary of patient population mRS as described above.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Get relevant distributions</span>
+        <span class="n">untreated_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">]</span>
+        <span class="n">no_effect_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span>
+            <span class="s1">&#39;no_effect_lvo_ivt_deaths&#39;</span><span class="p">]</span>
+        <span class="n">t0_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">]</span>
+        <span class="c1"># Calculate fraction of time to no effect passed</span>
+        <span class="n">frac_to_no_effect</span> <span class="o">=</span> <span class="n">time_to_ivt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">ivt_time_no_effect</span>
+        <span class="c1"># Combine t=0 and nop effect distributions based on time past</span>
+        <span class="n">treated_logodds</span> <span class="o">=</span> <span class="p">((</span><span class="n">frac_to_no_effect</span> <span class="o">*</span> <span class="n">no_effect_logodds</span><span class="p">)</span> <span class="o">+</span>
+                           <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">frac_to_no_effect</span><span class="p">)</span> <span class="o">*</span> <span class="n">t0_logodds</span><span class="p">))</span>
+        <span class="c1"># Convert to odds and probabilties</span>
+        <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
+        <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
+        <span class="c1"># Get mRS distributions for 50 patients</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span><span class="p">)</span>
+        <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
+        <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
+        <span class="c1"># Calculate shift in mRS</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="n">treated_mrs</span> <span class="o">-</span> <span class="n">untreated_mrs</span>
+        <span class="c1"># Put results in dictionary</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">untreated_mrs</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_mrs</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shift</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Models populations of patients (default=1000) for:</span>
+<span class="sd">        1) Untreated LVO</span>
+<span class="sd">        2) LVO treated with MT at given time</span>
+<span class="sd">        3) Shift in mRS between untreated and treated</span>
+
+<span class="sd">        Inputs:</span>
+<span class="sd">        Time to MT</span>
+
+<span class="sd">        Outputs:</span>
+<span class="sd">        A dictionary of patient population mRS as described above.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Get relevant distributions</span>
+        <span class="n">untreated_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">]</span>
+        <span class="n">no_effect_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span>
+            <span class="s1">&#39;no_effect_lvo_mt_deaths&#39;</span><span class="p">]</span>
+        <span class="n">t0_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_mt&#39;</span><span class="p">]</span>
+        <span class="c1"># Calculate fraction of time to no effect passed</span>
+        <span class="n">frac_to_no_effect</span> <span class="o">=</span> <span class="n">time_to_mt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mt_time_no_effect</span>
+        <span class="c1"># Combine t=0 and nop effect distributions based on time past</span>
+        <span class="n">treated_logodds</span> <span class="o">=</span> <span class="p">((</span><span class="n">frac_to_no_effect</span> <span class="o">*</span> <span class="n">no_effect_logodds</span><span class="p">)</span> <span class="o">+</span>
+                           <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">frac_to_no_effect</span><span class="p">)</span> <span class="o">*</span> <span class="n">t0_logodds</span><span class="p">))</span>
+        <span class="c1"># Convert to odds and probabilties</span>
+        <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
+        <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
+        <span class="c1"># Get mRS distributions for 50 patients</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span><span class="p">)</span>
+        <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
+        <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
+        <span class="c1"># Calculate shift in mRS</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="n">treated_mrs</span> <span class="o">-</span> <span class="n">untreated_mrs</span>
+        <span class="c1"># Put results in dictionary</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">untreated_mrs</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_mrs</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shift</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Models populations of patients (default=1000) for:</span>
+<span class="sd">        1) Untreated nLVO</span>
+<span class="sd">        2) LVO treated with IVT at given time</span>
+<span class="sd">        3) Shift in mRS between untreated and treated</span>
+
+<span class="sd">        Inputs:</span>
+<span class="sd">        Time to IVT</span>
+
+<span class="sd">        Outputs:</span>
+<span class="sd">        A dictionary of patient population mRS as described above.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Get relevant distributions</span>
+        <span class="n">untreated_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">]</span>
+        <span class="n">no_effect_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span>
+            <span class="s1">&#39;no_effect_nlvo_ivt_deaths&#39;</span><span class="p">]</span>
+        <span class="n">t0_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="s1">&#39;t0_treatment_nlvo_ivt&#39;</span><span class="p">]</span>
+        <span class="c1"># Calculate fraction of time to no effect passed</span>
+        <span class="n">frac_to_no_effect</span> <span class="o">=</span> <span class="n">time_to_ivt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">ivt_time_no_effect</span>
+        <span class="c1"># Combine t=0 and nop effect distributions based on time past</span>
+        <span class="n">treated_logodds</span> <span class="o">=</span> <span class="p">((</span><span class="n">frac_to_no_effect</span> <span class="o">*</span> <span class="n">no_effect_logodds</span><span class="p">)</span> <span class="o">+</span>
+                           <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">frac_to_no_effect</span><span class="p">)</span> <span class="o">*</span> <span class="n">t0_logodds</span><span class="p">))</span>
+        <span class="c1"># Convert to odds and probabilties</span>
+        <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
+        <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
+        <span class="c1"># Get mRS distributions for 50 patients</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span><span class="p">)</span>
+        <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
+        <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
+        <span class="c1"># Calculate shift in mRS</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="n">treated_mrs</span> <span class="o">-</span> <span class="n">untreated_mrs</span>
+        <span class="c1"># Put results in dictionary</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">untreated_mrs</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_mrs</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shift</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="demo_of_outcome_model.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Example output from stroke outcome model</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Anna Laws & Michael Allen<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
