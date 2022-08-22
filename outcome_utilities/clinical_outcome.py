@@ -39,15 +39,32 @@ class Clinical_outcome:
     2) LVO treated with MT
     3) nLVO treated with IVT
 
+    Utility-weighted mRS
+    --------------------
+
+    In addition to mRS we may calculate utility-weighted mRS. Utility is an
+    estimated quality of life (0=dead, 1=full quality of life, neagtive numbers
+    indicate a 'worse than death' outcome).
+
+    mRS Utility scores are based on a pooled Analysis of 20 000+ Patients. From
+    Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. 
+    Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke
+    Outcome. Stroke. 2020 Aug 1;51(8):2411-7. 
+
+    | mRS Score | 0    | 1    | 2    | 3    | 4    | 5     | 6    |
+    |-----------|------|------|------|------|------|-------|------|
+    | Utility   | 0.97 | 0.88 | 0.74 | 0.55 | 0.20 | -0.19 | 0.00 |
+
     General methodology
     -------------------
 
     The model assumes that log odds of mRS <= x declines uniformally with time.
-    The imported distribution give mRS <= x probabilities at t=o (time of
+    The imported distribution give mRS <= x probabilities at t=0 (time of
     stroke onset) and time of no effect. These two distributions are converted
     to log odds and weighted according to the fraction of time, in relation to
     when the treatment no longer has an effect, that has passed. The weighted
-    log odds distribution is converted back to probability of mRS <= x.
+    log odds distribution is converted back to probability of mRS <= x. mRS
+    are also converted to a utility-weighted mRS.
 
     The time to no-effect is taken as:
     1) 6.3 hours for IVT
@@ -57,7 +74,7 @@ class Clinical_outcome:
       this analysis did not include late-presenting patients selected by
       advanced imaging).
 
-    1,000 patients are then sampled from the untreated and treated
+    1,000 (default #) patients are then sampled from the untreated and treated
     distributions (samples are taken randomly across the distrubutions.
     This gives sampled mRS distributions. The shift in mRS for each patient
     between untreated and treated distribution is also calculated. A negative
@@ -95,6 +112,10 @@ class Clinical_outcome:
         # Set general model parameters
         self.ivt_time_no_effect = 6.3 * 60
         self.mt_time_no_effect = 8 * 60
+
+        # Store utility weightings for mRS 0-6
+        self.utility_weights = \
+                np.array([0.97, 0.88, 0.74, 0.55, 0.20, -0.19, 0.00])
 
     def calculate_outcomes(self, time_to_ivt, time_to_mt):
         """
@@ -157,6 +178,26 @@ class Clinical_outcome:
         results['lvo_ivt_probs'] = lvo_ivt_hist / lvo_ivt_hist.sum()
         results['lvo_mt_probs'] = lvo_mt_hist / lvo_mt_hist.sum()
         results['nlvo_ivt_probs'] = nlvo_ivt_hist / nlvo_ivt_hist.sum()
+
+        # Convert to utility-weighted_mRS and store
+        results['lvo_untreated_mean_utility'] = np.average(
+            results['lvo_untreated_probs'], weights=self.utility_weights)
+        results['nlvo_untreated_mean_utility'] = np.average(
+            results['nlvo_untreated_probs'], weights=self.utility_weights)
+        results['lvo_ivt_mean_utility'] = np.average(
+            results['lvo_ivt_probs'], weights=self.utility_weights)
+        results['lvo_mt_mean_utility'] = np.average(
+            results['lvo_mt_probs'], weights=self.utility_weights)
+        results['nlvo_ivt_mean_utility'] = np.average(
+            results['nlvo_ivt_probs'], weights=self.utility_weights)
+        
+        # Calculate added utility and store
+        results['lvo_ivt_added_utility'] = (results['lvo_ivt_mean_utility'] - 
+            results['lvo_untreated_mean_utility'])
+        results['lvo_mt_added_utility'] = (results['lvo_mt_mean_utility'] - 
+            results['lvo_untreated_mean_utility'])
+        results['nlvo_ivt_added_utility'] = (results['nlvo_ivt_mean_utility'] - 
+            results['nlvo_untreated_mean_utility'])
 
         # Get cumulative probabilities and store in results
         results['lvo_untreated_cum_probs']  = \
