@@ -317,6 +317,11 @@ title="Print to PDF"
      The proportion of patients with improved mRS
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#utility-weighted-outcomes">
+     Utility-weighted outcomes
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -383,6 +388,11 @@ title="Print to PDF"
      The proportion of patients with improved mRS
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#utility-weighted-outcomes">
+     Utility-weighted outcomes
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -445,30 +455,38 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.048, 0.08 , 0.123, 0.177, 0.256, 0.129, 0.187]),
- &#39;nlvo_untreated_probs&#39;: array([0.175, 0.281, 0.128, 0.118, 0.141, 0.065, 0.092]),
- &#39;lvo_ivt_probs&#39;: array([0.091, 0.081, 0.131, 0.155, 0.237, 0.112, 0.193]),
- &#39;lvo_mt_probs&#39;: array([0.216, 0.127, 0.142, 0.161, 0.166, 0.076, 0.112]),
- &#39;nlvo_ivt_probs&#39;: array([0.352, 0.244, 0.102, 0.112, 0.096, 0.036, 0.058]),
- &#39;lvo_untreated_cum_probs&#39;: array([0.048, 0.128, 0.251, 0.428, 0.684, 0.813, 1.   ]),
- &#39;nlvo_untreated_cum_probs&#39;: array([0.175, 0.456, 0.584, 0.702, 0.843, 0.908, 1.   ]),
- &#39;lvo_ivt_cum_probs&#39;: array([0.091, 0.172, 0.303, 0.458, 0.695, 0.807, 1.   ]),
- &#39;lvo_mt_cum_probs&#39;: array([0.216, 0.343, 0.485, 0.646, 0.812, 0.888, 1.   ]),
- &#39;nlvo_ivt_cum_probs&#39;: array([0.352, 0.596, 0.698, 0.81 , 0.906, 0.942, 1.   ]),
- &#39;lvo_ivt_shift&#39;: array([ 0.043,  0.001,  0.008, -0.022, -0.019, -0.017,  0.006]),
- &#39;lvo_mt_shift&#39;: array([ 0.168,  0.047,  0.019, -0.016, -0.09 , -0.053, -0.075]),
- &#39;nlvo_ivt_shift&#39;: array([ 0.177, -0.037, -0.026, -0.006, -0.045, -0.029, -0.034]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.043, 0.068, 0.172, 0.147, 0.249, 0.127, 0.194]),
+ &#39;nlvo_untreated_probs&#39;: array([0.166, 0.251, 0.147, 0.126, 0.165, 0.063, 0.082]),
+ &#39;lvo_ivt_probs&#39;: array([0.083, 0.111, 0.135, 0.139, 0.219, 0.112, 0.201]),
+ &#39;lvo_mt_probs&#39;: array([0.214, 0.121, 0.138, 0.178, 0.175, 0.071, 0.103]),
+ &#39;nlvo_ivt_probs&#39;: array([0.326, 0.245, 0.115, 0.126, 0.104, 0.034, 0.05 ]),
+ &#39;lvo_untreated_mean_utility&#39;: 0.10646031746031746,
+ &#39;nlvo_untreated_mean_utility&#39;: 0.18444761904761905,
+ &#39;lvo_ivt_mean_utility&#39;: 0.11970158730158731,
+ &#39;lvo_mt_mean_utility&#39;: 0.17002857142857145,
+ &#39;nlvo_ivt_mean_utility&#39;: 0.2224,
+ &#39;lvo_ivt_added_utility&#39;: 0.013241269841269845,
+ &#39;lvo_mt_added_utility&#39;: 0.06356825396825398,
+ &#39;nlvo_ivt_added_utility&#39;: 0.03795238095238093,
+ &#39;lvo_untreated_cum_probs&#39;: array([0.043, 0.111, 0.283, 0.43 , 0.679, 0.806, 1.   ]),
+ &#39;nlvo_untreated_cum_probs&#39;: array([0.166, 0.417, 0.564, 0.69 , 0.855, 0.918, 1.   ]),
+ &#39;lvo_ivt_cum_probs&#39;: array([0.083, 0.194, 0.329, 0.468, 0.687, 0.799, 1.   ]),
+ &#39;lvo_mt_cum_probs&#39;: array([0.214, 0.335, 0.473, 0.651, 0.826, 0.897, 1.   ]),
+ &#39;nlvo_ivt_cum_probs&#39;: array([0.326, 0.571, 0.686, 0.812, 0.916, 0.95 , 1.   ]),
+ &#39;lvo_ivt_shift&#39;: array([ 0.04 ,  0.043, -0.037, -0.008, -0.03 , -0.015,  0.007]),
+ &#39;lvo_mt_shift&#39;: array([ 0.171,  0.053, -0.034,  0.031, -0.074, -0.056, -0.091]),
+ &#39;nlvo_ivt_shift&#39;: array([ 0.16 , -0.006, -0.032,  0.   , -0.061, -0.029, -0.032]),
  &#39;lvo_untreated_mean_mRS&#39;: 3.648,
- &#39;nlvo_untreated_mean_mRS&#39;: 2.332,
- &#39;lvo_ivt_mean_mRS&#39;: 3.474,
- &#39;lvo_mt_mean_mRS&#39;: 2.61,
- &#39;nlvo_ivt_mean_mRS&#39;: 1.696,
- &#39;lvo_ivt_mean_shift&#39;: -0.174,
- &#39;lvo_mt_mean_shift&#39;: -0.984,
- &#39;nlvo_ivt_mean_shift&#39;: -0.636,
- &#39;lvo_ivt_improved&#39;: 0.18,
- &#39;lvo_mt_improved&#39;: 0.811,
- &#39;nlvo_ivt_improved&#39;: 0.624}
+ &#39;nlvo_untreated_mean_mRS&#39;: 2.39,
+ &#39;lvo_ivt_mean_mRS&#39;: 3.44,
+ &#39;lvo_mt_mean_mRS&#39;: 2.604,
+ &#39;nlvo_ivt_mean_mRS&#39;: 1.739,
+ &#39;lvo_ivt_mean_shift&#39;: -0.208,
+ &#39;lvo_mt_mean_shift&#39;: -1.02,
+ &#39;nlvo_ivt_mean_shift&#39;: -0.651,
+ &#39;lvo_ivt_improved&#39;: 0.215,
+ &#39;lvo_mt_improved&#39;: 0.815,
+ &#39;nlvo_ivt_improved&#39;: 0.644}
 </pre></div>
 </div>
 </div>
@@ -635,10 +653,10 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean mRS
 --------
 LVO untreated: 3.648
-LVO IVT: 3.474
-LVO MT: 2.61
-nLVO untreated: 2.332
-nLVO IVT: 1.696
+LVO IVT: 3.44
+LVO MT: 2.604
+nLVO untreated: 2.39
+nLVO IVT: 1.739
 </pre></div>
 </div>
 </div>
@@ -659,9 +677,9 @@ nLVO IVT: 1.696
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean mRS shift
 --------------
-LVO IVT: -0.174
-LVO MT: -0.984
-nLVO IVT: -0.636
+LVO IVT: -0.208
+LVO MT: -1.02
+nLVO IVT: -0.651
 </pre></div>
 </div>
 </div>
@@ -682,9 +700,53 @@ nLVO IVT: -0.636
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proportion improved
 -------------------
-LVO IVT: 0.18
-LVO MT: 0.811
-nLVO IVT: 0.624
+LVO IVT: 0.215
+LVO MT: 0.815
+nLVO IVT: 0.644
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="utility-weighted-outcomes">
+<h3>Utility-weighted outcomes<a class="headerlink" href="#utility-weighted-outcomes" title="Permalink to this headline">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In addition to mRS we may calculate utility-weighted mRS.
+
+mRS Utility scores are based on a pooled Analysis of 20 000+ Patients. From  Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke Outcome. Stroke. 2020 Aug 1;51(8):2411-7.
+
+| mRS Score | 0    | 1    | 2    | 3    | 4    | 5     | 6    |
+|-----------|------|------|------|------|------|-------|------|
+| Utility   | 0.97 | 0.88 | 0.74 | 0.55 | 0.20 | -0.19 | 0.00 |
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_utility&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO untreated utility: </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_utility&#39;</span><span class="p">]</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_added_utility&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO IVT utility: </span><span class="si">{</span><span class="n">x1</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1"> (added utility: </span><span class="si">{</span><span class="n">x2</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_utility&#39;</span><span class="p">]</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_added_utility&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO MT utility: </span><span class="si">{</span><span class="n">x1</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1"> (added utility: </span><span class="si">{</span><span class="n">x2</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_mean_utility&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nLVO untreated utility: </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_utility&#39;</span><span class="p">]</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_added_utility&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nLVO IVT utility: </span><span class="si">{</span><span class="n">x1</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1"> (added utility: </span><span class="si">{</span><span class="n">x2</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO untreated utility: 0.106
+LVO IVT utility: 0.120 (added utility: 0.013)
+LVO MT utility: 0.170 (added utility: 0.064)
+nLVO untreated utility: 0.184
+nLVO IVT utility: 0.222 (added utility: 0.038)
 </pre></div>
 </div>
 </div>
