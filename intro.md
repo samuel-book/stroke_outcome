@@ -60,7 +60,7 @@ We assume that patients treated at t=NE will have the same mRS distribution as p
 
 ### Block plot showing the mRS distribution estimates (for nLVO-IVT)
 
-Here we use a block plot to show the expected mRS distribution for nLVO strokes if IVT is given at either time of stroke onset (t=0, at top of plot) or time when the effect of treatment has decayed to zero (t=NE, at bottom of plot), shown in {numref}`figure {number} <nLVO_IVT_dist>`.
+Here we use a block plot to show the expected mRS distribution for nLVO strokes if IVT is given at either time of stroke onset (t=0 at top of plot) or time when the effect of treatment has decayed to zero (t=NE at bottom of plot), shown in {numref}`figure {number} <nLVO_IVT_dist>`.
 
 :::{figure-md} nLVO_IVT_dist
 <img src="./images/nLVO-IVT.jpg" width="600">
@@ -68,9 +68,9 @@ Here we use a block plot to show the expected mRS distribution for nLVO strokes 
 Expected mRS distribution for nLVO strokes if IVT given at time of stroke onset (*t=0*), or if IVT given at time when the effect has decayed to zero (known as the *No effect time*, at this point there are still IVT-related excess deaths due to fatal intracranial haemorrhage).
 :::
 
-#### Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for nLVO-IVT)
+### Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for nLVO-IVT)
 
-Here we use a line plot to show the expected mRS distribution for nLVO strokes if IVT is given at any time between t=0 and t=NE. It is assumed that the log odds decay uniformly over time between t=0 and t=NE (as modelled by Emberson et al. for IVT). The time at which being given treatment has no-effect is taken as 6.3 hours for IVT (Emberson et al. 2014).
+Here we use a line plot to show the expected mRS distribution for nLVO strokes if IVT is given at any time between t=0 (left of plot) and t=NE (right of plot). It is assumed that the log odds decay uniformly over time between t=0 and t=NE (as modelled by Emberson et al. for IVT). The time at which being given treatment has no-effect is taken as 6.3 hours for IVT (Emberson et al. 2014).
 
 The modelled decay of effects of IVT for nLVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
@@ -100,7 +100,7 @@ We assume that patients treated at t=NE will have the same mRS distribution as p
 
 ### Block plot showing the mRS distribution estimates (for LVO-IVT)
 
-Here we use a block plot to show the expected mRS distribution for LVO strokes if IVT is given at either time of stroke onset (t=0, at top of plot) or time when the effect of treatment has decayed to zero (t=NE, at bottom of plot), shown in {numref}`figure {number} <LVO_IVT_dist>`.
+Here we use a block plot to show the expected mRS distribution for LVO strokes if IVT is given at either time of stroke onset (t=0 at top of plot) or time when the effect of treatment has decayed to zero (t=NE at bottom of plot), shown in {numref}`figure {number} <LVO_IVT_dist>`.
 
 :::{figure-md} LVO_IVT_dist
 <img src="./images/LVO-IVT.jpg" width="600">
@@ -108,11 +108,11 @@ Here we use a block plot to show the expected mRS distribution for LVO strokes i
 Expected mRS distribution for LVO strokes if IVT given at time of stroke onset (*t=0hr*), or if IVT given at time when there effect has decayed to zero (known as the *No effect time*, at this point there are still IVT-related excess deaths due to fatal intracranial haemorrhage).
 :::
 
-#### Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-IVT)
+### Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-IVT)
 
-Modelling of the effect of IVT after any given treatment time assumes that the log odds decay uniformly over time between stroke onset and the time to no effect (as modelled by Emberson et al. for IVT). The time to no-effect treatment is taken as 6.3 hours for IVT (Emberson et al.).
+Here we use a line plot to show the expected mRS distribution for LVO strokes if IVT is given at any time between t=0 (left of plot) and t=NE (right of plot). It is assumed that the log odds decay uniformly over time between t=0 and t=NE (as modelled by Emberson et al. for IVT). The time at which being given treatment has no-effect is taken as 6.3 hours for IVT (Emberson et al. 2014).
 
-The modelled decay of effects of IVT is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
+The modelled decay of effects of IVT for LVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} LVO_IVT_time
 <img src="./images/prob_with_time_lvo_ivt.jpg" width="600">
@@ -142,7 +142,7 @@ We assume that patients treated at t=NE will have the same mRS distribution as p
 
 ### Block plot showing the mRS distribution estimates (for LVO-MT)
 
-Here we use a block plot to show the expected mRS distribution for LVO strokes if MT is given at either time of stroke onset (t=0, at top of plot) or time when the effect of treatment has decayed to zero (t=NE, at bottom of plot), shown in {numref} `figure {number} <LVO_MT_dist>`. 
+Here we use a block plot to show the expected mRS distribution for LVO strokes if MT is given at either time of stroke onset (t=0 at top of plot) or time when the effect of treatment has decayed to zero (t=NE at bottom of plot), shown in {numref} `figure {number} <LVO_MT_dist>`. 
 
 :::{figure-md} LVO_MT_dist
 <img src="./images/LVO-MT.jpg" width="600">
@@ -150,9 +150,9 @@ Here we use a block plot to show the expected mRS distribution for LVO strokes i
 Expected mRS distribution for LVO strokes if MT given at time of stroke onset (*t=0hr*), or if MT given at time when there effect has decayed to zero (known as the *No effect time*, at this point there are still MT-related excess deaths).
 :::
 
-#### Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-MT)
+### Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-MT)
 
-Modelling of the effect of MT after any given treatment time assumes that the log odds decay uniformly over time between stroke onset and the time to no effect (as modelled by Fransen et al. for MT). The time to no-effect treatment is taken as 8 hours for MT (Fransen et al). Note: the time to no effect from Fransen et al. did not incldue those patients who may be selected for late treatment based on advanced imaging. In this method we do not include late-presenting patients in our outcome modelling.
+Here we use a line plot to show the expected mRS distribution if MT is given at any time between t=0 (left of plot) and t=NE (right of plot). It is assumed that the log odds decay uniformly over time between t=0 and t=NE (as modelled by Fransen et al. for MT). The time to no-effect treatment is taken as 8 hours for MT (Fransen et al). Note: the time to no effect from Fransen et al. did not incldue those patients who may be selected for late treatment based on advanced imaging. In this method we do not include late-presenting patients in our outcome modelling.
 
 The modelled decay of effects of MT are shown in {numref}`figure {number} <LVO_MT_time>`. 
 
