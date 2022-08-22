@@ -180,16 +180,16 @@ class Clinical_outcome:
         results['nlvo_ivt_probs'] = nlvo_ivt_hist / nlvo_ivt_hist.sum()
 
         # Convert to utility-weighted_mRS and store
-        results['lvo_untreated_mean_utility'] = np.average(
-            results['lvo_untreated_probs'], weights=self.utility_weights)
-        results['nlvo_untreated_mean_utility'] = np.average(
-            results['nlvo_untreated_probs'], weights=self.utility_weights)
-        results['lvo_ivt_mean_utility'] = np.average(
-            results['lvo_ivt_probs'], weights=self.utility_weights)
-        results['lvo_mt_mean_utility'] = np.average(
-            results['lvo_mt_probs'], weights=self.utility_weights)
-        results['nlvo_ivt_mean_utility'] = np.average(
-            results['nlvo_ivt_probs'], weights=self.utility_weights)
+        results['lvo_untreated_mean_utility'] = \
+            np.sum(results['lvo_untreated_probs'] * self.utility_weights)
+        results['nlvo_untreated_mean_utility'] = \
+            np.sum(results['nlvo_untreated_probs'] * self.utility_weights)
+        results['lvo_ivt_mean_utility'] = \
+            np.sum(results['lvo_ivt_probs'] * self.utility_weights)
+        results['lvo_mt_mean_utility'] = \
+            np.sum(results['lvo_mt_probs'] * self.utility_weights)
+        results['nlvo_ivt_mean_utility'] = \
+            np.sum(results['nlvo_ivt_probs'] * self.utility_weights)
         
         # Calculate added utility and store
         results['lvo_ivt_added_utility'] = (results['lvo_ivt_mean_utility'] - 
