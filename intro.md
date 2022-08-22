@@ -50,7 +50,8 @@ We assume patients treated at t=0 are either fully recovered, or the treatment h
 
 The mRS distribution for fully recovered nLVO patients with IVT at t=0 is taken as the pre-stroke mRS distribution (this will represent a patient receiving a 100% effective treatment). This distribution comes from the SAMueL dataset, extracting the patients that have an ischaemic stroke and using NIHSS 0-10 as a surrogate for nLVO. This mRS distribution is then corrected for the excess deaths due to treatment with IVT for nLVO patients (1.10%, see appendix).
 
-The mRS distribution for patients for which the treatment had no effect at t=0 is taken from the untreated control group of nLVO. MIKE NEED MORE INFO FOR THIS. COULD NOT FIND WHERE THIS CAME FROM.
+The mRS distribution for patients for which the treatment had no effect at t=0 is taken from the untreated control group of nLVO .... 
+# (KP: MIKE NEED MORE INFO FOR THIS. COULD NOT FIND WHERE THIS CAME FROM.)
 
 The weights used to combine these two mRS distributions (61% fully recovered & 39% no effect) were informed by data from Emberson et al. 2014, and found in order to match the P(mRS <= 1, t=0) of 0.63. It is seen from Emberson that 46% of patients with NIHSS 0-10 had mRS 0-1 in the untreated group (see figure 2 Emberson et al. 2014: (189 + 538)/(321 + 1252)). This translate into a 0.85 odds of a good outcome, which, when multipied with the odds ratio for mRS 0-1 at t=0 (which is 2.0, obtained from extrapolating back to t=0 in figure 1 "Effect of timing of alteplase treatment on good stroke outcome, mRS 0–1"), gives 1.70, before converting to a probability of 63%.
 
@@ -164,6 +165,8 @@ Expected mRS distribution for LVO strokes depending on time to treatment with MT
 
 ### Proportion of ischaemic patients with LVO
 
+# (KP: LONGER INTRO TO EXPLAIN THE LINK TO THE REST OF THE NOTEBOOK)
+
 The proportion of ischaemic patients with LVO may be estimated in various ways. Estimates are likely to be swayed by the population being studied (e.g. treatment trial results may under-estimate nLVO as very low severity patients may not be selected for the trial). Below are various estimates of the relative occurrence of LVO and nLVO.
 
 #### Analysis of SAMueL data
@@ -207,6 +210,7 @@ In Emberson's meta-analysis of thrombolysis trials, 52.6% of all participants ha
 One of the methods we use here to produce the mRS distributions estimate the proportion of LVO as part of their calculations. 
 
 nLVO baseline (no treatment effect) calculation: 33.0% 
+# (KP: I DID NOT FOLLOW THIS SECTION ABOVE)
 
 
 ## References used in modelling
