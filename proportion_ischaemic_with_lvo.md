@@ -38,8 +38,12 @@ McMeekin et al. (2017) review the evdidence for estimating the number of UK stro
 
 In Emberson's meta-analysis of thrombolysis trials, 52.6% of all participants had a NIHSS of 11+ (a surrogate for LVO).
 
-## Proportion LVO calculated in these notebooks
+## References
 
-One of the methods we use here to produce the mRS distributions estimate the proportion of LVO as part of their calculations. 
+de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45. 
 
-nLVO baseline (no treatment effect) calculation: 33.0% 
+Emberson J, Lees KR, Lyden P, et al. _Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials._ The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5
+
+McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26. 
+
+SAMueL-1 data, from SSNAP, on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html
