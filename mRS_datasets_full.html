@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment" href="mRS_outcomes_maths.html" />
-    <link rel="prev" title="Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)" href="intro.html" />
+    <link rel="prev" title="To Do Mike" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +104,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                    To Do Mike
                 </a>
             </li>
         </ul>
@@ -127,6 +127,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="show_outcome_model_code.html">
    Show outcome model python code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="proportion_ischaemic_with_lvo.html">
+   Proportion of ischaemic patients with LVO
   </a>
  </li>
 </ul>
@@ -2063,22 +2068,37 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.1129, 0.0871, 0.1274, 0.1574, 0.2135, 0.1132, 0.1886])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_info</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="n">no_effect_nlvo_ivt_bins</span><span class="p">,</span> <span class="n">t0_treatment_nlvo_ivt_bins</span><span class="p">,</span> <span class="s1">&#39;nLVO-IVT&#39;</span><span class="p">],</span>
-    <span class="p">[</span><span class="n">no_treatment_lvo_bins</span><span class="p">,</span> <span class="n">t0_treatment_lvo_ivt_bins</span><span class="p">,</span> <span class="s1">&#39;LVO-IVT&#39;</span><span class="p">],</span>
-    <span class="p">[</span><span class="n">no_treatment_lvo_bins</span><span class="p">,</span> <span class="n">t0_treatment_lvo_mt_bins</span><span class="p">,</span> <span class="s1">&#39;LVO-MT&#39;</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_ivt_deaths&#39;</span><span class="p">],</span> 
+     <span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">],</span> <span class="s1">&#39;LVO-IVT&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_mt_deaths&#39;</span><span class="p">],</span> 
+     <span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_mt&#39;</span><span class="p">],</span> <span class="s1">&#39;LVO-MT&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_effect_nlvo_ivt_deaths&#39;</span><span class="p">],</span> 
+     <span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_nlvo_ivt&#39;</span><span class="p">],</span> <span class="s1">&#39;nLVO-IVT&#39;</span><span class="p">]]</span>
 
 <span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">plot_info</span><span class="p">:</span>
     
     <span class="c1"># Draw no effect distribution</span>
-    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;No effect time&#39;</span><span class="p">)</span>
+    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;t = No effect&#39;</span><span class="p">)</span>
     
     <span class="c1"># Add legend now to prevent doubling all the labels:</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;mRS&#39;</span><span class="p">,</span> 
                <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">])</span>   <span class="c1"># Legend below axis.</span>
     
     <span class="c1"># Draww t=0 distribution</span>
-    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;t=0hr&#39;</span><span class="p">)</span>
+    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;t = 0&#39;</span><span class="p">)</span>
     
     <span class="c1"># Darw connecting lines</span>
     <span class="n">draw_connections</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -2095,9 +2115,9 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_datasets_full_61_0.png" src="_images/mRS_datasets_full_61_0.png" />
-<img alt="_images/mRS_datasets_full_61_1.png" src="_images/mRS_datasets_full_61_1.png" />
-<img alt="_images/mRS_datasets_full_61_2.png" src="_images/mRS_datasets_full_61_2.png" />
+<img alt="_images/mRS_datasets_full_62_0.png" src="_images/mRS_datasets_full_62_0.png" />
+<img alt="_images/mRS_datasets_full_62_1.png" src="_images/mRS_datasets_full_62_1.png" />
+<img alt="_images/mRS_datasets_full_62_2.png" src="_images/mRS_datasets_full_62_2.png" />
 </div>
 </div>
 </section>
@@ -2145,7 +2165,7 @@ array([0.314 , 0.4362, 0.5542, 0.712 , 0.8531, 0.9161, 1.    ])
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</p>
+            <p class="prev-next-title">To Do Mike</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="mRS_outcomes_maths.html" title="next page">
