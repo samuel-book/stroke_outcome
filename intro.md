@@ -1,7 +1,3 @@
-# To Do Mike
-
-Reword "The mRS distribution for patients for which the treatment had no effect at t=0 is is assumed to be the same as patients that were not treated, but then adjusted to include the risk of excess deaths caused by taking the treatment. We obtained this mRS distribution by taking the weighted combination of the untreated control group of combined nLVO/LVO (weight = 149%) data from Lees et al. 2010  and the untreated control group of LVO-only data from Goyal et al. 2016 (weight = -49%).These weights effectively represent a subtraction of LVO numbers from combined nLVO/LVO numbers. Weightings are calculated to match the P(mRS <= 1) of 46% (from the control group in Emberson with NIHSS of 0-10). This distribution is then corrected for the excess deaths due to treatment with IVT." **KP: I've had a go at this. But need to change the weightings to the real ones used.**
-
 # Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
 
 This notebook describes the basic methodology for estimating disability outcomes for stroke patients, depending on time to treatment with intravenous thrombolysis (IVT) or mechanical thrombectomy (MT).
