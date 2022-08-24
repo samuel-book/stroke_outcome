@@ -12,6 +12,9 @@ temp/
 # Ignore PyVharm .idea files
 *.idea
 
+# Ignore pyc files
+*.pyc
+
 # Ignore all checkpoints folders
 **/.ipynb_checkpoints/
 
