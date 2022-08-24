@@ -162,6 +162,21 @@ The modelled decay of effects of MT are shown in {numref}`figure {number} <LVO_M
 Expected mRS distribution for LVO strokes depending on time to treatment with MT.
 :::
 
+## Utility-weighted mRS outcomes
+
+In addition to mRS, we may calculate utility-weighted mRS (UW-mRS).
+
+UW-mRS incorporates both treatment effect and patient perceived quality of life as a single outcome measure for stroke trials.
+
+UW-mRS scores are based on a pooled analysis of 2,000+ patients. 
+From  Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al.
+Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke Outcome. 
+Stroke. 2020 Aug 1;51(8):2411-7.
+
+| mRS Score | 0    | 1    | 2    | 3    | 4    | 5     | 6    |
+|-----------|------|------|------|------|------|-------|------|
+| Utility   | 0.97 | 0.88 | 0.74 | 0.55 | 0.20 | -0.19 | 0.00 |
+
 ## References used in modelling
 
 de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45. 
