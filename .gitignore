@@ -19,4 +19,5 @@ temp/
 **/.ipynb_checkpoints/
 
 # Ignore pycache folders
-**/__pycache__
+**/__pycache__/
+
