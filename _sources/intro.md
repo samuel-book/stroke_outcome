@@ -168,10 +168,8 @@ In addition to mRS, we may calculate utility-weighted mRS (UW-mRS).
 
 UW-mRS incorporates both treatment effect and patient perceived quality of life as a single outcome measure for stroke trials.
 
-UW-mRS scores are based on a pooled analysis of 2,000+ patients. 
-From  Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al.
-Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke Outcome. 
-Stroke. 2020 Aug 1;51(8):2411-7.
+UW-mRS scores are based on a pooled analysis of 20,000+ patients (Wang et al.) 
+
 
 | mRS Score | 0    | 1    | 2    | 3    | 4    | 5     | 6    |
 |-----------|------|------|------|------|------|-------|------|
@@ -194,6 +192,8 @@ Lees KR, Bluhmki E, von Kummer R, et al. _Time to treatment with intravenous alt
 McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26. 
 
 SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html
+
+Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke Outcome. Stroke. 2020 Aug 1;51(8):2411-7.
 
 
 ## Notes
