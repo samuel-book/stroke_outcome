@@ -272,8 +272,10 @@ class Clinical_outcome:
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
         x = np.random.random(self.mrs_replicates)
-        untreated_mrs = np.digitize(x, untreated_probs)
-        treated_mrs = np.digitize(x, treated_probs)
+        # untreated_mrs = np.digitize(x, untreated_probs)
+        # treated_mrs = np.digitize(x, treated_probs)
+        untreated_mrs = calculate_fractional_mrs(untreated_probs, x)
+        treated_mrs   = calculate_fractional_mrs(treated_probs,   x)
         # Calculate shift in mRS
         shift = treated_mrs - untreated_mrs
         # Put results in dictionary
@@ -313,8 +315,10 @@ class Clinical_outcome:
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
         x = np.random.random(self.mrs_replicates)
-        untreated_mrs = np.digitize(x, untreated_probs)
-        treated_mrs = np.digitize(x, treated_probs)
+        # untreated_mrs = np.digitize(x, untreated_probs)
+        # treated_mrs = np.digitize(x, treated_probs)
+        untreated_mrs = calculate_fractional_mrs(untreated_probs, x)
+        treated_mrs   = calculate_fractional_mrs(treated_probs,   x)
         # Calculate shift in mRS
         shift = treated_mrs - untreated_mrs
         # Put results in dictionary
@@ -354,8 +358,10 @@ class Clinical_outcome:
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
         x = np.random.random(self.mrs_replicates)
-        untreated_mrs = np.digitize(x, untreated_probs)
-        treated_mrs = np.digitize(x, treated_probs)
+        # untreated_mrs = np.digitize(x, untreated_probs)
+        # treated_mrs = np.digitize(x, treated_probs)
+        untreated_mrs = calculate_fractional_mrs(untreated_probs, x)
+        treated_mrs   = calculate_fractional_mrs(treated_probs,   x)
         # Calculate shift in mRS
         shift = treated_mrs - untreated_mrs
         # Put results in dictionary
@@ -365,3 +371,35 @@ class Clinical_outcome:
         results['shift'] = shift
 
         return results
+    
+def calculate_fractional_mrs(dist, x):
+        """
+        Calculate continuous mRS score for patient(s) x in the 
+        probability distribution dist. 
+        
+        Inputs:
+        dist - np.array. The cumulative probability distribution.
+        x    - float or np.array. Contains values between 0 and 1 
+               for placing in the probability distribution. 
+            
+        Returns:
+        mRS_x - float or np.array (to match x). The fractional mRS 
+                for this value of x. 
+        """
+        # Prepend a zero to the distribution, essentially adding a bin
+        # for mRS<0. Otherwise the sums will break when mRS_x=0. 
+        dist0 = np.append([0], dist) 
+        
+        # Find the bin containing 'x':
+        mRS_plus1_x = np.digitize(x, dist0, right=True) 
+        # When mRS_sub1_x=1, x falls into the mRS<=0 bin.
+        
+        # Calculate the fraction of the mRS bin that has been 
+        # covered by x. 
+        frac = ((                 x - dist0[mRS_plus1_x-1]) / 
+                (dist0[mRS_plus1_x] - dist0[mRS_plus1_x-1]) )
+        
+        # Add this fraction to the starting mRS (=mRS_plus1_x - 1):
+        mRS_x = (mRS_plus1_x - 1) + frac 
+        
+        return mRS_x
