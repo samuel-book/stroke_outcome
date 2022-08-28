@@ -180,6 +180,16 @@ UW-mRS scores are based on a pooled analysis of 20,000+ patients, from Wang et a
 |-----------|------|------|------|------|------|-------|------|
 | Utility   | 0.97 | 0.88 | 0.74 | 0.55 | 0.20 | -0.19 | 0.00 |
 
+## Summary plots
+
+The effect of time to treatment with IVT or MT, in isolation is shown in {numref}`figure {number} <time_to_treatment>`. 
+
+:::{figure-md} time_to_treatment.
+<img src="./images/time_to_treatment.jpg" width="600">
+
+The effect of time to treatment on effectiveness of treatment, shown individually for nLVO treated with IVT, and LVO treated with MT or IVT alone (the effect of MT is based on clinical trails where 85% of patients had previously received IVT). Effectiveness is shown as mean mRS (left) , the proportion of patients with mRS <= 2 (middle), and added utility (right). 
+:::
+
 
 ## References used in modelling
 
