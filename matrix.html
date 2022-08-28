@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Demonstration of added utility depending on time to IVT and MT &#8212; Stroke outcome modelling</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Show outcome model python code" href="show_outcome_model_code.html" />
+    <link rel="prev" title="Example output from stroke outcome model" href="demo_of_outcome_model.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Stroke outcome modelling</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mRS_datasets_full.html">
+   Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mRS_outcomes_maths.html">
+   Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="demo_of_outcome_model.html">
+   Example output from stroke outcome model
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Demonstration of added utility depending on time to IVT and MT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="show_outcome_model_code.html">
+   Show outcome model python code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="proportion_ischaemic_with_lvo.html">
+   Proportion of ischaemic patients with LVO
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/matrix.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-packages">
+   Load packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-mrs-distributions">
+   Load mRS distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-plotting-function">
+   Define plotting function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-model">
+   Set up model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#individial-treatment-effects">
+   Individial treatment effects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-patient-groups">
+   Combining patient groups
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Demonstration of added utility depending on time to IVT and MT</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-packages">
+   Load packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-mrs-distributions">
+   Load mRS distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-plotting-function">
+   Define plotting function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-model">
+   Set up model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#individial-treatment-effects">
+   Individial treatment effects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-patient-groups">
+   Combining patient groups
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="demonstration-of-added-utility-depending-on-time-to-ivt-and-mt">
+<h1>Demonstration of added utility depending on time to IVT and MT<a class="headerlink" href="#demonstration-of-added-utility-depending-on-time-to-ivt-and-mt" title="Permalink to this headline">#</a></h1>
+<p>In this notebook we examine the relationship between time to treatment and the effect of treatment.</p>
+<p>Outcome results are calculated for three patients groups:</p>
+<ol class="simple">
+<li><p>nLVO receiving IVT</p></li>
+<li><p>LVO receiving IVT only</p></li>
+<li><p>LVO receiving MT (data based on trails where 85% had also received IVT)</p></li>
+</ol>
+<p>When we look at combined effect of these groups, we make some basic assumptions (which are used as being ‘reasonable’ rather than ‘definitive’):</p>
+<ul class="simple">
+<li><p>20% of all ischaemic stroke admissions receive IVT and/or MT.</p></li>
+<li><p>35% of our treated population have LVO.</p></li>
+<li><p>28.6% of LVO receive MT (this gives 10% of all ischaemic strokes receiving MT)</p></li>
+<li><p>85% of LVO receiving MT have received IVT (from clinical trials  data); for those 85% if the benefit of IVT exceed the benefit of MT (e.g. very early IVT, and very late MT), then the benefit is based on IVT.</p></li>
+<li><p>15.5% nLVO receive thrombolysis (this brings total IVT to 20% use).</p></li>
+</ul>
+<section id="load-packages">
+<h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">outcome_utilities.clinical_outcome</span> <span class="kn">import</span> <span class="n">Clinical_outcome</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-mrs-distributions">
+<h2>Load mRS distributions<a class="headerlink" href="#load-mrs-distributions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./outcome_utilities/mrs_dist_probs_cumsum.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-plotting-function">
+<h2>Define plotting function<a class="headerlink" href="#define-plotting-function" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">):</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">a</span> <span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span>
+                <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gnuplot</span><span class="p">,</span>
+                <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">],</span>
+                <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to IVT (mins)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time to MT (mins)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Added utility&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./images/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-up-model">
+<h2>Set up model<a class="headerlink" href="#set-up-model" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up outcome model</span>
+<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="individial-treatment-effects">
+<h2>Individial treatment effects<a class="headerlink" href="#individial-treatment-effects" title="Permalink to this headline">#</a></h2>
+<p>Here we consider the impact, and effect of time to treatment, for three cohorts independently:</p>
+<ol class="simple">
+<li><p>nLVO receiving IVT</p></li>
+<li><p>LVO receiving IVT only</p></li>
+<li><p>LVO receiving MT (data based on trails where 85% had also received IVT)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### nlvo IVT #####</span>
+
+<span class="c1"># Set up variables</span>
+<span class="n">prop_lvo</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">prop_nlvo</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">prop_lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">prop_lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">prop_nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">max_time_to_ivt</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">max_time_to_mt</span> <span class="o">=</span> <span class="mi">480</span>
+
+<span class="n">times_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">time_to_mt</span> <span class="o">=</span> <span class="mi">480</span>
+
+<span class="c1"># Get results</span>
+<span class="n">added_utility_nlvo_ivt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mean_mrs_nlvo_ivt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mrs_less_equal_2_nlvo_ivt</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">ivt</span> <span class="ow">in</span> <span class="n">times_ivt</span><span class="p">:</span>
+    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span><span class="n">ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">)</span>
+    <span class="n">added_utility_nlvo_ivt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_added_utility&#39;</span><span class="p">])</span>
+    <span class="n">mean_mrs_nlvo_ivt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_mRS&#39;</span><span class="p">])</span>
+    <span class="n">mrs_less_equal_2_nlvo_ivt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+
+
+<span class="c1">##### LVO IVT #####</span>
+
+<span class="c1"># Set up variables</span>
+<span class="n">prop_lvo</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">prop_nlvo</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">prop_lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">prop_lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">prop_nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_time_to_ivt</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">max_time_to_mt</span> <span class="o">=</span> <span class="mi">480</span>
+
+<span class="n">times_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">time_to_mt</span> <span class="o">=</span> <span class="mi">480</span>
+
+<span class="c1"># Get results</span>
+<span class="n">added_utility_lvo_ivt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mean_mrs_lvo_ivt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mrs_less_equal_2_lvo_ivt</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">ivt</span> <span class="ow">in</span> <span class="n">times_ivt</span><span class="p">:</span>
+    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span><span class="n">ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">)</span>
+    <span class="n">added_utility_lvo_ivt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_added_utility&#39;</span><span class="p">])</span>
+    <span class="n">mean_mrs_lvo_ivt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_mRS&#39;</span><span class="p">])</span>
+    <span class="n">mrs_less_equal_2_lvo_ivt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1">##### LVO MT #####</span>
+
+<span class="c1"># Set up variables</span>
+<span class="n">prop_lvo</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">prop_nlvo</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">prop_lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">prop_lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">prop_nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_time_to_ivt</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">max_time_to_mt</span> <span class="o">=</span> <span class="mi">480</span>
+
+<span class="n">times_mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">time_to_ivt</span> <span class="o">=</span> <span class="mi">6</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">60</span>
+
+<span class="c1"># Get results</span>
+<span class="n">added_utility_lvo_mt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mean_mrs_lvo_mt</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mrs_less_equal_2_lvo_mt</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">mt</span> <span class="ow">in</span> <span class="n">times_mt</span><span class="p">:</span>
+    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">mt</span><span class="p">)</span>
+    <span class="n">added_utility_lvo_mt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_added_utility&#39;</span><span class="p">])</span>
+    <span class="n">mean_mrs_lvo_mt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_mRS&#39;</span><span class="p">])</span>
+    <span class="n">mrs_less_equal_2_lvo_mt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Mean mRS</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ivt</span><span class="p">,</span> <span class="n">mean_mrs_nlvo_ivt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;nLVO: IVT&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ivt</span><span class="p">,</span> <span class="n">mean_mrs_lvo_ivt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO: IVT&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_mt</span><span class="p">,</span> <span class="n">mean_mrs_lvo_mt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO: MT&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to treatment&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mean mRS&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean mRS&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1"># mRS &lt;= 2</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ivt</span><span class="p">,</span> <span class="n">mrs_less_equal_2_nlvo_ivt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;nLVO: IVT&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ivt</span><span class="p">,</span> <span class="n">mrs_less_equal_2_lvo_ivt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO: IVT&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_mt</span><span class="p">,</span> <span class="n">mrs_less_equal_2_lvo_mt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO: MT&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to treatment&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion with mRS &lt;=2&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion with mRS &lt;=2&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1"># Added utility</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ivt</span><span class="p">,</span> <span class="n">added_utility_nlvo_ivt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;nLVO: IVT&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ivt</span><span class="p">,</span> <span class="n">added_utility_lvo_ivt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO: IVT&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_mt</span><span class="p">,</span> <span class="n">added_utility_lvo_mt</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO: MT&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">))</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to treatment&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Added utility&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Added utility&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/time_to_treatment.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/matrix_11_0.png" src="_images/matrix_11_0.png" />
+</div>
+</div>
+</section>
+<section id="combining-patient-groups">
+<h2>Combining patient groups<a class="headerlink" href="#combining-patient-groups" title="Permalink to this headline">#</a></h2>
+<p>Here we examined the combined effect of IVT and MT on outcomes across nLVO and LVO ischaemic strokes.</p>
+<p>In this example, we make some basic assumptions:</p>
+<ul class="simple">
+<li><p>20% of all stroke admissions receive IVT and/or MT.</p></li>
+<li><p>35% of our treated population have LVO.</p></li>
+<li><p>28.6% of LVO receive MT (this gives 10% of all ischaemic strokes receiving MT)</p></li>
+<li><p>85% of LVO receiving MT have received IVT (from clinical trials  data); for those 85% if the benefit of IVT exceed the benefit of MT (e.g. very early IVT, and very late MT), then the benefit is based on IVT.</p></li>
+<li><p>15.5% nLVO receive thrombolysis (this brings total IVT to 20% use).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_lvo</span> <span class="o">=</span> <span class="mf">0.35</span>
+<span class="n">prop_nlvo</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prop_lvo</span>
+<span class="n">proportion_of_lvo_mt_also_receiving_IVT</span> <span class="o">=</span> <span class="mf">0.85</span>
+
+<span class="n">prop_lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">prop_lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mf">0.286</span> <span class="c1"># 0.286 gives 10% final MT if 35% LVO</span>
+<span class="n">prop_nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.155</span> <span class="c1"># 0.155 gives final 20% IVT</span>
+
+<span class="n">treated_population</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">prop_nlvo</span> <span class="o">*</span> <span class="n">prop_nlvo_treated_ivt_only</span> <span class="o">+</span>
+    <span class="n">prop_lvo</span> <span class="o">*</span> <span class="n">prop_lvo_treated_ivt_mt</span> <span class="o">+</span>
+    <span class="n">prop_lvo</span> <span class="o">*</span> <span class="n">prop_lvo_treated_ivt_only</span>
+    <span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Proportion all admissions treated: &#39;</span><span class="p">,</span> \
+     <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">treated_population</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Proportion LVO admissions treated with MT: &#39;</span><span class="p">,</span> \
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prop_lvo_treated_ivt_mt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Proportion LVO admissions treated with IVT only: &#39;</span> \
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prop_lvo_treated_ivt_only</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Proportion nLVO admissions treated with IVT: &#39;</span> \
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prop_nlvo_treated_ivt_only</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Proportion LVO MT also receiving IVT: &#39;</span> \
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">proportion_of_lvo_mt_also_receiving_IVT</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">max_time_to_ivt</span> <span class="o">=</span> <span class="mi">270</span>
+<span class="n">max_time_to_mt</span> <span class="o">=</span> <span class="mi">480</span>
+
+
+<span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">ivt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">mt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">):</span>
+        <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span><span class="n">ivt</span><span class="p">,</span> <span class="n">mt</span><span class="p">)</span>
+        <span class="n">added_utility_lvo_ivt</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_added_utility&#39;</span><span class="p">]</span>
+        <span class="n">added_utility_lvo_mt</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_added_utility&#39;</span><span class="p">]</span>
+        <span class="n">added_utility_nlvo_ivt</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_added_utility&#39;</span><span class="p">]</span>
+
+        <span class="c1"># If LVO-IVT is greater utility than LVO-MT then adjust MT for </span>
+        <span class="c1"># proportion of patients receiving IVT</span>
+        <span class="k">if</span> <span class="n">added_utility_lvo_ivt</span> <span class="o">&gt;</span> <span class="n">added_utility_lvo_mt</span><span class="p">:</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">added_utility_lvo_ivt</span> <span class="o">-</span> <span class="n">added_utility_lvo_mt</span>
+            <span class="n">added_utility_lvo_mt</span> <span class="o">+=</span> \
+                <span class="n">diff</span> <span class="o">*</span> <span class="n">proportion_of_lvo_mt_also_receiving_IVT</span>
+
+        <span class="n">added_utility</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">added_utility_lvo_mt</span> <span class="o">*</span> <span class="n">prop_lvo</span> <span class="o">*</span> <span class="n">prop_lvo_treated_ivt_mt</span><span class="p">)</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">added_utility_lvo_ivt</span> <span class="o">*</span> <span class="n">prop_lvo</span> <span class="o">*</span> <span class="n">prop_lvo_treated_ivt_only</span><span class="p">)</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">added_utility_nlvo_ivt</span> <span class="o">*</span> <span class="n">prop_nlvo</span> <span class="o">*</span> <span class="n">prop_nlvo_treated_ivt_only</span><span class="p">)</span>
+                        <span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">added_utility</span>
+
+<span class="c1"># Adjust outcome for just treated population</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span> <span class="o">/</span> <span class="n">treated_population</span>
+
+<span class="nb">print</span> <span class="p">()</span>
+<span class="n">plot_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s1">&#39;Mixed LVO/nLVO (treated population)&#39;</span><span class="p">,</span> <span class="s1">&#39;utility_all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proportion all admissions treated:  0.201
+Proportion LVO admissions treated with MT:  0.286
+Proportion LVO admissions treated with IVT only: 0.000
+Proportion nLVO admissions treated with IVT: 0.155
+Proportion LVO MT also receiving IVT: 0.850
+</pre></div>
+</div>
+<img alt="_images/matrix_13_1.png" src="_images/matrix_13_1.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="demo_of_outcome_model.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Example output from stroke outcome model</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="show_outcome_model_code.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Show outcome model python code</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Anna Laws, Kerry Pearn & Michael Allen<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
