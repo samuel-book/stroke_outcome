@@ -182,14 +182,20 @@ UW-mRS scores are based on a pooled analysis of 20,000+ patients, from Wang et a
 
 ## Summary plots
 
-The effect of time to treatment with IVT or MT, in isolation is shown in {numref}`figure {number} <time_to_treatment>`. 
+The effect of time to treatment with IVT or MT, in isolation is shown in {numref}`figure {number} <time_to_treatment>`. The combined effect of IVT and MT in a mixed nLVO/LVO population is shown in {numref}`figure {number} <utility_all>`
 
 :::{figure-md} time_to_treatment.
-<img src="./images/time_to_treatment.jpg" width="600">
+<img src="./images/time_to_treatment.jpg" width="800">
 
 The effect of time to treatment on effectiveness of treatment, shown individually for nLVO treated with IVT, and LVO treated with MT or IVT alone (the effect of MT is based on clinical trails where 85% of patients had previously received IVT). Effectiveness is shown as mean mRS (left) , the proportion of patients with mRS <= 2 (middle), and added utility (right). 
 :::
 
+
+::{figure-md} utility_all.
+<img src="./images/utility_all.jpg" width="450">
+
+The effect of time to treatment with IVT and MT on a mixed nLVO/LVO population (LVO making up 35% of all treated ischaemic strokes).
+:::
 
 ## References used in modelling
 
