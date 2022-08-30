@@ -201,11 +201,11 @@ The effect of time to treatment with IVT and MT on a mixed nLVO/LVO population (
 
 Figure {numref}`figure {number} <treatment_shift>` shows the effect of thrombectomy delivered at 120 mins after a stroke on five patients. Each patient has a value of 'P' sampled from a range of 0-1.
 
-Patient #1 (P=0.1): mRS untreated = 1, mRS treated = 0
-Patient #2 (P=0.3): mRS untreated = 3, mRS treated = 1
-Patient #3 (P=0.5): mRS untreated = 4, mRS treated = 3
-Patient #4 (P=0.7): mRS untreated = 5, mRS treated = 4
-Patient #5 (P=0.9): mRS untreated = 6, mRS treated = 6
+* Patient #1 (P=0.1): mRS untreated = 1, mRS treated = 0
+* Patient #2 (P=0.3): mRS untreated = 3, mRS treated = 1
+* Patient #3 (P=0.5): mRS untreated = 4, mRS treated = 3
+* Patient #4 (P=0.7): mRS untreated = 5, mRS treated = 4
+* Patient #5 (P=0.9): mRS untreated = 6, mRS treated = 6
 
 :::{figure-md} treatment_shift
 <img src="./images/treatment_shift.jpg" width="450">
