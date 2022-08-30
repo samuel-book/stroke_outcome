@@ -465,6 +465,11 @@ title="Print to PDF"
        </li>
       </ul>
      </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scaling-distributions-according-to-a-known-point">
+       2. Scaling distributions according to a known point
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -670,6 +675,11 @@ title="Print to PDF"
         </a>
        </li>
       </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scaling-distributions-according-to-a-known-point">
+       2. Scaling distributions according to a known point
+      </a>
      </li>
     </ul>
    </li>
@@ -2215,6 +2225,16 @@ Name: t0_treatment_lvo_ivt, dtype: float64
 </table>
 <p>The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effective) already includes IVT-related excess deaths.</p>
 </section>
+</section>
+<section id="scaling-distributions-according-to-a-known-point">
+<h3>2. Scaling distributions according to a known point<a class="headerlink" href="#scaling-distributions-according-to-a-known-point" title="Permalink to this headline">#</a></h3>
+<p>In various places we scale an existing distribution according to a known reference point.</p>
+<p>As an illustrative example, here we scale a pre-stroke mRS distribution (the best outcome for any reperfusion treatment) which has 70% mRS &lt;= 1 to an expected t=0 thrombolysis treatment of 59% mRS &lt;= 1.</p>
+<p>In the figure below we see our pre-stroke mRS distribution that we have full data for, and we have the reference point for the t=0 thrombolysis distribution.</p>
+<p><img alt="" src="_images/scale_1.jpg" /></p>
+<p>In order to scale this distribution, we assume that the relative proportions of the mRS bins either side of the reference point stay the same. The relative balance between mRS 0 and 1 remains at 79:21 (the ratio in the known pre-stroke mRS distribution). relative. The balance between mRS 2, 3, 4 and 5 remain at 33, 39, 22 &amp; 6.</p>
+<p><img alt="" src="_images/scale_2.jpg" /></p>
+<p>By scaling in this way, around the known reference point, we produce a new distribution.</p>
 </section>
 </section>
 </section>
