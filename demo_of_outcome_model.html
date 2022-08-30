@@ -334,6 +334,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-example-showing-how-untreated-and-treated-mrs-are-compared-at-a-patient-level">
+   An example showing how untreated and treated mRS are compared at a patient level
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -404,6 +409,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-example-showing-how-untreated-and-treated-mrs-are-compared-at-a-patient-level">
+   An example showing how untreated and treated mRS are compared at a patient level
+  </a>
  </li>
 </ul>
 
@@ -627,7 +637,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up outcome model</span>
-<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
 
 <span class="c1"># Get outputs</span>
 <span class="n">time_to_ivt</span> <span class="o">=</span> <span class="mi">90</span>
@@ -648,38 +658,41 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.037, 0.098, 0.14 , 0.154, 0.245, 0.121, 0.205]),
- &#39;nlvo_untreated_probs&#39;: array([0.191, 0.265, 0.119, 0.133, 0.156, 0.053, 0.083]),
- &#39;lvo_ivt_probs&#39;: array([0.082, 0.098, 0.127, 0.163, 0.217, 0.1  , 0.213]),
- &#39;lvo_mt_probs&#39;: array([0.214, 0.112, 0.139, 0.183, 0.152, 0.087, 0.113]),
- &#39;nlvo_ivt_probs&#39;: array([0.369, 0.214, 0.12 , 0.117, 0.092, 0.031, 0.057]),
- &#39;lvo_untreated_mean_utility&#39;: 0.33643999999999996,
- &#39;nlvo_untreated_mean_utility&#39;: 0.6008100000000001,
- &#39;lvo_ivt_mean_utility&#39;: 0.37381,
- &#39;lvo_mt_mean_utility&#39;: 0.5235199999999999,
- &#39;nlvo_ivt_mean_utility&#39;: 0.7119099999999999,
- &#39;lvo_ivt_added_utility&#39;: 0.037370000000000014,
- &#39;lvo_mt_added_utility&#39;: 0.1870799999999999,
- &#39;nlvo_ivt_added_utility&#39;: 0.11109999999999987,
- &#39;lvo_untreated_cum_probs&#39;: array([0.037, 0.135, 0.275, 0.429, 0.674, 0.795, 1.   ]),
- &#39;nlvo_untreated_cum_probs&#39;: array([0.191, 0.456, 0.575, 0.708, 0.864, 0.917, 1.   ]),
- &#39;lvo_ivt_cum_probs&#39;: array([0.082, 0.18 , 0.307, 0.47 , 0.687, 0.787, 1.   ]),
- &#39;lvo_mt_cum_probs&#39;: array([0.214, 0.326, 0.465, 0.648, 0.8  , 0.887, 1.   ]),
- &#39;nlvo_ivt_cum_probs&#39;: array([0.369, 0.583, 0.703, 0.82 , 0.912, 0.943, 1.   ]),
- &#39;lvo_ivt_shift&#39;: array([ 0.045,  0.   , -0.013,  0.009, -0.028, -0.021,  0.008]),
- &#39;lvo_mt_shift&#39;: array([ 0.177,  0.014, -0.001,  0.029, -0.093, -0.034, -0.092]),
- &#39;nlvo_ivt_shift&#39;: array([ 0.178, -0.051,  0.001, -0.016, -0.064, -0.022, -0.026]),
- &#39;lvo_untreated_mean_mRS&#39;: 3.655,
- &#39;nlvo_untreated_mean_mRS&#39;: 2.289,
- &#39;lvo_ivt_mean_mRS&#39;: 3.487,
- &#39;lvo_mt_mean_mRS&#39;: 2.66,
- &#39;nlvo_ivt_mean_mRS&#39;: 1.67,
- &#39;lvo_ivt_mean_shift&#39;: -0.168,
- &#39;lvo_mt_mean_shift&#39;: -1.01,
- &#39;nlvo_ivt_mean_shift&#39;: -0.619,
- &#39;lvo_ivt_improved&#39;: 0.176,
- &#39;lvo_mt_improved&#39;: 0.816,
- &#39;nlvo_ivt_improved&#39;: 0.611}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.04997, 0.07938, 0.13561, 0.16427, 0.2475 , 0.13375, 0.18952]),
+ &#39;nlvo_untreated_probs&#39;: array([0.19836, 0.26047, 0.12125, 0.12815, 0.14759, 0.06154, 0.08264]),
+ &#39;lvo_ivt_probs&#39;: array([0.09313, 0.08818, 0.12747, 0.15981, 0.21859, 0.11591, 0.19691]),
+ &#39;lvo_mt_probs&#39;: array([0.20762, 0.12676, 0.13803, 0.1712 , 0.17082, 0.0773 , 0.10827]),
+ &#39;nlvo_ivt_probs&#39;: array([0.36382, 0.22688, 0.11325, 0.11656, 0.09326, 0.03375, 0.05248]),
+ &#39;lvo_untreated_mean_utility&#39;: 0.3331127,
+ &#39;nlvo_untreated_mean_utility&#39;: 0.5996557,
+ &#39;lvo_ivt_mean_utility&#39;: 0.3718529,
+ &#39;lvo_mt_mean_utility&#39;: 0.5287194,
+ &#39;nlvo_ivt_mean_utility&#39;: 0.7127123,
+ &#39;lvo_ivt_added_utility&#39;: 0.0387402,
+ &#39;lvo_mt_added_utility&#39;: 0.19560669999999997,
+ &#39;nlvo_ivt_added_utility&#39;: 0.11305659999999995,
+ &#39;lvo_untreated_cum_probs&#39;: array([0.04997, 0.12935, 0.26496, 0.42923, 0.67673, 0.81048, 1.     ]),
+ &#39;nlvo_untreated_cum_probs&#39;: array([0.19836, 0.45883, 0.58008, 0.70823, 0.85582, 0.91736, 1.     ]),
+ &#39;lvo_ivt_cum_probs&#39;: array([0.09313, 0.18131, 0.30878, 0.46859, 0.68718, 0.80309, 1.     ]),
+ &#39;lvo_mt_cum_probs&#39;: array([0.20762, 0.33438, 0.47241, 0.64361, 0.81443, 0.89173, 1.     ]),
+ &#39;nlvo_ivt_cum_probs&#39;: array([0.36382, 0.5907 , 0.70395, 0.82051, 0.91377, 0.94752, 1.     ]),
+ &#39;lvo_ivt_shift&#39;: array([ 0.04316,  0.0088 , -0.00814, -0.00446, -0.02891, -0.01784,
+         0.00739]),
+ &#39;lvo_mt_shift&#39;: array([ 0.15765,  0.04738,  0.00242,  0.00693, -0.07668, -0.05645,
+        -0.08125]),
+ &#39;nlvo_ivt_shift&#39;: array([ 0.16546, -0.03359, -0.008  , -0.01159, -0.05433, -0.02779,
+        -0.03016]),
+ &#39;lvo_untreated_mean_mRS&#39;: 3.63928,
+ &#39;nlvo_untreated_mean_mRS&#39;: 2.28132,
+ &#39;lvo_ivt_mean_mRS&#39;: 3.45792,
+ &#39;lvo_mt_mean_mRS&#39;: 2.63582,
+ &#39;nlvo_ivt_mean_mRS&#39;: 1.65973,
+ &#39;lvo_ivt_mean_shift&#39;: -0.18136,
+ &#39;lvo_mt_mean_shift&#39;: -1.00391,
+ &#39;nlvo_ivt_mean_shift&#39;: -0.62159,
+ &#39;lvo_ivt_improved&#39;: 0.18875,
+ &#39;lvo_mt_improved&#39;: 0.80833,
+ &#39;nlvo_ivt_improved&#39;: 0.61097}
 </pre></div>
 </div>
 </div>
@@ -844,11 +857,11 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean mRS
 --------
-LVO untreated: 3.655
-LVO IVT: 3.487
-LVO MT: 2.66
-nLVO untreated: 2.289
-nLVO IVT: 1.67
+LVO untreated: 3.63928
+LVO IVT: 3.45792
+LVO MT: 2.63582
+nLVO untreated: 2.28132
+nLVO IVT: 1.65973
 </pre></div>
 </div>
 </div>
@@ -869,9 +882,9 @@ nLVO IVT: 1.67
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean mRS shift
 --------------
-LVO IVT: -0.168
-LVO MT: -1.01
-nLVO IVT: -0.619
+LVO IVT: -0.18136
+LVO MT: -1.00391
+nLVO IVT: -0.62159
 </pre></div>
 </div>
 </div>
@@ -893,9 +906,9 @@ nLVO IVT: -0.619
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proportion improved
 -------------------
-LVO IVT: 0.176
-LVO MT: 0.816
-nLVO IVT: 0.611
+LVO IVT: 0.18875
+LVO MT: 0.80833
+nLVO IVT: 0.61097
 </pre></div>
 </div>
 </div>
@@ -956,16 +969,112 @@ Outcome. Stroke. 2020 Aug 1;51(8):2411-7.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO untreated UW-mRS: 0.336
-LVO IVT UW-mRS: 0.374 (added UW-mRS: 0.037)
-LVO MT UW-mRS: 0.524 (added UW-mRS: 0.187)
-nLVO untreated UW-mRS: 0.601
-nLVO IVT UW-mRS: 0.712 (added UW-mRS: 0.111)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO untreated UW-mRS: 0.333
+LVO IVT UW-mRS: 0.372 (added UW-mRS: 0.039)
+LVO MT UW-mRS: 0.529 (added UW-mRS: 0.196)
+nLVO untreated UW-mRS: 0.600
+nLVO IVT UW-mRS: 0.713 (added UW-mRS: 0.113)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+</section>
+<section id="an-example-showing-how-untreated-and-treated-mrs-are-compared-at-a-patient-level">
+<h2>An example showing how untreated and treated mRS are compared at a patient level<a class="headerlink" href="#an-example-showing-how-untreated-and-treated-mrs-are-compared-at-a-patient-level" title="Permalink to this headline">#</a></h2>
+<p>In the example below we look at the treatment effect of 5 LVO patients treated with MT.</p>
+<p>After calculating the treated mRS distribution at the specified treatment time, we can sample random patients by sampling from a uniform 0-1 distribution and using that same sampled value for each patient compare their location on untreated and treated distributions.</p>
+<p>For illustration we use more evenly spaced patient values (rather than random), and we can see:</p>
+<ul class="simple">
+<li><p>Patient #1 (P=0.1): mRS untreated = 1, mRS treated = 0</p></li>
+<li><p>Patient #2 (P=0.3): mRS untreated = 3, mRS treated = 1</p></li>
+<li><p>Patient #3 (P=0.5): mRS untreated = 4, mRS treated = 3</p></li>
+<li><p>Patient #4 (P=0.7): mRS untreated = 5, mRS treated = 4</p></li>
+<li><p>Patient #5 (P=0.9): mRS untreated = 6, mRS treated = 6</p></li>
+</ul>
+<p>This model is likely a simplification of actual effects, but should capture the average effect of treatment well, and provide a good guide to the proportion of patients who will move at least one mRS unit with treatment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_horizontal_bar</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draw a stacked horizontal bar chart of the values in &#39;dist&#39;.</span>
+<span class="sd">    </span>
+<span class="sd">    dist  - list or np.array. The probability distribution </span>
+<span class="sd">            (non-cumulative).</span>
+<span class="sd">    label - string. The name printed next to these stacked bars.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">colour_list</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">by_key</span><span class="p">()[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
+    <span class="c1"># The first bar will start at this point on the x-axis:</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dist</span><span class="p">)):</span>
+        <span class="c1"># Draw a bar starting from &#39;left&#39;, the end of the previous bar,</span>
+        <span class="c1"># with a width equal to the probability of this mRS:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">left</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+                 <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colour_list</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="k">6</span>])
+        <span class="c1"># Update &#39;left&#39; with the width of the current bar so that the </span>
+        <span class="c1"># next bar drawn will start in the correct place.    </span>
+        <span class="n">left</span> <span class="o">+=</span> <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_connections</span><span class="p">(</span><span class="n">dist_t0</span><span class="p">,</span> <span class="n">dist_tne</span><span class="p">,</span> <span class="n">top_tne</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">bottom_t0</span><span class="o">=</span><span class="mf">0.75</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draw lines connecting the mRS bins in the top and bottom rows.</span>
+<span class="sd">    </span>
+<span class="sd">    dist_t0, dist_tne - lists or arrays. Probability distributions.</span>
+<span class="sd">    top_tne, bottom_t0 - floats. y-coordinates just inside the bars. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">left_t0</span>   <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">left_tne</span>  <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d_t0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dist_t0</span><span class="p">):</span>
+        <span class="n">left_t0</span>  <span class="o">+=</span> <span class="n">dist_t0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">left_tne</span> <span class="o">+=</span> <span class="n">dist_tne</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">left_t0</span><span class="p">,</span><span class="n">left_tne</span><span class="p">],[</span><span class="n">bottom_t0</span><span class="p">,</span><span class="n">top_tne</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bar_1</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span>
+<span class="n">bar_2</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span>
+
+<span class="c1"># Draw no effect distribution</span>
+<span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">bar_2</span><span class="p">,</span> <span class="s1">&#39;Treated (MT)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add legend now to prevent doubling all the labels:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;mRS&#39;</span><span class="p">,</span> 
+           <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">])</span>   <span class="c1"># Legend below axis.</span>
+
+<span class="c1"># Draww t=0 distribution</span>
+<span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">bar_1</span><span class="p">,</span> <span class="s1">&#39;Untreated&#39;</span><span class="p">)</span>
+
+<span class="c1"># Darw connecting lines</span>
+<span class="n">draw_connections</span><span class="p">(</span><span class="n">bar_1</span><span class="p">,</span> <span class="n">bar_2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add general content</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treatment effect in 5 random LVO patients (dashed lines)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./images/treatment_shift.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> 
+    <span class="n">pad_inches</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/demo_of_outcome_model_27_0.png" src="_images/demo_of_outcome_model_27_0.png" />
+</div>
+</div>
 </section>
 </section>
 
