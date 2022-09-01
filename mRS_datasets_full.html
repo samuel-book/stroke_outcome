@@ -765,7 +765,7 @@ title="Print to PDF"
 <li><p>For LVO patients treated with MT at <em>t = 0</em> the <em>weights</em> used to combine these two mRS distributions (75% fully recovered &amp; 25% no effect) are taken from Hui et al. 2020, who reported 75% successful recanalisation with thrombectomy. We assume that recanalisation at t=0 restores all pre-stroke function*.</p></li>
 </ul>
 <p>*Extrapolating results of good outcome, when recanalisation has been achieved with MT, from Fransen et al. 2016 back to <em>t = 0</em>, assuming 75% recanalisation, gives the same proportion of patients with mRS &lt;= 2 as the pre-stroke mRS in the SSNAP data (therefore this extrapolation would suggest full recovery of all health with MT theoretically carried out at <em>t = 0</em>).</p>
-<p>Note: Also calculated in this notebook, and stored for future use, are the <strong>no treatment mRS distributions</strong> that are used as the control populations: 1) nLVO without treatment; 2) LVO with treatment.</p>
+<p>Note: Also calculated in this notebook, and stored for future use, are the <strong>no treatment mRS distributions</strong> that are used as the control populations: 1) nLVO without treatment; 2) LVO without treatment.</p>
 <ul class="simple">
 <li><p>For <em>nLVO patients</em> the <em>no treatment mRS distribution</em> is taken from the untreated control group of combined nLVO/LVO data from Lees et al. 2010, and from that we remove the contribution of the LVO patients by using the results from the untreated control group of LVO-only data from Goyal et al. 2016. Weightings for these two untreated control groups (146% Lees and -46% Goyal) are chosen such that the resulting mRS distribution represents just the nLVO patients and matches the P(mRS &lt;= 1, <em>t = No Effect”</em>) of 0.46 (from the control group in Emberson with NIHSS of 0-10).</p></li>
 <li><p>For <em>LVO patients</em> the <em>no treatment mRS distribution</em> is taken from the untreated control population from Goyal et al. 2016.</p></li>
@@ -1187,15 +1187,15 @@ array([0.0479, 0.1236, 0.2539, 0.411 , 0.6476, 0.7769, 1.    ])
 <p>We want an untreated control group containing nLVO patients to use as our mRS distribution to represent when IVT treatment has no effect on nLVO patients. Using the two untreated control groups (nLVO/LVO from Lees, and LVO from Goyal) calculate the weights needed to remove the effect of the LVO patients from Lees, that also gives a mRS distribution with P(mRS &lt;= 1, <em>t = No Effect</em>) = 46% (Emberson et al. 2014).</p>
 <section id="calculate-weights-without-excess-ivt-deaths">
 <h4>Calculate weights without excess IVT deaths<a class="headerlink" href="#calculate-weights-without-excess-ivt-deaths" title="Permalink to this headline">#</a></h4>
-<p>This is used to get the mRS distribution for nLVO patients who had no treatment (the control nLVO population).</p>
+<p>This is used to get the mRS distribution for nLVO patients who had no treatment (the control nLVO population). This mRS distribution is not used in this notebook, but is stored to be used in later notebooks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between the no treatment combined nLVO/LVO P(mRS&lt;=1)</span>
-<span class="c1">#   and the target of P(mRS&lt;=1)=0.46 for nLVO</span>
-<span class="n">target_diff</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.46</span><span class="p">)</span> <span class="o">-</span> <span class="n">no_treatment_nlvo_lvo_cumsum</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between the target of P(mRS&lt;=1,t=No Effect)=0.46 for  </span>
+<span class="c1">#   nLVO and the no treatment combined nLVO/LVO P(mRS&lt;=1)</span>
+<span class="n">target_diff</span> <span class="o">=</span> <span class="mf">0.46</span> <span class="o">-</span> <span class="n">no_treatment_nlvo_lvo_cumsum</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># Calculate the known current difference between the no treatment combined </span>
-<span class="c1">#   nLVO/LVO P(mRS&lt;=1) and the LVO P(mRS&lt;=1)</span>
+<span class="c1"># Calculate the known current difference between the no treatment LVO P(mRS&lt;=1) </span>
+<span class="c1">#   and the combined nLVO/LVO P(mRS&lt;=1) </span>
 <span class="n">current_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">no_treatment_lvo_cumsum</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">no_treatment_nlvo_lvo_cumsum</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># The weight attributable to LVO is the target difference / the current </span>
@@ -1266,14 +1266,17 @@ array([0.1971, 0.46  , 0.58  , 0.7078, 0.8557, 0.9177, 1.    ])
 </section>
 <section id="calculate-weights-with-excess-ivt-deaths">
 <h4>Calculate weights with excess IVT deaths<a class="headerlink" href="#calculate-weights-with-excess-ivt-deaths" title="Permalink to this headline">#</a></h4>
+<p>This is used to get the mRS distribution for nLVO patients who had IVT treatment at <em>t = No Effect</em> (this is for the patient-treatment cohort nLVO-IVT).</p>
+<p>Note: We use the mRS distributions for no treatment with excess IVT deaths to represent the outcome of having treatment at <em>t = No Effect</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between the no treatment combined nLVO/LVO P(mRS&lt;=1)</span>
-<span class="c1">#   and the target of P(mRS&lt;=1)=0.46 for nLVO</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between the target of P(mRS&lt;=1,t=No Effect)=0.46 for </span>
+<span class="c1">#   nLVO and the no treatment combined nLVO/LVO P(mRS&lt;=1) with excess IVT deaths</span>
 <span class="n">target_diff</span> <span class="o">=</span> <span class="mf">0.46</span> <span class="o">-</span> <span class="n">no_treatment_nlvo_lvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># Calculate the known current difference between the no treatment combined </span>
-<span class="c1">#   nLVO/LVO P(mRS&lt;=1) and the LVO P(mRS&lt;=1)</span>
+<span class="c1"># Calculate the known current difference between the no treatment LVO </span>
+<span class="c1">#   P(mRS&lt;=1,t=No Effect) and the combined nLVO/LVO P(mRS&lt;=1), both with </span>
+<span class="c1">#   excess IVT deaths </span>
 <span class="n">current_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">no_treatment_lvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> 
                 <span class="n">no_treatment_nlvo_lvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
@@ -1300,7 +1303,7 @@ array([0.1971, 0.46  , 0.58  , 0.7078, 0.8557, 0.9177, 1.    ])
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply weights</span>
 <span class="n">no_treatment_nlvo_bins_ivt_deaths</span> <span class="o">=</span> <span class="p">(</span>
     <span class="p">(</span><span class="n">weight_nlvo_lvo</span> <span class="o">*</span> <span class="n">no_treatment_nlvo_lvo_bins_ivt_deaths</span><span class="p">)</span> <span class="o">+</span> 
-    <span class="p">(</span><span class="n">weight_lvo</span>      <span class="o">*</span> <span class="n">no_treatment_lvo_bins_ivt_deaths</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">(</span><span class="n">weight_lvo</span> <span class="o">*</span> <span class="n">no_treatment_lvo_bins_ivt_deaths</span><span class="p">))</span>
 
 <span class="c1"># Normalise</span>
 <span class="n">no_treatment_nlvo_bins_ivt_deaths</span> <span class="o">=</span> <span class="p">(</span><span class="n">no_treatment_nlvo_bins_ivt_deaths</span> <span class="o">/</span> 
@@ -1351,23 +1354,26 @@ array([0.1973, 0.46  , 0.5776, 0.7023, 0.8452, 0.9045, 1.    ])
 <h3>mRS distribution at <em>t = 0</em> for nLVO patients with IVT<a class="headerlink" href="#mrs-distribution-at-t-0-for-nlvo-patients-with-ivt" title="Permalink to this headline">#</a></h3>
 <p>We now have the two mRS distributions (fully recovered, and no effect) to calculate the mRS distribution for nLVO patients recieving IVT at <em>t = 0</em>.</p>
 <p>The weights used to combine these two mRS distribution (61% fully recovered &amp; 39% no effect) were informed by data from Emberson et al. 2014, and found in order to match the P(mRS &lt;= 1, <em>t = 0</em>) of 0.63. 63% is estimated from Emberson et al. 2014, where 46% of untreated patients with NIHSS 0-10 had mRS 0-1, and the odds ratio of mRS 0-1 extrapolates back to 2.0 at <em>t = 0</em>.</p>
+<p>Note 1: We use the mRS distributions for no treatment adjusted with excess IVT deaths to represent the outcome of having treatment at <em>t = No Effect</em>.<br />
+Note 2: We use the mRS distributions for pre-stroke adjusted with excess IVT deaths to represent the outcome of having a full recovery with treatment at <em>t = 0</em>.</p>
 <p>Calculate weights.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between the no treatment combined nLVO/LVO P(mRS&lt;=1)</span>
-<span class="c1">#   and the target of P(mRS&lt;=1)=0.63 for nLVO</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between the target of P(mRS&lt;=1,t=0)=0.63 for nLVO</span>
+<span class="c1">#   and the no treatment combined nLVO/LVO P(mRS&lt;=1) with excess IVT deaths</span>
 <span class="n">target_diff</span>  <span class="o">=</span> <span class="mf">0.63</span> <span class="o">-</span> <span class="n">no_treatment_nlvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># Calculate the known current difference between the no treatment combined </span>
-<span class="c1">#   nLVO/LVO P(mRS&lt;=1) and the LVO P(mRS&lt;=1)</span>
+<span class="c1"># Calculate the known current difference between pre-stroke nLVO P(mRS&lt;=1) and  </span>
+<span class="c1">#   the no treatment nLVO P(mRS&lt;=1), both with excess IVT deaths </span>
 <span class="n">current_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">pre_stroke_nlvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> 
                 <span class="n">no_treatment_nlvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-<span class="c1"># The weight attributable to LVO is the target difference / the current </span>
+<span class="c1"># The weight attributable to pre-stroke is the target difference / the current </span>
 <span class="c1">#   difference</span>
 <span class="n">weight_pre_stroke_nlvo</span> <span class="o">=</span> <span class="n">target_diff</span> <span class="o">/</span> <span class="n">current_diff</span>
 
-<span class="c1"># The weight attributable to nLVO is (1 - the weight attributable to LVO)</span>
+<span class="c1"># The weight attributable to no treatment is (1 - the weight attributable to </span>
+<span class="c1">#   pre-stroke)</span>
 <span class="n">weight_no_treatment_nlvo</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">weight_pre_stroke_nlvo</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Weights (pre-stroke, no treatment): </span><span class="si">{</span><span class="n">weight_pre_stroke_nlvo</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">,&#39;</span><span class="p">,</span>
@@ -1545,14 +1551,16 @@ array([0.0478, 0.1233, 0.2532, 0.41  , 0.646 , 0.775 , 1.    ])
 <p>We now have the two mRS distributions (fully recovered, and no effect) to calculate the mRS distribution for LVO patients recieving IVT at <em>t = 0</em>.</p>
 <p>The weights used to combine the two mRS distribution (18% fully recovered &amp; 82% no effect) were informed by data from Emberson et al. 2014, and found in order to match the P(mRS &lt;= 1, t = 0) of 0.20, which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ back to a predicted odds ratio of mRS 0-1 of 2.0 at <em>t = 0</em>.</p>
 <p>Calculate the weights needed to give a distribution with P(mRS &lt;= 1, t = 0) = 20%.</p>
+<p>Note 1: We use the mRS distributions for no treatment adjusted with excess IVT deaths to represent the outcome of having treatment at <em>t = No Effect</em>.<br />
+Note 2: We use the mRS distributions for pre-stroke adjusted with excess IVT deaths to represent the outcome of having a full recovery with treatment at <em>t = 0</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between pre-stroke LVO P(mRS&lt;=1) and the target of </span>
-<span class="c1">#   P(mRS&lt;=1)=0.20 for LVO</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the difference between the target of P(mRS&lt;=1)=0.20 for LVO and the </span>
+<span class="c1">#   pre-stroke LVO P(mRS&lt;=1) with excess IVT deaths</span>
 <span class="n">target_diff</span> <span class="o">=</span> <span class="mf">0.20</span> <span class="o">-</span> <span class="n">pre_stroke_lvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># Calculate the known current difference between the no treatment LVO P(mRS&lt;=1) </span>
-<span class="c1">#   and the pre-stroke LVO P(mRS&lt;=1)</span>
+<span class="c1">#   and the pre-stroke LVO P(mRS&lt;=1), both with excess IVT deaths</span>
 <span class="n">current_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">no_treatment_lvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> 
                 <span class="n">pre_stroke_lvo_cumsum_ivt_deaths</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
@@ -2138,9 +2146,9 @@ Name: t0_treatment_lvo_ivt, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_datasets_full_64_0.png" src="_images/mRS_datasets_full_64_0.png" />
-<img alt="_images/mRS_datasets_full_64_1.png" src="_images/mRS_datasets_full_64_1.png" />
-<img alt="_images/mRS_datasets_full_64_2.png" src="_images/mRS_datasets_full_64_2.png" />
+<img alt="_images/mRS_datasets_full_63_0.png" src="_images/mRS_datasets_full_63_0.png" />
+<img alt="_images/mRS_datasets_full_63_1.png" src="_images/mRS_datasets_full_63_1.png" />
+<img alt="_images/mRS_datasets_full_63_2.png" src="_images/mRS_datasets_full_63_2.png" />
 </div>
 </div>
 </section>
