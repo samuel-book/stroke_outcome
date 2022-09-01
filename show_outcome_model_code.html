@@ -331,15 +331,32 @@ title="Print to PDF"
 <span class="sd">    2) LVO treated with MT</span>
 <span class="sd">    3) nLVO treated with IVT</span>
 
+<span class="sd">    Utility-weighted mRS</span>
+<span class="sd">    --------------------</span>
+
+<span class="sd">    In addition to mRS we may calculate utility-weighted mRS. Utility is an</span>
+<span class="sd">    estimated quality of life (0=dead, 1=full quality of life, neagtive numbers</span>
+<span class="sd">    indicate a &#39;worse than death&#39; outcome).</span>
+
+<span class="sd">    mRS Utility scores are based on a pooled Analysis of 20 000+ Patients. From</span>
+<span class="sd">    Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. </span>
+<span class="sd">    Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke</span>
+<span class="sd">    Outcome. Stroke. 2020 Aug 1;51(8):2411-7. </span>
+
+<span class="sd">    | mRS Score | 0    | 1    | 2    | 3    | 4    | 5     | 6    |</span>
+<span class="sd">    |-----------|------|------|------|------|------|-------|------|</span>
+<span class="sd">    | Utility   | 0.97 | 0.88 | 0.74 | 0.55 | 0.20 | -0.19 | 0.00 |</span>
+
 <span class="sd">    General methodology</span>
 <span class="sd">    -------------------</span>
 
 <span class="sd">    The model assumes that log odds of mRS &lt;= x declines uniformally with time.</span>
-<span class="sd">    The imported distribution give mRS &lt;= x probabilities at t=o (time of</span>
+<span class="sd">    The imported distribution give mRS &lt;= x probabilities at t=0 (time of</span>
 <span class="sd">    stroke onset) and time of no effect. These two distributions are converted</span>
 <span class="sd">    to log odds and weighted according to the fraction of time, in relation to</span>
 <span class="sd">    when the treatment no longer has an effect, that has passed. The weighted</span>
-<span class="sd">    log odds distribution is converted back to probability of mRS &lt;= x.</span>
+<span class="sd">    log odds distribution is converted back to probability of mRS &lt;= x. mRS</span>
+<span class="sd">    are also converted to a utility-weighted mRS.</span>
 
 <span class="sd">    The time to no-effect is taken as:</span>
 <span class="sd">    1) 6.3 hours for IVT</span>
@@ -349,14 +366,14 @@ title="Print to PDF"
 <span class="sd">      this analysis did not include late-presenting patients selected by</span>
 <span class="sd">      advanced imaging).</span>
 
-<span class="sd">    1,000 patients are then sampled from the untreated and treated</span>
-<span class="sd">    distributions (samples are taken randomly across the distrubutions.</span>
+<span class="sd">    1,000 (default #) patients are then sampled from the untreated and treated</span>
+<span class="sd">    distributions (samples may be taken randomly or evenly spaced).</span>
 <span class="sd">    This gives sampled mRS distributions. The shift in mRS for each patient</span>
 <span class="sd">    between untreated and treated distribution is also calculated. A negative</span>
 <span class="sd">    shift is indicative of improvement (lower MRS disability score).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mrs_dists</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mrs_dists</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor for clinical outcome model.</span>
 
@@ -366,13 +383,10 @@ title="Print to PDF"
 <span class="sd">        mRS distributions for untreated, t=0 treatment, and treatment at</span>
 <span class="sd">        time of no effect (which also includes treatment-related excess deaths).</span>
 
-<span class="sd">        patients: number of patients to sample from the distributions.</span>
+
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Clinical outcome model&quot;</span>
-
-        <span class="c1"># Set replicates of mRS distribution to perform</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span> <span class="o">=</span> <span class="n">patients</span>
 
         <span class="c1"># Store modified Rankin Scale distributions as arrays in dictionary</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -388,7 +402,12 @@ title="Print to PDF"
         <span class="bp">self</span><span class="o">.</span><span class="n">ivt_time_no_effect</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="mi">60</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mt_time_no_effect</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">60</span>
 
-    <span class="k">def</span> <span class="nf">calculate_outcomes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">):</span>
+        <span class="c1"># Store utility weightings for mRS 0-6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span> <span class="o">=</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.97</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.74</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.19</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">])</span>
+                
+    <span class="k">def</span> <span class="nf">calculate_outcomes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calls methods to model mRS populations for:</span>
 <span class="sd">        1) LVO untreated</span>
@@ -423,11 +442,17 @@ title="Print to PDF"
 
         <span class="c1"># Set up results dictionary</span>
         <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        
+        <span class="c1"># Get sample patient probabilities</span>
+        <span class="k">if</span> <span class="n">random_spacing</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">,</span> <span class="mf">0.99999</span><span class="p">,</span> <span class="n">patients</span><span class="p">)</span>
 
         <span class="c1"># Get treatment results</span>
-        <span class="n">lvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span>
-        <span class="n">lvo_mt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span>
-        <span class="n">nlvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span>
+        <span class="n">lvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">lvo_mt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">nlvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
         <span class="c1"># Get counts by mRS (histograms)</span>
         <span class="n">lvo_untreated_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
@@ -449,6 +474,26 @@ title="Print to PDF"
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_ivt_hist</span> <span class="o">/</span> <span class="n">lvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_mt_hist</span> <span class="o">/</span> <span class="n">lvo_mt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nlvo_ivt_hist</span> <span class="o">/</span> <span class="n">nlvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="c1"># Convert to utility-weighted_mRS and store</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
+        
+        <span class="c1"># Calculate added utility and store</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">-</span> 
+            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_utility&#39;</span><span class="p">])</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_utility&#39;</span><span class="p">]</span> <span class="o">-</span> 
+            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_utility&#39;</span><span class="p">])</span>
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">-</span> 
+            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_mean_utility&#39;</span><span class="p">])</span>
 
         <span class="c1"># Get cumulative probabilities and store in results</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_cum_probs&#39;</span><span class="p">]</span>  <span class="o">=</span> \
@@ -494,9 +539,9 @@ title="Print to PDF"
 
         <span class="k">return</span> <span class="n">results</span>
 
-    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Models populations of patients (default=1000) for:</span>
+<span class="sd">        Models populations of patients for:</span>
 <span class="sd">        1) Untreated LVO</span>
 <span class="sd">        2) LVO treated with IVT at given time</span>
 <span class="sd">        3) Shift in mRS between untreated and treated</span>
@@ -522,7 +567,6 @@ title="Print to PDF"
         <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
         <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
         <span class="c1"># Get mRS distributions for 50 patients</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span><span class="p">)</span>
         <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
         <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
         <span class="c1"># Calculate shift in mRS</span>
@@ -535,9 +579,9 @@ title="Print to PDF"
 
         <span class="k">return</span> <span class="n">results</span>
 
-    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Models populations of patients (default=1000) for:</span>
+<span class="sd">        Models populations of patients for:</span>
 <span class="sd">        1) Untreated LVO</span>
 <span class="sd">        2) LVO treated with MT at given time</span>
 <span class="sd">        3) Shift in mRS between untreated and treated</span>
@@ -563,7 +607,6 @@ title="Print to PDF"
         <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
         <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
         <span class="c1"># Get mRS distributions for 50 patients</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span><span class="p">)</span>
         <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
         <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
         <span class="c1"># Calculate shift in mRS</span>
@@ -576,9 +619,9 @@ title="Print to PDF"
 
         <span class="k">return</span> <span class="n">results</span>
 
-    <span class="k">def</span> <span class="nf">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Models populations of patients (default=1000) for:</span>
+<span class="sd">        Models populations of patients for:</span>
 <span class="sd">        1) Untreated nLVO</span>
 <span class="sd">        2) LVO treated with IVT at given time</span>
 <span class="sd">        3) Shift in mRS between untreated and treated</span>
@@ -604,7 +647,6 @@ title="Print to PDF"
         <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
         <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
         <span class="c1"># Get mRS distributions for 50 patients</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mrs_replicates</span><span class="p">)</span>
         <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
         <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
         <span class="c1"># Calculate shift in mRS</span>
