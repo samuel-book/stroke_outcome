@@ -637,12 +637,13 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up outcome model</span>
-<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">)</span>
 
 <span class="c1"># Get outputs</span>
 <span class="n">time_to_ivt</span> <span class="o">=</span> <span class="mi">90</span>
 <span class="n">time_to_mt</span> <span class="o">=</span> <span class="mi">120</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">)</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
+    <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -658,41 +659,38 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.05014, 0.0788 , 0.13689, 0.16443, 0.24762, 0.1355 , 0.18662]),
- &#39;nlvo_untreated_probs&#39;: array([0.19769, 0.26127, 0.12131, 0.12678, 0.14926, 0.06179, 0.0819 ]),
- &#39;lvo_ivt_probs&#39;: array([0.09331, 0.08604, 0.12994, 0.16006, 0.2192 , 0.1175 , 0.19395]),
- &#39;lvo_mt_probs&#39;: array([0.20903, 0.12869, 0.13737, 0.17021, 0.16806, 0.07853, 0.10811]),
- &#39;nlvo_ivt_probs&#39;: array([0.36567, 0.22544, 0.11192, 0.11692, 0.09484, 0.03305, 0.05216]),
- &#39;lvo_untreated_mean_utility&#39;: 0.3334939,
- &#39;nlvo_untreated_mean_utility&#39;: 0.5992872,
- &#39;lvo_ivt_mean_utility&#39;: 0.3719295,
- &#39;lvo_mt_mean_utility&#39;: 0.5299668999999999,
- &#39;nlvo_ivt_mean_utility&#39;: 0.7129024,
- &#39;lvo_ivt_added_utility&#39;: 0.038435600000000014,
- &#39;lvo_mt_added_utility&#39;: 0.1964729999999999,
- &#39;nlvo_ivt_added_utility&#39;: 0.11361520000000003,
- &#39;lvo_untreated_cum_probs&#39;: array([0.05014, 0.12894, 0.26583, 0.43026, 0.67788, 0.81338, 1.     ]),
- &#39;nlvo_untreated_cum_probs&#39;: array([0.19769, 0.45896, 0.58027, 0.70705, 0.85631, 0.9181 , 1.     ]),
- &#39;lvo_ivt_cum_probs&#39;: array([0.09331, 0.17935, 0.30929, 0.46935, 0.68855, 0.80605, 1.     ]),
- &#39;lvo_mt_cum_probs&#39;: array([0.20903, 0.33772, 0.47509, 0.6453 , 0.81336, 0.89189, 1.     ]),
- &#39;nlvo_ivt_cum_probs&#39;: array([0.36567, 0.59111, 0.70303, 0.81995, 0.91479, 0.94784, 1.     ]),
- &#39;lvo_ivt_shift&#39;: array([ 0.04317,  0.00724, -0.00695, -0.00437, -0.02842, -0.018  ,
-         0.00733]),
- &#39;lvo_mt_shift&#39;: array([ 0.15889,  0.04989,  0.00048,  0.00578, -0.07956, -0.05697,
-        -0.07851]),
- &#39;nlvo_ivt_shift&#39;: array([ 0.16798, -0.03583, -0.00939, -0.00986, -0.05442, -0.02874,
-        -0.02974]),
- &#39;lvo_untreated_mean_mRS&#39;: 3.63357,
- &#39;nlvo_untreated_mean_mRS&#39;: 2.28162,
- &#39;lvo_ivt_mean_mRS&#39;: 3.4541,
- &#39;lvo_mt_mean_mRS&#39;: 2.62761,
- &#39;nlvo_ivt_mean_mRS&#39;: 1.65761,
- &#39;lvo_ivt_mean_shift&#39;: -0.17947,
- &#39;lvo_mt_mean_shift&#39;: -1.00794,
- &#39;nlvo_ivt_mean_shift&#39;: -0.62401,
- &#39;lvo_ivt_improved&#39;: 0.1868,
- &#39;lvo_mt_improved&#39;: 0.80888,
- &#39;nlvo_ivt_improved&#39;: 0.61317}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.05 , 0.079, 0.136, 0.164, 0.247, 0.135, 0.189]),
+ &#39;nlvo_untreated_probs&#39;: array([0.1972, 0.2628, 0.12  , 0.1278, 0.1478, 0.0621, 0.0823]),
+ &#39;lvo_ivt_probs&#39;: array([0.0926, 0.0865, 0.1298, 0.1581, 0.2195, 0.1171, 0.1964]),
+ &#39;lvo_mt_probs&#39;: array([0.2085, 0.1272, 0.1377, 0.1697, 0.1703, 0.0783, 0.1083]),
+ &#39;nlvo_ivt_probs&#39;: array([0.366 , 0.2248, 0.1128, 0.1164, 0.0941, 0.033 , 0.0529]),
+ &#39;lvo_untreated_mean_utility&#39;: 0.33261,
+ &#39;nlvo_untreated_mean_utility&#39;: 0.5993989999999999,
+ &#39;lvo_ivt_mean_utility&#39;: 0.37059999999999993,
+ &#39;lvo_mt_mean_utility&#39;: 0.528597,
+ &#39;nlvo_ivt_mean_utility&#39;: 0.7128859999999999,
+ &#39;lvo_ivt_added_utility&#39;: 0.03798999999999991,
+ &#39;lvo_mt_added_utility&#39;: 0.19598699999999997,
+ &#39;nlvo_ivt_added_utility&#39;: 0.113487,
+ &#39;lvo_untreated_cum_probs&#39;: array([0.05 , 0.129, 0.265, 0.429, 0.676, 0.811, 1.   ]),
+ &#39;nlvo_untreated_cum_probs&#39;: array([0.1972, 0.46  , 0.58  , 0.7078, 0.8556, 0.9177, 1.    ]),
+ &#39;lvo_ivt_cum_probs&#39;: array([0.0926, 0.1791, 0.3089, 0.467 , 0.6865, 0.8036, 1.    ]),
+ &#39;lvo_mt_cum_probs&#39;: array([0.2085, 0.3357, 0.4734, 0.6431, 0.8134, 0.8917, 1.    ]),
+ &#39;nlvo_ivt_cum_probs&#39;: array([0.366 , 0.5908, 0.7036, 0.82  , 0.9141, 0.9471, 1.    ]),
+ &#39;lvo_ivt_shift&#39;: array([ 0.0426,  0.0075, -0.0062, -0.0059, -0.0275, -0.0179,  0.0074]),
+ &#39;lvo_mt_shift&#39;: array([ 0.1585,  0.0482,  0.0017,  0.0057, -0.0767, -0.0567, -0.0807]),
+ &#39;nlvo_ivt_shift&#39;: array([ 0.1688, -0.038 , -0.0072, -0.0114, -0.0537, -0.0291, -0.0294]),
+ &#39;lvo_untreated_mean_mRS&#39;: 3.64,
+ &#39;nlvo_untreated_mean_mRS&#39;: 2.2817,
+ &#39;lvo_ivt_mean_mRS&#39;: 3.4623,
+ &#39;lvo_mt_mean_mRS&#39;: 2.6342,
+ &#39;nlvo_ivt_mean_mRS&#39;: 1.6584,
+ &#39;lvo_ivt_mean_shift&#39;: -0.1777,
+ &#39;lvo_mt_mean_shift&#39;: -1.0058,
+ &#39;nlvo_ivt_mean_shift&#39;: -0.6233,
+ &#39;lvo_ivt_improved&#39;: 0.1851,
+ &#39;lvo_mt_improved&#39;: 0.8088,
+ &#39;nlvo_ivt_improved&#39;: 0.6125}
 </pre></div>
 </div>
 </div>
@@ -857,11 +855,11 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean mRS
 --------
-LVO untreated: 3.63357
-LVO IVT: 3.4541
-LVO MT: 2.62761
-nLVO untreated: 2.28162
-nLVO IVT: 1.65761
+LVO untreated: 3.64
+LVO IVT: 3.4623
+LVO MT: 2.6342
+nLVO untreated: 2.2817
+nLVO IVT: 1.6584
 </pre></div>
 </div>
 </div>
@@ -882,9 +880,9 @@ nLVO IVT: 1.65761
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean mRS shift
 --------------
-LVO IVT: -0.17947
-LVO MT: -1.00794
-nLVO IVT: -0.62401
+LVO IVT: -0.1777
+LVO MT: -1.0058
+nLVO IVT: -0.6233
 </pre></div>
 </div>
 </div>
@@ -906,9 +904,9 @@ nLVO IVT: -0.62401
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proportion improved
 -------------------
-LVO IVT: 0.1868
-LVO MT: 0.80888
-nLVO IVT: 0.61317
+LVO IVT: 0.1851
+LVO MT: 0.8088
+nLVO IVT: 0.6125
 </pre></div>
 </div>
 </div>
@@ -970,10 +968,10 @@ Outcome. Stroke. 2020 Aug 1;51(8):2411-7.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO untreated UW-mRS: 0.333
-LVO IVT UW-mRS: 0.372 (added UW-mRS: 0.038)
-LVO MT UW-mRS: 0.530 (added UW-mRS: 0.196)
+LVO IVT UW-mRS: 0.371 (added UW-mRS: 0.038)
+LVO MT UW-mRS: 0.529 (added UW-mRS: 0.196)
 nLVO untreated UW-mRS: 0.599
-nLVO IVT UW-mRS: 0.713 (added UW-mRS: 0.114)
+nLVO IVT UW-mRS: 0.713 (added UW-mRS: 0.113)
 </pre></div>
 </div>
 </div>
