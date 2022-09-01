@@ -75,13 +75,13 @@ class Clinical_outcome:
       advanced imaging).
 
     1,000 (default #) patients are then sampled from the untreated and treated
-    distributions (samples are taken randomly across the distrubutions.
+    distributions (samples may be taken randomly or evenly spaced).
     This gives sampled mRS distributions. The shift in mRS for each patient
     between untreated and treated distribution is also calculated. A negative
     shift is indicative of improvement (lower MRS disability score).
     """
 
-    def __init__(self, mrs_dists, patients=1000):
+    def __init__(self, mrs_dists):
         """
         Constructor for clinical outcome model.
 
@@ -91,13 +91,10 @@ class Clinical_outcome:
         mRS distributions for untreated, t=0 treatment, and treatment at
         time of no effect (which also includes treatment-related excess deaths).
 
-        patients: number of patients to sample from the distributions.
+
 
         """
         self.name = "Clinical outcome model"
-
-        # Set replicates of mRS distribution to perform
-        self.mrs_replicates = patients
 
         # Store modified Rankin Scale distributions as arrays in dictionary
         self.mrs_distribution_probs = dict()
@@ -116,8 +113,9 @@ class Clinical_outcome:
         # Store utility weightings for mRS 0-6
         self.utility_weights = \
                 np.array([0.97, 0.88, 0.74, 0.55, 0.20, -0.19, 0.00])
-
-    def calculate_outcomes(self, time_to_ivt, time_to_mt):
+                
+    def calculate_outcomes(
+        self, time_to_ivt, time_to_mt, patients=1000, random_spacing=False):
         """
         Calls methods to model mRS populations for:
         1) LVO untreated
@@ -152,11 +150,17 @@ class Clinical_outcome:
 
         # Set up results dictionary
         results = dict()
+        
+        # Get sample patient probabilities
+        if random_spacing:
+            x = np.random.rand(patients)
+        else:
+            x = np.linspace(0.00001, 0.99999, patients)
 
         # Get treatment results
-        lvo_ivt_outcomes = self.calculate_outcomes_for_lvo_ivt(time_to_ivt)
-        lvo_mt_outcomes = self.calculate_outcomes_for_lvo_mt(time_to_mt)
-        nlvo_ivt_outcomes = self.calculate_outcomes_for_nlvo_ivt(time_to_ivt)
+        lvo_ivt_outcomes = self.calculate_outcomes_for_lvo_ivt(time_to_ivt, x)
+        lvo_mt_outcomes = self.calculate_outcomes_for_lvo_mt(time_to_mt, x)
+        nlvo_ivt_outcomes = self.calculate_outcomes_for_nlvo_ivt(time_to_ivt, x)
 
         # Get counts by mRS (histograms)
         lvo_untreated_hist = np.histogram(
@@ -243,9 +247,9 @@ class Clinical_outcome:
 
         return results
 
-    def calculate_outcomes_for_lvo_ivt(self, time_to_ivt):
+    def calculate_outcomes_for_lvo_ivt(self, time_to_ivt, x):
         """
-        Models populations of patients (default=1000) for:
+        Models populations of patients for:
         1) Untreated LVO
         2) LVO treated with IVT at given time
         3) Shift in mRS between untreated and treated
@@ -271,7 +275,6 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
@@ -284,9 +287,9 @@ class Clinical_outcome:
 
         return results
 
-    def calculate_outcomes_for_lvo_mt(self, time_to_mt):
+    def calculate_outcomes_for_lvo_mt(self, time_to_mt, x):
         """
-        Models populations of patients (default=1000) for:
+        Models populations of patients for:
         1) Untreated LVO
         2) LVO treated with MT at given time
         3) Shift in mRS between untreated and treated
@@ -312,7 +315,6 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
@@ -325,9 +327,9 @@ class Clinical_outcome:
 
         return results
 
-    def calculate_outcomes_for_nlvo_ivt(self, time_to_ivt):
+    def calculate_outcomes_for_nlvo_ivt(self, time_to_ivt, x):
         """
-        Models populations of patients (default=1000) for:
+        Models populations of patients for:
         1) Untreated nLVO
         2) LVO treated with IVT at given time
         3) Shift in mRS between untreated and treated
@@ -353,7 +355,6 @@ class Clinical_outcome:
         treated_odds = np.exp(treated_logodds)
         treated_probs = treated_odds / (1 + treated_odds)
         # Get mRS distributions for 50 patients
-        x = np.random.random(self.mrs_replicates)
         untreated_mrs = np.digitize(x, untreated_probs)
         treated_mrs = np.digitize(x, treated_probs)
         # Calculate shift in mRS
