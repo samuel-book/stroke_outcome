@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT) &#8212; Stroke outcome modelling</title>
+    <title>Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT) &#8212; Stroke outcome modelling</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -103,7 +103,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
                 </a>
             </li>
         </ul>
@@ -472,7 +472,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</h1>
+                <h1>Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -685,8 +685,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="predicting-granular-disability-outcomes-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt">
-<h1>Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)<a class="headerlink" href="#predicting-granular-disability-outcomes-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="predicting-disability-outcomes-and-utility-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt">
+<h1>Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)<a class="headerlink" href="#predicting-disability-outcomes-and-utility-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt" title="Permalink to this headline">#</a></h1>
 <p>This online Jupyter describes the basic methodology for estimating disability outcomes for stroke patients, depending on time to treatment with intravenous thrombolysis (IVT) or mechanical thrombectomy (MT). The orignal code for the book may be found at <a class="reference external" href="https://github.com/samuel-book/stroke_outcome">https://github.com/samuel-book/stroke_outcome</a>.</p>
 <p>The methodology described here is for patients with an ischaemic stroke (a stroke that is caused by a clot). These patients can be further defined by the location of the clot: those with a large vessel occlusion (LVO); and those not with a large vessel occlusion (nLVO). Patients with an nLVO can be treated with thrombolysis (IVT), a clot-busting medication. Patients with an LVO can be treated with IVT and/or thrombectomy (MT), which physically removes the clot. The benefit received by the patient from either treatment (IVT and/or MT) are time dependent, such that the sooner they are administered, the better the outcome, with each treatment having no effect after a specified duration (6.3 hours for IVT, and 8 hours for MT). In other words, the sooner a patient recieves reperfusion treatment the fewer stroke related disabilities they could end up with.</p>
 <p>Until now, modelling the outcome from stroke reperfusion treatment was a dichotomous affair, with a patient classified as either being disability free, or with stroke related disabilities. The method described here aims to provide a more granular disability outcome, describing the resulting disability as one of six levels (ranging from disability free, to death).</p>

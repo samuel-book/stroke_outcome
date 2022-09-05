@@ -104,7 +104,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
                 </a>
             </li>
         </ul>
@@ -311,6 +311,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#combining-patient-groups">
    Combining patient groups
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#same-graph-with-contours">
+     Same graph with contours:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#same-graph-different-time-axes">
+     Same graph, different time axes:
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -360,6 +372,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#combining-patient-groups">
    Combining patient groups
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#same-graph-with-contours">
+     Same graph with contours:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#same-graph-different-time-axes">
+     Same graph, different time axes:
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -421,7 +445,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span>
-                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">contours</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">)):</span>
     
     <span class="n">time_step_ivt</span> <span class="o">=</span> <span class="n">time_to_ivt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">time_to_ivt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -434,30 +458,28 @@ title="Print to PDF"
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
     
-    <span class="n">img1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
-                <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-                <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-                <span class="n">aspect</span><span class="o">=</span><span class="n">aspect</span><span class="p">)</span>
-    
-    <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="n">img2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
-                <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gnuplot</span><span class="p">,</span>
-                <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-                <span class="n">aspect</span><span class="o">=</span><span class="n">aspect</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">contours</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> 
+                    <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gnuplot</span><span class="p">,</span>
+                    <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+                    <span class="n">aspect</span><span class="o">=</span><span class="n">aspect</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gnuplot</span><span class="p">,</span>
+                    <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+                    <span class="n">aspect</span><span class="o">=</span><span class="n">aspect</span><span class="p">)</span>
     
     
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to IVT (mins) if applicable&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time to MT (mins) if applicable&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean population added utility&#39;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean population added utility&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./images/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1">#plt.savefig(f&#39;./images/{filename}.jpg&#39;, dpi=300)</span>
+    <span class="c1">#plt.show()</span>
 </pre></div>
 </div>
 </div>
@@ -715,6 +737,72 @@ Proportion LVO MT also receiving IVT: 0.850
 <img alt="_images/matrix_14_0.png" src="_images/matrix_14_0.png" />
 </div>
 </div>
+<section id="same-graph-with-contours">
+<h3>Same graph with contours:<a class="headerlink" href="#same-graph-with-contours" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> 
+             <span class="s1">&#39;Mixed LVO/nLVO (treated population)&#39;</span><span class="p">,</span> <span class="s1">&#39;utility_all&#39;</span><span class="p">,</span>
+             <span class="n">contours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/matrix_16_0.png" src="_images/matrix_16_0.png" />
+</div>
+</div>
+</section>
+<section id="same-graph-different-time-axes">
+<h3>Same graph, different time axes:<a class="headerlink" href="#same-graph-different-time-axes" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">time_to_mt</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span>  <span class="mi">15</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">ivt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">mt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">):</span>
+        <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span><span class="n">ivt</span><span class="p">,</span> <span class="n">mt</span><span class="p">)</span>
+        <span class="n">added_utility_lvo_ivt</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_added_utility&#39;</span><span class="p">]</span>
+        <span class="n">added_utility_lvo_mt</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_added_utility&#39;</span><span class="p">]</span>
+        <span class="n">added_utility_nlvo_ivt</span> <span class="o">=</span> <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_added_utility&#39;</span><span class="p">]</span>
+
+        <span class="c1"># If LVO-IVT is greater utility than LVO-MT then adjust MT for </span>
+        <span class="c1"># proportion of patients receiving IVT</span>
+        <span class="k">if</span> <span class="n">added_utility_lvo_ivt</span> <span class="o">&gt;</span> <span class="n">added_utility_lvo_mt</span><span class="p">:</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">added_utility_lvo_ivt</span> <span class="o">-</span> <span class="n">added_utility_lvo_mt</span>
+            <span class="n">added_utility_lvo_mt</span> <span class="o">+=</span> \
+                <span class="n">diff</span> <span class="o">*</span> <span class="n">proportion_of_lvo_mt_also_receiving_IVT</span>
+
+        <span class="n">added_utility</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">added_utility_lvo_mt</span> <span class="o">*</span> <span class="n">prop_lvo</span> <span class="o">*</span> <span class="n">prop_lvo_treated_ivt_mt</span><span class="p">)</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">added_utility_lvo_ivt</span> <span class="o">*</span> <span class="n">prop_lvo</span> <span class="o">*</span> <span class="n">prop_lvo_treated_ivt_only</span><span class="p">)</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">added_utility_nlvo_ivt</span> <span class="o">*</span> <span class="n">prop_nlvo</span> <span class="o">*</span> <span class="n">prop_nlvo_treated_ivt_only</span><span class="p">)</span>
+                        <span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">added_utility</span>
+
+<span class="c1"># Adjust outcome for just treated population</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span> <span class="o">/</span> <span class="n">treated_population</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span>
+             <span class="s1">&#39;Mixed LVO/nLVO (treated population)&#39;</span><span class="p">,</span> <span class="s1">&#39;utility_all&#39;</span><span class="p">,</span> 
+             <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">max_time_to_ivt</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">max_time_to_ivt</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/matrix_19_0.png" src="_images/matrix_19_0.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 
