@@ -9,7 +9,7 @@ is 0.97 - 0.88 = 0.09.
 import numpy as np
 
 def find_added_utility_between_dists(mRS_dist1, mRS_dist2, 
-                                     utility_weights=[]):
+    utility_weights=[], return_all=0):
     """
     Find the difference in utility between two mRS probability 
     distributions.
@@ -65,4 +65,66 @@ def find_added_utility_between_dists(mRS_dist1, mRS_dist2,
     # that they span: 
     weighted_added_utils = np.cumsum(added_utils * mRS_diff_mix)
     
-    return mRS_dist_mix, weighted_added_utils
+    if return_all<1:
+        return mRS_dist_mix, weighted_added_utils
+    else:
+        return (mRS_dist_mix, weighted_added_utils, x1_list, x2_list,
+                u1_list, u2_list)
+
+
+def find_added_utility_best_worst(prop_treated, mRS_diff_mix,
+    x1_list, x2_list, u1_list, u2_list):
+    """write me"""
+    prop_not_treated = 1.0 - prop_treated
+    
+    
+    # For best case scenario, choose not to treat patients who cannot
+    # improve in mRS: 
+    remove_this_from_best = prop_not_treated
+    mRS_diff_best = []
+    i=0
+    while remove_this_from_best>0:
+        # Compare mRS values in the two dists:
+        if x1_list[i]==x2_list[i]:
+            bin_size = mRS_diff_mix[i]
+            mRS_diff_best.append(np.max(
+                [0.0, mRS_diff_mix[i]-remove_this_from_best]))
+            remove_this_from_best -= bin_size
+        else:
+            mRS_diff_best.append(mRS_diff_mix[i])
+            
+        i += 1
+    for i in range(i, len(mRS_diff_mix)):
+        mRS_diff_best.append(mRS_diff_mix[i])
+            
+    # For worst-case scenario, choose not to treat patients who would 
+    # see the most improvement in utility: 
+    remove_this_from_worst = prop_not_treated
+    
+    # Find improvements in utility:  
+    added_utils = np.array(u1_list) - np.array(u2_list)
+    inds_biggest_improvements = np.argsort(added_utils)[::-1]
+    
+    mRS_diff_worst = [0.0 for i in mRS_diff_mix]
+    i = 0
+    while remove_this_from_worst>0:
+        ind = inds_biggest_improvements[i]
+        # Compare mRS values in the two dists:
+        bin_size = mRS_diff_mix[ind]
+        mRS_diff_worst[ind] = np.max(
+            [0.0, mRS_diff_mix[ind]-remove_this_from_worst])
+        remove_this_from_worst -= bin_size
+        i += 1
+    for i in range(i, len(mRS_diff_mix)):
+        ind = inds_biggest_improvements[i]
+        mRS_diff_worst[ind] = mRS_diff_mix[ind]
+        
+    
+    # Weight the increases by the proportion of the mRS distribution
+    # that they span: 
+    weighted_added_utils_best = np.cumsum(added_utils * mRS_diff_best)
+    weighted_added_utils_worst = np.cumsum(added_utils * mRS_diff_worst)
+    
+    return weighted_added_utils_best, weighted_added_utils_worst
+            
+    
