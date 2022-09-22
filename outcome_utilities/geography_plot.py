@@ -108,7 +108,7 @@ def circle_plot(grid, travel_ivt_to_mt, time_travel_max, time_step_circle,
                 cmap='viridis', 
                 cbar_label='', cbar_format_str=None, n_contour_steps=5,  
                 ivt_coords=[np.NaN, np.NaN], mt_coords=[np.NaN, np.NaN],
-                return_ax=0):
+                return_ax=0, ax=None, cax=None, cbar_orientation=None):
     """
     
     
@@ -125,12 +125,15 @@ def circle_plot(grid, travel_ivt_to_mt, time_travel_max, time_step_circle,
     Returns:
     ---                                                               WRITE ME
     """
-    fig, ax = plt.subplots(figsize=(10,6))
+    if ax==None:
+        fig, ax = plt.subplots(figsize=(10,6))
 
     # ----- Treatment centres ----- 
     # Mark the treatment centre locations:
-    ax.scatter(*ivt_coords, marker='o', color='k', s=50, zorder=5)
-    ax.scatter(*mt_coords, marker='D', color='k', s=50)
+    ax.scatter(*ivt_coords, marker='o', color='k', s=50, zorder=5, 
+               label='IVT centre')
+    ax.scatter(*mt_coords, marker='D', color='k', s=50, 
+               label='IVT+MT centre')
     # And draw a connecting line:
     ax.plot([ivt_coords[0],mt_coords[0]], 
             [ivt_coords[1],mt_coords[1]], color='k')
@@ -176,7 +179,12 @@ def circle_plot(grid, travel_ivt_to_mt, time_travel_max, time_step_circle,
         # Remove everything outside the biggest radiating circle:
         imshow_grid.set_clip_path(circle_patch)
         # Colourbar:
-        cbar = plt.colorbar(imshow_grid, ax=ax, label=cbar_label)
+        if cax==None:
+            cbar = plt.colorbar(imshow_grid, ax=ax, label=cbar_label, 
+                                orientation=cbar_orientation)
+        else:
+            cbar = plt.colorbar(imshow_grid, cax=cax, label=cbar_label, 
+                                orientation=cbar_orientation)
     else:
         # Draw the grid as usual:
         contours = ax.contourf(grid, origin='lower', 
@@ -186,7 +194,12 @@ def circle_plot(grid, travel_ivt_to_mt, time_travel_max, time_step_circle,
         for line in contours.collections:
             line.set_clip_path(circle_patch)
         # Colourbar:
-        cbar = plt.colorbar(contours, ax=ax, label=cbar_label)
+        if cax==None:
+            cbar = plt.colorbar(contours, ax=ax, label=cbar_label, 
+                                orientation=cbar_orientation)
+        else:
+            cbar = plt.colorbar(contours, cax=cax, label=cbar_label, 
+                                orientation=cbar_orientation)
 
     if cbar_format_str != None:
         cbar.ax.set_yticklabels(

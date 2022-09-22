@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 def draw_horizontal_bar(dist, label='', colour_list=[], hatch_list=[], 
-                        ecolour_list=[], linewidth=None):
+                        ecolour_list=[], linewidth=None, ax=None):
     """
     Draw a stacked horizontal bar chart of the values in 'dist'.
     
@@ -13,6 +13,9 @@ def draw_horizontal_bar(dist, label='', colour_list=[], hatch_list=[],
             (non-cumulative).
     label - string. The name printed next to these stacked bars.
     """
+    if ax==None:
+        ax = plt.subplot()
+        
     # Define any missing inputs: 
     if len(colour_list)<1:
         # Get current matplotlib style sheet colours:
@@ -35,7 +38,7 @@ def draw_horizontal_bar(dist, label='', colour_list=[], hatch_list=[],
     for i in range(len(dist)):
         # Draw a bar starting from 'left', the end of the previous bar,
         # with a width equal to the probability of this mRS:
-        plt.barh(label, width=dist[i], left=left, height=0.5, 
+        ax.barh(label, width=dist[i], left=left, height=0.5, 
                  label=f'{i%7}', edgecolor=ecolour_list[i], color=colour_list[i],
                  hatch=hatch_list[i], linewidth=linewidth)
         # Update 'left' with the width of the current bar so that the 
@@ -43,16 +46,19 @@ def draw_horizontal_bar(dist, label='', colour_list=[], hatch_list=[],
         left += dist[i]
         
 
-def draw_connections(dist_t0, dist_tne, top_tne=0.25, bottom_t0=0.75):
+def draw_connections(dist_t0, dist_tne, top_tne=0.25, bottom_t0=0.75, ax=None):
     """
     Draw lines connecting the mRS bins in the top and bottom rows.
     
     dist_t0, dist_tne - lists or arrays. Probability distributions.
     top_tne, bottom_t0 - floats. y-coordinates just inside the bars. 
     """
+    if ax==None:
+        ax = plt.subplot()
+        
     left_t0   = 0.0
     left_tne  = 0.0
     for i, d_t0 in enumerate(dist_t0):
         left_t0  += dist_t0[i]
         left_tne += dist_tne[i]
-        plt.plot([left_t0,left_tne],[bottom_t0,top_tne],color='k')
+        ax.plot([left_t0,left_tne],[bottom_t0,top_tne],color='k')
