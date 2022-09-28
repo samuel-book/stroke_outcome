@@ -289,375 +289,388 @@ title="Print to PDF"
 <p>This is the outcome model code called by the demonstration of outcome modelling.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ./outcome_utilities/clinical_outcome.py</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.clinical_outcome</span> <span class="kn">import</span> <span class="n">Clinical_outcome</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Clinical_outcome<span class="o">??</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span> Clinical_outcome<span class=" -Color -Color-Blue">(</span>mrs_dists<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Source:</span>        
+<span class=" -Color -Color-Green">class</span> Clinical_outcome<span class=" -Color -Color-Blue">:</span>
+    <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">    Predicts modified Rankin Scale (mRS) distributions for ischaemic stroke</span>
+<span class=" -Color -Color-Blue">    patients depending on time to treatment with intravenous thrombolysis (IVT)</span>
+<span class=" -Color -Color-Blue">    or mechanical thrombectomy (MT). Results are broken down for large vessel</span>
+<span class=" -Color -Color-Blue">    occulusions (LVO) and non large vessel occlusions (nLVO).</span>
 
-<span class="k">class</span> <span class="nc">Clinical_outcome</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Predicts modified Rankin Scale (mRS) distributions for ischaemic stroke</span>
-<span class="sd">    patients depending on time to treatment with intravenous thrombolysis (IVT)</span>
-<span class="sd">    or mechanical thrombectomy (MT). Results are broken down for large vessel</span>
-<span class="sd">    occulusions (LVO) and non large vessel occlusions (nLVO).</span>
+<span class=" -Color -Color-Blue">    Inputs</span>
+<span class=" -Color -Color-Blue">    ------</span>
 
-<span class="sd">    Inputs</span>
-<span class="sd">    ------</span>
+<span class=" -Color -Color-Blue">    A Pandas DataFrame object of mRS distributions for:</span>
+<span class=" -Color -Color-Blue">    1) Untreated nLVO</span>
+<span class=" -Color -Color-Blue">    2) nLVO treated at t=0 (time of stroke onset) with IVT</span>
+<span class=" -Color -Color-Blue">    3) nLVO treated at time of no-effect (includes treatment deaths)</span>
+<span class=" -Color -Color-Blue">    4) Untreated LVO</span>
+<span class=" -Color -Color-Blue">    5) LVO treated at t=0 (time of stroke onset) with IVT</span>
+<span class=" -Color -Color-Blue">    6) LVO treated with IVT at time of no-effect (includes treatment deaths)</span>
+<span class=" -Color -Color-Blue">    7) LVO treated at t=0 (time of stroke onset) with IVT</span>
+<span class=" -Color -Color-Blue">    8) LVO treated with IVT at time of no-effect (includes treatment deaths)</span>
 
-<span class="sd">    A Pandas DataFrame object of mRS distributions for:</span>
-<span class="sd">    1) Untreated nLVO</span>
-<span class="sd">    2) nLVO treated at t=0 (time of stroke onset) with IVT</span>
-<span class="sd">    3) nLVO treated at time of no-effect (includes treatment deaths)</span>
-<span class="sd">    4) Untreated LVO</span>
-<span class="sd">    5) LVO treated at t=0 (time of stroke onset) with IVT</span>
-<span class="sd">    6) LVO treated with IVT at time of no-effect (includes treatment deaths)</span>
-<span class="sd">    7) LVO treated at t=0 (time of stroke onset) with IVT</span>
-<span class="sd">    8) LVO treated with IVT at time of no-effect (includes treatment deaths)</span>
+<span class=" -Color -Color-Blue">    Time of IVT and MT.</span>
 
-<span class="sd">    Time of IVT and MT.</span>
+<span class=" -Color -Color-Blue">    Outputs</span>
+<span class=" -Color -Color-Blue">    -------</span>
 
-<span class="sd">    Outputs</span>
-<span class="sd">    -------</span>
+<span class=" -Color -Color-Blue">    mRS distributions (bins &amp; cumulative), changes in dists, and mean mRS, for:</span>
+<span class=" -Color -Color-Blue">    1) LVO untreated</span>
+<span class=" -Color -Color-Blue">    2) nLVO untreated</span>
+<span class=" -Color -Color-Blue">    3) LVO treated with IVT</span>
+<span class=" -Color -Color-Blue">    4) LVO treated with MT</span>
+<span class=" -Color -Color-Blue">    5) nLVO treated with IVT</span>
 
-<span class="sd">    mRS distributions (bins &amp; cumulative), changes in dists, and mean mRS, for:</span>
-<span class="sd">    1) LVO untreated</span>
-<span class="sd">    2) nLVO untreated</span>
-<span class="sd">    3) LVO treated with IVT</span>
-<span class="sd">    4) LVO treated with MT</span>
-<span class="sd">    5) nLVO treated with IVT</span>
+<span class=" -Color -Color-Blue">    mRS mean shift (compared with untreated) and proportion of patients with</span>
+<span class=" -Color -Color-Blue">    improved mRS for:</span>
+<span class=" -Color -Color-Blue">    1) LVO treated with IVT</span>
+<span class=" -Color -Color-Blue">    2) LVO treated with MT</span>
+<span class=" -Color -Color-Blue">    3) nLVO treated with IVT</span>
 
-<span class="sd">    mRS mean shift (compared with untreated) and proportion of patients with</span>
-<span class="sd">    improved mRS for:</span>
-<span class="sd">    1) LVO treated with IVT</span>
-<span class="sd">    2) LVO treated with MT</span>
-<span class="sd">    3) nLVO treated with IVT</span>
+<span class=" -Color -Color-Blue">    Utility-weighted mRS</span>
+<span class=" -Color -Color-Blue">    --------------------</span>
 
-<span class="sd">    Utility-weighted mRS</span>
-<span class="sd">    --------------------</span>
+<span class=" -Color -Color-Blue">    In addition to mRS we may calculate utility-weighted mRS. Utility is an</span>
+<span class=" -Color -Color-Blue">    estimated quality of life (0=dead, 1=full quality of life, neagtive numbers</span>
+<span class=" -Color -Color-Blue">    indicate a &#39;worse than death&#39; outcome).</span>
 
-<span class="sd">    In addition to mRS we may calculate utility-weighted mRS. Utility is an</span>
-<span class="sd">    estimated quality of life (0=dead, 1=full quality of life, neagtive numbers</span>
-<span class="sd">    indicate a &#39;worse than death&#39; outcome).</span>
+<span class=" -Color -Color-Blue">    mRS Utility scores are based on a pooled Analysis of 20 000+ Patients. From</span>
+<span class=" -Color -Color-Blue">    Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. </span>
+<span class=" -Color -Color-Blue">    Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke</span>
+<span class=" -Color -Color-Blue">    Outcome. Stroke. 2020 Aug 1;51(8):2411-7. </span>
 
-<span class="sd">    mRS Utility scores are based on a pooled Analysis of 20 000+ Patients. From</span>
-<span class="sd">    Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. </span>
-<span class="sd">    Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke</span>
-<span class="sd">    Outcome. Stroke. 2020 Aug 1;51(8):2411-7. </span>
+<span class=" -Color -Color-Blue">    | mRS Score | 0    | 1    | 2    | 3    | 4    | 5     | 6    |</span>
+<span class=" -Color -Color-Blue">    |-----------|------|------|------|------|------|-------|------|</span>
+<span class=" -Color -Color-Blue">    | Utility   | 0.97 | 0.88 | 0.74 | 0.55 | 0.20 | -0.19 | 0.00 |</span>
 
-<span class="sd">    | mRS Score | 0    | 1    | 2    | 3    | 4    | 5     | 6    |</span>
-<span class="sd">    |-----------|------|------|------|------|------|-------|------|</span>
-<span class="sd">    | Utility   | 0.97 | 0.88 | 0.74 | 0.55 | 0.20 | -0.19 | 0.00 |</span>
+<span class=" -Color -Color-Blue">    General methodology</span>
+<span class=" -Color -Color-Blue">    -------------------</span>
 
-<span class="sd">    General methodology</span>
-<span class="sd">    -------------------</span>
+<span class=" -Color -Color-Blue">    The model assumes that log odds of mRS &lt;= x declines uniformally with time.</span>
+<span class=" -Color -Color-Blue">    The imported distribution give mRS &lt;= x probabilities at t=0 (time of</span>
+<span class=" -Color -Color-Blue">    stroke onset) and time of no effect. These two distributions are converted</span>
+<span class=" -Color -Color-Blue">    to log odds and weighted according to the fraction of time, in relation to</span>
+<span class=" -Color -Color-Blue">    when the treatment no longer has an effect, that has passed. The weighted</span>
+<span class=" -Color -Color-Blue">    log odds distribution is converted back to probability of mRS &lt;= x. mRS</span>
+<span class=" -Color -Color-Blue">    are also converted to a utility-weighted mRS.</span>
 
-<span class="sd">    The model assumes that log odds of mRS &lt;= x declines uniformally with time.</span>
-<span class="sd">    The imported distribution give mRS &lt;= x probabilities at t=0 (time of</span>
-<span class="sd">    stroke onset) and time of no effect. These two distributions are converted</span>
-<span class="sd">    to log odds and weighted according to the fraction of time, in relation to</span>
-<span class="sd">    when the treatment no longer has an effect, that has passed. The weighted</span>
-<span class="sd">    log odds distribution is converted back to probability of mRS &lt;= x. mRS</span>
-<span class="sd">    are also converted to a utility-weighted mRS.</span>
+<span class=" -Color -Color-Blue">    The time to no-effect is taken as:</span>
+<span class=" -Color -Color-Blue">    1) 6.3 hours for IVT</span>
+<span class=" -Color -Color-Blue">      (from Emberson et al, https://doi.org/10.1016/S0140-6736(14)60584-5.)</span>
+<span class=" -Color -Color-Blue">    2) 8 hours for MT</span>
+<span class=" -Color -Color-Blue">      (from Fransen et al; https://doi.org/10.1001/jamaneurol.2015.3886.</span>
+<span class=" -Color -Color-Blue">      this analysis did not include late-presenting patients selected by</span>
+<span class=" -Color -Color-Blue">      advanced imaging).</span>
 
-<span class="sd">    The time to no-effect is taken as:</span>
-<span class="sd">    1) 6.3 hours for IVT</span>
-<span class="sd">      (from Emberson et al, https://doi.org/10.1016/S0140-6736(14)60584-5.)</span>
-<span class="sd">    2) 8 hours for MT</span>
-<span class="sd">      (from Fransen et al; https://doi.org/10.1001/jamaneurol.2015.3886.</span>
-<span class="sd">      this analysis did not include late-presenting patients selected by</span>
-<span class="sd">      advanced imaging).</span>
+<span class=" -Color -Color-Blue">    1,000 (default #) patients are then sampled from the untreated and treated</span>
+<span class=" -Color -Color-Blue">    distributions (samples may be taken randomly or evenly spaced).</span>
+<span class=" -Color -Color-Blue">    This gives sampled mRS distributions. The shift in mRS for each patient</span>
+<span class=" -Color -Color-Blue">    between untreated and treated distribution is also calculated. A negative</span>
+<span class=" -Color -Color-Blue">    shift is indicative of improvement (lower MRS disability score).</span>
+<span class=" -Color -Color-Blue">    &quot;&quot;&quot;</span>
 
-<span class="sd">    1,000 (default #) patients are then sampled from the untreated and treated</span>
-<span class="sd">    distributions (samples may be taken randomly or evenly spaced).</span>
-<span class="sd">    This gives sampled mRS distributions. The shift in mRS for each patient</span>
-<span class="sd">    between untreated and treated distribution is also calculated. A negative</span>
-<span class="sd">    shift is indicative of improvement (lower MRS disability score).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class=" -Color -Color-Green">def</span> __init__<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> mrs_dists<span class=" -Color -Color-Blue">):</span>
+        <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Constructor for clinical outcome model.</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mrs_dists</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Constructor for clinical outcome model.</span>
+<span class=" -Color -Color-Blue">        Input: </span>
+<span class=" -Color -Color-Blue">        ------</span>
 
-<span class="sd">        Input: </span>
-<span class="sd">        ------</span>
-
-<span class="sd">        mRS distributions for untreated, t=0 treatment, and treatment at</span>
-<span class="sd">        time of no effect (which also includes treatment-related excess deaths).</span>
+<span class=" -Color -Color-Blue">        mRS distributions for untreated, t=0 treatment, and treatment at</span>
+<span class=" -Color -Color-Blue">        time of no effect (which also includes treatment-related excess deaths).</span>
 
 
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Clinical outcome model&quot;</span>
+<span class=" -Color -Color-Blue">        &quot;&quot;&quot;</span>
+        self<span class=" -Color -Color-Blue">.</span>name <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&quot;Clinical outcome model&quot;</span>
 
-        <span class="c1"># Store modified Rankin Scale distributions as arrays in dictionary</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mrs_dists</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-            <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)])</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
-            <span class="c1"># Convert to log odds</span>
-            <span class="n">o</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class=" -Color -Color-Red"># Store modified Rankin Scale distributions as arrays in dictionary</span>
+        self<span class=" -Color -Color-Blue">.</span>mrs_distribution_probs <span class=" -Color -Color-Blue">=</span> dict<span class=" -Color -Color-Blue">()</span>
+        self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds <span class=" -Color -Color-Blue">=</span> dict<span class=" -Color -Color-Blue">()</span>
+        <span class=" -Color -Color-Green">for</span> index<span class=" -Color -Color-Blue">,</span> row <span class=" -Color -Color-Green">in</span> mrs_dists<span class=" -Color -Color-Blue">.</span>iterrows<span class=" -Color -Color-Blue">():</span>
+            p <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>array<span class=" -Color -Color-Blue">([</span>row<span class=" -Color -Color-Blue">[</span>str<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">)]</span> <span class=" -Color -Color-Green">for</span> x <span class=" -Color -Color-Green">in</span> range<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">7</span><span class=" -Color -Color-Blue">)])</span>
+            self<span class=" -Color -Color-Blue">.</span>mrs_distribution_probs<span class=" -Color -Color-Blue">[</span>index<span class=" -Color -Color-Blue">]</span> <span class=" -Color -Color-Blue">=</span> p
+            <span class=" -Color -Color-Red"># Convert to log odds</span>
+            o <span class=" -Color -Color-Blue">=</span> p <span class=" -Color -Color-Blue">/</span> <span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">-</span> p<span class=" -Color -Color-Blue">)</span>
+            self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds<span class=" -Color -Color-Blue">[</span>index<span class=" -Color -Color-Blue">]</span> <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>log<span class=" -Color -Color-Blue">(</span>o<span class=" -Color -Color-Blue">)</span>
 
-        <span class="c1"># Set general model parameters</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ivt_time_no_effect</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="mi">60</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mt_time_no_effect</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">60</span>
+        <span class=" -Color -Color-Red"># Set general model parameters</span>
+        self<span class=" -Color -Color-Blue">.</span>ivt_time_no_effect <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Cyan">6.3</span> <span class=" -Color -Color-Blue">*</span> <span class=" -Color -Color-Cyan">60</span>
+        self<span class=" -Color -Color-Blue">.</span>mt_time_no_effect <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Cyan">8</span> <span class=" -Color -Color-Blue">*</span> <span class=" -Color -Color-Cyan">60</span>
 
-        <span class="c1"># Store utility weightings for mRS 0-6</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span> <span class="o">=</span> \
-                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.97</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.74</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.19</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">])</span>
+        <span class=" -Color -Color-Red"># Store utility weightings for mRS 0-6</span>
+        self<span class=" -Color -Color-Blue">.</span>utility_weights <span class=" -Color -Color-Blue">=</span> \
+                np<span class=" -Color -Color-Blue">.</span>array<span class=" -Color -Color-Blue">([</span><span class=" -Color -Color-Cyan">0.97</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">0.88</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">0.74</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">0.55</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">0.20</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Blue">-</span><span class=" -Color -Color-Cyan">0.19</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">0.00</span><span class=" -Color -Color-Blue">])</span>
                 
-    <span class="k">def</span> <span class="nf">calculate_outcomes</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Calls methods to model mRS populations for:</span>
-<span class="sd">        1) LVO untreated</span>
-<span class="sd">        2) nLVO untreated</span>
-<span class="sd">        3) LVO treated with IVT</span>
-<span class="sd">        4) LVO treated with MT</span>
-<span class="sd">        5) nLVO treated with IVT</span>
+    <span class=" -Color -Color-Green">def</span> calculate_outcomes<span class=" -Color -Color-Blue">(</span>
+        self<span class=" -Color -Color-Blue">,</span> time_to_ivt<span class=" -Color -Color-Blue">,</span> time_to_mt<span class=" -Color -Color-Blue">,</span> patients<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">1000</span><span class=" -Color -Color-Blue">,</span> random_spacing<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">):</span>
+        <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Calls methods to model mRS populations for:</span>
+<span class=" -Color -Color-Blue">        1) LVO untreated</span>
+<span class=" -Color -Color-Blue">        2) nLVO untreated</span>
+<span class=" -Color -Color-Blue">        3) LVO treated with IVT</span>
+<span class=" -Color -Color-Blue">        4) LVO treated with MT</span>
+<span class=" -Color -Color-Blue">        5) nLVO treated with IVT</span>
 
-<span class="sd">        These are converted into cumulative probabilties, mean mRS, mRS shift,</span>
-<span class="sd">        and proportion of patients with improved mRS.</span>
+<span class=" -Color -Color-Blue">        These are converted into cumulative probabilties, mean mRS, mRS shift,</span>
+<span class=" -Color -Color-Blue">        and proportion of patients with improved mRS.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">        --------</span>
+<span class=" -Color -Color-Blue">        Returns:</span>
+<span class=" -Color -Color-Blue">        --------</span>
 
-<span class="sd">        A results dictionary with:</span>
+<span class=" -Color -Color-Blue">        A results dictionary with:</span>
 
-<span class="sd">        mRS distributions (bins &amp; cumulative), changes in dists, and mean mRS</span>
-<span class="sd">        for:</span>
-<span class="sd">            1) LVO untreated</span>
-<span class="sd">            2) nLVO untreated</span>
-<span class="sd">            3) LVO treated with IVT</span>
-<span class="sd">            4) LVO treated with MT</span>
-<span class="sd">            5) nLVO treated with IVT</span>
+<span class=" -Color -Color-Blue">        mRS distributions (bins &amp; cumulative), changes in dists, and mean mRS</span>
+<span class=" -Color -Color-Blue">        for:</span>
+<span class=" -Color -Color-Blue">            1) LVO untreated</span>
+<span class=" -Color -Color-Blue">            2) nLVO untreated</span>
+<span class=" -Color -Color-Blue">            3) LVO treated with IVT</span>
+<span class=" -Color -Color-Blue">            4) LVO treated with MT</span>
+<span class=" -Color -Color-Blue">            5) nLVO treated with IVT</span>
 
-<span class="sd">        mRS mean shift (compared with untreated) and proportion of patients with</span>
-<span class="sd">        improved mRS for:</span>
-<span class="sd">            1) LVO treated with IVT</span>
-<span class="sd">            2) LVO treated with MT</span>
-<span class="sd">            3) nLVO treated with IVT</span>
+<span class=" -Color -Color-Blue">        mRS mean shift (compared with untreated) and proportion of patients with</span>
+<span class=" -Color -Color-Blue">        improved mRS for:</span>
+<span class=" -Color -Color-Blue">            1) LVO treated with IVT</span>
+<span class=" -Color -Color-Blue">            2) LVO treated with MT</span>
+<span class=" -Color -Color-Blue">            3) nLVO treated with IVT</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        &quot;&quot;&quot;</span>
 
-        <span class="c1"># Set up results dictionary</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class=" -Color -Color-Red"># Set up results dictionary</span>
+        results <span class=" -Color -Color-Blue">=</span> dict<span class=" -Color -Color-Blue">()</span>
         
-        <span class="c1"># Get sample patient probabilities</span>
-        <span class="k">if</span> <span class="n">random_spacing</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">,</span> <span class="mf">0.99999</span><span class="p">,</span> <span class="n">patients</span><span class="p">)</span>
+        <span class=" -Color -Color-Red"># Get sample patient probabilities</span>
+        <span class=" -Color -Color-Green">if</span> random_spacing<span class=" -Color -Color-Blue">:</span>
+            x <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>random<span class=" -Color -Color-Blue">.</span>rand<span class=" -Color -Color-Blue">(</span>patients<span class=" -Color -Color-Blue">)</span>
+        <span class=" -Color -Color-Green">else</span><span class=" -Color -Color-Blue">:</span>
+            x <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>linspace<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">0.00001</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">0.99999</span><span class=" -Color -Color-Blue">,</span> patients<span class=" -Color -Color-Blue">)</span>
 
-        <span class="c1"># Get treatment results</span>
-        <span class="n">lvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        <span class="n">lvo_mt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        <span class="n">nlvo_ivt_outcomes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class=" -Color -Color-Red"># Get treatment results</span>
+        lvo_ivt_outcomes <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>calculate_outcomes_for_lvo_ivt<span class=" -Color -Color-Blue">(</span>time_to_ivt<span class=" -Color -Color-Blue">,</span> x<span class=" -Color -Color-Blue">)</span>
+        lvo_mt_outcomes <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>calculate_outcomes_for_lvo_mt<span class=" -Color -Color-Blue">(</span>time_to_mt<span class=" -Color -Color-Blue">,</span> x<span class=" -Color -Color-Blue">)</span>
+        nlvo_ivt_outcomes <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>calculate_outcomes_for_nlvo_ivt<span class=" -Color -Color-Blue">(</span>time_to_ivt<span class=" -Color -Color-Blue">,</span> x<span class=" -Color -Color-Blue">)</span>
 
-        <span class="c1"># Get counts by mRS (histograms)</span>
-        <span class="n">lvo_untreated_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-            <span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">nlvo_untreated_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-            <span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">lvo_ivt_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-            <span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">lvo_mt_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-            <span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">nlvo_ivt_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-            <span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class=" -Color -Color-Red"># Get counts by mRS (histograms)</span>
+        lvo_untreated_hist <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>histogram<span class=" -Color -Color-Blue">(</span>
+            lvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;untreated_mrs&#39;],</span> bins<span class=" -Color -Color-Blue">=</span>range<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">8</span><span class=" -Color -Color-Blue">))[</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">]</span>
+        nlvo_untreated_hist <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>histogram<span class=" -Color -Color-Blue">(</span>
+            nlvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;untreated_mrs&#39;],</span> bins<span class=" -Color -Color-Blue">=</span>range<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">8</span><span class=" -Color -Color-Blue">))[</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">]</span>
+        lvo_ivt_hist <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>histogram<span class=" -Color -Color-Blue">(</span>
+            lvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;],</span> bins<span class=" -Color -Color-Blue">=</span>range<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">8</span><span class=" -Color -Color-Blue">))[</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">]</span>
+        lvo_mt_hist <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>histogram<span class=" -Color -Color-Blue">(</span>
+            lvo_mt_outcomes<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;],</span> bins<span class=" -Color -Color-Blue">=</span>range<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">8</span><span class=" -Color -Color-Blue">))[</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">]</span>
+        nlvo_ivt_hist <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>histogram<span class=" -Color -Color-Blue">(</span>
+            nlvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;],</span> bins<span class=" -Color -Color-Blue">=</span>range<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">8</span><span class=" -Color -Color-Blue">))[</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">]</span>
         
-        <span class="c1"># Convert to probabilities and store</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span>  <span class="o">=</span> \
-                <span class="n">lvo_untreated_hist</span> <span class="o">/</span> <span class="n">lvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">nlvo_untreated_hist</span> <span class="o">/</span> <span class="n">nlvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_ivt_hist</span> <span class="o">/</span> <span class="n">lvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_mt_hist</span> <span class="o">/</span> <span class="n">lvo_mt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nlvo_ivt_hist</span> <span class="o">/</span> <span class="n">nlvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class=" -Color -Color-Red"># Convert to probabilities and store</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_probs&#39;]</span>  <span class=" -Color -Color-Blue">=</span> \
+                lvo_untreated_hist <span class=" -Color -Color-Blue">/</span> lvo_untreated_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_untreated_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            nlvo_untreated_hist <span class=" -Color -Color-Blue">/</span> nlvo_untreated_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> lvo_ivt_hist <span class=" -Color -Color-Blue">/</span> lvo_ivt_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> lvo_mt_hist <span class=" -Color -Color-Blue">/</span> lvo_mt_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> nlvo_ivt_hist <span class=" -Color -Color-Blue">/</span> nlvo_ivt_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
 
-        <span class="c1"># Convert to utility-weighted_mRS and store</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">utility_weights</span><span class="p">)</span>
+        <span class=" -Color -Color-Red"># Convert to utility-weighted_mRS and store</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_probs&#39;]</span> <span class=" -Color -Color-Blue">*</span> self<span class=" -Color -Color-Blue">.</span>utility_weights<span class=" -Color -Color-Blue">)</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_untreated_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;nlvo_untreated_probs&#39;]</span> <span class=" -Color -Color-Blue">*</span> self<span class=" -Color -Color-Blue">.</span>utility_weights<span class=" -Color -Color-Blue">)</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_probs&#39;]</span> <span class=" -Color -Color-Blue">*</span> self<span class=" -Color -Color-Blue">.</span>utility_weights<span class=" -Color -Color-Blue">)</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;lvo_mt_probs&#39;]</span> <span class=" -Color -Color-Blue">*</span> self<span class=" -Color -Color-Blue">.</span>utility_weights<span class=" -Color -Color-Blue">)</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_probs&#39;]</span> <span class=" -Color -Color-Blue">*</span> self<span class=" -Color -Color-Blue">.</span>utility_weights<span class=" -Color -Color-Blue">)</span>
         
-        <span class="c1"># Calculate added utility and store</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">-</span> 
-            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_utility&#39;</span><span class="p">])</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_utility&#39;</span><span class="p">]</span> <span class="o">-</span> 
-            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_utility&#39;</span><span class="p">])</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_utility&#39;</span><span class="p">]</span> <span class="o">-</span> 
-            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_mean_utility&#39;</span><span class="p">])</span>
+        <span class=" -Color -Color-Red"># Calculate added utility and store</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_added_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">-</span> 
+            results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_mean_utility&#39;])</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_added_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;lvo_mt_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">-</span> 
+            results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_mean_utility&#39;])</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_added_utility&#39;]</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">(</span>results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_mean_utility&#39;]</span> <span class=" -Color -Color-Blue">-</span> 
+            results<span class=" -Color -Color-Blue">[&#39;nlvo_untreated_mean_utility&#39;])</span>
 
-        <span class="c1"># Get cumulative probabilities and store in results</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_cum_probs&#39;</span><span class="p">]</span>  <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">lvo_untreated_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">lvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">nlvo_untreated_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">nlvo_untreated_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">lvo_ivt_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">lvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">lvo_mt_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">lvo_mt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_cum_probs&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">nlvo_ivt_hist</span><span class="p">)</span> <span class="o">/</span> <span class="n">nlvo_ivt_hist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class=" -Color -Color-Red"># Get cumulative probabilities and store in results</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_cum_probs&#39;]</span>  <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>cumsum<span class=" -Color -Color-Blue">(</span>lvo_untreated_hist<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">/</span> lvo_untreated_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_untreated_cum_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>cumsum<span class=" -Color -Color-Blue">(</span>nlvo_untreated_hist<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">/</span> nlvo_untreated_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_cum_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>cumsum<span class=" -Color -Color-Blue">(</span>lvo_ivt_hist<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">/</span> lvo_ivt_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_cum_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>cumsum<span class=" -Color -Color-Blue">(</span>lvo_mt_hist<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">/</span> lvo_mt_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_cum_probs&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>cumsum<span class=" -Color -Color-Blue">(</span>nlvo_ivt_hist<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">/</span> nlvo_ivt_hist<span class=" -Color -Color-Blue">.</span>sum<span class=" -Color -Color-Blue">()</span>
         
-        <span class="c1"># Get shift in mRS probs and store</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_shift&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_shift&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_probs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_probs&#39;</span><span class="p">]</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_shift&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_probs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_probs&#39;</span><span class="p">]</span>
+        <span class=" -Color -Color-Red"># Get shift in mRS probs and store</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_probs&#39;]</span> <span class=" -Color -Color-Blue">-</span> results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_probs&#39;]</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            results<span class=" -Color -Color-Blue">[&#39;lvo_mt_probs&#39;]</span> <span class=" -Color -Color-Blue">-</span> results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_probs&#39;]</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_probs&#39;]</span> <span class=" -Color -Color-Blue">-</span> results<span class=" -Color -Color-Blue">[&#39;nlvo_untreated_probs&#39;]</span>
 
-        <span class="c1"># Get average mRS store in results</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">])</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">])</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">])</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">])</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_mRS&#39;</span><span class="p">]</span> <span class="o">=</span> \
-            <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">])</span>
+        <span class=" -Color -Color-Red"># Get average mRS store in results</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_untreated_mean_mRS&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>lvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;untreated_mrs&#39;])</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_untreated_mean_mRS&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>nlvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;untreated_mrs&#39;])</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_mean_mRS&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>lvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;])</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_mean_mRS&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>lvo_mt_outcomes<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;])</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_mean_mRS&#39;]</span> <span class=" -Color -Color-Blue">=</span> \
+            np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>nlvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;])</span>
 
-        <span class="c1"># Get average shifts and store in results</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class=" -Color -Color-Red"># Get average shifts and store in results</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_mean_shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> lvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;shift&#39;].</span>mean<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_mean_shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> lvo_mt_outcomes<span class=" -Color -Color-Blue">[&#39;shift&#39;].</span>mean<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_mean_shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> nlvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;shift&#39;].</span>mean<span class=" -Color -Color-Blue">()</span>
 
-        <span class="c1"># Get average improved mRS proportion</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_improved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo_mt_improved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lvo_mt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_improved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nlvo_ivt_outcomes</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class=" -Color -Color-Red"># Get average improved mRS proportion</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_ivt_improved&#39;]</span> <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>lvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;shift&#39;]</span> <span class=" -Color -Color-Blue">&lt;</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">)</span>
+        results<span class=" -Color -Color-Blue">[&#39;lvo_mt_improved&#39;]</span> <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>lvo_mt_outcomes<span class=" -Color -Color-Blue">[&#39;shift&#39;]</span> <span class=" -Color -Color-Blue">&lt;</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">)</span>
+        results<span class=" -Color -Color-Blue">[&#39;nlvo_ivt_improved&#39;]</span> <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>nlvo_ivt_outcomes<span class=" -Color -Color-Blue">[&#39;shift&#39;]</span> <span class=" -Color -Color-Blue">&lt;</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">)</span>
 
-        <span class="k">return</span> <span class="n">results</span>
+        <span class=" -Color -Color-Green">return</span> results
 
-    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Models populations of patients for:</span>
-<span class="sd">        1) Untreated LVO</span>
-<span class="sd">        2) LVO treated with IVT at given time</span>
-<span class="sd">        3) Shift in mRS between untreated and treated</span>
+    <span class=" -Color -Color-Green">def</span> calculate_outcomes_for_lvo_ivt<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> time_to_ivt<span class=" -Color -Color-Blue">,</span> x<span class=" -Color -Color-Blue">):</span>
+        <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Models populations of patients for:</span>
+<span class=" -Color -Color-Blue">        1) Untreated LVO</span>
+<span class=" -Color -Color-Blue">        2) LVO treated with IVT at given time</span>
+<span class=" -Color -Color-Blue">        3) Shift in mRS between untreated and treated</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        Time to IVT</span>
+<span class=" -Color -Color-Blue">        Inputs:</span>
+<span class=" -Color -Color-Blue">        Time to IVT</span>
 
-<span class="sd">        Outputs:</span>
-<span class="sd">        A dictionary of patient population mRS as described above.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Outputs:</span>
+<span class=" -Color -Color-Blue">        A dictionary of patient population mRS as described above.</span>
+<span class=" -Color -Color-Blue">        &quot;&quot;&quot;</span>
 
-        <span class="c1"># Get relevant distributions</span>
-        <span class="n">untreated_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">]</span>
-        <span class="n">no_effect_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span>
-            <span class="s1">&#39;no_effect_lvo_ivt_deaths&#39;</span><span class="p">]</span>
-        <span class="n">t0_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">]</span>
-        <span class="c1"># Calculate fraction of time to no effect passed</span>
-        <span class="n">frac_to_no_effect</span> <span class="o">=</span> <span class="n">time_to_ivt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">ivt_time_no_effect</span>
-        <span class="c1"># Combine t=0 and nop effect distributions based on time past</span>
-        <span class="n">treated_logodds</span> <span class="o">=</span> <span class="p">((</span><span class="n">frac_to_no_effect</span> <span class="o">*</span> <span class="n">no_effect_logodds</span><span class="p">)</span> <span class="o">+</span>
-                           <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">frac_to_no_effect</span><span class="p">)</span> <span class="o">*</span> <span class="n">t0_logodds</span><span class="p">))</span>
-        <span class="c1"># Convert to odds and probabilties</span>
-        <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
-        <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
-        <span class="c1"># Get mRS distributions for 50 patients</span>
-        <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
-        <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
-        <span class="c1"># Calculate shift in mRS</span>
-        <span class="n">shift</span> <span class="o">=</span> <span class="n">treated_mrs</span> <span class="o">-</span> <span class="n">untreated_mrs</span>
-        <span class="c1"># Put results in dictionary</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">untreated_mrs</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_mrs</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shift</span>
+        <span class=" -Color -Color-Red"># Get relevant distributions</span>
+        untreated_probs <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_probs<span class=" -Color -Color-Blue">[&#39;no_treatment_lvo&#39;]</span>
+        no_effect_logodds <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds<span class=" -Color -Color-Blue">[</span>
+            <span class=" -Color -Color-Blue">&#39;no_effect_lvo_ivt_deaths&#39;]</span>
+        t0_logodds <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds<span class=" -Color -Color-Blue">[&#39;t0_treatment_lvo_ivt&#39;]</span>
+        <span class=" -Color -Color-Red"># Calculate fraction of time to no effect passed</span>
+        frac_to_no_effect <span class=" -Color -Color-Blue">=</span> time_to_ivt <span class=" -Color -Color-Blue">/</span> self<span class=" -Color -Color-Blue">.</span>ivt_time_no_effect
+        <span class=" -Color -Color-Red"># Combine t=0 and nop effect distributions based on time past</span>
+        treated_logodds <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">((</span>frac_to_no_effect <span class=" -Color -Color-Blue">*</span> no_effect_logodds<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">+</span>
+                           <span class=" -Color -Color-Blue">((</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">-</span> frac_to_no_effect<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">*</span> t0_logodds<span class=" -Color -Color-Blue">))</span>
+        <span class=" -Color -Color-Red"># Convert to odds and probabilties</span>
+        treated_odds <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>exp<span class=" -Color -Color-Blue">(</span>treated_logodds<span class=" -Color -Color-Blue">)</span>
+        treated_probs <span class=" -Color -Color-Blue">=</span> treated_odds <span class=" -Color -Color-Blue">/</span> <span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">+</span> treated_odds<span class=" -Color -Color-Blue">)</span>
+        <span class=" -Color -Color-Red"># Get mRS distributions for 50 patients</span>
+        untreated_mrs <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>digitize<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">,</span> untreated_probs<span class=" -Color -Color-Blue">)</span>
+        treated_mrs <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>digitize<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">,</span> treated_probs<span class=" -Color -Color-Blue">)</span>
+        <span class=" -Color -Color-Red"># Calculate shift in mRS</span>
+        shift <span class=" -Color -Color-Blue">=</span> treated_mrs <span class=" -Color -Color-Blue">-</span> untreated_mrs
+        <span class=" -Color -Color-Red"># Put results in dictionary</span>
+        results <span class=" -Color -Color-Blue">=</span> dict<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;untreated_mrs&#39;]</span> <span class=" -Color -Color-Blue">=</span> untreated_mrs
+        results<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;]</span> <span class=" -Color -Color-Blue">=</span> treated_mrs
+        results<span class=" -Color -Color-Blue">[&#39;shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> shift
 
-        <span class="k">return</span> <span class="n">results</span>
+        <span class=" -Color -Color-Green">return</span> results
 
-    <span class="k">def</span> <span class="nf">calculate_outcomes_for_lvo_mt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Models populations of patients for:</span>
-<span class="sd">        1) Untreated LVO</span>
-<span class="sd">        2) LVO treated with MT at given time</span>
-<span class="sd">        3) Shift in mRS between untreated and treated</span>
+    <span class=" -Color -Color-Green">def</span> calculate_outcomes_for_lvo_mt<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> time_to_mt<span class=" -Color -Color-Blue">,</span> x<span class=" -Color -Color-Blue">):</span>
+        <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Models populations of patients for:</span>
+<span class=" -Color -Color-Blue">        1) Untreated LVO</span>
+<span class=" -Color -Color-Blue">        2) LVO treated with MT at given time</span>
+<span class=" -Color -Color-Blue">        3) Shift in mRS between untreated and treated</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        Time to MT</span>
+<span class=" -Color -Color-Blue">        Inputs:</span>
+<span class=" -Color -Color-Blue">        Time to MT</span>
 
-<span class="sd">        Outputs:</span>
-<span class="sd">        A dictionary of patient population mRS as described above.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Outputs:</span>
+<span class=" -Color -Color-Blue">        A dictionary of patient population mRS as described above.</span>
+<span class=" -Color -Color-Blue">        &quot;&quot;&quot;</span>
 
-        <span class="c1"># Get relevant distributions</span>
-        <span class="n">untreated_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">]</span>
-        <span class="n">no_effect_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span>
-            <span class="s1">&#39;no_effect_lvo_mt_deaths&#39;</span><span class="p">]</span>
-        <span class="n">t0_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_mt&#39;</span><span class="p">]</span>
-        <span class="c1"># Calculate fraction of time to no effect passed</span>
-        <span class="n">frac_to_no_effect</span> <span class="o">=</span> <span class="n">time_to_mt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mt_time_no_effect</span>
-        <span class="c1"># Combine t=0 and nop effect distributions based on time past</span>
-        <span class="n">treated_logodds</span> <span class="o">=</span> <span class="p">((</span><span class="n">frac_to_no_effect</span> <span class="o">*</span> <span class="n">no_effect_logodds</span><span class="p">)</span> <span class="o">+</span>
-                           <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">frac_to_no_effect</span><span class="p">)</span> <span class="o">*</span> <span class="n">t0_logodds</span><span class="p">))</span>
-        <span class="c1"># Convert to odds and probabilties</span>
-        <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
-        <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
-        <span class="c1"># Get mRS distributions for 50 patients</span>
-        <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
-        <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
-        <span class="c1"># Calculate shift in mRS</span>
-        <span class="n">shift</span> <span class="o">=</span> <span class="n">treated_mrs</span> <span class="o">-</span> <span class="n">untreated_mrs</span>
-        <span class="c1"># Put results in dictionary</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">untreated_mrs</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_mrs</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shift</span>
+        <span class=" -Color -Color-Red"># Get relevant distributions</span>
+        untreated_probs <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_probs<span class=" -Color -Color-Blue">[&#39;no_treatment_lvo&#39;]</span>
+        no_effect_logodds <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds<span class=" -Color -Color-Blue">[</span>
+            <span class=" -Color -Color-Blue">&#39;no_effect_lvo_mt_deaths&#39;]</span>
+        t0_logodds <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds<span class=" -Color -Color-Blue">[&#39;t0_treatment_lvo_mt&#39;]</span>
+        <span class=" -Color -Color-Red"># Calculate fraction of time to no effect passed</span>
+        frac_to_no_effect <span class=" -Color -Color-Blue">=</span> time_to_mt <span class=" -Color -Color-Blue">/</span> self<span class=" -Color -Color-Blue">.</span>mt_time_no_effect
+        <span class=" -Color -Color-Red"># Combine t=0 and nop effect distributions based on time past</span>
+        treated_logodds <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">((</span>frac_to_no_effect <span class=" -Color -Color-Blue">*</span> no_effect_logodds<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">+</span>
+                           <span class=" -Color -Color-Blue">((</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">-</span> frac_to_no_effect<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">*</span> t0_logodds<span class=" -Color -Color-Blue">))</span>
+        <span class=" -Color -Color-Red"># Convert to odds and probabilties</span>
+        treated_odds <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>exp<span class=" -Color -Color-Blue">(</span>treated_logodds<span class=" -Color -Color-Blue">)</span>
+        treated_probs <span class=" -Color -Color-Blue">=</span> treated_odds <span class=" -Color -Color-Blue">/</span> <span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">+</span> treated_odds<span class=" -Color -Color-Blue">)</span>
+        <span class=" -Color -Color-Red"># Get mRS distributions for 50 patients</span>
+        untreated_mrs <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>digitize<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">,</span> untreated_probs<span class=" -Color -Color-Blue">)</span>
+        treated_mrs <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>digitize<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">,</span> treated_probs<span class=" -Color -Color-Blue">)</span>
+        <span class=" -Color -Color-Red"># Calculate shift in mRS</span>
+        shift <span class=" -Color -Color-Blue">=</span> treated_mrs <span class=" -Color -Color-Blue">-</span> untreated_mrs
+        <span class=" -Color -Color-Red"># Put results in dictionary</span>
+        results <span class=" -Color -Color-Blue">=</span> dict<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;untreated_mrs&#39;]</span> <span class=" -Color -Color-Blue">=</span> untreated_mrs
+        results<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;]</span> <span class=" -Color -Color-Blue">=</span> treated_mrs
+        results<span class=" -Color -Color-Blue">[&#39;shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> shift
 
-        <span class="k">return</span> <span class="n">results</span>
+        <span class=" -Color -Color-Green">return</span> results
 
-    <span class="k">def</span> <span class="nf">calculate_outcomes_for_nlvo_ivt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Models populations of patients for:</span>
-<span class="sd">        1) Untreated nLVO</span>
-<span class="sd">        2) LVO treated with IVT at given time</span>
-<span class="sd">        3) Shift in mRS between untreated and treated</span>
+    <span class=" -Color -Color-Green">def</span> calculate_outcomes_for_nlvo_ivt<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> time_to_ivt<span class=" -Color -Color-Blue">,</span> x<span class=" -Color -Color-Blue">):</span>
+        <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Models populations of patients for:</span>
+<span class=" -Color -Color-Blue">        1) Untreated nLVO</span>
+<span class=" -Color -Color-Blue">        2) LVO treated with IVT at given time</span>
+<span class=" -Color -Color-Blue">        3) Shift in mRS between untreated and treated</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        Time to IVT</span>
+<span class=" -Color -Color-Blue">        Inputs:</span>
+<span class=" -Color -Color-Blue">        Time to IVT</span>
 
-<span class="sd">        Outputs:</span>
-<span class="sd">        A dictionary of patient population mRS as described above.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">        Outputs:</span>
+<span class=" -Color -Color-Blue">        A dictionary of patient population mRS as described above.</span>
+<span class=" -Color -Color-Blue">        &quot;&quot;&quot;</span>
 
-        <span class="c1"># Get relevant distributions</span>
-        <span class="n">untreated_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_probs</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">]</span>
-        <span class="n">no_effect_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span>
-            <span class="s1">&#39;no_effect_nlvo_ivt_deaths&#39;</span><span class="p">]</span>
-        <span class="n">t0_logodds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mrs_distribution_logodds</span><span class="p">[</span><span class="s1">&#39;t0_treatment_nlvo_ivt&#39;</span><span class="p">]</span>
-        <span class="c1"># Calculate fraction of time to no effect passed</span>
-        <span class="n">frac_to_no_effect</span> <span class="o">=</span> <span class="n">time_to_ivt</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">ivt_time_no_effect</span>
-        <span class="c1"># Combine t=0 and nop effect distributions based on time past</span>
-        <span class="n">treated_logodds</span> <span class="o">=</span> <span class="p">((</span><span class="n">frac_to_no_effect</span> <span class="o">*</span> <span class="n">no_effect_logodds</span><span class="p">)</span> <span class="o">+</span>
-                           <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">frac_to_no_effect</span><span class="p">)</span> <span class="o">*</span> <span class="n">t0_logodds</span><span class="p">))</span>
-        <span class="c1"># Convert to odds and probabilties</span>
-        <span class="n">treated_odds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">treated_logodds</span><span class="p">)</span>
-        <span class="n">treated_probs</span> <span class="o">=</span> <span class="n">treated_odds</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">treated_odds</span><span class="p">)</span>
-        <span class="c1"># Get mRS distributions for 50 patients</span>
-        <span class="n">untreated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">untreated_probs</span><span class="p">)</span>
-        <span class="n">treated_mrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">treated_probs</span><span class="p">)</span>
-        <span class="c1"># Calculate shift in mRS</span>
-        <span class="n">shift</span> <span class="o">=</span> <span class="n">treated_mrs</span> <span class="o">-</span> <span class="n">untreated_mrs</span>
-        <span class="c1"># Put results in dictionary</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;untreated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">untreated_mrs</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;treated_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_mrs</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shift</span>
+        <span class=" -Color -Color-Red"># Get relevant distributions</span>
+        untreated_probs <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_probs<span class=" -Color -Color-Blue">[&#39;no_treatment_nlvo&#39;]</span>
+        no_effect_logodds <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds<span class=" -Color -Color-Blue">[</span>
+            <span class=" -Color -Color-Blue">&#39;no_effect_nlvo_ivt_deaths&#39;]</span>
+        t0_logodds <span class=" -Color -Color-Blue">=</span> self<span class=" -Color -Color-Blue">.</span>mrs_distribution_logodds<span class=" -Color -Color-Blue">[&#39;t0_treatment_nlvo_ivt&#39;]</span>
+        <span class=" -Color -Color-Red"># Calculate fraction of time to no effect passed</span>
+        frac_to_no_effect <span class=" -Color -Color-Blue">=</span> time_to_ivt <span class=" -Color -Color-Blue">/</span> self<span class=" -Color -Color-Blue">.</span>ivt_time_no_effect
+        <span class=" -Color -Color-Red"># Combine t=0 and nop effect distributions based on time past</span>
+        treated_logodds <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">((</span>frac_to_no_effect <span class=" -Color -Color-Blue">*</span> no_effect_logodds<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">+</span>
+                           <span class=" -Color -Color-Blue">((</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">-</span> frac_to_no_effect<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">*</span> t0_logodds<span class=" -Color -Color-Blue">))</span>
+        <span class=" -Color -Color-Red"># Convert to odds and probabilties</span>
+        treated_odds <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>exp<span class=" -Color -Color-Blue">(</span>treated_logodds<span class=" -Color -Color-Blue">)</span>
+        treated_probs <span class=" -Color -Color-Blue">=</span> treated_odds <span class=" -Color -Color-Blue">/</span> <span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">+</span> treated_odds<span class=" -Color -Color-Blue">)</span>
+        <span class=" -Color -Color-Red"># Get mRS distributions for 50 patients</span>
+        untreated_mrs <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>digitize<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">,</span> untreated_probs<span class=" -Color -Color-Blue">)</span>
+        treated_mrs <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>digitize<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">,</span> treated_probs<span class=" -Color -Color-Blue">)</span>
+        <span class=" -Color -Color-Red"># Calculate shift in mRS</span>
+        shift <span class=" -Color -Color-Blue">=</span> treated_mrs <span class=" -Color -Color-Blue">-</span> untreated_mrs
+        <span class=" -Color -Color-Red"># Put results in dictionary</span>
+        results <span class=" -Color -Color-Blue">=</span> dict<span class=" -Color -Color-Blue">()</span>
+        results<span class=" -Color -Color-Blue">[&#39;untreated_mrs&#39;]</span> <span class=" -Color -Color-Blue">=</span> untreated_mrs
+        results<span class=" -Color -Color-Blue">[&#39;treated_mrs&#39;]</span> <span class=" -Color -Color-Blue">=</span> treated_mrs
+        results<span class=" -Color -Color-Blue">[&#39;shift&#39;]</span> <span class=" -Color -Color-Blue">=</span> shift
 
-        <span class="k">return</span> <span class="n">results</span>
+        <span class=" -Color -Color-Green">return</span> results
+<span class=" -Color -Color-Red">File:</span>           ~/stroke_outcome/outcome_utilities/clinical_outcome.py
+<span class=" -Color -Color-Red">Type:</span>           type
+<span class=" -Color -Color-Red">Subclasses:</span>     
 </pre></div>
 </div>
 </div>
