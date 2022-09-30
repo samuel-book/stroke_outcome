@@ -192,7 +192,7 @@ The effect of time to treatment on effectiveness of treatment, shown individuall
 
 
 :::{figure-md} utility_all
-<img src="./images/utility_all.jpg" width="450">
+<img src="./images/matrix_utility_and_mRS.jpg" width="450">
 
 The effect of time to treatment with IVT and MT on a mixed nLVO/LVO population (LVO making up 35% of all treated ischaemic strokes).
 :::
