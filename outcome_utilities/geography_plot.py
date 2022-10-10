@@ -106,9 +106,11 @@ def plot_two_grids_and_diff(grid1, grid2, grid_diff,
 def circle_plot(grid, travel_ivt_to_mt, time_travel_max, time_step_circle, 
                 vmin, vmax, extent=None, circ_linewidth=0.5, imshow=1, 
                 cmap='viridis', 
-                cbar_label='', cbar_format_str=None, n_contour_steps=5,  
+                cbar_label='', cbar_format_str=None, 
+                n_contour_steps=5, levels=[], 
                 ivt_coords=[np.NaN, np.NaN], mt_coords=[np.NaN, np.NaN],
-                return_ax=0, ax=None, cax=None, cbar_orientation=None):
+                return_ax=0, ax=None, cax=None, cbar_orientation=None,
+                cbar_ticks=None):
     """
     
     
@@ -181,25 +183,33 @@ def circle_plot(grid, travel_ivt_to_mt, time_travel_max, time_step_circle,
         # Colourbar:
         if cax==None:
             cbar = plt.colorbar(imshow_grid, ax=ax, label=cbar_label, 
-                                orientation=cbar_orientation)
+                                orientation=cbar_orientation,
+                               ticks=cbar_ticks)
         else:
             cbar = plt.colorbar(imshow_grid, cax=cax, label=cbar_label, 
-                                orientation=cbar_orientation)
+                                orientation=cbar_orientation,
+                               ticks=cbar_ticks)
     else:
+        if len(levels)<1:
+            levels = np.linspace(vmin, vmax, n_contour_steps+1)
         # Draw the grid as usual:
         contours = ax.contourf(grid, origin='lower', 
                                extent=extent, cmap=cmap, 
-                               levels=np.linspace(vmin, vmax, n_contour_steps+1))
+                               levels=levels)
         # Remove everything outside the biggest radiating circle:
         for line in contours.collections:
             line.set_clip_path(circle_patch)
         # Colourbar:
         if cax==None:
             cbar = plt.colorbar(contours, ax=ax, label=cbar_label, 
-                                orientation=cbar_orientation)
+                                orientation=cbar_orientation,
+                                spacing='proportional',
+                                ticks=cbar_ticks)
         else:
             cbar = plt.colorbar(contours, cax=cax, label=cbar_label, 
-                                orientation=cbar_orientation)
+                                orientation=cbar_orientation,
+                                spacing='proportional', ticks=cbar_ticks)
+            
 
     if cbar_format_str != None:
         cbar.ax.set_yticklabels(
@@ -209,7 +219,7 @@ def circle_plot(grid, travel_ivt_to_mt, time_travel_max, time_step_circle,
     # ----- Other setup -----
     ax.set_aspect('equal')
     ax.set_xlim(-time_travel_max*1.02, time_travel_max*1.02)
-    ax.set_ylim(-travel_ivt_to_mt*1.05, time_travel_max*1.02)
+    ax.set_ylim(-travel_ivt_to_mt-15, time_travel_max+15)
     
     ax.set_xlabel('x co-ordinate (time from IVT-only unit, minutes)')
     ax.set_ylabel('y co-ordinate (time from IVT-only unit, minutes)')
