@@ -1215,7 +1215,7 @@ title="Print to PDF"
 
 <span class="n">cbar_labels</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Mean population added utility&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;Difference in mean population added utility&#39;</span>
+    <span class="s1">&#39;Change in population added utility by attending MT unit directly&#39;</span>
     <span class="p">]</span>
 
 <span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span> 
@@ -1280,7 +1280,7 @@ Chosen vmin:        0.005
     <span class="n">grid_utility_diff</span><span class="p">,</span> <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">],</span> 
     <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> <span class="n">vmin_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
     <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-    <span class="n">cbar_label</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Advantage in population added utility &#39;</span><span class="o">+</span>
+    <span class="n">cbar_label</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Change in population added utility</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
                 <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">),</span>
     <span class="n">n_contour_steps</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
     <span class="c1"># cbar_format_str=&#39;{:3.3f}&#39;,</span>
@@ -1307,7 +1307,7 @@ Chosen vmin:        0.005
 
 <span class="n">cbar_labels</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;Mean population reduced mRS&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Difference in mean population reduced mRS&#39;</span>
+    <span class="s1">&#39;Change in mean population reduced mRS by attending MT unit directly&#39;</span><span class="p">,</span>
     <span class="p">]</span>
 
 <span class="n">plot_two_grids_and_diff</span><span class="p">(</span>
@@ -1359,7 +1359,8 @@ Chosen vmin:        -0.03
     <span class="n">grid_mRS_diff</span><span class="p">,</span> <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">],</span> 
     <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> <span class="n">vmin_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
     <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cividis_r&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-    <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Difference in mean population reduced mRS&#39;</span><span class="p">,</span>
+    <span class="n">cbar_label</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Change in mean population reduced mRS</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
+               <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">),</span>
     <span class="c1"># cbar_format_str=&#39;{:3.2f}&#39;, </span>
     <span class="n">n_contour_steps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span>
@@ -1376,76 +1377,360 @@ Chosen vmin:        -0.03
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="combined-circle-plot">
 <h1>Combined circle plot<a class="headerlink" href="#combined-circle-plot" title="Permalink to this headline">#</a></h1>
+<p>Condense this notebook into one cell and make a separate figure for each combination of fixed times:</p>
+<ul class="simple">
+<li><p>Travel time from IVT to MT centre: 30, 60, or 90 mins</p></li>
+<li><p>Onset to ambulance arrival time: 30, 60, or 90 mins</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> 
-    <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;hspace&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;height_ratios&#39;</span><span class="p">:[</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">]})</span>
-<span class="n">ax_time</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">ax_time_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">ax_util</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">ax_util_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">ax_mRS</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">ax_mRS_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_list_travel_ivt_to_mt</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+<span class="n">time_list_onset_to_ambulance_arrival</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="c1">#[30, 60, 90]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_levels_with_zeroish</span><span class="p">(</span><span class="n">level_step</span><span class="p">,</span> <span class="n">vmax</span><span class="p">,</span> <span class="n">zeroish</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">vmin</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+        
+    <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">+</span><span class="n">level_step</span><span class="o">*</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">level_step</span><span class="p">)</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="n">levels</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span><span class="o">&gt;</span><span class="n">zeroish</span><span class="p">)]</span>
+    <span class="n">levels_zero_buffer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">zeroish</span><span class="p">,</span> <span class="n">zeroish</span><span class="p">])</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">levels</span><span class="p">,</span> <span class="n">levels_zero_buffer</span><span class="p">))))</span>
+    <span class="k">return</span> <span class="n">levels</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap_time</span> <span class="o">=</span> <span class="s1">&#39;Reds&#39;</span>
+<span class="c1"># try:</span>
+<span class="c1">#     import cmasher as cmr </span>
+<span class="c1">#     cmap_util = &#39;cmr.viola&#39;</span>
+<span class="c1">#     cmap_mRS = &#39;cmr.viola_r&#39;</span>
+<span class="c1"># except:</span>
+<span class="n">cmap_util</span> <span class="o">=</span> <span class="s1">&#39;bwr_r&#39;</span>
+<span class="n">cmap_mRS</span> <span class="o">=</span> <span class="s1">&#39;bwr&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+
+<span class="c1"># Share levels and colours between all figures. </span>
+<span class="n">vmin_time</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="n">vmax_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">time_list_travel_ivt_to_mt</span><span class="p">)</span>
+
+<span class="c1"># Seems to be some theoretical minimum mRS and maximum utility change:</span>
+<span class="n">vmin_util</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.014</span>
+<span class="n">vmax_util</span> <span class="o">=</span> <span class="mf">0.035</span> 
+<span class="n">vmin_mRS</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.030</span>
+<span class="n">vmax_mRS</span> <span class="o">=</span> <span class="mf">0.150</span>
+
+<span class="n">lin_min_util</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin_util</span><span class="o">/</span><span class="n">vmax_util</span><span class="p">)</span>
+<span class="n">colors_util</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;bwr_r&#39;</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lin_min_util</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colors_util</span><span class="p">)</span>
+<span class="n">cmap_util</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;colormap&#39;</span><span class="p">,</span> <span class="n">colors_util</span><span class="p">)</span>
 
 
-<span class="n">circle_plot</span><span class="p">(</span>
-    <span class="o">-</span><span class="n">grid_time_travel_directly_diff</span><span class="p">,</span> <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">],</span> 
-    <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> <span class="n">vmin_time</span><span class="p">,</span> <span class="n">vmax_time</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-    <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Extra travel time to MT centre&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-    <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span>
-    <span class="n">n_contour_steps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">ax_time</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_time_cbar</span><span class="p">,</span> <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+<span class="n">lin_min_mRS</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmin_mRS</span><span class="o">/</span><span class="n">vmax_mRS</span><span class="p">)</span>
+<span class="n">colors_mRS</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;bwr&#39;</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lin_min_mRS</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">colors_mRS</span><span class="p">)</span>
+<span class="n">cmap_mRS</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;colormap&#39;</span><span class="p">,</span> <span class="n">colors_mRS</span><span class="p">)</span>
 
 
-<span class="c1"># # Draw legend now:</span>
-<span class="c1"># # Mark the treatment centre locations</span>
-<span class="c1"># # at some coordinates we&#39;ll never view: </span>
-<span class="c1"># ax_time.scatter(0, -1e5, marker=&#39;o&#39;, color=&#39;k&#39;, s=50, zorder=5, </span>
-<span class="c1">#            label=&#39;IVT centre&#39;)</span>
-<span class="c1"># ax_time.scatter(0, -1e5, marker=&#39;D&#39;, color=&#39;k&#39;, s=50, </span>
-<span class="c1">#            label=&#39;IVT+MT centre&#39;)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">circle_plot</span><span class="p">(</span>
-    <span class="n">grid_utility_diff</span><span class="p">,</span> <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">],</span> 
-    <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> <span class="n">vmin_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gnuplot&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-    <span class="n">cbar_label</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Change in population added utility</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
-                <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">),</span>
-    <span class="n">n_contour_steps</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
-    <span class="c1"># cbar_format_str=&#39;{:3.3f}&#39;,</span>
-    <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">ax_util</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_util_cbar</span><span class="p">,</span> <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
-
-<span class="n">circle_plot</span><span class="p">(</span>
-    <span class="n">grid_mRS_diff</span><span class="p">,</span> <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">],</span> 
-    <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> <span class="n">vmin_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
-    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis_r&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
-    <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Change in mean population reduced mRS</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
-                <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">,</span>
-    <span class="c1"># cbar_format_str=&#39;{:3.2f}&#39;, </span>
-    <span class="n">n_contour_steps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">ax_mRS</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_mRS_cbar</span><span class="p">,</span> <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+<span class="n">colors_time</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;bwr&#39;</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+<span class="n">cmap_time</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;colormap&#39;</span><span class="p">,</span> <span class="n">colors_time</span><span class="p">)</span>
 
 
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax_time</span><span class="p">,</span> <span class="n">ax_util</span><span class="p">,</span> <span class="n">ax_mRS</span><span class="p">]:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-    <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">time_travel_max</span><span class="o">*</span><span class="mf">1.02</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/circle_plots.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bwr_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_util</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_mRS</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lin_min_util</span><span class="p">,</span> <span class="n">lin_min_mRS</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/geography_82_0.png" src="_images/geography_82_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.         0.59607843 0.59607843 1.        ]
+ [1.         0.60392157 0.60392157 1.        ]
+ [1.         0.61176471 0.61176471 1.        ]
+ ...
+ [0.00784314 0.00784314 1.         1.        ]
+ [0.         0.         1.         1.        ]
+ [0.         0.         1.         1.        ]]
+[[0.8        0.8        1.         1.        ]
+ [0.80784314 0.80784314 1.         1.        ]
+ [0.80784314 0.80784314 1.         1.        ]
+ ...
+ [1.         0.00784314 0.00784314 1.        ]
+ [1.         0.         0.         1.        ]
+ [1.         0.         0.         1.        ]]
+</pre></div>
+</div>
+<img alt="_images/geography_86_1.png" src="_images/geography_86_1.png" />
+<img alt="_images/geography_86_2.png" src="_images/geography_86_2.png" />
+<img alt="_images/geography_86_3.png" src="_images/geography_86_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30000000000000004 0.4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define contour levels:</span>
+<span class="c1"># vmax_abs_util = np.max(np.abs([vmin_util, vmax_util]))</span>
+<span class="n">level_step_util</span> <span class="o">=</span> <span class="mf">0.007</span>
+<span class="n">levels_util</span> <span class="o">=</span> <span class="n">make_levels_with_zeroish</span><span class="p">(</span><span class="n">level_step_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="p">,</span> <span class="n">zeroish</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin_util</span><span class="p">)</span>
+
+<span class="c1"># vmax_abs_mRS = np.max(np.abs([vmin_mRS, vmax_mRS]))</span>
+<span class="c1"># vmax_abs_mRS = np.max(np.abs([vmin_mRS, vmax_mRS]))</span>
+<span class="n">level_step_mRS</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">levels_mRS</span> <span class="o">=</span> <span class="n">make_levels_with_zeroish</span><span class="p">(</span><span class="n">level_step_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="p">,</span> <span class="n">zeroish</span><span class="o">=</span><span class="mf">2e-3</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin_mRS</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">levels_util</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">levels_mRS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.014  -0.007  -0.0005  0.0005  0.007   0.014   0.021   0.028   0.035 ]
+[-0.03  -0.002  0.002  0.03   0.06   0.09   0.12   0.15 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">time_travel_ivt_to_mt</span> <span class="ow">in</span> <span class="n">time_list_travel_ivt_to_mt</span><span class="p">:</span>
+        
+    <span class="c1"># Recalculate some values: </span>
+    <span class="n">ivt_coords</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">mt_coords</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">time_travel_ivt_to_mt</span><span class="p">]</span>
+
+    <span class="c1"># Only calculate travel times up to this x or y displacement:</span>
+    <span class="n">time_travel_max</span> <span class="o">=</span> <span class="n">time_travel_ivt_to_mt</span><span class="c1">#100</span>
+
+    <span class="c1"># Change how granular the grid is. </span>
+    <span class="n">grid_step</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># minutes</span>
+
+    <span class="c1"># Make the grid a bit larger than the max travel time: </span>
+    <span class="n">grid_xy_max</span> <span class="o">=</span> <span class="n">time_travel_max</span> <span class="o">+</span> <span class="n">grid_step</span><span class="o">*</span><span class="mi">2</span>
+
+    <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">=</span> <span class="n">make_time_grid</span><span class="p">(</span>
+        <span class="n">grid_xy_max</span><span class="p">,</span> <span class="n">grid_step</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_offset</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">grid_time_travel_directly_to_mt</span> <span class="o">=</span> <span class="n">make_time_grid</span><span class="p">(</span>
+        <span class="n">grid_xy_max</span><span class="p">,</span> <span class="n">grid_step</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_offset</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">grid_time_travel_directly_diff</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">-</span> <span class="n">grid_time_travel_directly_to_mt</span><span class="p">)</span>
+
+    <span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> 
+              <span class="o">+</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> 
+              <span class="o">-</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> 
+              <span class="o">+</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">]</span> 
+    
+    <span class="n">grid_mask</span> <span class="o">=</span> <span class="n">find_mask_within_flattened_circle</span><span class="p">(</span>
+        <span class="n">grid_time_travel_directly_diff</span><span class="p">,</span> 
+        <span class="n">grid_time_travel_directly_to_ivt</span><span class="p">,</span> 
+        <span class="n">time_travel_max</span><span class="p">)</span>
+    <span class="n">coords_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">grid_mask</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span>
+        
+    <span class="k">for</span> <span class="n">time_onset_to_ambulance_arrival</span> <span class="ow">in</span> <span class="p">(</span>
+        <span class="n">time_list_onset_to_ambulance_arrival</span><span class="p">):</span>
+
+        <span class="c1"># Define new time grids: </span>
+        <span class="n">grid_time_ivt_at_ivtcentre</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">time_onset_to_ambulance_arrival</span> <span class="o">+</span> 
+            <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="n">grid_time_ivt_at_ivt_then_mt_at_mtcentre</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">time_onset_to_ambulance_arrival</span> <span class="o">+</span> 
+            <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;transfer_additional_delay&#39;</span><span class="p">]</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">]</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;mt_arrival_to_treatment&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="n">grid_time_ivt_at_mtcentre</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">time_onset_to_ambulance_arrival</span> <span class="o">+</span> 
+            <span class="n">grid_time_travel_directly_to_mt</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="n">grid_time_ivt_then_mt_at_mtcentre</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">time_onset_to_ambulance_arrival</span> <span class="o">+</span> 
+            <span class="n">grid_time_travel_directly_to_mt</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span> <span class="o">+</span> 
+            <span class="n">fixed_times</span><span class="p">[</span><span class="s1">&#39;mt_arrival_to_treatment&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+        
+        <span class="c1"># Grids of changed outcomes</span>
+        
+        <span class="c1"># Case 1: IVT at the IVT centre, then MT at the IVT/MT centre</span>
+        <span class="n">grid_utility_case1</span><span class="p">,</span> <span class="n">grid_mRS_case1</span> <span class="o">=</span> <span class="n">find_grid_outcomes</span><span class="p">(</span>
+            <span class="n">outcome_model</span><span class="p">,</span>
+            <span class="n">grid_time_ivt_at_ivtcentre</span><span class="p">,</span> 
+            <span class="n">grid_time_ivt_at_ivt_then_mt_at_mtcentre</span><span class="p">,</span> 
+            <span class="n">patient_props</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Case 2: IVT at the IVT/MT centre, then MT at IVT/MT centre</span>
+        <span class="n">grid_utility_case2</span><span class="p">,</span> <span class="n">grid_mRS_case2</span> <span class="o">=</span> <span class="n">find_grid_outcomes</span><span class="p">(</span>
+            <span class="n">outcome_model</span><span class="p">,</span>
+            <span class="n">grid_time_ivt_at_mtcentre</span><span class="p">,</span> 
+            <span class="n">grid_time_ivt_then_mt_at_mtcentre</span><span class="p">,</span> 
+            <span class="n">patient_props</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Difference between them:</span>
+        <span class="n">grid_utility_diff</span> <span class="o">=</span> <span class="n">grid_utility_case2</span> <span class="o">-</span> <span class="n">grid_utility_case1</span>
+        <span class="n">grid_mRS_diff</span>     <span class="o">=</span> <span class="n">grid_mRS_case2</span>     <span class="o">-</span> <span class="n">grid_mRS_case1</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time of travel from IVT to MT: </span><span class="si">{</span><span class="n">time_travel_ivt_to_mt</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time from onset to ambulance arrival: </span><span class="si">{</span><span class="n">time_onset_to_ambulance_arrival</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+
+        <span class="c1"># Plotting!  </span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> 
+        <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;hspace&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;height_ratios&#39;</span><span class="p">:[</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">]})</span>
+        <span class="n">ax_time</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ax_time_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ax_util</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">ax_util_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">ax_mRS</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">ax_mRS_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+
+
+        <span class="n">circle_plot</span><span class="p">(</span>
+            <span class="o">-</span><span class="n">grid_time_travel_directly_diff</span><span class="p">,</span> <span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> 
+            <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> <span class="n">vmin_time</span><span class="p">,</span> <span class="n">vmax_time</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+            <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Extra travel time to MT centre&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+            <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_time</span><span class="p">,</span>
+            <span class="n">n_contour_steps</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax_time</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_time_cbar</span><span class="p">,</span> <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Draw legend now:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">circle_plot</span><span class="p">(</span>
+            <span class="n">grid_utility_diff</span><span class="p">,</span> <span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> 
+            <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> 
+            <span class="n">vmin_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_util</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+            <span class="n">cbar_label</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Change in population added utility</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
+                        <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">),</span>
+            <span class="n">levels</span><span class="o">=</span><span class="n">levels_util</span><span class="p">,</span>
+            <span class="c1"># n_contour_steps = 10, </span>
+            <span class="c1"># cbar_format_str=&#39;{:3.3f}&#39;,</span>
+            <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax_util</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_util_cbar</span><span class="p">,</span> <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+            <span class="n">cbar_ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">vmin_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="o">+</span><span class="n">level_step_util</span><span class="p">,</span> <span class="n">level_step_util</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ax_util_cbar</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+            <span class="n">tick</span><span class="o">.</span><span class="n">set_rotation</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+        <span class="n">circle_plot</span><span class="p">(</span>
+            <span class="n">grid_mRS_diff</span><span class="p">,</span> <span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> 
+            <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">time_step_circle</span><span class="p">,</span> 
+            <span class="n">vmin_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="p">,</span> <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_mRS</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+            <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Change in mean population reduced mRS</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
+                        <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">,</span>
+            <span class="c1"># cbar_format_str=&#39;{:3.2f}&#39;, </span>
+            <span class="n">levels</span><span class="o">=</span><span class="n">levels_mRS</span><span class="p">,</span> <span class="c1"># </span>
+            <span class="c1"># n_contour_steps=17,</span>
+            <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax_mRS</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_mRS_cbar</span><span class="p">,</span> <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+            <span class="n">cbar_ticks</span><span class="o">=</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">vmin_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="o">+</span><span class="n">level_step_mRS</span><span class="p">,</span> <span class="n">level_step_mRS</span><span class="p">))</span>
+        
+
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax_time</span><span class="p">,</span> <span class="n">ax_util</span><span class="p">,</span> <span class="n">ax_mRS</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+            <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+            <span class="c1"># ax.set_ylim(-fixed_times[&#39;travel_ivt_to_mt&#39;]*1.1, time_travel_max*1.02)</span>
+            <span class="c1"># ax.set_ylim(-time_travel_ivt_to_mt-15, time_travel_ivt_to_mt+15)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">90</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
+
+        <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;circle_plots&#39;</span><span class="o">+</span>
+            <span class="sa">f</span><span class="s1">&#39;_t-IVT-to-MT=</span><span class="si">{</span><span class="n">time_travel_ivt_to_mt</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">+</span>
+            <span class="sa">f</span><span class="s1">&#39;_t-onset-to-ambo=</span><span class="si">{</span><span class="n">time_onset_to_ambulance_arrival</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/&#39;</span><span class="o">+</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:276: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:316: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:356: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------
+Time of travel from IVT to MT: 30
+Time from onset to ambulance arrival: 60
+</pre></div>
+</div>
+<img alt="_images/geography_88_2.png" src="_images/geography_88_2.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:276: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:316: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:356: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------
+Time of travel from IVT to MT: 60
+Time from onset to ambulance arrival: 60
+</pre></div>
+</div>
+<img alt="_images/geography_88_5.png" src="_images/geography_88_5.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:276: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:316: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+/home/anna/stroke_outcome/outcome_utilities/clinical_outcome.py:356: RuntimeWarning: invalid value encountered in true_divide
+  treated_probs = treated_odds / (1 + treated_odds)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------
+Time of travel from IVT to MT: 90
+Time from onset to ambulance arrival: 60
+</pre></div>
+</div>
+<img alt="_images/geography_88_8.png" src="_images/geography_88_8.png" />
 </div>
 </div>
 </section>
