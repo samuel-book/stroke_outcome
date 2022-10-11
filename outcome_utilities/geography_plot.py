@@ -9,6 +9,7 @@ import matplotlib.gridspec as gridspec
 # For circle_plot:
 from matplotlib.path    import Path
 from matplotlib.patches import PathPatch
+from matplotlib import colors
 
 def plot_two_grids_and_diff(grid1, grid2, grid_diff,
         titles=['','',''], cbar_labels=['',''], extent=None, 
@@ -271,3 +272,51 @@ def find_mask_within_flattened_circle(grid_diff, grid_ivt, time_travel_max):
 
 
 
+def make_levels_with_zeroish(level_step, vmax, zeroish=5e-3, vmin=None):
+    """
+    Make levels for plotting contours and include a small one at zero. 
+    
+    "zero" block is actually between +/- zeroish. 
+    """
+    if vmin==None:
+        vmin = -vmax
+    # Define contour levels as usual: 
+    levels = np.arange(vmin, vmax+level_step*0.9, level_step)
+    # Remove anything that falls within our new zero block:
+    levels = levels[np.where(np.abs(levels)>zeroish)]
+    # Add the zero levels into the array: 
+    levels_zero_buffer = np.array([-zeroish, zeroish])
+    levels = np.unique(np.sort(np.concatenate((levels, levels_zero_buffer))))
+    return levels
+
+
+def make_new_cmap_diverging(vmin, vmax, cmap_base, colour_middle=[1,1,1,1], 
+                            cmap_name='colourmap'):
+    """
+    Make a new diverging colourmap with an offset centre value.
+    
+    Typically base the new cmap on bwr, blue-white-red, and set more 
+    of the central values to be pure white. Then instead of sampling 
+    colours from too near the centre which are too close to white, 
+    start sampling from a little way out (0.45 and 0.55). 
+    
+    This assumes that vmin<0, vmax>0, and abs(vmax)>abs(vmin).
+    """
+    # For the bottom half, sample from the middle out to some 
+    # proportion lin_min. e.g. if abs(vmin)=0.5abs(vmax) then want to 
+    # span half of the possible values. 
+    lin_min = 0.45 - 0.45*abs(vmin/vmax)
+    sample_bot = np.linspace(lin_min, 0.45, int(256*abs(vmin/vmax)))
+    # For the top half, sample all values in this section.
+    sample_top = np.linspace(0.55, 1.0, 256)
+    # Sample colours from the input colour map: 
+    colours_bot = plt.get_cmap(cmap_base)(sample_bot)
+    colours_top = plt.get_cmap(cmap_base)(sample_top)
+    # Join the lists. Leave out a few values from the bottom and 
+    # top samples and replace them with just plain white 
+    # (or chosen colour_middle).
+    colours = np.concatenate(
+        (colours_bot[:-5], [colour_middle]*10, colours_top[5:]))
+    # Turn this list of colours into a colourmap:
+    cmap = colors.LinearSegmentedColormap.from_list(cmap_name, colours)
+    return cmap
