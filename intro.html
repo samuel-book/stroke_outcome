@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset" href="mRS_datasets_full.html" />
+    <link rel="next" title="Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset" href="01_mRS_datasets_full.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,38 +109,33 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="mRS_datasets_full.html">
+  <a class="reference internal" href="01_mRS_datasets_full.html">
    Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="mRS_outcomes_maths.html">
+  <a class="reference internal" href="02_mRS_outcomes_maths.html">
    Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="demo_of_outcome_model.html">
+  <a class="reference internal" href="03_demo_of_outcome_model.html">
    Example output from stroke outcome model
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="matrix.html">
+  <a class="reference internal" href="04_matrix.html">
    Demonstration of added utility depending on time to IVT and MT
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="geography.html">
+  <a class="reference internal" href="05_geography.html">
    Distance-based treatment effects
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="show_outcome_model_code.html">
+  <a class="reference internal" href="06_show_outcome_model_code.html">
    Show outcome model python code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="proportion_ischaemic_with_lvo.html">
-   Proportion of ischaemic patients with LVO
   </a>
  </li>
 </ul>
@@ -697,7 +692,7 @@ title="Print to PDF"
 <p>Until now, modelling the outcome from stroke reperfusion treatment was a dichotomous affair, with a patient classified as either being disability free, or with stroke related disabilities. The method described here aims to provide a more granular disability outcome, describing the resulting disability as one of six levels (ranging from disability free, to death).</p>
 <p>This method calculates disability outcome estimates for three patient-treatment cohorts: 1) nLVO-IVT (patients with an nLVO that are treated with IVT), 2) LVO-IVT (patients with an LVO that are treated with IVT), 3) LVO-MT (patients with an LVO that are treated with MT). The result is provided as a distribution of disability (with six levels) following reperfusion treatment at any point between these two time stages: 1) receiving reperfusion treatment as soon as their stroke began (this will be referred to as time of stroke onset, and we will use the terminology “<em>t = 0</em>”), and 2) receiving reperfusion treatment at the duration after stroke onset where the treatment has no effect (this will be referred to as time of no effect, and we will use the terminology “<em>t = No Effect</em>”).</p>
 <p>The method is built using data from reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (<em>t = 0</em> &amp; <em>t = No Effect</em>), and we use interpolation to determine the disability distribution at any point inbetween.</p>
-<p>Detailed methodology and code are found in the notebooks on <a class="reference internal" href="mRS_datasets_full.html"><span class="doc std std-doc">derivation of mRS distributions</span></a> and <a class="reference internal" href="mRS_outcomes_maths.html"><span class="doc std std-doc">decay of effect over time</span></a>.</p>
+<p>Detailed methodology and code are found in the notebooks on <span class="xref myst">derivation of mRS distributions</span> and <span class="xref myst">decay of effect over time</span>.</p>
 <section id="modified-rankin-scale">
 <h2>Modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this headline">#</a></h2>
 <p>Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke.</p>
@@ -853,7 +848,7 @@ title="Print to PDF"
 </section>
 <section id="note-on-comparator-control-groups">
 <h2>Note on comparator control groups<a class="headerlink" href="#note-on-comparator-control-groups" title="Permalink to this headline">#</a></h2>
-<p>In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the <a class="reference internal" href="mRS_datasets_full.html"><span class="doc std std-doc">derivation of mRS distributions</span></a> notebook.</p>
+<p>In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the <span class="xref myst">derivation of mRS distributions</span> notebook.</p>
 </section>
 <section id="utility-weighted-mrs-outcomes">
 <h2>Utility-weighted mRS outcomes<a class="headerlink" href="#utility-weighted-mrs-outcomes" title="Permalink to this headline">#</a></h2>
@@ -1029,7 +1024,7 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="mRS_datasets_full.html" title="next page">
+    <a class='right-next' id="next-link" href="01_mRS_datasets_full.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</p>
