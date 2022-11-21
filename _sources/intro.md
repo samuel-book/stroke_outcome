@@ -10,7 +10,7 @@ This method calculates disability outcome estimates for three patient-treatment 
 
 The method is built using data from reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (*t = 0* & *t = No Effect*), and we use interpolation to determine the disability distribution at any point inbetween. 
 
-Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./02_mRS_datasets_full.ipynb) and [decay of effect over time](./02_mRS_outcomes_maths).
+Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./01_mRS_datasets_full.ipynb) and [decay of effect over time](./02_mRS_outcomes_maths).
 
 ## Modified Rankin Scale
 
@@ -77,7 +77,7 @@ Here we use a line plot to show the expected mRS distribution for nLVO strokes i
 The modelled decay of effects of IVT for nLVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} nLVO_IVT_time
-<img src="./images/.probs_with_time_nLVO treated with IVTjpg" width="600">
+<img src="./images/.probs_with_time_nLVO_treated_with_IVT.jpg" width="600">
 
 Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.
 :::
