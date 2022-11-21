@@ -208,7 +208,7 @@ Figure {numref}`{number} <treatment_shift>` shows the effect of thrombectomy del
 * Patient #5 (P=0.9): mRS untreated = 6, mRS treated = 6
 
 :::{figure-md} treatment_shift
-<img src="./images/treatment_shift.jpg" width="450">
+<img src="./images/treatment_shift.jpg" width="600">
 
 The predicted effect of treatment of a selection of five patients with LVO, given thrombectomy at 120 mins after stroke. The dotted lines represent the mRS shift for each patient if they received no treatment (top), or received MT at 120 minutes after stroke onset (bottom).
 :::
