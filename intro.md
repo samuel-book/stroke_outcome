@@ -10,7 +10,7 @@ This method calculates disability outcome estimates for three patient-treatment 
 
 The method is built using data from reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (*t = 0* & *t = No Effect*), and we use interpolation to determine the disability distribution at any point inbetween. 
 
-Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./mRS_datasets_full.ipynb) and [decay of effect over time](./mRS_outcomes_maths).
+Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./01_mRS_datasets_full.ipynb) and [decay of effect over time](./02_mRS_outcomes_maths).
 
 ## Modified Rankin Scale
 
@@ -77,7 +77,7 @@ Here we use a line plot to show the expected mRS distribution for nLVO strokes i
 The modelled decay of effects of IVT for nLVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} nLVO_IVT_time
-<img src="./images/.probs_with_time_nLVO treated with IVTjpg" width="600">
+<img src="./images/probs_with_time_nLVO_treated_with_IVT.jpg" width="600">
 
 Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.
 :::
@@ -117,7 +117,7 @@ Here we use a line plot to show the expected mRS distribution for LVO strokes if
 The modelled decay of effects of IVT for LVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} LVO_IVT_time
-<img src="./images/probs_with_time_LVO treated with IVT.jpg" width="600">
+<img src="./images/probs_with_time_LVO_treated_with_IVT.jpg" width="600">
 
 Expected mRS distribution for LVO strokes depending on time to treatment with IVT.
 :::
@@ -147,7 +147,7 @@ We assume that patients treated at *t = No Effect* will have the same mRS distri
 Here we use a block plot to show the expected mRS distribution for LVO strokes if MT is given at either time of stroke onset (*t = 0*, upper plot) or time when the effect of treatment has decayed to zero (*t = No Effect*, lower plot), shown in {numref}`figure {number} <LVO_MT_dist>`. 
 
 :::{figure-md} LVO_MT_dist
-<img src="./images/probs_with_time_LVO treated with MT.jpg" width="600">
+<img src="./images/dist_bars_LVO_treated_with_MT.jpg" width="600">
 
 Expected mRS distribution for LVO strokes if MT given at time of stroke onset (*t = 0*), or if MT given at time when there effect has decayed to zero (*t = No Effect*. Both distributions include MT-related excess deaths.
 :::
@@ -159,14 +159,14 @@ Here we use a line plot to show the expected mRS distribution if MT is given at 
 The modelled decay of effects of MT are shown in {numref}`figure {number} <LVO_MT_time>`. 
 
 :::{figure-md} LVO_MT_time
-<img src="./images/prob_with_time_lvo_mt.jpg" width="600">
+<img src="./images/probs_with_time_LVO_treated_with_MT.jpg" width="600">
 
 Expected mRS distribution for LVO strokes depending on time to treatment with MT.
 :::
 
 ## Note on comparator control groups
 
-In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the [derivation of mRS distributions](./mRS_datasets_full.ipynb) notebook.
+In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the [derivation of mRS distributions](./01_mRS_datasets_full.ipynb) notebook.
 
 ## Utility-weighted mRS outcomes
 
