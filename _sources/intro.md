@@ -77,7 +77,7 @@ Here we use a line plot to show the expected mRS distribution for nLVO strokes i
 The modelled decay of effects of IVT for nLVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} nLVO_IVT_time
-<img src="./images/.probs_with_time_nLVO_treated_with_IVT.jpg" width="600">
+<img src="./images/probs_with_time_nLVO_treated_with_IVT.jpg" width="600">
 
 Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.
 :::
