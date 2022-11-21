@@ -10,7 +10,7 @@ This method calculates disability outcome estimates for three patient-treatment 
 
 The method is built using data from reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (*t = 0* & *t = No Effect*), and we use interpolation to determine the disability distribution at any point inbetween. 
 
-Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./mRS_datasets_full.ipynb) and [decay of effect over time](./mRS_outcomes_maths).
+Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./02_mRS_datasets_full.ipynb) and [decay of effect over time](./02_mRS_outcomes_maths).
 
 ## Modified Rankin Scale
 
@@ -166,7 +166,7 @@ Expected mRS distribution for LVO strokes depending on time to treatment with MT
 
 ## Note on comparator control groups
 
-In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the [derivation of mRS distributions](./mRS_datasets_full.ipynb) notebook.
+In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the [derivation of mRS distributions](./01_mRS_datasets_full.ipynb) notebook.
 
 ## Utility-weighted mRS outcomes
 
