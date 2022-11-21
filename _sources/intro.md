@@ -77,7 +77,7 @@ Here we use a line plot to show the expected mRS distribution for nLVO strokes i
 The modelled decay of effects of IVT for nLVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} nLVO_IVT_time
-<img src="./images/prob_with_time_nlvo_ivt.jpg" width="600">
+<img src="./images/.probs_with_time_nLVO treated with IVTjpg" width="600">
 
 Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.
 :::
@@ -117,7 +117,7 @@ Here we use a line plot to show the expected mRS distribution for LVO strokes if
 The modelled decay of effects of IVT for LVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} LVO_IVT_time
-<img src="./images/prob_with_time_lvo_ivt.jpg" width="600">
+<img src="./images/probs_with_time_LVO treated with IVT.jpg" width="600">
 
 Expected mRS distribution for LVO strokes depending on time to treatment with IVT.
 :::
@@ -147,7 +147,7 @@ We assume that patients treated at *t = No Effect* will have the same mRS distri
 Here we use a block plot to show the expected mRS distribution for LVO strokes if MT is given at either time of stroke onset (*t = 0*, upper plot) or time when the effect of treatment has decayed to zero (*t = No Effect*, lower plot), shown in {numref}`figure {number} <LVO_MT_dist>`. 
 
 :::{figure-md} LVO_MT_dist
-<img src="./images/dist_bars_LVO_treated_with_MT.jpg" width="600">
+<img src="./images/probs_with_time_LVO treated with MT.jpg" width="600">
 
 Expected mRS distribution for LVO strokes if MT given at time of stroke onset (*t = 0*), or if MT given at time when there effect has decayed to zero (*t = No Effect*. Both distributions include MT-related excess deaths.
 :::

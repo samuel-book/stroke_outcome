@@ -704,9 +704,29 @@ The straight line has a formula <span class="math notranslate nohighlight">\(\lo
 <p>The maths in this notebook will end up producing the following relations between time to treatment and the probability of each mRS bin.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">outcome_utilities.plot_probs_with_time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.plot_probs_with_time</span> <span class="kn">import</span> <span class="n">plot_three</span> 
+
+<span class="n">plot_three</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mRS_outcomes_maths_6_0.png" src="_images/mRS_outcomes_maths_6_0.png" />
+</div>
+</div>
+<p>The same plots, but on separate figures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.plot_probs_with_time</span> <span class="kn">import</span> <span class="n">plot_indiv</span>
+
+<span class="n">plot_indiv</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mRS_outcomes_maths_8_0.png" src="_images/mRS_outcomes_maths_8_0.png" />
+<img alt="_images/mRS_outcomes_maths_8_1.png" src="_images/mRS_outcomes_maths_8_1.png" />
+<img alt="_images/mRS_outcomes_maths_8_2.png" src="_images/mRS_outcomes_maths_8_2.png" />
 </div>
 </div>
 </section>
@@ -906,7 +926,7 @@ $<span class="math notranslate nohighlight">\(O(\mathrm{mRS}\leq6) = \frac{P(\ma
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_outcomes_maths_29_0.png" src="_images/mRS_outcomes_maths_29_0.png" />
+<img alt="_images/mRS_outcomes_maths_31_0.png" src="_images/mRS_outcomes_maths_31_0.png" />
 </div>
 </div>
 <p>Now, for each graph we need to connect the two sets of data at <span class="math notranslate nohighlight">\(t=0\)</span> and the no-effect time by finding out how probability, odds and log(odds) vary with time.</p>
@@ -1069,7 +1089,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_outcomes_maths_43_0.png" src="_images/mRS_outcomes_maths_43_0.png" />
+<img alt="_images/mRS_outcomes_maths_45_0.png" src="_images/mRS_outcomes_maths_45_0.png" />
 </div>
 </div>
 <p><strong>Success!</strong> We started with the data at t=0 and t=<span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span> (8 hours) and have calculated the lines in between.</p>
@@ -1111,7 +1131,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_outcomes_maths_48_0.png" src="_images/mRS_outcomes_maths_48_0.png" />
+<img alt="_images/mRS_outcomes_maths_50_0.png" src="_images/mRS_outcomes_maths_50_0.png" />
 </div>
 </div>
 <p>The bend of <span class="math notranslate nohighlight">\(P(v)\)</span> changes at <span class="math notranslate nohighlight">\(v=0\)</span>, where <span class="math notranslate nohighlight">\(P(v)=0.5\)</span>. The <span class="math notranslate nohighlight">\(P(\mathrm{mRS})\)</span> lines are different shapes because some of them show mostly the <span class="math notranslate nohighlight">\(v&gt;0\)</span> curve (i.e. mRS=0,1), and the rest the <span class="math notranslate nohighlight">\(v&lt;0\)</span> part (i.e. mRS<span class="math notranslate nohighlight">\(\geq\)</span>2). This can be viewed as the <span class="math notranslate nohighlight">\(v\)</span>-axis here being offset to the right in the <span class="math notranslate nohighlight">\(P(t)\)</span> plots above. The size of the offset is different for each mRS line.</p>
@@ -1166,7 +1186,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_outcomes_maths_50_0.png" src="_images/mRS_outcomes_maths_50_0.png" />
+<img alt="_images/mRS_outcomes_maths_52_0.png" src="_images/mRS_outcomes_maths_52_0.png" />
 </div>
 </div>
 <p>Note that the scattered points above at <span class="math notranslate nohighlight">\(t=t_k\)</span> all share a probability <span class="math notranslate nohighlight">\(P(t=t_k)=0.5\)</span>.</p>
@@ -1282,7 +1302,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_outcomes_maths_66_0.png" src="_images/mRS_outcomes_maths_66_0.png" />
+<img alt="_images/mRS_outcomes_maths_68_0.png" src="_images/mRS_outcomes_maths_68_0.png" />
 </div>
 </div>
 <p>For the palest line, changing <em>A</em> has fixed the probability line in the right spot at time zero. However, the line is currently nowhere near the data point at the no-effect time. To fix this, we have to change the value of <em>b</em>.</p>
@@ -1307,7 +1327,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mRS_outcomes_maths_68_0.png" src="_images/mRS_outcomes_maths_68_0.png" />
+<img alt="_images/mRS_outcomes_maths_70_0.png" src="_images/mRS_outcomes_maths_70_0.png" />
 </div>
 </div>
 <p>Each line has a different slope because of the changed <em>b</em>, but also a different x-offset - the lines cross <span class="math notranslate nohighlight">\(P(t)=0.5\)</span> at different times. The darkest line uses the only combination of <em>A</em> and <em>b</em> that will pass through both data points simultaneously.</p>
