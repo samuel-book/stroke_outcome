@@ -48,57 +48,117 @@ def plot_probs_filled(A,b,times_mins, colour_list=[],
 
     ax.set_title(title)
 
-# Load mRS distributions from file: 
-mrs_dists_cumsum = pd.read_csv('./outcome_utilities/mrs_dist_probs_cumsum.csv', 
-    index_col='Stroke type')
-mrs_dists_bins = pd.read_csv('./outcome_utilities/mrs_dist_probs_bins.csv', 
-    index_col='Stroke type')
 
-t0_treatment_strings = [
-    't0_treatment_nlvo_ivt',
-    't0_treatment_lvo_ivt',
-    't0_treatment_lvo_mt',
-]
-no_effect_strings = [
-    'no_effect_nlvo_ivt_deaths',
-    'no_effect_lvo_ivt_deaths',
-    'no_effect_lvo_mt_deaths',
-]
+def plot_three():
+    # Load mRS distributions from file: 
+    mrs_dists_cumsum = pd.read_csv('./outcome_utilities/mrs_dist_probs_cumsum.csv', 
+        index_col='Stroke type')
+    mrs_dists_bins = pd.read_csv('./outcome_utilities/mrs_dist_probs_bins.csv', 
+        index_col='Stroke type')
 
-titles = [
-    'nLVO treated with IVT',
-    'LVO treated with IVT',
-    'LVO treated with MT',
-]
+    t0_treatment_strings = [
+        't0_treatment_nlvo_ivt',
+        't0_treatment_lvo_ivt',
+        't0_treatment_lvo_mt',
+    ]
+    no_effect_strings = [
+        'no_effect_nlvo_ivt_deaths',
+        'no_effect_lvo_ivt_deaths',
+        'no_effect_lvo_mt_deaths',
+    ]
 
-# Define maximum treatment times:
-time_no_effect_ivt = int(6.3*60)   # minutes
-time_no_effect_mt = int(8*60)      # minutes
+    titles = [
+        'nLVO treated with IVT',
+        'LVO treated with IVT',
+        'LVO treated with MT',
+    ]
 
-fig, axs = plt.subplots(1,3, figsize=(15,4), gridspec_kw={'wspace':0.4})
+    # Define maximum treatment times:
+    time_no_effect_ivt = int(6.3*60)   # minutes
+    time_no_effect_mt = int(8*60)      # minutes
 
-for i in range(3):
-    time_no_effect = (
-        time_no_effect_mt if 'mt' in t0_treatment_strings[i] 
-        else time_no_effect_ivt)
-    times_to_plot = np.linspace(0, time_no_effect, 20)
+    fig, axs = plt.subplots(1,3, figsize=(15,4), gridspec_kw={'wspace':0.4})
 
-    dist_cumsum_t0_treatment = \
-        mrs_dists_cumsum.loc[t0_treatment_strings[i]].values
-    dist_cumsum_no_effect = mrs_dists_cumsum.loc[no_effect_strings[i]].values
+    for i in range(3):
+        time_no_effect = (
+            time_no_effect_mt if 'mt' in t0_treatment_strings[i] 
+            else time_no_effect_ivt)
+        times_to_plot = np.linspace(0, time_no_effect, 20)
 
-    a_list, b_list, A_list = find_mrs_constants(
-        dist_cumsum_t0_treatment, dist_cumsum_no_effect, time_no_effect)
+        dist_cumsum_t0_treatment = \
+            mrs_dists_cumsum.loc[t0_treatment_strings[i]].values
+        dist_cumsum_no_effect = mrs_dists_cumsum.loc[no_effect_strings[i]].values
 
-    plot_probs_filled(A_list, b_list, times_to_plot, ax=axs[i], title=titles[i], 
-                      colour_list=['#0072B2', '#009E73', '#D55E00', '#CC79A7', '#F0E442', '#56B4E9',
-       'DarkSlateGray'])
+        a_list, b_list, A_list = find_mrs_constants(
+            dist_cumsum_t0_treatment, dist_cumsum_no_effect, time_no_effect)
+
+        plot_probs_filled(A_list, b_list, times_to_plot, ax=axs[i], title=titles[i], 
+                          colour_list=['#0072B2', '#009E73', '#D55E00', '#CC79A7', '#F0E442', '#56B4E9',
+           'DarkSlateGray'])
+
+        axs[i].grid()
+        axs[i].set_ylim(0.0, 1.02)
+
+        if i<1:
+            fig.legend(loc='upper center', bbox_to_anchor=[0.5,0.0], ncol=7, title='mRS')
+
+    plt.savefig('images/probs_with_time.jpg', dpi=300, bbox_inches='tight')
+    plt.show()
     
-    axs[i].grid()
-    axs[i].set_ylim(0.0, 1.02)
-    
-    if i<1:
-        fig.legend(loc='upper center', bbox_to_anchor=[0.5,0.0], ncol=7, title='mRS')
 
-plt.savefig('images/probs_with_time.jpg', dpi=300, bbox_inches='tight')
-plt.show()
+def plot_indiv():
+    # Load mRS distributions from file: 
+    mrs_dists_cumsum = pd.read_csv('./outcome_utilities/mrs_dist_probs_cumsum.csv', 
+        index_col='Stroke type')
+    mrs_dists_bins = pd.read_csv('./outcome_utilities/mrs_dist_probs_bins.csv', 
+        index_col='Stroke type')
+
+    t0_treatment_strings = [
+        't0_treatment_nlvo_ivt',
+        't0_treatment_lvo_ivt',
+        't0_treatment_lvo_mt',
+    ]
+    no_effect_strings = [
+        'no_effect_nlvo_ivt_deaths',
+        'no_effect_lvo_ivt_deaths',
+        'no_effect_lvo_mt_deaths',
+    ]
+
+    titles = [
+        'nLVO treated with IVT',
+        'LVO treated with IVT',
+        'LVO treated with MT',
+    ]
+
+    # Define maximum treatment times:
+    time_no_effect_ivt = int(6.3*60)   # minutes
+    time_no_effect_mt = int(8*60)      # minutes
+
+
+    for i in range(3):
+        fig, ax = plt.subplots(1, 1)#1,3, figsize=(15,4), gridspec_kw={'wspace':0.4})
+        
+        time_no_effect = (
+            time_no_effect_mt if 'mt' in t0_treatment_strings[i] 
+            else time_no_effect_ivt)
+        times_to_plot = np.linspace(0, time_no_effect, 20)
+
+        dist_cumsum_t0_treatment = \
+            mrs_dists_cumsum.loc[t0_treatment_strings[i]].values
+        dist_cumsum_no_effect = mrs_dists_cumsum.loc[no_effect_strings[i]].values
+
+        a_list, b_list, A_list = find_mrs_constants(
+            dist_cumsum_t0_treatment, dist_cumsum_no_effect, time_no_effect)
+
+        plot_probs_filled(A_list, b_list, times_to_plot, ax=ax, title=titles[i], 
+                          colour_list=['#0072B2', '#009E73', '#D55E00', '#CC79A7', '#F0E442', '#56B4E9',
+           'DarkSlateGray'])
+
+        ax.grid()
+        ax.set_ylim(0.0, 1.02)
+
+        # if i<1:
+        fig.legend(loc='center', bbox_to_anchor=[1.0,0.5], ncol=1, title='mRS')
+
+        plt.savefig('images/probs_with_time_'+titles[i]+'.jpg', dpi=300, bbox_inches='tight')
+        plt.show()
