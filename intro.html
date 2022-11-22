@@ -696,7 +696,13 @@ title="Print to PDF"
 <p>The methodology described here is for patients with an ischaemic stroke (a stroke that is caused by a clot). These patients can be further defined by the location of the clot: those with a large vessel occlusion (LVO); and those not with a large vessel occlusion (nLVO). Patients with an nLVO can be treated with thrombolysis (IVT), a clot-busting medication. Patients with an LVO can be treated with IVT and/or thrombectomy (MT), which physically removes the clot. The benefit received by the patient from either treatment (IVT and/or MT) are time dependent, such that the sooner they are administered, the better the outcome, with each treatment having no effect after a specified duration (6.3 hours for IVT, and 8 hours for MT). In other words, the sooner a patient recieves reperfusion treatment the fewer stroke related disabilities they could end up with.</p>
 <p>Until now, modelling the outcome from stroke reperfusion treatment was a dichotomous affair, with a patient classified as either being disability free, or with stroke related disabilities. The method described here aims to provide a more granular disability outcome, describing the resulting disability as one of six levels (ranging from disability free, to death).</p>
 <p>This method calculates disability outcome estimates for three patient-treatment cohorts: 1) nLVO-IVT (patients with an nLVO that are treated with IVT), 2) LVO-IVT (patients with an LVO that are treated with IVT), 3) LVO-MT (patients with an LVO that are treated with MT). The result is provided as a distribution of disability (with six levels) following reperfusion treatment at any point between these two time stages: 1) receiving reperfusion treatment as soon as their stroke began (this will be referred to as time of stroke onset, and we will use the terminology “<em>t = 0</em>”), and 2) receiving reperfusion treatment at the duration after stroke onset where the treatment has no effect (this will be referred to as time of no effect, and we will use the terminology “<em>t = No Effect</em>”).</p>
-<p>The method is built using data from reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (<em>t = 0</em> &amp; <em>t = No Effect</em>), and we use interpolation to determine the disability distribution at any point inbetween.</p>
+<p>The method is built by synthesising data from multiple sources <a class="reference internal" href="#data-cauldron"><span class="std std-numref">figure 1</span></a>, including reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (<em>t = 0</em> &amp; <em>t = No Effect</em>), and we use interpolation to determine the disability distribution at any point inbetween.</p>
+<figure class="align-default" id="data-cauldron">
+<a class="reference internal image-reference" href="images/data_cauldron.jpg"><img alt="images/data_cauldron.jpg" src="images/data_cauldron.jpg" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Synthesis of multiple data sources into a disability-level model</span><a class="headerlink" href="#data-cauldron" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Detailed methodology and code are found in the notebooks on <a class="reference internal" href="01_mRS_datasets_full.html"><span class="doc std std-doc">derivation of mRS distributions</span></a> and <a class="reference internal" href="02_mRS_outcomes_maths.html"><span class="doc std std-doc">decay of effect over time</span></a>.</p>
 <section id="modified-rankin-scale">
 <h2>Modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this headline">#</a></h2>
@@ -758,22 +764,22 @@ title="Print to PDF"
 </section>
 <section id="block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-nlvo-ivt">
 <h3>Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for nLVO-IVT)<a class="headerlink" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-nlvo-ivt" title="Permalink to this headline">#</a></h3>
-<p>Here we use a block plot to show the expected mRS distribution for nLVO strokes if IVT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#nlvo-ivt-dist"><span class="std std-numref">figure 1</span></a>.</p>
+<p>Here we use a block plot to show the expected mRS distribution for nLVO strokes if IVT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#nlvo-ivt-dist"><span class="std std-numref">figure 2</span></a>.</p>
 <figure class="align-default" id="nlvo-ivt-dist">
 <a class="reference internal image-reference" href="_images/dist_bars_nLVO_treated_with_IVT.jpg"><img alt="_images/dist_bars_nLVO_treated_with_IVT.jpg" src="_images/dist_bars_nLVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Expected mRS distribution for nLVO strokes if IVT given at time of stroke onset (<em>t = 0</em>), or if IVT given at time when the effect has decayed to zero (<em>t = No Effect</em>). Both distributions include IVT-related excess deaths due to fatal intracranial haemorrhage.</span><a class="headerlink" href="#nlvo-ivt-dist" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Expected mRS distribution for nLVO strokes if IVT given at time of stroke onset (<em>t = 0</em>), or if IVT given at time when the effect has decayed to zero (<em>t = No Effect</em>). Both distributions include IVT-related excess deaths due to fatal intracranial haemorrhage.</span><a class="headerlink" href="#nlvo-ivt-dist" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-nlvo-ivt">
 <h3>Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for nLVO-IVT)<a class="headerlink" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-nlvo-ivt" title="Permalink to this headline">#</a></h3>
 <p>Here we use a line plot to show the expected mRS distribution for nLVO strokes if IVT is given at any time between <em>t = 0</em> (left) and <em>t = No Effect</em> (right). It is assumed that the log odds decay uniformly over time between <em>t = 0</em> and <em>t = No Effect</em> (as modelled by Emberson et al. for IVT). The time at which being given treatment has no-effect is taken as 6.3 hours for IVT (Emberson et al. 2014).</p>
-<p>The modelled decay of effects of IVT for nLVO strokes is shown in <a class="reference internal" href="#nlvo-ivt-time"><span class="std std-numref">figure 2</span></a>.</p>
+<p>The modelled decay of effects of IVT for nLVO strokes is shown in <a class="reference internal" href="#nlvo-ivt-time"><span class="std std-numref">figure 3</span></a>.</p>
 <figure class="align-default" id="nlvo-ivt-time">
 <a class="reference internal image-reference" href="_images/probs_with_time_nLVO_treated_with_IVT.jpg"><img alt="_images/probs_with_time_nLVO_treated_with_IVT.jpg" src="_images/probs_with_time_nLVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.</span><a class="headerlink" href="#nlvo-ivt-time" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.</span><a class="headerlink" href="#nlvo-ivt-time" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -794,22 +800,22 @@ title="Print to PDF"
 </section>
 <section id="block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-ivt">
 <h3>Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-IVT)<a class="headerlink" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-ivt" title="Permalink to this headline">#</a></h3>
-<p>Here we use a block plot to show the expected mRS distribution for LVO strokes if IVT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#lvo-ivt-dist"><span class="std std-numref">figure 3</span></a>.</p>
+<p>Here we use a block plot to show the expected mRS distribution for LVO strokes if IVT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#lvo-ivt-dist"><span class="std std-numref">figure 4</span></a>.</p>
 <figure class="align-default" id="lvo-ivt-dist">
 <a class="reference internal image-reference" href="_images/dist_bars_LVO_treated_with_IVT.jpg"><img alt="_images/dist_bars_LVO_treated_with_IVT.jpg" src="_images/dist_bars_LVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Expected mRS distribution for LVO strokes if IVT given at time of stroke onset (<em>t = 0</em>), or if IVT given at time when there effect has decayed to zero (<em>t = No Effect</em>). Both distributions include IVT-related excess deaths due to fatal intracranial haemorrhage.</span><a class="headerlink" href="#lvo-ivt-dist" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Expected mRS distribution for LVO strokes if IVT given at time of stroke onset (<em>t = 0</em>), or if IVT given at time when there effect has decayed to zero (<em>t = No Effect</em>). Both distributions include IVT-related excess deaths due to fatal intracranial haemorrhage.</span><a class="headerlink" href="#lvo-ivt-dist" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-ivt">
 <h3>Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-IVT)<a class="headerlink" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-ivt" title="Permalink to this headline">#</a></h3>
 <p>Here we use a line plot to show the expected mRS distribution for LVO strokes if IVT is given at any time between <em>t = 0</em> (left) and <em>t = No Effect</em> (right). It is assumed that the log odds decay uniformly over time between <em>t = 0</em> and <em>t = No Effect</em> (as modelled by Emberson et al. for IVT). The time at which being given treatment has no-effect is taken as 6.3 hours for IVT (Emberson et al. 2014).</p>
-<p>The modelled decay of effects of IVT for LVO strokes is shown in <a class="reference internal" href="#nlvo-ivt-time"><span class="std std-numref">figure 2</span></a>.</p>
+<p>The modelled decay of effects of IVT for LVO strokes is shown in <a class="reference internal" href="#nlvo-ivt-time"><span class="std std-numref">figure 3</span></a>.</p>
 <figure class="align-default" id="lvo-ivt-time">
 <a class="reference internal image-reference" href="_images/probs_with_time_LVO_treated_with_IVT.jpg"><img alt="_images/probs_with_time_LVO_treated_with_IVT.jpg" src="_images/probs_with_time_LVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Expected mRS distribution for LVO strokes depending on time to treatment with IVT.</span><a class="headerlink" href="#lvo-ivt-time" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Expected mRS distribution for LVO strokes depending on time to treatment with IVT.</span><a class="headerlink" href="#lvo-ivt-time" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -831,22 +837,22 @@ title="Print to PDF"
 </section>
 <section id="block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-mt">
 <h3>Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-MT)<a class="headerlink" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-mt" title="Permalink to this headline">#</a></h3>
-<p>Here we use a block plot to show the expected mRS distribution for LVO strokes if MT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#lvo-mt-dist"><span class="std std-numref">figure 5</span></a>.</p>
+<p>Here we use a block plot to show the expected mRS distribution for LVO strokes if MT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#lvo-mt-dist"><span class="std std-numref">figure 6</span></a>.</p>
 <figure class="align-default" id="lvo-mt-dist">
 <a class="reference internal image-reference" href="_images/dist_bars_LVO_treated_with_MT.jpg"><img alt="_images/dist_bars_LVO_treated_with_MT.jpg" src="_images/dist_bars_LVO_treated_with_MT.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Expected mRS distribution for LVO strokes if MT given at time of stroke onset (<em>t = 0</em>), or if MT given at time when there effect has decayed to zero (<em>t = No Effect</em>. Both distributions include MT-related excess deaths.</span><a class="headerlink" href="#lvo-mt-dist" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Expected mRS distribution for LVO strokes if MT given at time of stroke onset (<em>t = 0</em>), or if MT given at time when there effect has decayed to zero (<em>t = No Effect</em>. Both distributions include MT-related excess deaths.</span><a class="headerlink" href="#lvo-mt-dist" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-mt">
 <h3>Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-MT)<a class="headerlink" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-mt" title="Permalink to this headline">#</a></h3>
 <p>Here we use a line plot to show the expected mRS distribution if MT is given at any time between <em>t = 0</em> (left) and <em>t = No Effect</em> (right). It is assumed that the log odds decay uniformly over time between <em>t = 0</em> and <em>t = No Effect</em> (as modelled by Fransen et al. for MT). The time to no-effect treatment is taken as 8 hours for MT (Fransen et al). Note: the time to no effect from Fransen et al. did not include those patients who may be selected for late treatment based on advanced imaging. In this method we do not include late-presenting patients in our outcome modelling.</p>
-<p>The modelled decay of effects of MT are shown in <a class="reference internal" href="#lvo-mt-time"><span class="std std-numref">figure 6</span></a>.</p>
+<p>The modelled decay of effects of MT are shown in <a class="reference internal" href="#lvo-mt-time"><span class="std std-numref">figure 7</span></a>.</p>
 <figure class="align-default" id="lvo-mt-time">
 <a class="reference internal image-reference" href="_images/probs_with_time_LVO_treated_with_MT.jpg"><img alt="_images/probs_with_time_LVO_treated_with_MT.jpg" src="_images/probs_with_time_LVO_treated_with_MT.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Expected mRS distribution for LVO strokes depending on time to treatment with MT.</span><a class="headerlink" href="#lvo-mt-time" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Expected mRS distribution for LVO strokes depending on time to treatment with MT.</span><a class="headerlink" href="#lvo-mt-time" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -887,23 +893,23 @@ title="Print to PDF"
 </section>
 <section id="summary-plots">
 <h2>Summary plots<a class="headerlink" href="#summary-plots" title="Permalink to this headline">#</a></h2>
-<p>The effect of time to treatment with IVT or MT, in isolation is shown in <a class="reference internal" href="#time-to-treatment"><span class="std std-numref">figure 7</span></a>. The combined effect of IVT and MT in a mixed nLVO/LVO population is shown in <a class="reference internal" href="#utility-all"><span class="std std-numref">figure 8</span></a></p>
+<p>The effect of time to treatment with IVT or MT, in isolation is shown in <a class="reference internal" href="#time-to-treatment"><span class="std std-numref">figure 8</span></a>. The combined effect of IVT and MT in a mixed nLVO/LVO population is shown in <a class="reference internal" href="#utility-all"><span class="std std-numref">figure 9</span></a></p>
 <figure class="align-default" id="time-to-treatment">
 <a class="reference internal image-reference" href="_images/time_to_treatment.jpg"><img alt="_images/time_to_treatment.jpg" src="_images/time_to_treatment.jpg" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">The effect of time to treatment on effectiveness of treatment, shown individually for nLVO treated with IVT, and LVO treated with MT or IVT alone (the effect of MT is based on clinical trails where 85% of patients had previously received IVT). Effectiveness is shown as mean mRS (left) , the proportion of patients with mRS &lt;= 2 (middle), and added utility (right).</span><a class="headerlink" href="#time-to-treatment" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">The effect of time to treatment on effectiveness of treatment, shown individually for nLVO treated with IVT, and LVO treated with MT or IVT alone (the effect of MT is based on clinical trails where 85% of patients had previously received IVT). Effectiveness is shown as mean mRS (left) , the proportion of patients with mRS &lt;= 2 (middle), and added utility (right).</span><a class="headerlink" href="#time-to-treatment" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="utility-all">
 <a class="reference internal image-reference" href="_images/matrix_utility_and_mRS.jpg"><img alt="_images/matrix_utility_and_mRS.jpg" src="_images/matrix_utility_and_mRS.jpg" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">The effect of time to treatment with IVT and MT on a mixed nLVO/LVO population (LVO making up 35% of all treated ischaemic strokes).</span><a class="headerlink" href="#utility-all" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">The effect of time to treatment with IVT and MT on a mixed nLVO/LVO population (LVO making up 35% of all treated ischaemic strokes).</span><a class="headerlink" href="#utility-all" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="example-of-sampled-mrs-distribution-shift">
 <h2>Example of sampled mRS distribution shift<a class="headerlink" href="#example-of-sampled-mrs-distribution-shift" title="Permalink to this headline">#</a></h2>
-<p>Figure <a class="reference internal" href="#treatment-shift"><span class="std std-numref">9</span></a> shows the effect of thrombectomy delivered at 120 mins after a stroke in five patients. Each patient has a value of ‘P’ sampled from a range of 0-1.</p>
+<p>Figure <a class="reference internal" href="#treatment-shift"><span class="std std-numref">10</span></a> shows the effect of thrombectomy delivered at 120 mins after a stroke in five patients. Each patient has a value of ‘P’ sampled from a range of 0-1.</p>
 <ul class="simple">
 <li><p>Patient #1 (P=0.1): mRS untreated = 1, mRS treated = 0</p></li>
 <li><p>Patient #2 (P=0.3): mRS untreated = 3, mRS treated = 1</p></li>
@@ -914,7 +920,7 @@ title="Print to PDF"
 <figure class="align-default" id="treatment-shift">
 <a class="reference internal image-reference" href="_images/treatment_shift.jpg"><img alt="_images/treatment_shift.jpg" src="_images/treatment_shift.jpg" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">The predicted effect of treatment of a selection of five patients with LVO, given thrombectomy at 120 mins after stroke. The dotted lines represent the mRS shift for each patient if they received no treatment (top), or received MT at 120 minutes after stroke onset (bottom).</span><a class="headerlink" href="#treatment-shift" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">The predicted effect of treatment of a selection of five patients with LVO, given thrombectomy at 120 mins after stroke. The dotted lines represent the mRS shift for each patient if they received no treatment (top), or received MT at 120 minutes after stroke onset (bottom).</span><a class="headerlink" href="#treatment-shift" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
