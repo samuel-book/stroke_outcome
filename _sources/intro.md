@@ -11,7 +11,7 @@ This method calculates disability outcome estimates for three patient-treatment 
 The method is built by synthesising data from multiple sources {numref}`figure {number} <data_cauldron>`, including reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (*t = 0* & *t = No Effect*), and we use interpolation to determine the disability distribution at any point inbetween. 
 
 :::{figure-md} data_cauldron
-<img src="./images/data_cauldron.jpg" width="600">
+<img src="./images/data_cauldron.png" width="600">
 
 Synthesis of multiple data sources into a disability-level model
 :::
