@@ -8,9 +8,17 @@ Until now, modelling the outcome from stroke reperfusion treatment was a dichoto
 
 This method calculates disability outcome estimates for three patient-treatment cohorts: 1) nLVO-IVT (patients with an nLVO that are treated with IVT), 2) LVO-IVT (patients with an LVO that are treated with IVT), 3) LVO-MT (patients with an LVO that are treated with MT). The result is provided as a distribution of disability (with six levels) following reperfusion treatment at any point between these two time stages: 1) receiving reperfusion treatment as soon as their stroke began (this will be referred to as time of stroke onset, and we will use the terminology "*t = 0*"), and 2) receiving reperfusion treatment at the duration after stroke onset where the treatment has no effect (this will be referred to as time of no effect, and we will use the terminology "*t = No Effect*").
 
-The method is built using data from reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (*t = 0* & *t = No Effect*), and we use interpolation to determine the disability distribution at any point inbetween. 
+The method is built by synthesising data from multiple sources {numref}`figure {number} <data_cauldron>`, including reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (*t = 0* & *t = No Effect*), and we use interpolation to determine the disability distribution at any point inbetween. 
 
-Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./mRS_datasets_full.ipynb) and [decay of effect over time](./mRS_outcomes_maths).
+:::{figure-md} data_cauldron
+<img src="./images/data_cauldron.png" width="600">
+
+Synthesis of multiple data sources into a disability-level model
+:::
+
+
+
+Detailed methodology and code are found in the notebooks on [derivation of mRS distributions](./01_mRS_datasets_full.ipynb) and [decay of effect over time](./02_mRS_outcomes_maths).
 
 ## Modified Rankin Scale
 
@@ -77,7 +85,7 @@ Here we use a line plot to show the expected mRS distribution for nLVO strokes i
 The modelled decay of effects of IVT for nLVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} nLVO_IVT_time
-<img src="./images/prob_with_time_nlvo_ivt.jpg" width="600">
+<img src="./images/probs_with_time_nLVO_treated_with_IVT.jpg" width="600">
 
 Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.
 :::
@@ -117,7 +125,7 @@ Here we use a line plot to show the expected mRS distribution for LVO strokes if
 The modelled decay of effects of IVT for LVO strokes is shown in {numref}`figure {number} <nLVO_IVT_time>`. 
 
 :::{figure-md} LVO_IVT_time
-<img src="./images/prob_with_time_lvo_ivt.jpg" width="600">
+<img src="./images/probs_with_time_LVO_treated_with_IVT.jpg" width="600">
 
 Expected mRS distribution for LVO strokes depending on time to treatment with IVT.
 :::
@@ -159,14 +167,14 @@ Here we use a line plot to show the expected mRS distribution if MT is given at 
 The modelled decay of effects of MT are shown in {numref}`figure {number} <LVO_MT_time>`. 
 
 :::{figure-md} LVO_MT_time
-<img src="./images/prob_with_time_lvo_mt.jpg" width="600">
+<img src="./images/probs_with_time_LVO_treated_with_MT.jpg" width="600">
 
 Expected mRS distribution for LVO strokes depending on time to treatment with MT.
 :::
 
 ## Note on comparator control groups
 
-In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the [derivation of mRS distributions](./mRS_datasets_full.ipynb) notebook.
+In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the [derivation of mRS distributions](./01_mRS_datasets_full.ipynb) notebook.
 
 ## Utility-weighted mRS outcomes
 
