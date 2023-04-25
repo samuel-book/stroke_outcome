@@ -12,6 +12,7 @@ parts:
   - file: 90_proportion_ischaemic_with_lvo
 - caption: Application to England and Wales
   chapters:
+  - file: admission_prediction/01_msoa_regression
   - file: england_wales/01_model_outcomes
   - file: england_wales/02_lsoa_analysis_added_utility
   - file: england_wales/03_lsoa_analysis_mrs_less_equal_2
