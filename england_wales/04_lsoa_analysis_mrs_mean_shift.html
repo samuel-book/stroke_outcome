@@ -1,0 +1,1893 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Analysis of LSOA results: mRS mean shift &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'england_wales/04_lsoa_analysis_mrs_mean_shift';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Analysis of LSOA results: mRS less than, or equal to, 2" href="03_lsoa_analysis_mrs_less_equal_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_geography.html">Distance-based treatment effects</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_show_outcome_model_code.html">Show outcome model python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: mRS less than, or equal to, 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analysis of LSOA results: mRS mean shift</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/england_wales/04_lsoa_analysis_mrs_mean_shift.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analysis of LSOA results: mRS mean shift</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proportions-of-stroke-types-analysis-of-samuel-data">Proportions of stroke types: Analysis of SAMueL data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">Import packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-shape-file">Load shape file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-hospital-info">Load hospital info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-lsoa-model-output-data">Load LSOA model output data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-difference-between-mothership-and-drip-and-ship">Calculate difference between Mothership and Drip and Ship</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-lsoa-results-mrs-mean-shift">
+<h1>Analysis of LSOA results: mRS mean shift<a class="headerlink" href="#analysis-of-lsoa-results-mrs-mean-shift" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;lsoa_base&#39;</span>
+<span class="n">limit_to_england</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">data_field</span> <span class="o">=</span> <span class="s1">&#39;mean_shift&#39;</span>
+<span class="n">data_name</span> <span class="o">=</span> <span class="s1">&#39;mRS mean shift&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="proportions-of-stroke-types-analysis-of-samuel-data">
+<h2>Proportions of stroke types: Analysis of SAMueL data<a class="headerlink" href="#proportions-of-stroke-types-analysis-of-samuel-data" title="Permalink to this heading">#</a></h2>
+<p>Data from SAMueL using NIHSS 11+ as a surrogate for LVO:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Admission type</p></th>
+<th class="head"><p>All arrivals</p></th>
+<th class="head"><p>Arrival within 6 hrs known onset</p></th>
+<th class="head"><p>Arrival within 4 hrs known onset</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Proportion all admissions</p></td>
+<td><p>100</p></td>
+<td><p>42.9</p></td>
+<td><p>37.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Proportion haemorrhagic</p></td>
+<td><p>11.5</p></td>
+<td><p>13.6</p></td>
+<td><p>14.1</p></td>
+</tr>
+<tr class="row-even"><td><p>Proportion ischaemic</p></td>
+<td><p>88.5</p></td>
+<td><p>86.4</p></td>
+<td><p>85.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>Proportion ischaemic with NIHSS 0-10</p></td>
+<td><p>74.9</p></td>
+<td><p>67.4</p></td>
+<td><p>65.7</p></td>
+</tr>
+<tr class="row-even"><td><p>Proportion ischaemic with NIHSS 11+</p></td>
+<td><p>25.1</p></td>
+<td><p>32.6</p></td>
+<td><p>34.3</p></td>
+</tr>
+</tbody>
+</table>
+<p>For original analysis see: <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/10_using_nihss_10_for_lvo.html">https://samuel-book.github.io/samuel-1/descriptive_stats/10_using_nihss_10_for_lvo.html</a></p>
+</section>
+<section id="import-packages">
+<h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">ctx</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data">
+<h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<section id="load-shape-file">
+<h3>Load shape file<a class="headerlink" href="#load-shape-file" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;zip://./data/Lower_layer_super_output_areas_(E+W)_2011_Boundaries_(Generalised_Clipped)_V2.zip&quot;</span>
+<span class="n">lsoa_gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s1">&#39;EPSG:27700&#39;</span><span class="p">)</span>
+<span class="n">lsoa_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LSOA11CD</th>
+      <th>LSOA11NM</th>
+      <th>LSOA11NMW</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E01000001</td>
+      <td>City of London 001A</td>
+      <td>City of London 001A</td>
+      <td>POLYGON ((532105.092 182011.230, 532162.491 18...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E01000002</td>
+      <td>City of London 001B</td>
+      <td>City of London 001B</td>
+      <td>POLYGON ((532746.813 181786.891, 532671.688 18...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E01000003</td>
+      <td>City of London 001C</td>
+      <td>City of London 001C</td>
+      <td>POLYGON ((532135.145 182198.119, 532158.250 18...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E01000005</td>
+      <td>City of London 001E</td>
+      <td>City of London 001E</td>
+      <td>POLYGON ((533807.946 180767.770, 533649.063 18...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E01000006</td>
+      <td>Barking and Dagenham 016A</td>
+      <td>Barking and Dagenham 016A</td>
+      <td>POLYGON ((545122.049 184314.931, 545271.917 18...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load country outline</span>
+<span class="n">outline</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;./data/Countries_(December_2022)_GB_BFC.zip&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">outline</span><span class="p">[</span><span class="s1">&#39;CTRY22NM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;England&#39;</span>
+    <span class="n">outline</span> <span class="o">=</span> <span class="n">outline</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">outline</span><span class="p">[</span><span class="s1">&#39;CTRY22NM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;England&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">outline</span><span class="p">[</span><span class="s1">&#39;CTRY22NM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Wales&#39;</span><span class="p">)</span>
+    <span class="n">outline</span> <span class="o">=</span> <span class="n">outline</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FID</th>
+      <th>CTRY22CD</th>
+      <th>CTRY22NM</th>
+      <th>CTRY22NMW</th>
+      <th>BNG_E</th>
+      <th>BNG_N</th>
+      <th>LONG</th>
+      <th>LAT</th>
+      <th>GlobalID</th>
+      <th>SHAPE_Leng</th>
+      <th>SHAPE_Area</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>E92000001</td>
+      <td>England</td>
+      <td>Lloegr</td>
+      <td>394883</td>
+      <td>370883</td>
+      <td>-2.07811</td>
+      <td>53.23497</td>
+      <td>{096C3540-B006-4D2D-BCDF-B3E945B80D51}</td>
+      <td>1.358939e+07</td>
+      <td>1.304623e+11</td>
+      <td>MULTIPOLYGON (((83962.840 5401.150, 83970.680 ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>W92000004</td>
+      <td>Wales</td>
+      <td>Cymru</td>
+      <td>263405</td>
+      <td>242881</td>
+      <td>-3.99417</td>
+      <td>52.06741</td>
+      <td>{1DFA050A-C94B-4E58-8210-DE8274C7C33E}</td>
+      <td>3.273688e+06</td>
+      <td>2.078260e+10</td>
+      <td>MULTIPOLYGON (((322081.699 165165.901, 322082....</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="load-hospital-info">
+<h3>Load hospital info<a class="headerlink" href="#load-hospital-info" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospitals_gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;./data/stroke_hospitals_2022.csv&#39;</span><span class="p">)</span>
+<span class="n">hospitals_gdf</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span>
+        <span class="n">hospitals_gdf</span><span class="o">.</span><span class="n">Easting</span><span class="p">,</span> <span class="n">hospitals_gdf</span><span class="o">.</span><span class="n">Northing</span><span class="p">)</span>
+<span class="c1"># Set crs for geometry, using epsg4326 for lat/long</span>
+<span class="n">hospitals_gdf</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">27700</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span> <span class="o">==</span>  <span class="s1">&#39;England&#39;</span>
+    <span class="n">hospitals_gdf</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">hospitals_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Postcode</th>
+      <th>Hospital_name</th>
+      <th>Use_IVT</th>
+      <th>Use_MT</th>
+      <th>Use_MSU</th>
+      <th>Country</th>
+      <th>Strategic Clinical Network</th>
+      <th>Health Board / Trust</th>
+      <th>Stroke Team</th>
+      <th>SSNAP name</th>
+      <th>...</th>
+      <th>ivt_rate</th>
+      <th>Easting</th>
+      <th>Northing</th>
+      <th>long</th>
+      <th>lat</th>
+      <th>Neuroscience</th>
+      <th>30 England Thrombectomy Example</th>
+      <th>hospital_city</th>
+      <th>Notes</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>RM70AG</td>
+      <td>RM70AG</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>England</td>
+      <td>London SCN</td>
+      <td>Barking</td>
+      <td>Havering and Redbridge University Hospitals N...</td>
+      <td>Queens Hospital Romford HASU</td>
+      <td>...</td>
+      <td>11.9</td>
+      <td>551118</td>
+      <td>187780</td>
+      <td>0.179030640661934</td>
+      <td>51.5686465521504</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Romford</td>
+      <td></td>
+      <td>POINT (551118.000 187780.000)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E11BB</td>
+      <td>E11BB</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>England</td>
+      <td>London SCN</td>
+      <td>Barts Health NHS Trust</td>
+      <td>The Royal London Hospital</td>
+      <td>Royal London Hospital HASU</td>
+      <td>...</td>
+      <td>13.4</td>
+      <td>534829</td>
+      <td>181798</td>
+      <td>-0.0581329916047372</td>
+      <td>51.5190178361295</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Royal London</td>
+      <td></td>
+      <td>POINT (534829.000 181798.000)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SW66SX</td>
+      <td>SW66SX</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>England</td>
+      <td>London SCN</td>
+      <td>Imperial College Healthcare NHS Trust</td>
+      <td>Charing Cross Hospital, London</td>
+      <td>Charing Cross Hospital HASU</td>
+      <td>...</td>
+      <td>9.9</td>
+      <td>524226</td>
+      <td>176487</td>
+      <td>-0.212736111308184</td>
+      <td>51.4737165811988</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Charing Cross</td>
+      <td></td>
+      <td>POINT (524226.000 176487.000)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SE59RW</td>
+      <td>SE59RW</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>England</td>
+      <td>London SCN</td>
+      <td>King's College Hospital NHS Foundation Trust</td>
+      <td>King's College Hospital, London</td>
+      <td>King's College Hospital HASU</td>
+      <td>...</td>
+      <td>15</td>
+      <td>532536</td>
+      <td>176228</td>
+      <td>-0.0932514945350423</td>
+      <td>51.4695052907757</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Kings College</td>
+      <td></td>
+      <td>POINT (532536.000 176228.000)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>BR68ND</td>
+      <td>BR68ND</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>England</td>
+      <td>London SCN</td>
+      <td>King's College Hospital NHS Foundation Trust</td>
+      <td>Princess Royal University Hospital</td>
+      <td>Princess Royal University Hospital HASU</td>
+      <td>...</td>
+      <td>13.3</td>
+      <td>543443</td>
+      <td>165032</td>
+      <td>0.0591464390000555</td>
+      <td>51.3662434074157</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Princess Royal</td>
+      <td></td>
+      <td>POINT (543443.000 165032.000)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="load-lsoa-model-output-data">
+<h3>Load LSOA model output data<a class="headerlink" href="#load-lsoa-model-output-data" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+<span class="n">lsoa_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>lsoa</th>
+      <td>Adur 001A</td>
+      <td>Adur 001B</td>
+      <td>Adur 001C</td>
+    </tr>
+    <tr>
+      <th>closest_ivt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN112DH</td>
+    </tr>
+    <tr>
+      <th>closest_ivt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>17.6</td>
+    </tr>
+    <tr>
+      <th>closest_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>closest_mt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>19.8</td>
+    </tr>
+    <tr>
+      <th>transfer_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>transfer_mt_time</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>31.6</td>
+    </tr>
+    <tr>
+      <th>mt_transfer_required</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>msu_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>msu_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>19.8</td>
+    </tr>
+    <tr>
+      <th>ivt_drip_ship</th>
+      <td>117.6</td>
+      <td>118.7</td>
+      <td>117.6</td>
+    </tr>
+    <tr>
+      <th>ivt_mothership</th>
+      <td>117.6</td>
+      <td>118.7</td>
+      <td>119.8</td>
+    </tr>
+    <tr>
+      <th>mt_drip_ship</th>
+      <td>167.6</td>
+      <td>168.7</td>
+      <td>259.2</td>
+    </tr>
+    <tr>
+      <th>mt_mothership</th>
+      <td>167.6</td>
+      <td>168.7</td>
+      <td>169.8</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_untreated_probs</th>
+      <td>[0.05 0.08 0.14 0.16 0.24 0.14 0.19]</td>
+      <td>[0.05 0.08 0.14 0.16 0.24 0.14 0.19]</td>
+      <td>[0.05 0.08 0.14 0.16 0.24 0.14 0.19]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_untreated_probs</th>
+      <td>[0.2  0.26 0.12 0.13 0.14 0.06 0.09]</td>
+      <td>[0.2  0.26 0.12 0.13 0.14 0.06 0.09]</td>
+      <td>[0.2  0.26 0.12 0.13 0.14 0.06 0.09]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_probs</th>
+      <td>[0.09 0.09 0.13 0.15 0.22 0.12 0.2 ]</td>
+      <td>[0.09 0.09 0.13 0.15 0.22 0.12 0.2 ]</td>
+      <td>[0.09 0.09 0.13 0.15 0.22 0.12 0.2 ]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_probs</th>
+      <td>[0.18 0.12 0.14 0.17 0.18 0.09 0.12]</td>
+      <td>[0.18 0.12 0.14 0.17 0.18 0.09 0.12]</td>
+      <td>[0.13 0.11 0.14 0.17 0.2  0.1  0.15]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_probs</th>
+      <td>[0.35 0.23 0.11 0.12 0.09 0.04 0.06]</td>
+      <td>[0.35 0.23 0.11 0.12 0.09 0.04 0.06]</td>
+      <td>[0.35 0.23 0.11 0.12 0.09 0.04 0.06]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_untreated_mean_utility</th>
+      <td>0.3319</td>
+      <td>0.3319</td>
+      <td>0.3319</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_untreated_mean_utility</th>
+      <td>0.5997</td>
+      <td>0.5997</td>
+      <td>0.5997</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mean_utility</th>
+      <td>0.3664</td>
+      <td>0.3664</td>
+      <td>0.3664</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_mean_utility</th>
+      <td>0.4962</td>
+      <td>0.4962</td>
+      <td>0.441</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_mean_utility</th>
+      <td>0.6997</td>
+      <td>0.6997</td>
+      <td>0.6997</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_added_utility</th>
+      <td>0.0345</td>
+      <td>0.0345</td>
+      <td>0.0345</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_added_utility</th>
+      <td>0.1643</td>
+      <td>0.1643</td>
+      <td>0.1091</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_added_utility</th>
+      <td>0.1</td>
+      <td>0.1</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_untreated_cum_probs</th>
+      <td>[0.05 0.13 0.27 0.43 0.67 0.81 1.  ]</td>
+      <td>[0.05 0.13 0.27 0.43 0.67 0.81 1.  ]</td>
+      <td>[0.05 0.13 0.27 0.43 0.67 0.81 1.  ]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_untreated_cum_probs</th>
+      <td>[0.2  0.46 0.58 0.71 0.85 0.91 1.  ]</td>
+      <td>[0.2  0.46 0.58 0.71 0.85 0.91 1.  ]</td>
+      <td>[0.2  0.46 0.58 0.71 0.85 0.91 1.  ]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_cum_probs</th>
+      <td>[0.09 0.18 0.31 0.46 0.68 0.8  1.  ]</td>
+      <td>[0.09 0.18 0.31 0.46 0.68 0.8  1.  ]</td>
+      <td>[0.09 0.18 0.31 0.46 0.68 0.8  1.  ]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_cum_probs</th>
+      <td>[0.18 0.3  0.44 0.61 0.79 0.88 1.  ]</td>
+      <td>[0.18 0.3  0.44 0.61 0.79 0.88 1.  ]</td>
+      <td>[0.13 0.24 0.38 0.55 0.75 0.85 1.  ]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_cum_probs</th>
+      <td>[0.35 0.58 0.69 0.81 0.9  0.94 1.  ]</td>
+      <td>[0.35 0.58 0.69 0.81 0.9  0.94 1.  ]</td>
+      <td>[0.35 0.58 0.69 0.81 0.9  0.94 1.  ]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_untreated_mrs&lt;=2</th>
+      <td>0.27</td>
+      <td>0.27</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_untreated_mrs&lt;=2</th>
+      <td>0.58</td>
+      <td>0.58</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mrs&lt;=2</th>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_mrs&lt;=2</th>
+      <td>0.44</td>
+      <td>0.44</td>
+      <td>0.38</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_mrs&lt;=2</th>
+      <td>0.69</td>
+      <td>0.69</td>
+      <td>0.69</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_shift</th>
+      <td>[ 0.04  0.01 -0.01 -0.01 -0.02 -0.02  0.01]</td>
+      <td>[ 0.04  0.01 -0.01 -0.01 -0.02 -0.02  0.01]</td>
+      <td>[ 0.04  0.01 -0.01 -0.01 -0.02 -0.02  0.01]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_shift</th>
+      <td>[ 0.13  0.04  0.    0.01 -0.06 -0.05 -0.07]</td>
+      <td>[ 0.13  0.04  0.    0.01 -0.06 -0.05 -0.07]</td>
+      <td>[ 0.08  0.03  0.    0.01 -0.04 -0.04 -0.04]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_shift</th>
+      <td>[ 0.15 -0.03 -0.01 -0.01 -0.05 -0.02 -0.03]</td>
+      <td>[ 0.15 -0.03 -0.01 -0.01 -0.05 -0.02 -0.03]</td>
+      <td>[ 0.15 -0.03 -0.01 -0.01 -0.05 -0.02 -0.03]</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_untreated_mean_mRS</th>
+      <td>3.64</td>
+      <td>3.64</td>
+      <td>3.64</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_untreated_mean_mRS</th>
+      <td>2.29</td>
+      <td>2.29</td>
+      <td>2.29</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mean_mRS</th>
+      <td>3.48</td>
+      <td>3.48</td>
+      <td>3.48</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_mean_mRS</th>
+      <td>2.8</td>
+      <td>2.8</td>
+      <td>3.1</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_mean_mRS</th>
+      <td>1.73</td>
+      <td>1.73</td>
+      <td>1.73</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mean_shift</th>
+      <td>-0.16</td>
+      <td>-0.16</td>
+      <td>-0.16</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_mean_shift</th>
+      <td>-0.84</td>
+      <td>-0.84</td>
+      <td>-0.54</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_mean_shift</th>
+      <td>-0.56</td>
+      <td>-0.56</td>
+      <td>-0.56</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_improved</th>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_improved</th>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.54</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_improved</th>
+      <td>0.56</td>
+      <td>0.56</td>
+      <td>0.56</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_untreated_probs</th>
+      <td>[0.05 0.08 0.14 0.16 0.24 0.14 0.19]</td>
+      <td>[0.05 0.08 0.14 0.16 0.24 0.14 0.19]</td>
+      <td>[0.05 0.08 0.14 0.16 0.24 0.14 0.19]</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_untreated_probs</th>
+      <td>[0.2  0.26 0.12 0.13 0.14 0.06 0.09]</td>
+      <td>[0.2  0.26 0.12 0.13 0.14 0.06 0.09]</td>
+      <td>[0.2  0.26 0.12 0.13 0.14 0.06 0.09]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_probs</th>
+      <td>[0.09 0.09 0.13 0.15 0.22 0.12 0.2 ]</td>
+      <td>[0.09 0.09 0.13 0.15 0.22 0.12 0.2 ]</td>
+      <td>[0.09 0.09 0.12 0.16 0.22 0.12 0.2 ]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_probs</th>
+      <td>[0.18 0.12 0.14 0.17 0.18 0.09 0.12]</td>
+      <td>[0.18 0.12 0.14 0.17 0.18 0.09 0.12]</td>
+      <td>[0.18 0.12 0.14 0.17 0.18 0.09 0.12]</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_probs</th>
+      <td>[0.35 0.23 0.11 0.12 0.09 0.04 0.06]</td>
+      <td>[0.35 0.23 0.11 0.12 0.09 0.04 0.06]</td>
+      <td>[0.35 0.23 0.11 0.12 0.09 0.04 0.06]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_untreated_mean_utility</th>
+      <td>0.3319</td>
+      <td>0.3319</td>
+      <td>0.3319</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_untreated_mean_utility</th>
+      <td>0.5997</td>
+      <td>0.5997</td>
+      <td>0.5997</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mean_utility</th>
+      <td>0.3664</td>
+      <td>0.3664</td>
+      <td>0.3645</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mean_utility</th>
+      <td>0.4962</td>
+      <td>0.4962</td>
+      <td>0.4962</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_mean_utility</th>
+      <td>0.6997</td>
+      <td>0.6997</td>
+      <td>0.6997</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_added_utility</th>
+      <td>0.0345</td>
+      <td>0.0345</td>
+      <td>0.0326</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_added_utility</th>
+      <td>0.1643</td>
+      <td>0.1643</td>
+      <td>0.1643</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_added_utility</th>
+      <td>0.1</td>
+      <td>0.1</td>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_untreated_cum_probs</th>
+      <td>[0.05 0.13 0.27 0.43 0.67 0.81 1.  ]</td>
+      <td>[0.05 0.13 0.27 0.43 0.67 0.81 1.  ]</td>
+      <td>[0.05 0.13 0.27 0.43 0.67 0.81 1.  ]</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_untreated_cum_probs</th>
+      <td>[0.2  0.46 0.58 0.71 0.85 0.91 1.  ]</td>
+      <td>[0.2  0.46 0.58 0.71 0.85 0.91 1.  ]</td>
+      <td>[0.2  0.46 0.58 0.71 0.85 0.91 1.  ]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_cum_probs</th>
+      <td>[0.09 0.18 0.31 0.46 0.68 0.8  1.  ]</td>
+      <td>[0.09 0.18 0.31 0.46 0.68 0.8  1.  ]</td>
+      <td>[0.09 0.18 0.3  0.46 0.68 0.8  1.  ]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_cum_probs</th>
+      <td>[0.18 0.3  0.44 0.61 0.79 0.88 1.  ]</td>
+      <td>[0.18 0.3  0.44 0.61 0.79 0.88 1.  ]</td>
+      <td>[0.18 0.3  0.44 0.61 0.79 0.88 1.  ]</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_cum_probs</th>
+      <td>[0.35 0.58 0.69 0.81 0.9  0.94 1.  ]</td>
+      <td>[0.35 0.58 0.69 0.81 0.9  0.94 1.  ]</td>
+      <td>[0.35 0.58 0.69 0.81 0.9  0.94 1.  ]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_untreated_mrs&lt;=2</th>
+      <td>0.27</td>
+      <td>0.27</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_untreated_mrs&lt;=2</th>
+      <td>0.58</td>
+      <td>0.58</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mrs&lt;=2</th>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs&lt;=2</th>
+      <td>0.44</td>
+      <td>0.44</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_mrs&lt;=2</th>
+      <td>0.69</td>
+      <td>0.69</td>
+      <td>0.69</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_shift</th>
+      <td>[ 0.04  0.01 -0.01 -0.01 -0.02 -0.02  0.01]</td>
+      <td>[ 0.04  0.01 -0.01 -0.01 -0.02 -0.02  0.01]</td>
+      <td>[ 0.04  0.01 -0.02  0.   -0.02 -0.02  0.01]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_shift</th>
+      <td>[ 0.13  0.04  0.    0.01 -0.06 -0.05 -0.07]</td>
+      <td>[ 0.13  0.04  0.    0.01 -0.06 -0.05 -0.07]</td>
+      <td>[ 0.13  0.04  0.    0.01 -0.06 -0.05 -0.07]</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_shift</th>
+      <td>[ 0.15 -0.03 -0.01 -0.01 -0.05 -0.02 -0.03]</td>
+      <td>[ 0.15 -0.03 -0.01 -0.01 -0.05 -0.02 -0.03]</td>
+      <td>[ 0.15 -0.03 -0.01 -0.01 -0.05 -0.02 -0.03]</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_untreated_mean_mRS</th>
+      <td>3.64</td>
+      <td>3.64</td>
+      <td>3.64</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_untreated_mean_mRS</th>
+      <td>2.29</td>
+      <td>2.29</td>
+      <td>2.29</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mean_mRS</th>
+      <td>3.48</td>
+      <td>3.48</td>
+      <td>3.49</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mean_mRS</th>
+      <td>2.8</td>
+      <td>2.8</td>
+      <td>2.8</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_mean_mRS</th>
+      <td>1.73</td>
+      <td>1.73</td>
+      <td>1.73</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mean_shift</th>
+      <td>-0.16</td>
+      <td>-0.16</td>
+      <td>-0.15</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mean_shift</th>
+      <td>-0.84</td>
+      <td>-0.84</td>
+      <td>-0.84</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_mean_shift</th>
+      <td>-0.56</td>
+      <td>-0.56</td>
+      <td>-0.56</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_improved</th>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.16</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_improved</th>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_improved</th>
+      <td>0.56</td>
+      <td>0.56</td>
+      <td>0.56</td>
+    </tr>
+    <tr>
+      <th>weighted_drip_ship_added_utility</th>
+      <td>0.030863</td>
+      <td>0.030863</td>
+      <td>0.025343</td>
+    </tr>
+    <tr>
+      <th>weighted_mothership_added_utility</th>
+      <td>0.030863</td>
+      <td>0.030863</td>
+      <td>0.030701</td>
+    </tr>
+    <tr>
+      <th>weighted_drip_ship_mrs&lt;=2</th>
+      <td>0.1497</td>
+      <td>0.1497</td>
+      <td>0.1437</td>
+    </tr>
+    <tr>
+      <th>weighted_mothership_mrs&lt;=2</th>
+      <td>0.1497</td>
+      <td>0.1497</td>
+      <td>0.14885</td>
+    </tr>
+    <tr>
+      <th>weighted_drip_ship_mean_shift</th>
+      <td>-0.162</td>
+      <td>-0.162</td>
+      <td>-0.132</td>
+    </tr>
+    <tr>
+      <th>weighted_mothership_mean_shift</th>
+      <td>-0.162</td>
+      <td>-0.162</td>
+      <td>-0.16115</td>
+    </tr>
+    <tr>
+      <th>LSOA_predicted_admissions</th>
+      <td>2.550427</td>
+      <td>2.550427</td>
+      <td>2.550427</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge with shape file</span>
+
+<span class="n">lsoa_data_gdf</span> <span class="o">=</span> <span class="n">lsoa_gdf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">lsoa_data</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;LSOA11NM&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;lsoa&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LSOA11CD</th>
+      <th>LSOA11NM</th>
+      <th>LSOA11NMW</th>
+      <th>geometry</th>
+      <th>lsoa</th>
+      <th>closest_ivt_unit</th>
+      <th>closest_ivt_time</th>
+      <th>closest_mt_unit</th>
+      <th>closest_mt_time</th>
+      <th>transfer_mt_unit</th>
+      <th>...</th>
+      <th>mothership_lvo_ivt_improved</th>
+      <th>mothership_lvo_mt_improved</th>
+      <th>mothership_nlvo_ivt_improved</th>
+      <th>weighted_drip_ship_added_utility</th>
+      <th>weighted_mothership_added_utility</th>
+      <th>weighted_drip_ship_mrs&lt;=2</th>
+      <th>weighted_mothership_mrs&lt;=2</th>
+      <th>weighted_drip_ship_mean_shift</th>
+      <th>weighted_mothership_mean_shift</th>
+      <th>LSOA_predicted_admissions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E01031349</td>
+      <td>Adur 001A</td>
+      <td>Adur 001A</td>
+      <td>POLYGON ((525328.061 105725.349, 525436.843 10...</td>
+      <td>Adur 001A</td>
+      <td>BN25BE</td>
+      <td>17.6</td>
+      <td>BN25BE</td>
+      <td>17.6</td>
+      <td>BN25BE</td>
+      <td>...</td>
+      <td>0.17</td>
+      <td>0.75</td>
+      <td>0.56</td>
+      <td>0.030863</td>
+      <td>0.030863</td>
+      <td>0.1497</td>
+      <td>0.14970</td>
+      <td>-0.16200</td>
+      <td>-0.16200</td>
+      <td>2.550427</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E01031350</td>
+      <td>Adur 001B</td>
+      <td>Adur 001B</td>
+      <td>POLYGON ((524713.079 106781.551, 524753.189 10...</td>
+      <td>Adur 001B</td>
+      <td>BN25BE</td>
+      <td>18.7</td>
+      <td>BN25BE</td>
+      <td>18.7</td>
+      <td>BN25BE</td>
+      <td>...</td>
+      <td>0.17</td>
+      <td>0.75</td>
+      <td>0.56</td>
+      <td>0.030863</td>
+      <td>0.030863</td>
+      <td>0.1497</td>
+      <td>0.14970</td>
+      <td>-0.16200</td>
+      <td>-0.16200</td>
+      <td>2.550427</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E01031351</td>
+      <td>Adur 001C</td>
+      <td>Adur 001C</td>
+      <td>POLYGON ((523976.094 108414.594, 524038.094 10...</td>
+      <td>Adur 001C</td>
+      <td>BN112DH</td>
+      <td>17.6</td>
+      <td>BN25BE</td>
+      <td>19.8</td>
+      <td>BN25BE</td>
+      <td>...</td>
+      <td>0.16</td>
+      <td>0.75</td>
+      <td>0.56</td>
+      <td>0.025343</td>
+      <td>0.030701</td>
+      <td>0.1437</td>
+      <td>0.14885</td>
+      <td>-0.13200</td>
+      <td>-0.16115</td>
+      <td>2.550427</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E01031352</td>
+      <td>Adur 001D</td>
+      <td>Adur 001D</td>
+      <td>POLYGON ((524263.733 106628.407, 524317.000 10...</td>
+      <td>Adur 001D</td>
+      <td>BN112DH</td>
+      <td>17.6</td>
+      <td>BN25BE</td>
+      <td>19.8</td>
+      <td>BN25BE</td>
+      <td>...</td>
+      <td>0.16</td>
+      <td>0.75</td>
+      <td>0.56</td>
+      <td>0.025343</td>
+      <td>0.030701</td>
+      <td>0.1437</td>
+      <td>0.14885</td>
+      <td>-0.13200</td>
+      <td>-0.16115</td>
+      <td>2.550427</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E01031370</td>
+      <td>Adur 001E</td>
+      <td>Adur 001E</td>
+      <td>POLYGON ((522978.319 106148.604, 523260.859 10...</td>
+      <td>Adur 001E</td>
+      <td>BN112DH</td>
+      <td>16.5</td>
+      <td>BN25BE</td>
+      <td>19.8</td>
+      <td>BN25BE</td>
+      <td>...</td>
+      <td>0.16</td>
+      <td>0.75</td>
+      <td>0.56</td>
+      <td>0.026141</td>
+      <td>0.030701</td>
+      <td>0.1437</td>
+      <td>0.14885</td>
+      <td>-0.13415</td>
+      <td>-0.16115</td>
+      <td>2.550427</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 99 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="calculate-difference-between-mothership-and-drip-and-ship">
+<h2>Calculate difference between Mothership and Drip and Ship<a class="headerlink" href="#calculate-difference-between-mothership-and-drip-and-ship" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mothership_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;drip_ship_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+
+<span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mothership_lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;drip_ship_lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="c1">################### Plot data values ###################</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;drip_ship_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;mothership_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;drip_ship_lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;mothership_lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Drip and ship nLVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;Mothership nLVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;Drip and ship IVT/MT LVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>    
+    <span class="sa">f</span><span class="s1">&#39;Mothership MT IVT/LVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+
+<span class="c1"># Indexes for subplots (to leave gaps on right for diff between Mothership and Drip and Ship)</span>
+<span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># Find maximum of data</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">])</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="c1"># Plot data</span>
+    <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="c1"># Set which axes to use for plot (only one here)</span>
+                 <span class="n">column</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="c1"># Column to apply colour</span>
+                 <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Avoids artifact boundry lines</span>
+                 <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="c1"># Make LSOA boundry same colour as area</span>
+                 <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="c1"># Manual scale min (remove to make automatic)</span>
+                 <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="c1"># Manual scale max (remove to make automatic)</span>
+                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno_r&#39;</span><span class="p">,</span> <span class="c1"># Colour map to use</span>
+                 <span class="c1"># Adjust size of colourmap key, and add label</span>
+                 <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">},</span>
+                 <span class="c1"># Set to display legend</span>
+                 <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Add country boarder</span>
+    <span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    
+    <span class="c1"># Add hospitals</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;Use_IVT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
+    <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;Use_MT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
+    <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Tighten map around mainland England and Wales</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">120000</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span> <span class="c1"># Turn of axis line and numbers</span>
+
+<span class="c1">################### Plot differences between mothership and drip and ship ###################</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">]</span>
+
+<span class="c1"># Find absolute maximum of data extent</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]),</span> 
+               <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">])))</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;nLVO advantage of Mothership (</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
+          <span class="sa">f</span><span class="s1">&#39;LVO advantage of Mothership (</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]</span>
+
+<span class="c1"># Indexes for subplots</span>
+<span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="c1"># Set which axes to use for plot (only one here)</span>
+                 <span class="n">column</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="c1"># Column to apply colour</span>
+                 <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Avoids artifact boundry lines</span>
+                 <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="c1"># Make LSOA boundry same colour as area</span>
+                 <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="c1"># Manual scale min (remove to make automatic)</span>
+                 <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="c1"># Manual scale max (remove to make automatic)</span>
+                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bwr&#39;</span><span class="p">,</span> <span class="c1"># Colour map to use</span>
+                 <span class="c1"># Adjust size of colourmap key, and add label</span>
+                 <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;Advantage of Mothership (</span><span class="si">{</span><span class="n">data_name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">},</span>
+                 <span class="c1"># Set to display legend</span>
+                 <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Add country boarder</span>
+    <span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    
+    <span class="c1"># Add hospitals</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;Use_IVT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
+    <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;Use_MT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
+    <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span> <span class="c1"># Turn of axis line and numbers    </span>
+
+    <span class="c1"># Tighten map around mainland England and Wales</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">120000</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_six_in_one.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6122f8eea1d3b4315e1016c9b4b877d3966b7ee98bb637e044966de9da2d609e.png" src="../_images/6122f8eea1d3b4315e1016c9b4b877d3966b7ee98bb637e044966de9da2d609e.png" />
+</div>
+</div>
+<p>Plot weighted benefit</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check weighted data exists</span>
+<span class="n">col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;weighted_drip_ship_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Required data does not exist&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_mothership_advantage_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_mothership_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">-</span> 
+        <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_drip_ship_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># Set up columns to map</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="sa">f</span><span class="s1">&#39;weighted_drip_ship_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+        <span class="sa">f</span><span class="s1">&#39;weighted_mothership_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;weighted_mothership_advantage_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+
+    <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="sa">f</span><span class="s1">&#39;Weighted drip and ship for </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;Weighted mothership for </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;Weighted advantage of mothership for </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+
+    <span class="n">cmaps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;inferno_r&#39;</span><span class="p">,</span> <span class="s1">&#39;inferno_r&#39;</span><span class="p">,</span> <span class="s1">&#39;bwr&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Find absolute maximum of data extent</span>
+    <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]])</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]])</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Radjust vmin and max for advantage plot</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">))</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+
+        <span class="c1"># Plot data</span>
+        <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="c1"># Set which axes to use for plot (only one here)</span>
+                    <span class="n">column</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="c1"># Column to apply colour</span>
+                    <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Avoids artifact boundry lines</span>
+                    <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="c1"># Make LSOA boundry same colour as area</span>
+                    <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="c1"># Manual scale min (remove to make automatic)</span>
+                    <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="c1"># Manual scale max (remove to make automatic)</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="n">cmaps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="c1"># Colour map to use</span>
+                    <span class="c1"># Adjust size of colourmap key, and add label</span>
+                    <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">},</span>
+                    <span class="c1"># Set to display legend</span>
+                    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="c1"># Add country boarder</span>
+        <span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        
+        <span class="c1"># Add hospitals</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;Use_IVT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
+        <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;Use_MT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
+        <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Tighten map around mainland England and Wales</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">120000</span><span class="p">)</span>
+
+        <span class="c1"># Add title</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span> <span class="c1"># Turn of axis line and numbers</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_weighted_results.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/377610cb0bcfb41d6376987aa6e35195e6e6ed02a1b00e9b8f8a55d28779d695.png" src="../_images/377610cb0bcfb41d6376987aa6e35195e6e6ed02a1b00e9b8f8a55d28779d695.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./england_wales"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_lsoa_analysis_mrs_less_equal_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analysis of LSOA results: mRS less than, or equal to, 2</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proportions-of-stroke-types-analysis-of-samuel-data">Proportions of stroke types: Analysis of SAMueL data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">Import packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-shape-file">Load shape file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-hospital-info">Load hospital info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-lsoa-model-output-data">Load LSOA model output data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-difference-between-mothership-and-drip-and-ship">Calculate difference between Mothership and Drip and Ship</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn & Michael Allen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
