@@ -229,8 +229,21 @@ An example of application to organisation of stroke care in England and Wales is
 :::{figure-md} england_wales_utility
 <img src="./england_wales/output/added_utility_six_in_one.jpg" width="600">
 
-A comparison of *drip and ship* and *mothership* models of organisation of care. Top row: nLVO. Bottom row: LVO. In each row the maps show (left-to-right): *Drip and ship*, *Mothership*, the advantage of *Mothership* over *Drip and ship*.
+A comparison of *drip and ship* and *mothership* models of organisation of care, and the effect on added utility. Top row: nLVO. Bottom row: LVO. In each row the maps show (left-to-right): *Drip and ship*, *Mothership*, the advantage of *Mothership* over *Drip and ship*.
 :::
+
+These results may be weighted by the proportion of nLVO and LVO, and the proportion of each which may be expected to be treated. Figure {numref}`{number} <england_wales_weighted_utility>` shows the overall expected benefit of *drip and ship* and *mothership* models of organisation of care, considering these weightings.
+
+
+:::{figure-md} england_wales_weighted_utility
+<img src="./england_wales/output/added_utility_weighted_results.jpg" width="600">
+
+A comparison of *drip and ship* and *mothership* models of organisation of care,and the effect on added utility weighted by the proportion of nLVO and LVO and their expected treatment rates. Added utiility is averaged across all emergency stroke admissions.
+:::
+
+
+
+added_utility_weighted_results
 
 ## References used in modelling
 
