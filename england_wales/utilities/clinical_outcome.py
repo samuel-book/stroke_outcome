@@ -223,12 +223,12 @@ class Clinical_outcome:
         results['nlvo_ivt_mrs<=2'] = results['nlvo_ivt_cum_probs'][2]
         
         # Get shift in mRS probs and store
-        results['lvo_ivt_shift'] = \
-            results['lvo_ivt_probs'] - results['lvo_untreated_probs']
-        results['lvo_mt_shift'] = \
-            results['lvo_mt_probs'] - results['lvo_untreated_probs']
-        results['nlvo_ivt_shift'] = \
-            results['nlvo_ivt_probs'] - results['nlvo_untreated_probs']
+        results['lvo_ivt_shift'] = np.round((
+            results['lvo_ivt_probs'] - results['lvo_untreated_probs']), 4)
+        results['lvo_mt_shift'] = np.round((
+            results['lvo_mt_probs'] - results['lvo_untreated_probs']), 4)
+        results['nlvo_ivt_shift'] = np.round((
+            results['nlvo_ivt_probs'] - results['nlvo_untreated_probs']), 4)
 
         # Get average mRS store in results
         results['lvo_untreated_mean_mRS'] = \
