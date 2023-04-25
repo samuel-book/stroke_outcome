@@ -221,6 +221,17 @@ Figure {numref}`{number} <treatment_shift>` shows the effect of thrombectomy del
 The predicted effect of treatment of a selection of five patients with LVO, given thrombectomy at 120 mins after stroke. The dotted lines represent the mRS shift for each patient if they received no treatment (top), or received MT at 120 minutes after stroke onset (bottom).
 :::
 
+## Application to England and Wales
+
+An example of application to organisation of stroke care in England and Wales is shown in figure {numref}`{number} <england_wales_utility>`. This figure shows the added utility of reperfusion therapy.
+
+
+:::{figure-md} england_wales_utility
+<img src="./england_wales/output/added_utility_six_in_one.jpg" width="600">
+
+A comparison of *drip and ship* and *mothership* models of organisation of care. Top row: nLVO. Bottom row: LVO. In each row the maps show (left-to-right): *Drip and ship*, *Mothership*, the advantage of *Mothership* over *Drip and ship*.
+:::
+
 ## References used in modelling
 
 de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45. 
