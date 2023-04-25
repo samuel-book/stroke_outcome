@@ -1,0 +1,17 @@
+name: stroke_geography
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - jupyterlab
+  - matplotlib
+  - numpy
+  - pip
+  - pandas
+  - python=3.9
+  - scikit-learn
+  - pip:
+    - geopandas
+    - contextily
+    - mapclassify
+    
