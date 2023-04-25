@@ -1,10 +1,15 @@
 format: jb-book
 root: intro
-chapters:
-- file: 01_mRS_datasets_full
-- file: 02_mRS_outcomes_maths
-- file: 03_demo_of_outcome_model
-- file: 04_matrix
-- file: 05_geography
-- file: 06_show_outcome_model_code
-- file: 90_proportion_ischaemic_with_lvo
+parts:
+- caption: Outcome model
+  chapters:
+  - file: 01_mRS_datasets_full
+  - file: 02_mRS_outcomes_maths
+  - file: 03_demo_of_outcome_model
+  - file: 04_matrix
+  - file: 05_geography
+  - file: 06_show_outcome_model_code
+  - file: 90_proportion_ischaemic_with_lvo
+- caption: Application to England and Wales
+  chapters:
+  - file: england_wales/model_outcomes
