@@ -242,9 +242,6 @@ A comparison of *drip and ship* and *mothership* models of organisation of care,
 :::
 
 
-
-added_utility_weighted_results
-
 ## References used in modelling
 
 de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45. 
