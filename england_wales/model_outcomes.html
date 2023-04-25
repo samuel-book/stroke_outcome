@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Deterministic geographical model &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'england_wales/model_outcomes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Proportion of ischaemic patients with LVO" href="../90_proportion_ischaemic_with_lvo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_geography.html">Distance-based treatment effects</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_show_outcome_model_code.html">Show outcome model python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deterministic geographical model</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/england_wales/model_outcomes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deterministic geographical model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-data">Load and parse data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-hospital-data">Load and parse hospital data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-lsoa-travel-matrix">Load and parse LSOA travel matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-inter-hospital-travel-time-for-mt">Load and parse inter_hospital travel time for MT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-results">Calculate results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-outcomes">Add outcomes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deterministic-geographical-model">
+<h1>Deterministic geographical model<a class="headerlink" href="#deterministic-geographical-model" title="Permalink to this heading">#</a></h1>
+<section id="global-variables-to-use">
+<h2>Global variables to use<a class="headerlink" href="#global-variables-to-use" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit_to_england</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">onset_to_ambulance_arrival</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">arrival_to_ivt</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">arrival_to_mt</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;lsoa_base&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-packages">
+<h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">utilities.clinical_outcome</span> <span class="kn">import</span> <span class="n">Clinical_outcome</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-and-parse-data">
+<h2>Load and parse data<a class="headerlink" href="#load-and-parse-data" title="Permalink to this heading">#</a></h2>
+<section id="load-and-parse-hospital-data">
+<h3>Load and parse hospital data<a class="headerlink" href="#load-and-parse-hospital-data" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospitals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/stroke_hospitals_2022.csv&#39;</span><span class="p">)</span>
+<span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[[</span><span class="s1">&#39;Use_IVT&#39;</span><span class="p">,</span> <span class="s1">&#39;Use_MT&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">hospitals</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;England&#39;</span>
+    <span class="n">hospitals</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-and-parse-lsoa-travel-matrix">
+<h3>Load and parse LSOA travel matrix<a class="headerlink" href="#load-and-parse-lsoa-travel-matrix" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">admissions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./data/lsoa_predicted_admissions.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;lsoa11nm&#39;</span><span class="p">)</span>
+<span class="n">travel_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./data/lsoa_travel_time_matrix_calibrated.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;LSOA&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
+    <span class="n">england_lsoa</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">admissions</span><span class="p">[</span><span class="n">admissions</span><span class="p">[</span><span class="s1">&#39;England&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">admissions</span> <span class="o">=</span> <span class="n">admissions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">england_lsoa</span><span class="p">]</span>
+    <span class="n">travel_matrix</span> <span class="o">=</span> <span class="n">travel_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">england_lsoa</span><span class="p">]</span>
+
+<span class="c1"># Identify closest IVT unit</span>
+<span class="n">ivt_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use_IVT&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Postcode&#39;</span><span class="p">])</span>
+<span class="n">lsoa_ivt_travel_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">ivt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">lsoa_ivt_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">ivt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Identify closest MT Unit</span>
+<span class="n">mt_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use_MT&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Postcode&#39;</span><span class="p">])</span>
+<span class="n">lsoa_mt_travel_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">mt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">lsoa_mt_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">mt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Identify closest MSU base</span>
+<span class="n">msu_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use_MSU&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Postcode&#39;</span><span class="p">])</span>
+<span class="n">lsoa_msu_travel_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">msu_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">lsoa_msu_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">msu_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-and-parse-inter-hospital-travel-time-for-mt">
+<h3>Load and parse inter_hospital travel time for MT<a class="headerlink" href="#load-and-parse-inter-hospital-travel-time-for-mt" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">inter_hospital_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./data/inter_hospital_time_calibrated.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;from_postcode&#39;</span><span class="p">)</span>
+
+<span class="c1"># Restrict to IVT and MSU hospitals in use</span>
+<span class="n">inter_hospital_time</span> <span class="o">=</span> <span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ivt_hospitals</span><span class="p">][</span><span class="n">mt_hospitals</span><span class="p">]</span>
+
+<span class="c1"># Set distance between same hospitals to zero</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">col</span><span class="p">:</span>
+            <span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Identify closest transfer unit</span>
+<span class="n">mt_transfer_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">mt_transfer_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="calculate-results">
+<h2>Calculate results<a class="headerlink" href="#calculate-results" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up table for results</span>
+<span class="n">lsoa_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lsoa_ivt_unit</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">lsoa_list</span><span class="p">)</span>
+
+<span class="c1"># Collate info</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_ivt_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_ivt_travel_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_mt_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_mt_travel_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mt_transfer_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mt_transfer_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;msu_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_msu_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;msu_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_msu_travel_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
+
+<span class="c1"># Set up lists for total times to treatment</span>
+<span class="n">ivt_drip_ship</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ivt_mothership</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mt_drip_ship</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mt_mothership</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Calculate total times for treatment</span>
+<span class="k">for</span> <span class="n">lsoa</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">:</span>
+    <span class="c1"># Time to IVT for drip and ship</span>
+    <span class="n">ivt_drip_ship</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="n">arrival_to_ivt</span><span class="p">)</span>
+    <span class="c1"># Time to IVT for mothership</span>
+    <span class="n">ivt_mothership</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="n">arrival_to_ivt</span><span class="p">)</span>
+    <span class="c1"># Time to MT for drip and ship</span>
+    <span class="n">mt_drip_ship</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">*</span> 
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">])</span> <span class="o">+</span> <span class="n">arrival_to_mt</span><span class="p">)</span>
+    <span class="c1"># Time to MT for mothership</span>
+    <span class="n">mt_mothership</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>  <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="n">arrival_to_mt</span><span class="p">)</span>
+    
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ivt_drip_ship</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ivt_mothership</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mt_drip_ship</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mt_mothership</span>
+
+<span class="c1"># Sort</span>
+<span class="n">results</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Show results</span>
+<span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Adur 001A</th>
+      <th>Adur 001B</th>
+      <th>Adur 001C</th>
+      <th>Adur 001D</th>
+      <th>Adur 001E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>closest_ivt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+    </tr>
+    <tr>
+      <th>closest_ivt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>17.6</td>
+      <td>17.6</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>closest_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>closest_mt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>19.8</td>
+      <td>19.8</td>
+      <td>19.8</td>
+    </tr>
+    <tr>
+      <th>transfer_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>transfer_mt_time</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>31.6</td>
+      <td>31.6</td>
+      <td>31.6</td>
+    </tr>
+    <tr>
+      <th>mt_transfer_required</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>msu_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>msu_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>19.8</td>
+      <td>19.8</td>
+      <td>19.8</td>
+    </tr>
+    <tr>
+      <th>ivt_drip_ship</th>
+      <td>117.6</td>
+      <td>118.7</td>
+      <td>117.6</td>
+      <td>117.6</td>
+      <td>116.5</td>
+    </tr>
+    <tr>
+      <th>ivt_mothership</th>
+      <td>117.6</td>
+      <td>118.7</td>
+      <td>119.8</td>
+      <td>119.8</td>
+      <td>119.8</td>
+    </tr>
+    <tr>
+      <th>mt_drip_ship</th>
+      <td>167.6</td>
+      <td>168.7</td>
+      <td>259.2</td>
+      <td>259.2</td>
+      <td>258.1</td>
+    </tr>
+    <tr>
+      <th>mt_mothership</th>
+      <td>167.6</td>
+      <td>168.7</td>
+      <td>169.8</td>
+      <td>169.8</td>
+      <td>169.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="add-outcomes">
+<h2>Add outcomes<a class="headerlink" href="#add-outcomes" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load mRS distributions</span>
+<span class="n">mrs_dists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./utilities/mrs_dist_probs_cumsum.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+
+<span class="n">mrs_dists</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+    <tr>
+      <th>Stroke type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.582881</td>
+      <td>0.745419</td>
+      <td>0.848859</td>
+      <td>0.951082</td>
+      <td>0.993055</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_nlvo_ivt_deaths</th>
+      <td>0.576469</td>
+      <td>0.737219</td>
+      <td>0.839522</td>
+      <td>0.940620</td>
+      <td>0.982131</td>
+      <td>0.989000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.417894</td>
+      <td>0.560853</td>
+      <td>0.679283</td>
+      <td>0.843494</td>
+      <td>0.957269</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_ivt_deaths</th>
+      <td>0.403644</td>
+      <td>0.541728</td>
+      <td>0.656119</td>
+      <td>0.814731</td>
+      <td>0.924626</td>
+      <td>0.965900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_mt_deaths</th>
+      <td>0.402850</td>
+      <td>0.540662</td>
+      <td>0.654829</td>
+      <td>0.813128</td>
+      <td>0.922807</td>
+      <td>0.964000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.197144</td>
+      <td>0.460000</td>
+      <td>0.580032</td>
+      <td>0.707768</td>
+      <td>0.855677</td>
+      <td>0.917702</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.197271</td>
+      <td>0.460000</td>
+      <td>0.577583</td>
+      <td>0.702252</td>
+      <td>0.845244</td>
+      <td>0.904454</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.429808</td>
+      <td>0.630000</td>
+      <td>0.738212</td>
+      <td>0.848427</td>
+      <td>0.929188</td>
+      <td>0.956300</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.050000</td>
+      <td>0.129000</td>
+      <td>0.265000</td>
+      <td>0.429000</td>
+      <td>0.676000</td>
+      <td>0.811000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.047898</td>
+      <td>0.123576</td>
+      <td>0.253858</td>
+      <td>0.410962</td>
+      <td>0.647576</td>
+      <td>0.776900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.047781</td>
+      <td>0.123274</td>
+      <td>0.253237</td>
+      <td>0.409957</td>
+      <td>0.645993</td>
+      <td>0.775000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.112916</td>
+      <td>0.200000</td>
+      <td>0.327377</td>
+      <td>0.484757</td>
+      <td>0.698212</td>
+      <td>0.811443</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.314082</td>
+      <td>0.436315</td>
+      <td>0.554431</td>
+      <td>0.712335</td>
+      <td>0.853604</td>
+      <td>0.916750</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Demo of outcome model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_to_ivt</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">time_to_mt</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
+    <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">outcomes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]),
+ &#39;nlvo_untreated_probs&#39;: array([0.2 , 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]),
+ &#39;lvo_ivt_probs&#39;: array([0.1 , 0.08, 0.13, 0.16, 0.21, 0.12, 0.2 ]),
+ &#39;lvo_mt_probs&#39;: array([0.21, 0.13, 0.13, 0.17, 0.17, 0.08, 0.11]),
+ &#39;nlvo_ivt_probs&#39;: array([0.37, 0.22, 0.11, 0.12, 0.09, 0.03, 0.06]),
+ &#39;lvo_untreated_mean_utility&#39;: 0.33190000000000003,
+ &#39;nlvo_untreated_mean_utility&#39;: 0.5997000000000001,
+ &#39;lvo_ivt_mean_utility&#39;: 0.3708,
+ &#39;lvo_mt_mean_utility&#39;: 0.5266000000000001,
+ &#39;nlvo_ivt_mean_utility&#39;: 0.7121999999999999,
+ &#39;lvo_ivt_added_utility&#39;: 0.03889999999999999,
+ &#39;lvo_mt_added_utility&#39;: 0.19470000000000004,
+ &#39;nlvo_ivt_added_utility&#39;: 0.11249999999999982,
+ &#39;lvo_untreated_cum_probs&#39;: array([0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.  ]),
+ &#39;nlvo_untreated_cum_probs&#39;: array([0.2 , 0.46, 0.58, 0.71, 0.85, 0.91, 1.  ]),
+ &#39;lvo_ivt_cum_probs&#39;: array([0.1 , 0.18, 0.31, 0.47, 0.68, 0.8 , 1.  ]),
+ &#39;lvo_mt_cum_probs&#39;: array([0.21, 0.34, 0.47, 0.64, 0.81, 0.89, 1.  ]),
+ &#39;nlvo_ivt_cum_probs&#39;: array([0.37, 0.59, 0.7 , 0.82, 0.91, 0.94, 1.  ]),
+ &#39;lvo_untreated_mrs&lt;=2&#39;: 0.27,
+ &#39;nlvo_untreated_mrs&lt;=2&#39;: 0.58,
+ &#39;lvo_ivt_mrs&lt;=2&#39;: 0.31,
+ &#39;lvo_mt_mrs&lt;=2&#39;: 0.47,
+ &#39;nlvo_ivt_mrs&lt;=2&#39;: 0.7,
+ &#39;lvo_ivt_shift&#39;: array([ 0.05,  0.  , -0.01,  0.  , -0.03, -0.02,  0.01]),
+ &#39;lvo_mt_shift&#39;: array([ 0.16,  0.05, -0.01,  0.01, -0.07, -0.06, -0.08]),
+ &#39;nlvo_ivt_shift&#39;: array([ 0.17, -0.04, -0.01, -0.01, -0.05, -0.03, -0.03]),
+ &#39;lvo_untreated_mean_mRS&#39;: 3.64,
+ &#39;nlvo_untreated_mean_mRS&#39;: 2.29,
+ &#39;lvo_ivt_mean_mRS&#39;: 3.46,
+ &#39;lvo_mt_mean_mRS&#39;: 2.64,
+ &#39;nlvo_ivt_mean_mRS&#39;: 1.67,
+ &#39;lvo_ivt_mean_shift&#39;: -0.18,
+ &#39;lvo_mt_mean_shift&#39;: -1.0,
+ &#39;nlvo_ivt_mean_shift&#39;: -0.62,
+ &#39;lvo_ivt_improved&#39;: 0.19,
+ &#39;lvo_mt_improved&#39;: 0.81,
+ &#39;nlvo_ivt_improved&#39;: 0.61}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_drip_ship_outcomes</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate outcomes based on drip and ship times to IVT and MT&quot;&quot;&quot;</span>
+    <span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">]</span>
+    <span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">]</span>
+    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
+        <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outcomes</span>
+
+<span class="k">def</span> <span class="nf">get_mothership_outcomes</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate outcomes based on drip and ship times to IVT and MT&quot;&quot;&quot;</span>
+    <span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ivt_mothership&#39;</span><span class="p">]</span>
+    <span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;mt_mothership&#39;</span><span class="p">]</span>
+    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
+        <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outcomes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get drip and ship results</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_drip_ship_outcomes</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Reformat</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
+<span class="n">colnames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
+<span class="n">new_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;drip_ship_&#39;</span> <span class="o">+</span> <span class="n">colname</span> <span class="k">for</span> <span class="n">colname</span> <span class="ow">in</span> <span class="n">colnames</span><span class="p">]</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">new_colnames</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># Add to results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">results</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Get mothership results</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_mothership_outcomes</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Reformat</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
+<span class="n">colnames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
+<span class="n">new_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mothership_&#39;</span> <span class="o">+</span> <span class="n">colname</span> <span class="k">for</span> <span class="n">colname</span> <span class="ow">in</span> <span class="n">colnames</span><span class="p">]</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">new_colnames</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># Add to results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">results</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add admissions to results</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">admissions</span><span class="p">[</span><span class="s1">&#39;LSOA_predicted_admissions&#39;</span><span class="p">],</span>
+                    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save</span>
+<span class="n">results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">,</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;lsoa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./england_wales"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../90_proportion_ischaemic_with_lvo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Proportion of ischaemic patients with LVO</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-data">Load and parse data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-hospital-data">Load and parse hospital data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-lsoa-travel-matrix">Load and parse LSOA travel matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-inter-hospital-travel-time-for-mt">Load and parse inter_hospital travel time for MT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-results">Calculate results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-outcomes">Add outcomes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn & Michael Allen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

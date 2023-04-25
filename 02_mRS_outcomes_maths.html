@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment &#8212; Stroke outcome modelling</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +63,87 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_mRS_outcomes_maths';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Example output from stroke outcome model" href="03_demo_of_outcome_model.html" />
     <link rel="prev" title="Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset" href="01_mRS_datasets_full.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Stroke outcome modelling</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,517 +152,240 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_mRS_datasets_full.html">
-   Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_demo_of_outcome_model.html">
-   Example output from stroke outcome model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_matrix.html">
-   Demonstration of added utility depending on time to IVT and MT
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_geography.html">
-   Distance-based treatment effects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_show_outcome_model_code.html">
-   Show outcome model python code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="90_proportion_ischaemic_with_lvo.html">
-   Proportion of ischaemic patients with LVO
-  </a>
- </li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_geography.html">Distance-based treatment effects</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="06_show_outcome_model_code.html">Show outcome model python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="england_wales/model_outcomes.html">Deterministic geographical model</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02_mRS_outcomes_maths.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-    </ul>
-  </div>
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/02_mRS_outcomes_maths.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modified-rankin-scale">
-     Modified Rankin Scale
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reperfusion-treatment-for-ischaemic-stroke">
-     Reperfusion treatment for ischaemic stroke
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#decay-of-effect-of-reperfusion-treatment">
-     Decay of effect of reperfusion treatment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aim">
-   Aim
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method">
-   Method
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#steps">
-     Steps
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notebook-admin">
-   Notebook admin
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-probability-and-odds">
-   Define probability and odds
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability">
-     Probability
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#odds">
-     Odds
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#collect-the-data">
-   Collect the data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-known-data">
-     Plot the known data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steps-to-find-variation-with-time">
-   Steps to find variation with time
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-a-straight-line-formula-for-log-odds">
-     Find a straight line formula for log(odds)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-an-exponential-formula-for-odds-with-time">
-     Find an exponential formula for odds with time
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-a-logistic-formula-for-probability-with-time">
-     Find a logistic formula for probability with time
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application-to-our-data">
-   Application to our data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-a-and-b">
-     Calculate
-     <span class="math notranslate nohighlight">
-      \(A\)
-     </span>
-     and
-     <span class="math notranslate nohighlight">
-      \(b\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-new-time-distributions">
-     Plot the new time distributions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sidetrack-why-do-the-probability-lines-bend-differently">
-   Sidetrack: Why do the probability lines bend differently?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sidetrack-2-what-do-a-and-b-mean-for-probability">
-   Sidetrack 2: What do
-   <span class="math notranslate nohighlight">
-    \(A\)
-   </span>
-   and
-   <span class="math notranslate nohighlight">
-    \(b\)
-   </span>
-   mean for probability?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#modified-rankin-scale">
-     Modified Rankin Scale
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reperfusion-treatment-for-ischaemic-stroke">
-     Reperfusion treatment for ischaemic stroke
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#decay-of-effect-of-reperfusion-treatment">
-     Decay of effect of reperfusion treatment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aim">
-   Aim
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method">
-   Method
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#steps">
-     Steps
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#notebook-admin">
-   Notebook admin
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-probability-and-odds">
-   Define probability and odds
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability">
-     Probability
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#odds">
-     Odds
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#collect-the-data">
-   Collect the data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-known-data">
-     Plot the known data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steps-to-find-variation-with-time">
-   Steps to find variation with time
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-a-straight-line-formula-for-log-odds">
-     Find a straight line formula for log(odds)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-an-exponential-formula-for-odds-with-time">
-     Find an exponential formula for odds with time
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-a-logistic-formula-for-probability-with-time">
-     Find a logistic formula for probability with time
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application-to-our-data">
-   Application to our data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-a-and-b">
-     Calculate
-     <span class="math notranslate nohighlight">
-      \(A\)
-     </span>
-     and
-     <span class="math notranslate nohighlight">
-      \(b\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-new-time-distributions">
-     Plot the new time distributions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sidetrack-why-do-the-probability-lines-bend-differently">
-   Sidetrack: Why do the probability lines bend differently?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sidetrack-2-what-do-a-and-b-mean-for-probability">
-   Sidetrack 2: What do
-   <span class="math notranslate nohighlight">
-    \(A\)
-   </span>
-   and
-   <span class="math notranslate nohighlight">
-    \(b\)
-   </span>
-   mean for probability?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-rankin-scale">Modified Rankin Scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reperfusion-treatment-for-ischaemic-stroke">Reperfusion treatment for ischaemic stroke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decay-of-effect-of-reperfusion-treatment">Decay of effect of reperfusion treatment</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-probability-and-odds">Define probability and odds</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odds">Odds</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-the-data">Collect the data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-known-data">Plot the known data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-find-variation-with-time">Steps to find variation with time</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-straight-line-formula-for-log-odds">Find a straight line formula for log(odds)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-an-exponential-formula-for-odds-with-time">Find an exponential formula for odds with time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-logistic-formula-for-probability-with-time">Find a logistic formula for probability with time</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-our-data">Application to our data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-a-and-b">Calculate <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-new-time-distributions">Plot the new time distributions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetrack-why-do-the-probability-lines-bend-differently">Sidetrack: Why do the probability lines bend differently?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetrack-2-what-do-a-and-b-mean-for-probability">Sidetrack 2: What do <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> mean for probability?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="mathematics-for-calculating-odds-and-probabilities-of-mrs-level-outcomes-after-stroke-based-on-time-to-reperfusion-treatment">
-<h1>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment<a class="headerlink" href="#mathematics-for-calculating-odds-and-probabilities-of-mrs-level-outcomes-after-stroke-based-on-time-to-reperfusion-treatment" title="Permalink to this headline">#</a></h1>
+<h1>Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment<a class="headerlink" href="#mathematics-for-calculating-odds-and-probabilities-of-mrs-level-outcomes-after-stroke-based-on-time-to-reperfusion-treatment" title="Permalink to this heading">#</a></h1>
 <p>In this notebook we explain how to derive various formulae for probability and odds that will be used in predicting modified Rankin Scale (mRS) after stroke, depending on time to treatment.</p>
 <p>The data used in this example correspond to thrombectomy treatment, and can be switched for other data as required without changing the formulae.</p>
 <section id="modified-rankin-scale">
-<h2>Modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this headline">#</a></h2>
+<h2>Modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this heading">#</a></h2>
 <p>The modified Rankin Scale (mRS) is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke or other causes of neurological disability [Saver <em>et al</em>., 2010].</p>
 <p>The scale runs from 0-6, running from perfect health without symptoms to death:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Score</p></th>
 <th class="head"><p>Description</p></th>
@@ -652,7 +417,7 @@ title="Print to PDF"
 </table>
 </section>
 <section id="reperfusion-treatment-for-ischaemic-stroke">
-<h2>Reperfusion treatment for ischaemic stroke<a class="headerlink" href="#reperfusion-treatment-for-ischaemic-stroke" title="Permalink to this headline">#</a></h2>
+<h2>Reperfusion treatment for ischaemic stroke<a class="headerlink" href="#reperfusion-treatment-for-ischaemic-stroke" title="Permalink to this heading">#</a></h2>
 <p>Ischaemic stroke is a stroke caused by the blockage of blood supply to an area of the brain, caused by a clot. Ischaemic strokes account for 80-85% of all strokes, with the remainder being <em>haemorrhagic</em> strokes where loss of blood supply is caused by a bleed in the brain.</p>
 <p><em>Reperfusion</em> describes the restoration of blood flow following an ischaemic stroke. There are two potential reperfusion treatments:</p>
 <ul class="simple">
@@ -661,20 +426,20 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="decay-of-effect-of-reperfusion-treatment">
-<h2>Decay of effect of reperfusion treatment<a class="headerlink" href="#decay-of-effect-of-reperfusion-treatment" title="Permalink to this headline">#</a></h2>
+<h2>Decay of effect of reperfusion treatment<a class="headerlink" href="#decay-of-effect-of-reperfusion-treatment" title="Permalink to this heading">#</a></h2>
 <p>Reperfusion treatment becomes less effective with increasing time after stroke (with the loss of effect occurring over some hours). Emberson <em>et al.</em> and Fransen <em>et al.</em> have described the declining effect as the declining <em>odds ratio</em> of achieving an essentially <em>‘good outcome’</em> following thrombolysis (Emberson) or thrombectomy (Fransen). A <em>‘good outcome’</em> has been described differently with studied on thrombolysis generally using a threshold of mRS 0-1 at 3-6 months, and thrombectomy studies generally using a threshold of mRS 0-2 at 3-6 months. The <em>odds ratio</em> describes the odds of a <em>‘good outcome’</em> relative to the odds of a <em>‘good outcome’</em> in an untreated control group.</p>
 <p>The deacy in effectiveness of reperfusion is shown in the figure below (left panel = odds ratio, right panel = log odds ratio, IVT = thrombolysis, MT = thrombectomy).</p>
 <p><img alt="" src="_images/odds_decay.png" /></p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="aim">
-<h1>Aim<a class="headerlink" href="#aim" title="Permalink to this headline">#</a></h1>
+<h1>Aim<a class="headerlink" href="#aim" title="Permalink to this heading">#</a></h1>
 <p>We define outcome in terms of probability distributions of mRS scores.
 We know all about the probabilities of mRS at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>, the time of no effect, from <a class="reference external" href="https://github.com/samuel-book/stroke_outcome/blob/main/mRS_datasets_full.ipynb">our notebook on deriving the probability distributions</a>.
 We need to use the data we have at these two fixed times to create models that describe probability at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="method">
-<h1>Method<a class="headerlink" href="#method" title="Permalink to this headline">#</a></h1>
+<h1>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
 <p>Since we know that probability, odds, and log(odds) are all linked,
 we only need to find a formula for one of these distributions.
 That formula can then be converted into the forms required to find the other quantities.
@@ -685,9 +450,9 @@ Since we are using data where we already know this time of no effect and the pro
 We can make this simplification because the straight line fits to log(odds) and to log(odds ratio) share a gradient and only differ in their start and end values (their displacement in <span class="math notranslate nohighlight">\(y\)</span>).
 The straight line has a formula <span class="math notranslate nohighlight">\(\log(O) = A + bt\)</span> for constants <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <section id="steps">
-<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">#</a></h2>
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this heading">#</a></h2>
 <p>The steps here are, for mRS<span class="math notranslate nohighlight">\(\leq\)</span>5<span class="math notranslate nohighlight">\(^*\)</span>:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Define log(odds), a straight-line formula <span class="math notranslate nohighlight">\(A + bt\)</span>.</p></li>
 <li><p>Find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> using the known probabilities at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>.</p></li>
 <li><p>Define odds, an exponential decay, by converting log(odds).</p></li>
@@ -697,7 +462,7 @@ The straight line has a formula <span class="math notranslate nohighlight">\(\lo
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="results">
-<h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">#</a></h1>
+<h1>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>Spoilers!</p>
 </div></blockquote>
@@ -711,7 +476,7 @@ The straight line has a formula <span class="math notranslate nohighlight">\(\lo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_6_0.png" src="_images/02_mRS_outcomes_maths_6_0.png" />
+<img alt="_images/c23066b3e736e6106d7f1d70964e50fbea15e8b6b0c915366ddfd16d9b9ca9c0.png" src="_images/c23066b3e736e6106d7f1d70964e50fbea15e8b6b0c915366ddfd16d9b9ca9c0.png" />
 </div>
 </div>
 <p>The same plots, but on separate figures:</p>
@@ -724,15 +489,15 @@ The straight line has a formula <span class="math notranslate nohighlight">\(\lo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_8_0.png" src="_images/02_mRS_outcomes_maths_8_0.png" />
-<img alt="_images/02_mRS_outcomes_maths_8_1.png" src="_images/02_mRS_outcomes_maths_8_1.png" />
-<img alt="_images/02_mRS_outcomes_maths_8_2.png" src="_images/02_mRS_outcomes_maths_8_2.png" />
+<img alt="_images/8f1eed50314881da6af4819cf2cb1acde0c8cfeeadfad61548ac61743ce41dc1.png" src="_images/8f1eed50314881da6af4819cf2cb1acde0c8cfeeadfad61548ac61743ce41dc1.png" />
+<img alt="_images/833bed235f780eeda649cc676bb6fe1ba5d48630c4f1444827c00e9d4da76968.png" src="_images/833bed235f780eeda649cc676bb6fe1ba5d48630c4f1444827c00e9d4da76968.png" />
+<img alt="_images/58cb7920db61a642207d095ffd172f61082d64ea4e8ae5a6eb31be7e222ebbcd.png" src="_images/58cb7920db61a642207d095ffd172f61082d64ea4e8ae5a6eb31be7e222ebbcd.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="notebook-admin">
-<h1>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this headline">#</a></h1>
+<h1>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep notebook cleaner once finalised</span>
@@ -765,10 +530,10 @@ The straight line has a formula <span class="math notranslate nohighlight">\(\lo
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="define-probability-and-odds">
-<h1>Define probability and odds<a class="headerlink" href="#define-probability-and-odds" title="Permalink to this headline">#</a></h1>
+<h1>Define probability and odds<a class="headerlink" href="#define-probability-and-odds" title="Permalink to this heading">#</a></h1>
 <p>All of the quantities we will define are only valid in the time range covered by our data, which is <span class="math notranslate nohighlight">\(0\leq t \leq t_{\mathrm{ne}}\)</span> for the no-effect time <span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span>.</p>
 <section id="probability">
-<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">#</a></h2>
+<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this heading">#</a></h2>
 <p>Firstly we will define some probability distributions in terms of <span class="math notranslate nohighlight">\(x\)</span>, which is a given modified Rankin Scale (mRS), and <span class="math notranslate nohighlight">\(t\)</span>, the time from onset to treatment.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(\mathrm{mRS}=x\ |\ t)\)</span>, the probability distribution of mRS.</p></li>
@@ -781,7 +546,7 @@ The straight line has a formula <span class="math notranslate nohighlight">\(\lo
 </ul>
 </section>
 <section id="odds">
-<h2>Odds<a class="headerlink" href="#odds" title="Permalink to this headline">#</a></h2>
+<h2>Odds<a class="headerlink" href="#odds" title="Permalink to this heading">#</a></h2>
 <p>The odds are an alternative way of expressing the likeliness of an event occurring. Odds are expressed in terms of how much more (or less) likely it is that a given outcome will be attained rather than any other outcomes.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathrm{odds} =  \frac{\mathrm{probability\ of\ this\ outcome}}{\mathrm{probability\ of\ other\ outcomes}} \phantom{g} \mathrm{(single\ patient)}  \phantom{gap} =  \frac{\mathrm{number\ of\ this\ outcome}}{\mathrm{number\ of\ other\ outcomes}} \phantom{g} \mathrm{(group\ of\ patients)}\)</span></p></li>
@@ -799,7 +564,7 @@ $<span class="math notranslate nohighlight">\(O(\mathrm{mRS}\leq6) = \frac{P(\ma
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="collect-the-data">
-<h1>Collect the data<a class="headerlink" href="#collect-the-data" title="Permalink to this headline">#</a></h1>
+<h1>Collect the data<a class="headerlink" href="#collect-the-data" title="Permalink to this heading">#</a></h1>
 <p>We’ll use the data for large-vessel occlusions (LVOs) that are treated with mechanical thrombectomy (MT), using the same probability distributions that we’ve defined in <a class="reference external" href="https://github.com/samuel-book/stroke_outcome/blob/main/mRS_datasets_full.ipynb">this notebook</a>.</p>
 <p>Define the time of no effect <span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span> for LVOs treated with MT:</p>
 <div class="cell docutils container">
@@ -866,7 +631,7 @@ $<span class="math notranslate nohighlight">\(O(\mathrm{mRS}\leq6) = \frac{P(\ma
 </div>
 </div>
 <section id="plot-the-known-data">
-<h2>Plot the known data<a class="headerlink" href="#plot-the-known-data" title="Permalink to this headline">#</a></h2>
+<h2>Plot the known data<a class="headerlink" href="#plot-the-known-data" title="Permalink to this heading">#</a></h2>
 <p>The following two cells define some colours and a plotting function that we’ll use here and later in the notebook:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -926,7 +691,7 @@ $<span class="math notranslate nohighlight">\(O(\mathrm{mRS}\leq6) = \frac{P(\ma
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_31_0.png" src="_images/02_mRS_outcomes_maths_31_0.png" />
+<img alt="_images/69a957c66bab2335d0243291392be1f4727b350d61c2186cb5bac7639159f740.png" src="_images/69a957c66bab2335d0243291392be1f4727b350d61c2186cb5bac7639159f740.png" />
 </div>
 </div>
 <p>Now, for each graph we need to connect the two sets of data at <span class="math notranslate nohighlight">\(t=0\)</span> and the no-effect time by finding out how probability, odds and log(odds) vary with time.</p>
@@ -934,9 +699,9 @@ $<span class="math notranslate nohighlight">\(O(\mathrm{mRS}\leq6) = \frac{P(\ma
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="steps-to-find-variation-with-time">
-<h1>Steps to find variation with time<a class="headerlink" href="#steps-to-find-variation-with-time" title="Permalink to this headline">#</a></h1>
+<h1>Steps to find variation with time<a class="headerlink" href="#steps-to-find-variation-with-time" title="Permalink to this heading">#</a></h1>
 <section id="find-a-straight-line-formula-for-log-odds">
-<h2>Find a straight line formula for log(odds)<a class="headerlink" href="#find-a-straight-line-formula-for-log-odds" title="Permalink to this headline">#</a></h2>
+<h2>Find a straight line formula for log(odds)<a class="headerlink" href="#find-a-straight-line-formula-for-log-odds" title="Permalink to this heading">#</a></h2>
 <p>We start with two different ways to write log(odds):</p>
 <ul class="simple">
 <li><p>Firstly, in terms of probability we have defined $<span class="math notranslate nohighlight">\( \log\bigl[O(\mathrm{mRS}\leq x\ |\ t)\bigr] = \log\left[ \frac{P(\mathrm{mRS}\leq x\ |\ t)}{1-P(\mathrm{mRS}\leq x\ |\ t)} \right] \)</span>$</p></li>
@@ -960,7 +725,7 @@ b_x &amp;= \frac{1}{t_{\mathrm{ne}}} \left( \log\left[ \frac{P(\mathrm{mRS}\leq 
 <p>In both cases, we know all of the <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(t\)</span> terms on the right-hand-side and so we can calculate <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 </section>
 <section id="find-an-exponential-formula-for-odds-with-time">
-<h2>Find an exponential formula for odds with time<a class="headerlink" href="#find-an-exponential-formula-for-odds-with-time" title="Permalink to this headline">#</a></h2>
+<h2>Find an exponential formula for odds with time<a class="headerlink" href="#find-an-exponential-formula-for-odds-with-time" title="Permalink to this heading">#</a></h2>
 <p>We can take the exponential of <span class="math notranslate nohighlight">\( \log\bigl[O(\mathrm{mRS}\leq x\ |\ t)\bigr] = A_x + b_xt \)</span> to find an equation for odds:</p>
 <div class="math notranslate nohighlight">
 \[ O(\mathrm{mRS}\leq x\ |\ t) = e^{Ax + bx\cdot t} \]</div>
@@ -973,7 +738,7 @@ b_x &amp;= \frac{1}{t_{\mathrm{ne}}} \left( \log\left[ \frac{P(\mathrm{mRS}\leq 
 <p>This tells us that odds will decay exponentially with time because <span class="math notranslate nohighlight">\(b_x\)</span> is always negative.</p>
 </section>
 <section id="find-a-logistic-formula-for-probability-with-time">
-<h2>Find a logistic formula for probability with time<a class="headerlink" href="#find-a-logistic-formula-for-probability-with-time" title="Permalink to this headline">#</a></h2>
+<h2>Find a logistic formula for probability with time<a class="headerlink" href="#find-a-logistic-formula-for-probability-with-time" title="Permalink to this heading">#</a></h2>
 <p>Now we can set the expression for the odds ratio in exponential form equal to its definition in terms of probability:</p>
 <div class="math notranslate nohighlight">
 \[O(\mathrm{mRS}\leq x\ |\ t) \phantom{g} = \phantom{g} e^{Ax + bx\cdot t} \phantom{g} = \phantom{g} \frac{P(\mathrm{mRS}\leq x\ |\ t)}{1 - P(\mathrm{mRS}\leq x\ |\ t)} \]</div>
@@ -1010,9 +775,9 @@ O &amp; = P(1+O) \\
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="application-to-our-data">
-<h1>Application to our data<a class="headerlink" href="#application-to-our-data" title="Permalink to this headline">#</a></h1>
+<h1>Application to our data<a class="headerlink" href="#application-to-our-data" title="Permalink to this heading">#</a></h1>
 <section id="calculate-a-and-b">
-<h2>Calculate <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span><a class="headerlink" href="#calculate-a-and-b" title="Permalink to this headline">#</a></h2>
+<h2>Calculate <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span><a class="headerlink" href="#calculate-a-and-b" title="Permalink to this heading">#</a></h2>
 <p>We’ve found formulae to show how probability, odds and log(odds) vary with time. All three of these formulae require the same values of <span class="math notranslate nohighlight">\(A_x\)</span> and <span class="math notranslate nohighlight">\(b_x\)</span>, which we can calculate using the known probabilities at time zero and the no-effect time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1054,7 +819,7 @@ O &amp; = P(1+O) \\
 <p>As expected, <span class="math notranslate nohighlight">\(A\)</span> is equal to the log-odds at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and all of the <span class="math notranslate nohighlight">\(b\)</span> values are negative because log(odds) decreases with time.</p>
 </section>
 <section id="plot-the-new-time-distributions">
-<h2>Plot the new time distributions<a class="headerlink" href="#plot-the-new-time-distributions" title="Permalink to this headline">#</a></h2>
+<h2>Plot the new time distributions<a class="headerlink" href="#plot-the-new-time-distributions" title="Permalink to this heading">#</a></h2>
 <p>The following cell draws the same graphs as before, and now adds the variations with time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1089,7 +854,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_45_0.png" src="_images/02_mRS_outcomes_maths_45_0.png" />
+<img alt="_images/73c6d72e85445944d2b0e44ac1e26af632f8d5d62bb549cf1e5b84e8fa8315b3.png" src="_images/73c6d72e85445944d2b0e44ac1e26af632f8d5d62bb549cf1e5b84e8fa8315b3.png" />
 </div>
 </div>
 <p><strong>Success!</strong> We started with the data at t=0 and t=<span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span> (8 hours) and have calculated the lines in between.</p>
@@ -1097,7 +862,7 @@ O &amp; = P(1+O) \\
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="sidetrack-why-do-the-probability-lines-bend-differently">
-<h1>Sidetrack: Why do the probability lines bend differently?<a class="headerlink" href="#sidetrack-why-do-the-probability-lines-bend-differently" title="Permalink to this headline">#</a></h1>
+<h1>Sidetrack: Why do the probability lines bend differently?<a class="headerlink" href="#sidetrack-why-do-the-probability-lines-bend-differently" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>This section isn’t essential to understanding the probability calculation or the outcome model.</p>
 </div></blockquote>
@@ -1131,7 +896,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_50_0.png" src="_images/02_mRS_outcomes_maths_50_0.png" />
+<img alt="_images/06b1242a078669b10cfe8d11159e5441afece1f84e8b71cc9922365949c855a8.png" src="_images/06b1242a078669b10cfe8d11159e5441afece1f84e8b71cc9922365949c855a8.png" />
 </div>
 </div>
 <p>The bend of <span class="math notranslate nohighlight">\(P(v)\)</span> changes at <span class="math notranslate nohighlight">\(v=0\)</span>, where <span class="math notranslate nohighlight">\(P(v)=0.5\)</span>. The <span class="math notranslate nohighlight">\(P(\mathrm{mRS})\)</span> lines are different shapes because some of them show mostly the <span class="math notranslate nohighlight">\(v&gt;0\)</span> curve (i.e. mRS=0,1), and the rest the <span class="math notranslate nohighlight">\(v&lt;0\)</span> part (i.e. mRS<span class="math notranslate nohighlight">\(\geq\)</span>2). This can be viewed as the <span class="math notranslate nohighlight">\(v\)</span>-axis here being offset to the right in the <span class="math notranslate nohighlight">\(P(t)\)</span> plots above. The size of the offset is different for each mRS line.</p>
@@ -1186,7 +951,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_52_0.png" src="_images/02_mRS_outcomes_maths_52_0.png" />
+<img alt="_images/61092eef8575b9f9f319df63d816f6d31a168bc99371ce216d4454b14234b111.png" src="_images/61092eef8575b9f9f319df63d816f6d31a168bc99371ce216d4454b14234b111.png" />
 </div>
 </div>
 <p>Note that the scattered points above at <span class="math notranslate nohighlight">\(t=t_k\)</span> all share a probability <span class="math notranslate nohighlight">\(P(t=t_k)=0.5\)</span>.</p>
@@ -1196,7 +961,7 @@ O &amp; = P(1+O) \\
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mRS | Key time&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">  | </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">tk_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="si">:</span><span class="s1">2.0f</span><span class="si">}</span><span class="s1"> hours &#39;</span><span class="o">+</span>
-          <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tk_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">%</span><span class="mi">1</span> <span class="o">*</span><span class="mf">60.0</span><span class="si">:</span><span class="s1">2.0f</span><span class="si">}</span><span class="s1"> mins&#39;</span><span class="p">)</span>
+          <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tk_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">%</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="mf">60.0</span><span class="si">:</span><span class="s1">2.0f</span><span class="si">}</span><span class="s1"> mins&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1215,7 +980,7 @@ O &amp; = P(1+O) \\
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="sidetrack-2-what-do-a-and-b-mean-for-probability">
-<h1>Sidetrack 2: What do <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> mean for probability?<a class="headerlink" href="#sidetrack-2-what-do-a-and-b-mean-for-probability" title="Permalink to this headline">#</a></h1>
+<h1>Sidetrack 2: What do <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> mean for probability?<a class="headerlink" href="#sidetrack-2-what-do-a-and-b-mean-for-probability" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>This section also isn’t essential to understanding the probability calculation or the outcome model.</p>
 </div></blockquote>
@@ -1302,7 +1067,7 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_68_0.png" src="_images/02_mRS_outcomes_maths_68_0.png" />
+<img alt="_images/b851b4de4d8b1dbed3ae03b633f8e395721b0ea92e6732e53ad19bb3f81dfd36.png" src="_images/b851b4de4d8b1dbed3ae03b633f8e395721b0ea92e6732e53ad19bb3f81dfd36.png" />
 </div>
 </div>
 <p>For the palest line, changing <em>A</em> has fixed the probability line in the right spot at time zero. However, the line is currently nowhere near the data point at the no-effect time. To fix this, we have to change the value of <em>b</em>.</p>
@@ -1327,14 +1092,14 @@ O &amp; = P(1+O) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_mRS_outcomes_maths_70_0.png" src="_images/02_mRS_outcomes_maths_70_0.png" />
+<img alt="_images/b517d5e01e3577d18589cfb3955388d4c1d581ca8f0f4655917aeb564813da2a.png" src="_images/b517d5e01e3577d18589cfb3955388d4c1d581ca8f0f4655917aeb564813da2a.png" />
 </div>
 </div>
 <p>Each line has a different slope because of the changed <em>b</em>, but also a different x-offset - the lines cross <span class="math notranslate nohighlight">\(P(t)=0.5\)</span> at different times. The darkest line uses the only combination of <em>A</em> and <em>b</em> that will pass through both data points simultaneously.</p>
 <p>Since our calculated <span class="math notranslate nohighlight">\(P(\mathrm{mRS})\)</span> lines all use different values of <em>A</em> and <em>b</em>, we end up plotting each line with a different slope and x-offset.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
 <p>Emberson J, Lees KR, Lyden P, et al. Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials. The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
 <p>Fransen PSS, Berkhemer OA, Lingsma HF, et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol 2016;73:190–6. doi:10.1001/jamaneurol.2015.3886</p>
 <p>Saver JL, Filip B, Hamilton S, et al. Improving the Reliability of Stroke Disability Grading in Clinical Trials and Clinical Practice. Stroke 2010;41:992–5. doi:10.1161/STROKEAHA.109.571364</p>
@@ -1352,7 +1117,7 @@ O &amp; = P(1+O) \\
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1360,50 +1125,141 @@ O &amp; = P(1+O) \\
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="01_mRS_datasets_full.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_mRS_datasets_full.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="03_demo_of_outcome_model.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="03_demo_of_outcome_model.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Example output from stroke outcome model</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Anna Laws, Kerry Pearn & Michael Allen<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-rankin-scale">Modified Rankin Scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reperfusion-treatment-for-ischaemic-stroke">Reperfusion treatment for ischaemic stroke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decay-of-effect-of-reperfusion-treatment">Decay of effect of reperfusion treatment</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-probability-and-odds">Define probability and odds</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odds">Odds</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-the-data">Collect the data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-known-data">Plot the known data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-find-variation-with-time">Steps to find variation with time</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-straight-line-formula-for-log-odds">Find a straight line formula for log(odds)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-an-exponential-formula-for-odds-with-time">Find an exponential formula for odds with time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-logistic-formula-for-probability-with-time">Find a logistic formula for probability with time</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-our-data">Application to our data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-a-and-b">Calculate <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-new-time-distributions">Plot the new time distributions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetrack-why-do-the-probability-lines-bend-differently">Sidetrack: Why do the probability lines bend differently?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetrack-2-what-do-a-and-b-mean-for-probability">Sidetrack 2: What do <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> mean for probability?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn & Michael Allen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
