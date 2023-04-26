@@ -184,7 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: mRS less than, or equal to, 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
 </ul>
 
@@ -1046,6 +1046,28 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Add chnage in mRS &lt;=2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drip and ship</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
+
+<span class="c1"># Mothership</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Add weighted benefit based on proportions of treated LVO and nLVO: Add weighted utility, mrs&lt;=2, and mean_shift based on stroke type and treatment rates</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1061,17 +1083,17 @@ document.write(`
     <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
     <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
 
-<span class="c1"># Add weighted mRS &lt;= 2 for drip ship</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_drip_ship_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
+<span class="c1"># Add weighted added_mRS &lt;= 2 for drip ship</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_drip_ship_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
 
-<span class="c1"># Add weighted mRS &lt;= 2 for mothership</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_mothership_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
+<span class="c1"># Add weighted added mRS &lt;= 2 for mothership</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_mothership_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
 
 <span class="c1"># Add weighted mean shift for drip ship</span>
 <span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_drip_ship_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
@@ -1836,6 +1858,54 @@ document.write(`
       <td>0.56</td>
     </tr>
     <tr>
+      <th>drip_ship_nlvo_ivt_added_mrs&lt;=2</th>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_added_mrs&lt;=2</th>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.04</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_added_mrs&lt;=2</th>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_added_mrs&lt;=2</th>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+      <td>0.11</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_added_mrs&lt;=2</th>
+      <td>0.04</td>
+      <td>0.04</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.03</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_added_mrs&lt;=2</th>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+      <td>0.17</td>
+    </tr>
+    <tr>
       <th>weighted_drip_ship_added_utility</th>
       <td>0.030863</td>
       <td>0.030863</td>
@@ -1852,20 +1922,20 @@ document.write(`
       <td>0.030701</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mrs&lt;=2</th>
-      <td>0.1497</td>
-      <td>0.1497</td>
-      <td>0.1437</td>
-      <td>0.1437</td>
-      <td>0.1437</td>
+      <th>weighted_drip_ship_added_mrs&lt;=2</th>
+      <td>0.03305</td>
+      <td>0.03305</td>
+      <td>0.02705</td>
+      <td>0.02705</td>
+      <td>0.02705</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mrs&lt;=2</th>
-      <td>0.1497</td>
-      <td>0.1497</td>
-      <td>0.14885</td>
-      <td>0.14885</td>
-      <td>0.14885</td>
+      <th>weighted_mothership_added_mrs&lt;=2</th>
+      <td>0.03305</td>
+      <td>0.03305</td>
+      <td>0.0322</td>
+      <td>0.0322</td>
+      <td>0.0322</td>
     </tr>
     <tr>
       <th>weighted_drip_ship_mean_shift</th>
