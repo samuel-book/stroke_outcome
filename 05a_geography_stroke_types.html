@@ -1,0 +1,1154 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Distance-based treatment effects (plot for different stroke types) &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05a_geography_stroke_types';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Show outcome model python code" href="06_show_outcome_model_code.html" />
+    <link rel="prev" title="Distance-based treatment effects" href="05_geography.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_geography.html">Distance-based treatment effects</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distance-based treatment effects (plot for different stroke types)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="06_show_outcome_model_code.html">Show outcome model python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="england_wales/02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="england_wales/03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
+<li class="toctree-l1"><a class="reference internal" href="england_wales/04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/05a_geography_stroke_types.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Distance-based treatment effects (plot for different stroke types)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Distance-based treatment effects (plot for different stroke types)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">Assumptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-travel-times">Plot travel times</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grids">Grids</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-circle-plot">Combined circle plot</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="distance-based-treatment-effects-plot-for-different-stroke-types">
+<h1>Distance-based treatment effects (plot for different stroke types)<a class="headerlink" href="#distance-based-treatment-effects-plot-for-different-stroke-types" title="Permalink to this heading">#</a></h1>
+<p>Based on the figures from Holodinsky et al. 2017 - “Drip and Ship Versus Direct to Comprehensive Stroke Center”</p>
+<p>Here we show the difference in outcome measures for nLVO, LVO, and a mixed population (65% nLVO, 35% LVO). There is 60 min travel time between IVT and MT centres.</p>
+<section id="notebook-admin">
+<h2>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep notebook cleaner once finalised</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="assumptions">
+<h1>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this heading">#</a></h1>
+<p>Fixed times for additional delays:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All fixed times have units of minutes</span>
+<span class="n">fixed_times</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">onset_to_ambulance_arrival</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="n">ivt_arrival_to_treatment</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">transfer_additional_delay</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="n">travel_ivt_to_mt</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">mt_arrival_to_treatment</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define a helper function to build the time grid:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_time_grid</span><span class="p">(</span><span class="n">xy_max</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># Times for each row....</span>
+    <span class="n">x_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">xy_max</span><span class="p">,</span> <span class="n">xy_max</span> <span class="o">+</span> <span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_offset</span>
+    <span class="c1"># ... and each column.</span>
+    <span class="n">y_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">xy_max</span><span class="p">,</span> <span class="n">xy_max</span> <span class="o">+</span> <span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_offset</span>
+    <span class="c1"># The offsets shift the position of (0,0) from the grid centre </span>
+    <span class="c1"># to (x_offset, y_offset). Distances will be calculated from the</span>
+    <span class="c1"># latter point. </span>
+
+    <span class="c1"># Mesh to create new grids by stacking rows (xx) and columns (yy):</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_times</span><span class="p">,</span> <span class="n">y_times</span><span class="p">)</span>
+
+    <span class="c1"># Then combine the two temporary grids to find distances: </span>
+    <span class="n">radial_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">xx</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">yy</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">radial_times</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Build the grids:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_grids_travel_time</span><span class="p">(</span><span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> <span class="n">time_travel_max</span><span class="p">,</span> <span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="p">,</span> <span class="n">grid_step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>        
+    <span class="c1"># Make the grid a bit larger than the max travel time: </span>
+    <span class="n">grid_xy_max</span> <span class="o">=</span> <span class="n">time_travel_max</span> <span class="o">+</span> <span class="n">grid_step</span><span class="o">*</span><span class="mi">2</span>
+
+    <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">=</span> <span class="n">make_time_grid</span><span class="p">(</span>
+        <span class="n">grid_xy_max</span><span class="p">,</span> <span class="n">grid_step</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+        <span class="n">y_offset</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">grid_time_travel_directly_to_mt</span> <span class="o">=</span> <span class="n">make_time_grid</span><span class="p">(</span>
+        <span class="n">grid_xy_max</span><span class="p">,</span> <span class="n">grid_step</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_offset</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">grid_time_travel_directly_diff</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">-</span> <span class="n">grid_time_travel_directly_to_mt</span><span class="p">)</span>
+
+    <span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> 
+              <span class="o">+</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> 
+              <span class="o">-</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> 
+              <span class="o">+</span><span class="n">grid_xy_max</span> <span class="o">-</span> <span class="n">grid_step</span><span class="o">*</span><span class="mf">0.5</span><span class="p">]</span> 
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">grid_time_travel_directly_to_ivt</span><span class="p">,</span> 
+        <span class="n">grid_time_travel_directly_to_mt</span><span class="p">,</span>
+        <span class="n">grid_time_travel_directly_diff</span><span class="p">,</span> 
+        <span class="n">extent</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<section id="plot-travel-times">
+<h2>Plot travel times<a class="headerlink" href="#plot-travel-times" title="Permalink to this heading">#</a></h2>
+<section id="grids">
+<h3>Grids<a class="headerlink" href="#grids" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.geography_plot</span> <span class="kn">import</span> <span class="n">find_mask_within_flattened_circle</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Update plotting style:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_step_circle</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">circ_linewidth</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.geography_plot</span> <span class="kn">import</span> <span class="n">circle_plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_grids_treatment_time</span><span class="p">(</span>
+    <span class="n">grid_time_travel_directly_to_ivt</span><span class="p">,</span>
+    <span class="n">grid_time_travel_directly_to_mt</span><span class="p">,</span>
+    <span class="n">times_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Define new treatment time grids. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">grid_time_ivt_at_ivtcentre</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;onset_to_ambulance_arrival&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="n">grid_time_ivt_at_ivt_then_mt_at_mtcentre</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;onset_to_ambulance_arrival&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;transfer_additional_delay&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;mt_arrival_to_treatment&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="n">grid_time_ivt_at_mtcentre</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;onset_to_ambulance_arrival&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">grid_time_travel_directly_to_mt</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="n">grid_time_ivt_then_mt_at_mtcentre</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;onset_to_ambulance_arrival&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">grid_time_travel_directly_to_mt</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;ivt_arrival_to_treatment&#39;</span><span class="p">]</span> <span class="o">+</span> 
+        <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;mt_arrival_to_treatment&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">grid_time_ivt_at_ivtcentre</span><span class="p">,</span>
+            <span class="n">grid_time_ivt_at_ivt_then_mt_at_mtcentre</span><span class="p">,</span>
+            <span class="n">grid_time_ivt_at_mtcentre</span><span class="p">,</span>
+            <span class="n">grid_time_ivt_then_mt_at_mtcentre</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.clinical_outcome</span> <span class="kn">import</span> <span class="n">Clinical_outcome</span>
+
+<span class="n">mrs_dists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./outcome_utilities/mrs_dist_probs_cumsum.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set up outcome model</span>
+<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_grid_outcomes</span><span class="p">(</span><span class="n">outcome_model</span><span class="p">,</span> <span class="n">grid_time_ivt</span><span class="p">,</span> <span class="n">grid_time_mt</span><span class="p">,</span> 
+                       <span class="n">patient_props</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For all pairs of treatment times, calculate the changes in utility</span>
+<span class="sd">    and mRS for the patient population. </span>
+<span class="sd">    </span>
+<span class="sd">    Inputs:</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">grid_shape</span> <span class="o">=</span> <span class="n">grid_time_ivt</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">utility_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">)</span>
+    <span class="n">mRS_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">)</span>
+    <span class="n">good_outcomes_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># ^ weird range is for symmetry later when filling grids.</span>
+            <span class="c1"># Expect col_opp, the opposite column as reflected in the </span>
+            <span class="c1"># x=0 axis, to contain the same values as col:</span>
+            <span class="n">col_opp</span> <span class="o">=</span> <span class="n">grid_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">col</span>
+            
+            <span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">grid_time_ivt</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+            <span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">grid_time_mt</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+            <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
+                <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+            <span class="c1"># Find the change in utility:</span>
+            <span class="n">added_utility</span> <span class="o">=</span> <span class="n">find_weighted_change</span><span class="p">(</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_added_utility&#39;</span><span class="p">],</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_added_utility&#39;</span><span class="p">],</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_added_utility&#39;</span><span class="p">],</span>
+                <span class="n">patient_props</span>
+                <span class="p">)</span>
+            <span class="c1"># Add this value to the grid:</span>
+            <span class="n">utility_grid</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">added_utility</span>
+            <span class="n">utility_grid</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col_opp</span><span class="p">]</span> <span class="o">=</span> <span class="n">added_utility</span>
+
+            <span class="c1"># Find the change in mRS:</span>
+            <span class="n">reduced_mRS</span> <span class="o">=</span> <span class="n">find_weighted_change</span><span class="p">(</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mean_shift&#39;</span><span class="p">],</span> 
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_mean_shift&#39;</span><span class="p">],</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_mean_shift&#39;</span><span class="p">],</span> 
+                <span class="n">patient_props</span>
+                <span class="p">)</span>
+            <span class="c1"># Add this value to the grid:</span>
+            <span class="n">mRS_grid</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">reduced_mRS</span>
+            <span class="n">mRS_grid</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col_opp</span><span class="p">]</span> <span class="o">=</span> <span class="n">reduced_mRS</span>
+
+            <span class="c1"># Find change in proportion with mRS &lt;=2</span>
+            <span class="n">nlvo_ivt_added_good_outcomes</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> 
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;nlvo_untreated_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">lvo_ivt_added_good_outcomes</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">lvo_mt_added_good_outcomes</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_mt_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span>
+                <span class="n">outcomes</span><span class="p">[</span><span class="s1">&#39;lvo_untreated_cum_probs&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">added_good_outcomes</span> <span class="o">=</span> <span class="n">find_weighted_change</span><span class="p">(</span>
+                <span class="n">lvo_ivt_added_good_outcomes</span><span class="p">,</span>
+                <span class="n">lvo_mt_added_good_outcomes</span><span class="p">,</span>
+                <span class="n">nlvo_ivt_added_good_outcomes</span><span class="p">,</span>
+                <span class="n">patient_props</span>
+                <span class="p">)</span>
+            <span class="n">good_outcomes_grid</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">added_good_outcomes</span>
+            <span class="n">good_outcomes_grid</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col_opp</span><span class="p">]</span> <span class="o">=</span> <span class="n">added_good_outcomes</span>
+          
+            
+    <span class="c1"># Adjust outcome for just treated population</span>
+    <span class="n">utility_grid</span> <span class="o">=</span> <span class="n">utility_grid</span> <span class="o">/</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;treated_population&#39;</span><span class="p">]</span>
+    <span class="n">mRS_grid</span> <span class="o">=</span> <span class="n">mRS_grid</span> <span class="o">/</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;treated_population&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">utility_grid</span><span class="p">,</span> <span class="n">mRS_grid</span><span class="p">,</span> <span class="n">good_outcomes_grid</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_weighted_change</span><span class="p">(</span><span class="n">change_lvo_ivt</span><span class="p">,</span> <span class="n">change_lvo_mt</span><span class="p">,</span> <span class="n">change_nlvo_ivt</span><span class="p">,</span> 
+                         <span class="n">patient_props</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Take the total changes for each category and calculate their</span>
+<span class="sd">    weighted sum, where weights are from the proportions of the </span>
+<span class="sd">    patient population.</span>
+<span class="sd">    </span>
+<span class="sd">    (originally from matrix notebook)</span>
+<span class="sd">    </span>
+<span class="sd">    Inputs:</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># If LVO-IVT is greater change than LVO-MT then adjust MT for </span>
+    <span class="c1"># proportion of patients receiving IVT:</span>
+    <span class="k">if</span> <span class="n">change_lvo_ivt</span> <span class="o">&gt;</span> <span class="n">change_lvo_mt</span><span class="p">:</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">change_lvo_ivt</span> <span class="o">-</span> <span class="n">change_lvo_mt</span>
+        <span class="n">change_lvo_mt</span> <span class="o">+=</span> <span class="n">diff</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_mt_also_receiving_ivt&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Calculate changes multiplied by proportions (cp):</span>
+    <span class="n">cp_lvo_mt</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">change_lvo_mt</span> <span class="o">*</span> 
+        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> 
+        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_mt&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="n">cp_lvo_ivt</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">change_lvo_ivt</span> <span class="o">*</span> 
+        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> 
+        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_only&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="n">cp_nlvo_ivt</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">change_nlvo_ivt</span> <span class="o">*</span> 
+        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> 
+        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo_treated_ivt_only&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        
+    <span class="n">total_change</span> <span class="o">=</span> <span class="n">cp_lvo_mt</span> <span class="o">+</span> <span class="n">cp_lvo_ivt</span> <span class="o">+</span> <span class="n">cp_nlvo_ivt</span>
+    <span class="k">return</span> <span class="n">total_change</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="combined-circle-plot">
+<h1>Combined circle plot<a class="headerlink" href="#combined-circle-plot" title="Permalink to this heading">#</a></h1>
+<p>Share these colour limits between all figures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vmin_time</span> <span class="o">=</span> <span class="mi">0</span> 
+<span class="n">vmax_time</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">vmin_util</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.025</span> <span class="c1"># -0.045</span>
+<span class="n">vmax_util</span> <span class="o">=</span> <span class="mf">0.08</span> <span class="c1"># 0.035</span>
+<span class="n">vmin_mRS</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span> <span class="c1"># -0.250 </span>
+<span class="n">vmax_mRS</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="c1"># 0.175</span>
+<span class="n">vmin_good</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.005</span>
+<span class="n">vmax_good</span> <span class="o">=</span> <span class="mf">0.025</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make new colour maps that are based on a diverging colour map but have the zero (white) off-centre:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.geography_plot</span> <span class="kn">import</span> <span class="n">make_new_cmap_diverging</span>
+
+<span class="n">cmap_util</span> <span class="o">=</span> <span class="n">make_new_cmap_diverging</span><span class="p">(</span>
+    <span class="n">vmin_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="p">,</span> <span class="n">cmap_base</span><span class="o">=</span><span class="s1">&#39;bwr_r&#39;</span><span class="p">,</span> <span class="n">cmap_name</span><span class="o">=</span><span class="s1">&#39;bwr_util&#39;</span><span class="p">)</span>
+<span class="n">cmap_mRS</span> <span class="o">=</span> <span class="n">make_new_cmap_diverging</span><span class="p">(</span>
+    <span class="n">vmin_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="p">,</span> <span class="n">cmap_base</span><span class="o">=</span><span class="s1">&#39;bwr&#39;</span><span class="p">,</span> <span class="n">cmap_name</span><span class="o">=</span><span class="s1">&#39;bwr_mRS&#39;</span><span class="p">)</span>
+<span class="n">cmap_good</span> <span class="o">=</span> <span class="n">make_new_cmap_diverging</span><span class="p">(</span>
+    <span class="n">vmin_good</span><span class="p">,</span> <span class="n">vmax_good</span><span class="p">,</span> <span class="n">cmap_base</span><span class="o">=</span><span class="s1">&#39;bwr_r&#39;</span><span class="p">,</span> <span class="n">cmap_name</span><span class="o">=</span><span class="s1">&#39;bwr_good&#39;</span><span class="p">)</span>
+
+<span class="c1"># For the time colours, take only the red half of &#39;bwr&#39;:</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<span class="n">colours_time</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;bwr&#39;</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+<span class="n">cmap_time</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;bwr_time&#39;</span><span class="p">,</span> <span class="n">colours_time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define contour levels for plotting:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.geography_plot</span> <span class="kn">import</span> <span class="n">make_levels_with_zeroish</span>
+
+<span class="n">level_step_util</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># 0.005</span>
+<span class="n">levels_util</span> <span class="o">=</span> <span class="n">make_levels_with_zeroish</span><span class="p">(</span>
+    <span class="n">level_step_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="p">,</span> <span class="n">zeroish</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin_util</span><span class="p">)</span>
+
+<span class="n">level_step_mRS</span> <span class="o">=</span> <span class="mf">0.025</span> <span class="c1"># 0.025</span>
+<span class="n">levels_mRS</span> <span class="o">=</span> <span class="n">make_levels_with_zeroish</span><span class="p">(</span>
+    <span class="n">level_step_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="p">,</span> <span class="n">zeroish</span><span class="o">=</span><span class="mf">4e-3</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin_mRS</span><span class="p">)</span>
+
+<span class="n">level_step_good_outcome</span> <span class="o">=</span> <span class="mf">0.0025</span> <span class="c1"># 0.025</span>
+<span class="n">levels_good_outcome</span> <span class="o">=</span> <span class="n">make_levels_with_zeroish</span><span class="p">(</span>
+    <span class="n">level_step_good_outcome</span><span class="p">,</span> <span class="n">vmax_good</span><span class="p">,</span> <span class="n">zeroish</span><span class="o">=</span><span class="mf">5e-5</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin_good</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following big cell calculates the new grids and then makes the plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_travel_ivt_to_mt</span>  <span class="o">=</span> <span class="mi">60</span>
+<span class="n">time_onset_to_ambulance_arrival</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="n">patient_props_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">lvo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">nlvo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># 1-LVO</span>
+    <span class="n">lvo_mt_also_receiving_ivt</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mf">0.286</span><span class="p">,</span>    <span class="c1"># 0.286 gives 10% final MT if 35%LVO</span>
+    <span class="n">nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.155</span><span class="p">,</span>    <span class="c1"># 0.155 gives final 20% IVT</span>
+    <span class="p">),</span>
+    <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">lvo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">nlvo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1"># 1-LVO</span>
+    <span class="n">lvo_mt_also_receiving_ivt</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mf">0.286</span><span class="p">,</span>    <span class="c1"># 0.286 gives 10% final MT if 35%LVO</span>
+    <span class="n">nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.155</span><span class="p">,</span>    <span class="c1"># 0.155 gives final 20% IVT</span>
+    <span class="p">),</span>
+    <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">lvo</span> <span class="o">=</span> <span class="mf">0.35</span><span class="p">,</span>
+    <span class="n">nlvo</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="c1"># 1-LVO</span>
+    <span class="n">lvo_mt_also_receiving_ivt</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mf">0.286</span><span class="p">,</span>    <span class="c1"># 0.286 gives 10% final MT if 35%LVO</span>
+    <span class="n">nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.155</span><span class="p">,</span>    <span class="c1"># 0.155 gives final 20% IVT</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1">#patient_props_list = [patient_props_list[0]]</span>
+
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nLVO&#39;</span><span class="p">,</span> <span class="s1">&#39;LVO&#39;</span><span class="p">,</span> <span class="s1">&#39;65% nLVO, 35% LVO&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recalculate some values: </span>
+<span class="n">ivt_coords</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">mt_coords</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">time_travel_ivt_to_mt</span><span class="p">]</span> 
+<span class="c1"># Only calculate travel times up to this x or y displacement:</span>
+<span class="n">time_travel_max</span> <span class="o">=</span> <span class="n">time_travel_ivt_to_mt</span> 
+<span class="c1"># Change how granular the grid is. </span>
+<span class="n">grid_step</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># minutes</span>
+
+<span class="c1"># Make the travel time grids: </span>
+<span class="p">(</span><span class="n">grid_time_travel_directly_to_ivt</span><span class="p">,</span> 
+<span class="n">grid_time_travel_directly_to_mt</span><span class="p">,</span>
+<span class="n">grid_time_travel_directly_diff</span><span class="p">,</span> 
+<span class="n">extent</span><span class="p">)</span> <span class="o">=</span> \
+<span class="n">make_grids_travel_time</span><span class="p">(</span><span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> <span class="n">time_travel_max</span><span class="p">,</span> 
+                        <span class="n">ivt_coords</span><span class="p">,</span> <span class="n">mt_coords</span><span class="p">,</span> <span class="n">grid_step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Find grid coordinates within the largest circle: </span>
+<span class="n">grid_mask</span> <span class="o">=</span> <span class="n">find_mask_within_flattened_circle</span><span class="p">(</span>
+    <span class="n">grid_time_travel_directly_diff</span><span class="p">,</span> 
+    <span class="n">grid_time_travel_directly_to_ivt</span><span class="p">,</span> 
+    <span class="n">time_travel_max</span><span class="p">)</span>
+<span class="n">coords_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">grid_mask</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">count</span><span class="p">,</span> <span class="n">patient_props</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">patient_props_list</span><span class="p">):</span>
+
+    <span class="n">treated_population</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo_treated_ivt_only&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_mt&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_only&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;treated_population&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_population</span>
+
+    <span class="c1"># Build a new dictionary of fixed times: </span>
+    <span class="n">times_dir</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fixed_times</span><span class="p">:</span>
+        <span class="n">times_dir</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">fixed_times</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;onset_to_ambulance_arrival&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_onset_to_ambulance_arrival</span>
+    <span class="n">times_dir</span><span class="p">[</span><span class="s1">&#39;travel_ivt_to_mt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_travel_ivt_to_mt</span>
+    
+    <span class="c1"># Grids of times to treatment:</span>
+    <span class="p">(</span><span class="n">grid_time_ivt_at_ivtcentre</span><span class="p">,</span>
+    <span class="n">grid_time_ivt_at_ivt_then_mt_at_mtcentre</span><span class="p">,</span>
+    <span class="n">grid_time_ivt_at_mtcentre</span><span class="p">,</span>
+    <span class="n">grid_time_ivt_then_mt_at_mtcentre</span><span class="p">)</span> <span class="o">=</span> \
+    <span class="n">make_grids_treatment_time</span><span class="p">(</span><span class="n">grid_time_travel_directly_to_ivt</span><span class="p">,</span>
+        <span class="n">grid_time_travel_directly_to_mt</span><span class="p">,</span> <span class="n">times_dir</span><span class="p">)</span>
+
+    <span class="c1"># Grids of changed outcomes</span>
+    <span class="c1"># Case 1: IVT at the IVT centre, then MT at the IVT/MT centre</span>
+    <span class="n">grid_utility_case1</span><span class="p">,</span> <span class="n">grid_mRS_case1</span><span class="p">,</span> <span class="n">grid_good_outcomes_case1</span> <span class="o">=</span> <span class="n">find_grid_outcomes</span><span class="p">(</span>
+        <span class="n">outcome_model</span><span class="p">,</span>
+        <span class="n">grid_time_ivt_at_ivtcentre</span><span class="p">,</span> 
+        <span class="n">grid_time_ivt_at_ivt_then_mt_at_mtcentre</span><span class="p">,</span> 
+        <span class="n">patient_props</span>
+        <span class="p">)</span>
+    <span class="c1"># Case 2: IVT at the IVT/MT centre, then MT at IVT/MT centre</span>
+    <span class="n">grid_utility_case2</span><span class="p">,</span> <span class="n">grid_mRS_case2</span><span class="p">,</span> <span class="n">grid_good_outcomes_case2</span> <span class="o">=</span> <span class="n">find_grid_outcomes</span><span class="p">(</span>
+        <span class="n">outcome_model</span><span class="p">,</span>
+        <span class="n">grid_time_ivt_at_mtcentre</span><span class="p">,</span> 
+        <span class="n">grid_time_ivt_then_mt_at_mtcentre</span><span class="p">,</span> 
+        <span class="n">patient_props</span>
+        <span class="p">)</span>
+    <span class="c1"># Difference between them:</span>
+    <span class="n">grid_utility_diff</span> <span class="o">=</span> <span class="n">grid_utility_case2</span> <span class="o">-</span> <span class="n">grid_utility_case1</span>
+    <span class="n">grid_mRS_diff</span>     <span class="o">=</span> <span class="n">grid_mRS_case2</span>     <span class="o">-</span> <span class="n">grid_mRS_case1</span>
+    <span class="n">grid_good_outcomes_diff</span> <span class="o">=</span> <span class="n">grid_good_outcomes_case2</span> <span class="o">-</span> <span class="n">grid_good_outcomes_case1</span>
+    
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time of travel from IVT to MT: </span><span class="si">{</span><span class="n">time_travel_ivt_to_mt</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time from onset to ambulance arrival: &#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">time_onset_to_ambulance_arrival</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Utility </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">grid_utility_diff</span><span class="p">[</span><span class="n">coords_valid</span><span class="p">])</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1"> &#39;</span><span class="o">+</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">grid_utility_diff</span><span class="p">[</span><span class="n">coords_valid</span><span class="p">])</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mRS </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">grid_mRS_diff</span><span class="p">[</span><span class="n">coords_valid</span><span class="p">])</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1"> &#39;</span><span class="o">+</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">grid_mRS_diff</span><span class="p">[</span><span class="n">coords_valid</span><span class="p">])</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Good outcomes </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">grid_good_outcomes_diff</span><span class="p">[</span><span class="n">coords_valid</span><span class="p">])</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1"> &#39;</span><span class="o">+</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">grid_good_outcomes_diff</span><span class="p">[</span><span class="n">coords_valid</span><span class="p">])</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Plot setup:  </span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> 
+    <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;hspace&#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;height_ratios&#39;</span><span class="p">:[</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">]})</span>
+    <span class="n">ax_time</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax_time_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax_util</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax_util_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax_mRS</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ax_mRS_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ax_good</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">ax_good_cbar</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="c1"># Travel time:</span>
+    <span class="n">circle_plot</span><span class="p">(</span>
+        <span class="o">-</span><span class="n">grid_time_travel_directly_diff</span><span class="p">,</span> 
+        <span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> 
+        <span class="n">time_travel_max</span><span class="p">,</span> 
+        <span class="n">time_step_circle</span><span class="p">,</span> 
+        <span class="n">vmin_time</span><span class="p">,</span> 
+        <span class="n">vmax_time</span><span class="p">,</span> 
+        <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> 
+        <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>             
+        <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+        <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax_time</span><span class="p">,</span> 
+        <span class="n">cax</span><span class="o">=</span><span class="n">ax_time_cbar</span><span class="p">,</span> 
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_time</span><span class="p">,</span>
+        <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Extra travel time to MT unit</span><span class="se">\n</span><span class="s1">(minutes)&#39;</span><span class="p">,</span> 
+        <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+        <span class="n">n_contour_steps</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+    <span class="n">ax_time</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Additional travel time to MT centre&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Draw legend now:</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.33</span><span class="p">],</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+    <span class="c1"># Good outcomes</span>
+    <span class="n">circle_plot</span><span class="p">(</span>
+        <span class="n">grid_good_outcomes_diff</span><span class="p">,</span>
+        <span class="n">time_travel_ivt_to_mt</span><span class="p">,</span>
+        <span class="n">time_travel_max</span><span class="p">,</span>
+        <span class="n">time_step_circle</span><span class="p">,</span>
+        <span class="n">vmin_good</span><span class="p">,</span>
+        <span class="n">vmax_good</span><span class="p">,</span>
+        <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span>
+        <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>
+        <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+        <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax_good</span><span class="p">,</span>
+        <span class="n">cax</span><span class="o">=</span><span class="n">ax_good_cbar</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_good</span><span class="p">,</span>
+        <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Change in proportion with mRS &lt;=2&#39;</span><span class="p">,</span>
+        <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+        <span class="c1"># cbar_format_str=&#39;{:3.2f}&#39;, </span>
+        <span class="n">levels</span><span class="o">=</span><span class="n">levels_good_outcome</span><span class="p">,</span> 
+        <span class="n">cbar_ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
+            <span class="n">vmin_good</span><span class="p">,</span> <span class="n">vmax_good</span><span class="o">+</span><span class="n">level_step_good_outcome</span><span class="p">,</span> <span class="n">level_step_good_outcome</span><span class="p">))</span>
+    <span class="n">ax_good</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Change in proportion with mRS &lt;=2&#39;</span><span class="p">)</span>
+
+    <span class="c1"># mRS:</span>
+    <span class="n">circle_plot</span><span class="p">(</span>
+        <span class="n">grid_mRS_diff</span><span class="p">,</span> 
+        <span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> 
+        <span class="n">time_travel_max</span><span class="p">,</span> 
+        <span class="n">time_step_circle</span><span class="p">,</span> 
+        <span class="n">vmin_mRS</span><span class="p">,</span> 
+        <span class="n">vmax_mRS</span><span class="p">,</span> 
+        <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> 
+        <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>
+        <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+        <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax_mRS</span><span class="p">,</span> 
+        <span class="n">cax</span><span class="o">=</span><span class="n">ax_mRS_cbar</span><span class="p">,</span> 
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_mRS</span><span class="p">,</span> 
+        <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Change in mean population reduced mRS</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
+                    <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">,</span>
+        <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+        <span class="c1"># cbar_format_str=&#39;{:3.2f}&#39;, </span>
+        <span class="n">levels</span><span class="o">=</span><span class="n">levels_mRS</span><span class="p">,</span> 
+        <span class="n">cbar_ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
+            <span class="n">vmin_mRS</span><span class="p">,</span> <span class="n">vmax_mRS</span><span class="o">+</span><span class="n">level_step_mRS</span><span class="p">,</span> <span class="n">level_step_mRS</span><span class="p">))</span>
+
+    <span class="n">ax_mRS</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Change in mean mRS&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Utility:</span>
+    <span class="n">circle_plot</span><span class="p">(</span>
+        <span class="n">grid_utility_diff</span><span class="p">,</span> 
+        <span class="n">time_travel_ivt_to_mt</span><span class="p">,</span> 
+        <span class="n">time_travel_max</span><span class="p">,</span> 
+        <span class="n">time_step_circle</span><span class="p">,</span> 
+        <span class="n">vmin_util</span><span class="p">,</span> 
+        <span class="n">vmax_util</span><span class="p">,</span> 
+        <span class="n">ivt_coords</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">,</span> 
+        <span class="n">mt_coords</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">,</span>
+        <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span>
+        <span class="n">imshow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax_util</span><span class="p">,</span> 
+        <span class="n">cax</span><span class="o">=</span><span class="n">ax_util_cbar</span><span class="p">,</span> 
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_util</span><span class="p">,</span> 
+        <span class="n">cbar_label</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Change in population added utility</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
+                    <span class="s1">&#39;by attending MT unit directly&#39;</span><span class="p">),</span>
+        <span class="n">cbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+        <span class="n">levels</span><span class="o">=</span><span class="n">levels_util</span><span class="p">,</span>
+        <span class="c1"># cbar_format_str=&#39;{:3.3f}&#39;,</span>
+        <span class="n">cbar_ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span>
+            <span class="n">vmin_util</span><span class="p">,</span> <span class="n">vmax_util</span><span class="o">+</span><span class="n">level_step_util</span><span class="p">,</span> <span class="n">level_step_util</span><span class="p">))</span>
+
+    <span class="n">ax_util</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Change in mean utility&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax_time</span><span class="p">,</span> <span class="n">ax_util</span><span class="p">,</span> <span class="n">ax_mRS</span><span class="p">,</span> <span class="n">ax_good</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+        <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">70</span><span class="p">,</span><span class="mi">70</span><span class="p">)</span>
+        <span class="c1"># Reduce font size of ax.xaxis.label</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+    <span class="c1"># Rotate colourbar tick labels to prevent overlapping:</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax_mRS_cbar</span><span class="p">,</span> <span class="n">ax_util_cbar</span><span class="p">,</span> <span class="n">ax_good_cbar</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+            <span class="n">tick</span><span class="o">.</span><span class="n">set_rotation</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+            <span class="n">tick</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+            <span class="n">tick</span><span class="o">.</span><span class="n">set_horizontalalignment</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+
+    <span class="c1"># Set supertitle </span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">count</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;circle_plots_stroke_type_</span><span class="si">{</span><span class="n">titles</span><span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="si">}</span><span class="s1">_60_60&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/&#39;</span><span class="o">+</span><span class="n">filename</span><span class="o">+</span><span class="s1">&#39;.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------
+Time of travel from IVT to MT: 60
+Time from onset to ambulance arrival:  60
+Utility -0.0239  0.0000
+mRS  0.0000  0.1360
+Good outcomes -0.0040  0.0000
+</pre></div>
+</div>
+<img alt="_images/d22eee26282ee464c5d35d084dba7603c01928c7142d1823505111cc8d6bfd6a.png" src="_images/d22eee26282ee464c5d35d084dba7603c01928c7142d1823505111cc8d6bfd6a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------
+Time of travel from IVT to MT: 60
+Time from onset to ambulance arrival:  60
+Utility  0.0345  0.0721
+mRS -0.0569  0.0255
+Good outcomes  0.0103  0.0217
+</pre></div>
+</div>
+<img alt="_images/007c2c3332a43cf342047a6e46652e1e91ac4e656a4344de005c723494fb1560.png" src="_images/007c2c3332a43cf342047a6e46652e1e91ac4e656a4344de005c723494fb1560.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--------------------------------------------------
+Time of travel from IVT to MT: 60
+Time from onset to ambulance arrival:  60
+Utility  0.0054  0.0360
+mRS -0.0283  0.0800
+Good outcomes  0.0010  0.0076
+</pre></div>
+</div>
+<img alt="_images/d6df219abe31e7ce3f0474a0d234d191f2d559bbfe643a6d52f5ef2ff1a2da8a.png" src="_images/d6df219abe31e7ce3f0474a0d234d191f2d559bbfe643a6d52f5ef2ff1a2da8a.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_geography.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Distance-based treatment effects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06_show_outcome_model_code.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Show outcome model python code</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Distance-based treatment effects (plot for different stroke types)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">Assumptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-travel-times">Plot travel times</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grids">Grids</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-circle-plot">Combined circle plot</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
