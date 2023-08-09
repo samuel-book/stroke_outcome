@@ -25,12 +25,22 @@ def plot_probs_filled(A,b,times_mins, colour_list=[],
         if i<6:
             p_i = 1.0/(1.0 + np.exp(-A_i -b[i]*times_mins)) 
         else:
-            # P(mRS<=5)=1.0 at all times:
+            # P(mRS<=6)=1.0 at all times:
             p_i = np.full(times_mins.shape,1.0)
             
-        # Plot it as before and store the colour used:
-        ax.plot(times_hours, p_i, color=colour, label = r'$\leq$'+f'{i}')
+        # Plot the line marking the boundary edge:
+        ax.plot(times_hours, p_i, color='k')#, label = r'$\leq$'+f'{i}')
             #, linewidth=1)
+        
+        # Fill the area between p_i and the line below, p_j.
+        # This area marks where mRS <= the given value.
+        # If p_j is not defined yet (i=0), set all p_j to zero:
+        p_j = p_j if i>0 else np.zeros_like(p_i)
+        ax.fill_between(times_hours, p_i, p_j, label=f'mRS = {i}',
+                         color=colour)
+
+        # Store the most recently-created line for the next loop:
+        p_j = p_i
         
     ax.set_ylabel('Probability')
     ax.set_xlabel('Onset to treatment time (hours)')
@@ -97,7 +107,7 @@ def plot_three():
            'DarkSlateGray'])
 
         axs[i].grid()
-        axs[i].set_ylim(0.0, 1.02)
+        axs[i].set_ylim(0.0, 1.005)
 
         if i<1:
             fig.legend(loc='upper center', bbox_to_anchor=[0.5,0.0], ncol=7, title='mRS')
@@ -155,7 +165,7 @@ def plot_indiv():
            'DarkSlateGray'])
 
         ax.grid()
-        ax.set_ylim(0.0, 1.02)
+        ax.set_ylim(0.0, 1.005)
 
         # if i<1:
         fig.legend(loc='center', bbox_to_anchor=[1.0,0.5], ncol=1, title='mRS')
