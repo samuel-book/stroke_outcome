@@ -1,4 +1,4 @@
-name: stroke_geography
+name: stroke-outcome
 channels:
   - defaults
   - conda-forge
@@ -8,10 +8,11 @@ dependencies:
   - numpy
   - pip
   - pandas
-  - python=3.9
+  - python=3.10
   - scikit-learn
   - pip:
     - geopandas
     - contextily
     - mapclassify
+    - stroke-outcome
     
