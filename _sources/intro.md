@@ -293,8 +293,4 @@ We use Embersons 2.29% excess deaths from IVT on all patients (nLVO and LVO) wit
 
 #### MT deaths (Goyal et al., 2016):
 
-| Treated | Control | Excess |
-|---------|---------|--------|
-| 18.9%   | 15.3%   | 3.6%   |
-
-The control group in Goyal et al. do not receive MT, but do receive other interventions such as IVT (used in 83% of patients). No additional IVT-related deaths need to be considered when modelling use of MT as the control group (used to estimate the effect of MT at a time MT is no longer effective) already includes IVT-related excess deaths.
+Though MT was found to reduce death rate overall, Goyal et al. reported a 15.3% death rate for patients treated with MT, and with an average onset-to-treatment time of 285. By extrapolating from this, we estimate that MT has an inherant 4% risk of death - though it should be noted this is a figure used to adjust death rate in modelling and is not a causal measure of death due to MT. For further maths see the `excess_deaths_mt` in the bonus notebooks.

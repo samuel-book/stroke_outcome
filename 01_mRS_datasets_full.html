@@ -508,6 +508,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34593/1159425588.py:1: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+  plt.style.use(&#39;seaborn-colorblind&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="set-up-dictionaries-for-results">
@@ -714,7 +720,7 @@ array([0.4036, 0.5417, 0.6561, 0.8147, 0.9246, 0.9659, 1.    ])
 <span class="n">pre_stroke_lvo_bins_mt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pre_stroke_lvo_bins</span><span class="p">)</span>
 
 <span class="c1"># Adjust deaths to include give 15.3% @ 285 min treatment (Goyal et al., 2016)</span>
-<span class="n">excess_deaths</span> <span class="o">=</span> <span class="mf">0.036</span>
+<span class="n">excess_deaths</span> <span class="o">=</span> <span class="mf">0.04</span>
 <span class="n">pre_stroke_lvo_bins_mt_deaths</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+=</span> <span class="n">excess_deaths</span>
 <span class="n">correction_mrs_0_to_5</span> <span class="o">=</span> <span class="p">(</span>
     <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pre_stroke_lvo_bins_mt_deaths</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span> <span class="o">-</span> <span class="n">excess_deaths</span><span class="p">)</span> <span class="o">/</span> 
@@ -743,10 +749,10 @@ array([0.4036, 0.5417, 0.6561, 0.8147, 0.9246, 0.9659, 1.    ])
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pre-stroke lvo with mt deaths
 -----------------------------
 mRS bins:
-array([0.4028, 0.1378, 0.1142, 0.1583, 0.1097, 0.0412, 0.036 ])
+array([0.4012, 0.1372, 0.1137, 0.1576, 0.1092, 0.041 , 0.04  ])
 
 mRS cumulative:
-array([0.4028, 0.5407, 0.6548, 0.8131, 0.9228, 0.964 , 1.    ])
+array([0.4012, 0.5384, 0.6521, 0.8098, 0.919 , 0.96  , 1.    ])
 </pre></div>
 </div>
 </div>
@@ -1232,7 +1238,7 @@ array([0.0479, 0.1236, 0.2539, 0.411 , 0.6476, 0.7769, 1.    ])
 <span class="n">no_treatment_lvo_bins_mt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">no_treatment_lvo_bins</span><span class="p">)</span>
 
 <span class="c1"># Adjust deaths to include give 15.3% @ 285 min treatment (Goyal et al., 2016)</span>
-<span class="n">excess_deaths</span> <span class="o">=</span> <span class="mf">0.036</span>
+<span class="n">excess_deaths</span> <span class="o">=</span> <span class="mf">0.04</span>
 <span class="n">no_treatment_lvo_bins_mt_deaths</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+=</span> <span class="n">excess_deaths</span>
 <span class="n">correction_mrs_0_to_5</span> <span class="o">=</span> <span class="p">(</span>
     <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">no_treatment_lvo_bins_mt_deaths</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span> <span class="o">-</span> <span class="n">excess_deaths</span><span class="p">)</span> <span class="o">/</span> 
@@ -1261,10 +1267,10 @@ array([0.0479, 0.1236, 0.2539, 0.411 , 0.6476, 0.7769, 1.    ])
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO no treatment effect MT deaths
 ----------------------------------
 mRS bins:
-array([0.0478, 0.0755, 0.13  , 0.1567, 0.236 , 0.129 , 0.225 ])
+array([0.0475, 0.0751, 0.1293, 0.1559, 0.2348, 0.1283, 0.229 ])
 
 mRS cumulative:
-array([0.0478, 0.1233, 0.2532, 0.41  , 0.646 , 0.775 , 1.    ])
+array([0.0475, 0.1226, 0.2519, 0.4078, 0.6427, 0.771 , 1.    ])
 </pre></div>
 </div>
 </div>
@@ -1406,10 +1412,10 @@ array([0.1129, 0.2   , 0.3274, 0.4848, 0.6982, 0.8114, 1.    ])
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO MT t0 treatment effect
 --------------------------
 mRS bins:
-array([0.3141, 0.1222, 0.1181, 0.1579, 0.1413, 0.0631, 0.0832])
+array([0.3128, 0.1217, 0.1176, 0.1572, 0.1406, 0.0629, 0.0872])
 
 mRS cumulative:
-array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
+array([0.3128, 0.4345, 0.5521, 0.7093, 0.8499, 0.9127, 1.    ])
 </pre></div>
 </div>
 </div>
@@ -1498,13 +1504,13 @@ array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
     </tr>
     <tr>
       <th>pre_stroke_lvo_mt_deaths</th>
-      <td>0.4028</td>
-      <td>0.1378</td>
-      <td>0.1142</td>
-      <td>0.1583</td>
-      <td>0.1097</td>
-      <td>0.0412</td>
-      <td>0.0360</td>
+      <td>0.4012</td>
+      <td>0.1372</td>
+      <td>0.1137</td>
+      <td>0.1576</td>
+      <td>0.1092</td>
+      <td>0.0410</td>
+      <td>0.0400</td>
     </tr>
     <tr>
       <th>no_treatment_nlvo</th>
@@ -1558,13 +1564,13 @@ array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
     </tr>
     <tr>
       <th>no_effect_lvo_mt_deaths</th>
-      <td>0.0478</td>
-      <td>0.0755</td>
-      <td>0.1300</td>
-      <td>0.1567</td>
-      <td>0.2360</td>
-      <td>0.1290</td>
-      <td>0.2250</td>
+      <td>0.0475</td>
+      <td>0.0751</td>
+      <td>0.1293</td>
+      <td>0.1559</td>
+      <td>0.2348</td>
+      <td>0.1283</td>
+      <td>0.2290</td>
     </tr>
     <tr>
       <th>t0_treatment_lvo_ivt</th>
@@ -1578,13 +1584,13 @@ array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
     </tr>
     <tr>
       <th>t0_treatment_lvo_mt</th>
-      <td>0.3141</td>
-      <td>0.1222</td>
-      <td>0.1181</td>
-      <td>0.1579</td>
-      <td>0.1413</td>
-      <td>0.0631</td>
-      <td>0.0832</td>
+      <td>0.3128</td>
+      <td>0.1217</td>
+      <td>0.1176</td>
+      <td>0.1572</td>
+      <td>0.1406</td>
+      <td>0.0629</td>
+      <td>0.0872</td>
     </tr>
   </tbody>
 </table>
@@ -1670,12 +1676,12 @@ array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
     </tr>
     <tr>
       <th>pre_stroke_lvo_mt_deaths</th>
-      <td>0.4028</td>
-      <td>0.5407</td>
-      <td>0.6548</td>
-      <td>0.8131</td>
-      <td>0.9228</td>
-      <td>0.9640</td>
+      <td>0.4012</td>
+      <td>0.5384</td>
+      <td>0.6521</td>
+      <td>0.8098</td>
+      <td>0.9190</td>
+      <td>0.9600</td>
       <td>1.0</td>
     </tr>
     <tr>
@@ -1730,12 +1736,12 @@ array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
     </tr>
     <tr>
       <th>no_effect_lvo_mt_deaths</th>
-      <td>0.0478</td>
-      <td>0.1233</td>
-      <td>0.2532</td>
-      <td>0.4100</td>
-      <td>0.6460</td>
-      <td>0.7750</td>
+      <td>0.0475</td>
+      <td>0.1226</td>
+      <td>0.2519</td>
+      <td>0.4078</td>
+      <td>0.6427</td>
+      <td>0.7710</td>
       <td>1.0</td>
     </tr>
     <tr>
@@ -1750,12 +1756,12 @@ array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
     </tr>
     <tr>
       <th>t0_treatment_lvo_mt</th>
-      <td>0.3141</td>
-      <td>0.4363</td>
-      <td>0.5544</td>
-      <td>0.7123</td>
-      <td>0.8536</td>
-      <td>0.9167</td>
+      <td>0.3128</td>
+      <td>0.4345</td>
+      <td>0.5521</td>
+      <td>0.7093</td>
+      <td>0.8499</td>
+      <td>0.9127</td>
       <td>1.0</td>
     </tr>
   </tbody>
@@ -1778,6 +1784,12 @@ array([0.3141, 0.4363, 0.5544, 0.7123, 0.8536, 0.9167, 1.    ])
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34593/1159425588.py:1: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+  plt.style.use(&#39;seaborn-colorblind&#39;)
 </pre></div>
 </div>
 </div>
@@ -1858,7 +1870,7 @@ Name: t0_treatment_lvo_ivt, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0db7b68cfdf81696a92c236b8b8cfd590b8a4b91d28f7a4f90f2ed3a64494e76.png" src="_images/0db7b68cfdf81696a92c236b8b8cfd590b8a4b91d28f7a4f90f2ed3a64494e76.png" />
+<img alt="_images/c46aba352a8becc7d4f6f4a62eaaa132e6eb4bb358cefcb07f2ed31f9f455f92.png" src="_images/c46aba352a8becc7d4f6f4a62eaaa132e6eb4bb358cefcb07f2ed31f9f455f92.png" />
 </div>
 </div>
 <p>Plot individual plots</p>
@@ -1904,9 +1916,9 @@ Name: t0_treatment_lvo_ivt, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/82d69b1cd29e540858479d62903dd7509cfbc434ce263acf0e0ebf2a587b2de1.png" src="_images/82d69b1cd29e540858479d62903dd7509cfbc434ce263acf0e0ebf2a587b2de1.png" />
-<img alt="_images/ef91a08f3a6a954952dc532e82a2b41cbb1554ca7baa7dcbcd2539d0a7f6653a.png" src="_images/ef91a08f3a6a954952dc532e82a2b41cbb1554ca7baa7dcbcd2539d0a7f6653a.png" />
-<img alt="_images/477caf5f15d15e5633259b2361b9eea51054a3f8f52453b0c22b4ec3c1e82ad9.png" src="_images/477caf5f15d15e5633259b2361b9eea51054a3f8f52453b0c22b4ec3c1e82ad9.png" />
+<img alt="_images/ce847fffdaaf43f8b0128feb719725f85d1575dccf00a85d5e3e6c18f8cbc094.png" src="_images/ce847fffdaaf43f8b0128feb719725f85d1575dccf00a85d5e3e6c18f8cbc094.png" />
+<img alt="_images/33ae455681e99c90b08861eb98228a70f6485b2e09b57607d7da27ff1c26bf8e.png" src="_images/33ae455681e99c90b08861eb98228a70f6485b2e09b57607d7da27ff1c26bf8e.png" />
+<img alt="_images/15b65da27997d61d9d43483183a56c2d68d1909041f0821206c016215f2dcaa8.png" src="_images/15b65da27997d61d9d43483183a56c2d68d1909041f0821206c016215f2dcaa8.png" />
 </div>
 </div>
 </section>
