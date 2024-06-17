@@ -11,6 +11,13 @@ parts:
   - file: 05a_geography_stroke_types
   - file: 06_show_outcome_model_code
   - file: 90_proportion_ischaemic_with_lvo
+- caption: stroke-outcome package
+  chapters:
+  - file: package_docs/intro
+  - file: package_docs/docs_continuous_outcome
+  - file: package_docs/demo_continuous_outcomes
+  - file: package_docs/docs_discrete_outcome
+  - file: package_docs/demo_discrete_outcomes
 - caption: Application to England and Wales
   chapters:
   - file: admission_prediction/01_msoa_regression
