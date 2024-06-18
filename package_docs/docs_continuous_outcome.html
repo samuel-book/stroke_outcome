@@ -1,0 +1,1120 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Documentation: Continuous outcome model &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'package_docs/docs_continuous_outcome';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Demo: Continuous outcome model" href="demo_continuous_outcomes.html" />
+    <link rel="prev" title="Stroke outcome" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_geography.html">Distance-based treatment effects</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05a_geography_stroke_types.html">Distance-based treatment effects (plot for different stroke types)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_show_outcome_model_code.html">Show outcome model python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">stroke-outcome package</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Stroke outcome</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/package_docs/docs_continuous_outcome.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Documentation: Continuous outcome model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-method">Summary of the method:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-notes">Limitations and notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-outcomes-and-means">Base outcomes and means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-mean-mrs-and-utility">Calculating mean mRS and utility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-calculate-mean-mrs-and-utility">Example: calculate mean mRS and utility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-reference">Code reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-with-time">Probability with time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-patient-data">Example patient data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgroup-outcome-calculations">Subgroup outcome calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Code reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-cohort-outcome-calculations">Full cohort outcome calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Code reference</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="documentation-continuous-outcome-model">
+<h1>Documentation: Continuous outcome model<a class="headerlink" href="#documentation-continuous-outcome-model" title="Permalink to this heading">#</a></h1>
+<p>This notebook describes how the continuous outcome model works.</p>
+<blockquote>
+<div><p>If you’re looking for an example of the code to run the model, look at <a class="reference external" href="https://samuel-book.github.io/stroke_outcome/demo_continuous_outcomes.html">the demo notebook</a> instead.</p>
+</div></blockquote>
+<p>The continuous outcome model calculates modified Rankin Scale (mRS) distributions for ischaemic stroke patients.
+The outcomes depend on time to treatment with intravenous thrombolysis (IVT) or mechanical thrombectomy (MT).
+The results are broken down separately for large vessel occulusions (LVO) and non large vessel occlusions (nLVO).</p>
+<p>This model is called “continuous” because it does not assign each patient a single mRS score from a small set of discrete values, but instead takes the mRS score from a continuous scale.
+For example, a patient could receive an mRS score of 2.33.
+In this continuous system, a patient’s mRS score is taken as the mean across a probability distribution of mRS scores.
+This emulates the expected mean mRS score across a whole population of patients who are identical except for their starting mRS score, and the distribution of those starting mRS scores matches the reference population data that is used by the outcome model.</p>
+<p>The model also calculates utility-weighted mRS scores.</p>
+<section id="summary-of-the-method">
+<h2>Summary of the method:<a class="headerlink" href="#summary-of-the-method" title="Permalink to this heading">#</a></h2>
+<p>These steps will be shown in more detail in the rest of this document.</p>
+<ol class="arabic simple">
+<li><p>Import the base mRS distributions and calculate their mean mRS and utilities</p></li>
+<li><p>Take the patient data, which must include:</p>
+<ul class="simple">
+<li><p>Stroke type</p></li>
+<li><p>Whether treated with IVT, and if so the time from onset to IVT</p></li>
+<li><p>Whether treated with MT, and if so the time from onset to MT</p></li>
+</ul>
+</li>
+<li><p>Group the patients by stroke type and treatment. The subgroups are:</p>
+<ul class="simple">
+<li><p>nLVO and IVT</p></li>
+<li><p>LVO and IVT</p></li>
+<li><p>LVO and MT</p></li>
+</ul>
+</li>
+<li><p>Calculate the patient outcomes for each subgroup.</p>
+<ul class="simple">
+<li><p>The outcomes vary with time. Patients who receive treatment have their post-stroke mRS distribution calculated for their individual treatment times.</p></li>
+<li><p>Patients who receive treatment after the time of no effect use the mRS distribution at the time of no effect.</p></li>
+<li><p>Patients who receive no treatment use the mRS distribution for no treatment.</p></li>
+</ul>
+</li>
+<li><p>Combine the subgroups to match the input patient data</p>
+<ul class="simple">
+<li><p>Each patient in the input data is given only one set of post-stroke data even if they appear in multiple subgroups.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="limitations-and-notes">
+<h2>Limitations and notes:<a class="headerlink" href="#limitations-and-notes" title="Permalink to this heading">#</a></h2>
+<p><strong>Randomness:</strong> There are no random elements. Running the code twice for the same input data will give identical results both times.</p>
+<p><strong>nLVO with MT:</strong> For MT, there are only mRS probability distributions for patients with
+LVOs. If a patient with an nLVO is treated with MT, the patient details
+are quietly updated to reassign them as LVO and so use the base LVO
+mRS distributions for pre-stroke, no-treatment, and no-effect.</p>
+<p><strong>Multiple treatments:</strong> Some patients receive both IVT and MT. Separate outcomes are calculated
+for each case and stored in the LVO+IVT and LVO+MT results dictionaries. However in the
+combined full cohort outcomes, only one of the sets of outcomes can be
+used. The chosen set is the one with the better improvement in outcomes.
+The separate LVO+IVT and LVO+MT results dictionaries are then <em>not</em> updated to remove
+the rejected set of outcomes, so any mean shifts in values across the
+LVO+IVT group (for example) could include data that was not actually used
+in the combined full cohort outcomes.</p>
+<p><strong>Stroke type codes:</strong> Internally, stroke types are referred to by a number rather than their
+full name. The codes are:</p>
+<ul class="simple">
+<li><p>0 - “other” stroke type</p></li>
+<li><p>1 - nLVO</p></li>
+<li><p>2 - LVO</p></li>
+</ul>
+<p>This is done to make all of the input data numeric and so easier to export.</p>
+<p><strong>“Other” stroke types:</strong> Currently “other” stroke types are not used in the calculations. This is due to the unavailability of mRS probability distributions for various “other” stroke types.</p>
+</section>
+<section id="notebook-setup">
+<h2>Notebook setup<a class="headerlink" href="#notebook-setup" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="base-outcomes-and-means">
+<h2>Base outcomes and means<a class="headerlink" href="#base-outcomes-and-means" title="Permalink to this heading">#</a></h2>
+<p>The outcome model uses the following probability distributions of modified Rankin scale (mRS) by default:</p>
+<p><img alt="Reference mRS distributions represented as a series of stacked bar charts. The mean mRS and utility of each distribution is written." src="../_images/input_mrs_dists_with_means.png" /></p>
+<p>The extra columns on the right-hand-side show the mean mRS and mean utility across each distribution. Those values are calculated following the method and example below.</p>
+<p><strong>Notes:</strong></p>
+<p>The pre-stroke and no-treatment distributions are identical for all LVO patients regardless of whether IVT and/or MT were considered.</p>
+<p>The median (not mean!!) mRS is the value where cumulative probability is 0.5.</p>
+</section>
+<section id="calculating-mean-mrs-and-utility">
+<h2>Calculating mean mRS and utility<a class="headerlink" href="#calculating-mean-mrs-and-utility" title="Permalink to this heading">#</a></h2>
+<p>The mean mRS, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, of a probability distribution is found by multiplying each mRS value by the probability of that mRS value in the distribution, and then summing all of those values:</p>
+<div class="math notranslate nohighlight">
+\[\bar{x} = \sum\limits_{x=0}^{6} [P(\mathrm{mRS}=x) \times x]\]</div>
+<p>For mRS between 0 and 6 this is written in full as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bar{x} = \{ &amp; [P(\mathrm{mRS}=0) \times 0] + \\
+&amp; [P(\mathrm{mRS}=1) \times 1] + \\
+&amp; [P(\mathrm{mRS}=2) \times 2] + \\
+&amp; [P(\mathrm{mRS}=3) \times 3] + \\
+&amp; [P(\mathrm{mRS}=4) \times 4] + \\
+&amp; [P(\mathrm{mRS}=5) \times 5] + \\
+&amp; [P(\mathrm{mRS}=6) \times 6] \} 
+\end{align*}
+\end{split}\]</div>
+<p>Mean utility <span class="math notranslate nohighlight">\(\bar{u}\)</span> is calculated in a similar way, except the probability of each mRS value <span class="math notranslate nohighlight">\(x\)</span> is multiplied by the weighted utility <span class="math notranslate nohighlight">\(u\)</span> of that mRS value:</p>
+<div class="math notranslate nohighlight">
+\[\bar{u} = \sum\limits_{x=0}^{6} [P(\mathrm{mRS}=x) \times u(\mathrm{mRS}=x)]\]</div>
+<p>For example, with the following conversion between mRS and utility:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>mRS <span class="math notranslate nohighlight">\(x\)</span>:</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Utility <span class="math notranslate nohighlight">\(u(x)\)</span>:</p></td>
+<td><p>0.97</p></td>
+<td><p>0.88</p></td>
+<td><p>0.74</p></td>
+<td><p>0.55</p></td>
+<td><p>0.20</p></td>
+<td><p>-0.19</p></td>
+<td><p>0.00</p></td>
+</tr>
+</tbody>
+</table>
+<p>Then the mean utility in full is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bar{u} = \{ &amp; [P(\mathrm{mRS}=0) \times 0.97] + \\
+&amp; [P(\mathrm{mRS}=1) \times 0.88] + \\
+&amp; [P(\mathrm{mRS}=2) \times 0.74] + \\
+&amp; [P(\mathrm{mRS}=3) \times 0.55] + \\
+&amp; [P(\mathrm{mRS}=4) \times 0.20] + \\
+&amp; [P(\mathrm{mRS}=5) \times -0.19] + \\
+&amp; [P(\mathrm{mRS}=6) \times 0.00] \} 
+\end{align*}
+\end{split}\]</div>
+<p>The values in the mRS probability distribution sum to exactly one so there is no need to further divide these means by the size of the population.</p>
+<section id="example-calculate-mean-mrs-and-utility">
+<h3>Example: calculate mean mRS and utility<a class="headerlink" href="#example-calculate-mean-mrs-and-utility" title="Permalink to this heading">#</a></h3>
+<p>For the nLVO pre-stroke mRS distribution, which is:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS&lt;=0)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS&lt;=1)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS&lt;=2)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS&lt;=3)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS&lt;=4)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS&lt;=5)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS&lt;=6)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.582881</p></td>
+<td><p>0.745419</p></td>
+<td><p>0.848859</p></td>
+<td><p>0.951082</p></td>
+<td><p>0.993055</p></td>
+<td><p>1.00</p></td>
+<td><p>1.00</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS=0)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS=1)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS=2)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS=3)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS=4)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS=5)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P\)</span>(mRS=6)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.582881</p></td>
+<td><p>0.162538</p></td>
+<td><p>0.10344</p></td>
+<td><p>0.102223</p></td>
+<td><p>0.041973</p></td>
+<td><p>0.006945</p></td>
+<td><p>0.0000</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can calculate the mean mRS, <span class="math notranslate nohighlight">\(\bar{x}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bar{x} = \{ &amp; [0.58 \times 0] + \\
+&amp;[0.16 \times 1] + \\
+&amp; [0.10 \times 2] + \\
+&amp; [0.10 \times 3] + \\
+&amp; [0.04 \times 4] + \\
+&amp; [0.01 \times 5] + \\
+&amp; [0.00 \times 6] \} \\
+\bar{x} = &amp; 0.88
+\end{align*}
+\end{split}\]</div>
+<p>And the mean utility, <span class="math notranslate nohighlight">\(\bar{u}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\bar{u} = \{ &amp; [0.58 \times 0.97] + \\
+&amp; [0.16 \times 0.88] + \\
+&amp; [0.10 \times 0.74] + \\
+&amp; [0.10 \times 0.55] + \\
+&amp; [0.04 \times 0.20] + \\
+&amp; [0.01 \times -0.19] + \\
+&amp; [0.00 \times 0.00] \} \\
+\bar{u} = &amp; 0.85
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="code-reference">
+<h3>Code reference<a class="headerlink" href="#code-reference" title="Permalink to this heading">#</a></h3>
+<p>Given a cumulative mRS probability distribution and a set of utility weights, the mean mRS and utility are calculated by:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mRS</span>
+<span class="c1"># 7 values, one per mRS:</span>
+<span class="n">cumulative_mRS_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.582881</span><span class="p">,</span> <span class="mf">0.745419</span><span class="p">,</span> <span class="mf">0.848859</span><span class="p">,</span> <span class="mf">0.951082</span><span class="p">,</span> <span class="mf">0.993055</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c1"># 7 values, one per mRS:</span>
+<span class="n">non_cumulative_mRS_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">cumulative_mRS_dist</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 1 value:</span>
+<span class="n">mean_mRS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">non_cumulative_mRS_dist</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean mRS: </span><span class="si">{</span><span class="n">mean_mRS</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Utility</span>
+<span class="c1"># Utility weightings for mRS 0-6:</span>
+<span class="n">utility_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.97</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.74</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.19</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">])</span>
+
+<span class="c1"># 1 value:</span>
+<span class="n">mean_utility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">non_cumulative_mRS_dist</span> <span class="o">*</span> <span class="n">utility_weights</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean utility: </span><span class="si">{</span><span class="n">mean_utility</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean mRS: 0.88
+Mean utility: 0.85
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="probability-with-time">
+<h2>Probability with time<a class="headerlink" href="#probability-with-time" title="Permalink to this heading">#</a></h2>
+<p>We know that the size of the effect of treatment depends on how soon the treatment was administered after the stroke onset. This means that the post-stroke mRS distribution we associate with a patient depends on their treatment time.</p>
+<p>To find the mRS distribution at any time, a summary of the steps is:</p>
+<ol class="arabic simple">
+<li><p>Take the base probability mRS distributions for treatment at time zero and for treatment at the time of no effect.</p></li>
+<li><p>Convert the probabilities to odds and then to log(odds).</p></li>
+<li><p>Assume that log(odds) decreases linearly with time from the time-zero values to the time-of-no-effect values. Connect each time-zero value to its matching time-of-no-effect value with a straight line.</p></li>
+<li><p>At the required treatment time, find the height of the straight line to find the log(odds) at that time.</p></li>
+<li><p>Record one value of log(odds) for each mRS score.</p></li>
+<li><p>Convert these log(odds) to units of odds and then to units of probability.</p></li>
+</ol>
+<blockquote>
+<div><p>The full mathematics behind calculating the probability distributions with time can be found <a class="reference external" href="https://samuel-book.github.io/stroke_outcome/02_mRS_outcomes_maths.html">in the online book for the SAMueL-2 project</a>.</p>
+</div></blockquote>
+<p>The resulting changes of probability with time are shown in the following images:</p>
+<p><img alt="mRS distributions varying with time for three subgroups: nLVO with IVT; LVO with IVT; and LVO with MT." src="../_images/probs_with_time.jpg" /></p>
+<p>When we know the time of treatment for a patient, we can refer to these probability with time relations to find the post-stroke mRS distribution at that time.</p>
+<section id="id1">
+<h3>Code reference<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The post-stroke mRS distributions are calculated in the function <code class="docutils literal notranslate"><span class="pre">_calculate_probs_at_treatment_time()</span></code> in the <code class="docutils literal notranslate"><span class="pre">outcome_utilities</span></code> module. The relevant part of that function is as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;&quot;&quot;
+l |                Draw a straight line between the log-odds
+o |x1    treated   at time zero and the time of no effect.
+g |  \    at &quot;o&quot;   Then the log-odds at the chosen treatment
+o |    \           time lies on this line.
+d |      o
+d |        \
+s |__________x2__
+        time
+
+The (x,y) coordinates of the two points are:
+  x1: (0, t0_logodds)
+  x2: (time_no_effect_mins, no_effect_logodds)
+  o:  (time_to_treatment_mins, treated_logodds)
+&quot;&quot;&quot;
+
+# Calculate fraction of time to no effect passed
+frac_to_no_effect = time_to_treatment_mins / time_no_effect_mins
+
+# Combine t=0 and no effect distributions based on time passed
+treated_logodds = ((frac_to_no_effect * no_effect_logodds) +
+                   ((1 - frac_to_no_effect) * t0_logodds))
+
+# Convert to odds and probabilties
+treated_odds = np.exp(treated_logodds)
+treated_probs = treated_odds / (1 + treated_odds)
+
+# Manually set all of the probabilities for mRS&lt;=6 to be 1
+# as the logodds calculation returns NaN.
+treated_probs[:, -1] = 1.0
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-patient-data">
+<h2>Example patient data<a class="headerlink" href="#example-patient-data" title="Permalink to this heading">#</a></h2>
+<p>The model needs the following information for each patient:</p>
+<ul class="simple">
+<li><p>Their stroke type</p></li>
+<li><p>Whether they were treated with IVT</p></li>
+<li><p>If so, the time in minutes from onset to treatment with IVT</p></li>
+<li><p>Whether they were treated with MT</p></li>
+<li><p>If so, the time in minutes from onset to treatment with MT</p></li>
+</ul>
+<p>For this example, we will use the following data for ten patients:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_patient_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./images/example10_patients.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Patient&#39;</span><span class="p">)</span>
+
+<span class="n">example_patient_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Stroke type</th>
+      <th>Treated with IVT</th>
+      <th>Onset to IVT time (minutes)</th>
+      <th>Treated with MT</th>
+      <th>Onset to MT time (minutes)</th>
+    </tr>
+    <tr>
+      <th>Patient</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>nLVO</td>
+      <td>Yes</td>
+      <td>180</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>nLVO</td>
+      <td>Yes</td>
+      <td>90</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>LVO</td>
+      <td>Yes</td>
+      <td>240</td>
+      <td>Yes</td>
+      <td>270</td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td>nLVO</td>
+      <td>No</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>E</th>
+      <td>nLVO</td>
+      <td>No</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>F</th>
+      <td>LVO</td>
+      <td>No</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>G</th>
+      <td>LVO</td>
+      <td>No</td>
+      <td>-</td>
+      <td>Yes</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <th>H</th>
+      <td>nLVO</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>I</th>
+      <td>nLVO</td>
+      <td>Yes</td>
+      <td>300</td>
+      <td>Yes</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>J</th>
+      <td>Other</td>
+      <td>No</td>
+      <td>-</td>
+      <td>No</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can compare these ten patients by placing them into a grid. Each patient’s stroke type determines which row they go in, and which treatments they receive determines the column.</p>
+<p><img alt="Ten example patients placed in a grid of stroke types and treatment types." src="../_images/example_patient_grid.png" /></p>
+</section>
+<section id="subgroup-outcome-calculations">
+<h2>Subgroup outcome calculations<a class="headerlink" href="#subgroup-outcome-calculations" title="Permalink to this heading">#</a></h2>
+<p>The outcomes are calculated separately for the following categories of patient:</p>
+<ul class="simple">
+<li><p>nLVO treated with IVT</p></li>
+<li><p>LVO treated with IVT</p></li>
+<li><p>LVO treated with MT</p></li>
+</ul>
+<p>This is because the groups use separate probability distributions that vary differently with time.</p>
+<p>Patients who receive both IVT and MT will be included in more than one subgroup.</p>
+<section id="method">
+<h3>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h3>
+<p>In the following method, the details italicised in brackets <em>(like this)</em> apply only to the example in the documentation. The details are for the subgroup of <em>nLVO patients treated with IVT</em>.</p>
+<p><strong>Gather post-stroke mRS distributions for each patient:</strong></p>
+<ol class="arabic simple">
+<li><p>Select the “valid” patients, i.e. those who have this stroke type. <em>(Patients A, B, H, D, and E only. Patient I has been reassigned to LVO because they receive MT)</em></p></li>
+<li><p>Gather the post-stroke mRS distributions.</p>
+<ol class="arabic simple">
+<li><p>For the patients who are not valid here, leave their post-stroke data blank. <em>(Patients C, F, G, I, and J)</em></p></li>
+<li><p>For the valid patients who are not treated, set their post-stroke data to match the “no treatment” distribution. <em>(Patients D and E)</em></p></li>
+<li><p>For the valid patients who are treated, use the known variation of probability with time to find the mRS distributions at their treatment times. <em>(Patients A, B, and H)</em></p></li>
+<li><p>If the treatment time is greater than the time of no effect, use the “no effect” post-stroke data.</p></li>
+</ol>
+</li>
+</ol>
+<p><strong>Find post-stroke mRS score of each patient:</strong></p>
+<ol class="arabic simple">
+<li><p>Calculate each patient’s post-stroke mean mRS and mean utility.</p></li>
+<li><p>Calculate the shift in each patient’s post-stroke mean mRS and mean utility from the “no treatment” values.</p></li>
+</ol>
+<p><strong>Average post-stroke data across all patients:</strong></p>
+<ol class="arabic simple">
+<li><p>Calculate the mean shift in mRS and the mean shift in utility across only the “valid” patients, i.e. everyone with this stroke type regardless of whether they received treatment.</p></li>
+<li><p>Calculate the mean shift in mRS and the mean shift in utility across only the treated patients.</p></li>
+</ol>
+</section>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h3>
+<p>The results of this process for the <em>nLVO with IVT</em> example are shown in the following diagram. The patients’ treatment times were first shown in the “Example patient data” table.</p>
+<p><img alt="Outcomes for nLVO treated with IVT" src="../_images/continuous_nlvo_ivt_outcomes.png" /></p>
+</section>
+<section id="id2">
+<h3>Code reference<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Some of the information in this image is stored in the output outcomes dictionary. The following image is the same as before, but now the contents of the results dictionary are labelled.</p>
+<p><img alt="Outcomes for nLVO treated with IVT, labelled to link the image with variable names in the code." src="../_images/continuous_nlvo_ivt_outcomes_summary_labels.png" /></p>
+<p>The sets of data are named:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_post_stroke_mrs_dist</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">not_treated_mean_mrs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no_effect_mean_mrs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_post_stroke_mean_mrs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_mean_mrs_shift</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">not_treated_mean_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no_effect_mean_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_post_stroke_mean_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_mean_added_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean_valid_patients_mean_mrs_shift</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean_valid_patients_mean_added_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">treated_population_mean_valid_patients_mean_mrs_shift</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">treated_population_mean_valid_patients_mean_added_utility</span></code></p></li>
+</ul>
+<p>These results are calculated in the functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_outcomes_for_nlvo_ivt()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_outcomes_for_lvo_ivt()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_outcomes_for_lvo_mt()</span></code></p></li>
+</ul>
+<p>In each case, the generated arrays still contain one value per patient in the whole cohort and invalid patients have values of <code class="docutils literal notranslate"><span class="pre">np.NaN</span></code> (Not A Number).</p>
+</section>
+</section>
+<section id="full-cohort-outcome-calculations">
+<h2>Full cohort outcome calculations<a class="headerlink" href="#full-cohort-outcome-calculations" title="Permalink to this heading">#</a></h2>
+<p>The full cohort results select the relevant parts of the separate LVO+IVT, LVO+MT, and nLVO+IVT results and gather them all in one place.</p>
+<section id="id3">
+<h3>Method<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>The steps for gathering the post-stroke data are:</p>
+<ol class="arabic simple">
+<li><p>Include the data for all nLVO patients that did not receive MT.</p></li>
+<li><p>Include the data for all remaining patients that received either IVT or MT, but not both.</p></li>
+<li><p>For patients receiving both IVT and MT, compare the benefits from the two treatments. Use the data from the treatment with more benefit.</p></li>
+<li><p>For patients with “other” stroke types, leave the data blank.</p></li>
+</ol>
+<p>The data copied over is:</p>
+<ul class="simple">
+<li><p>Post-stroke mRS distribution</p></li>
+<li><p>Post-stroke mean mRS and shift from the no-treatment distribution</p></li>
+<li><p>Post-stroke mean utility and shift from the no-treatment distribution</p></li>
+</ul>
+<p>Then the following data is newly calculated:</p>
+<ul class="simple">
+<li><p>Mean mRS across the full cohort</p></li>
+<li><p>Mean shift in mRS across the full cohort</p></li>
+<li><p>Mean utility across the full cohort</p></li>
+<li><p>Mean shift in utility across the full cohort</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Results<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p><img alt="Outcomes for the full cohort" src="../_images/continuous_full_cohort_outcomes.png" /></p>
+</section>
+<section id="id5">
+<h3>Code reference<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>Similarly to before, the following image labels the full cohort summary image to show the names of various data in the full cohort outcomes dictionary.</p>
+<p><img alt="Outcomes for the full cohort" src="../_images/continuous_full_cohort_outcomes_summary_labels.png" /></p>
+<p>The sets of data are named:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_post_stroke_mrs_dist</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_post_stroke_mean_mrs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_mean_mrs_shift</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_post_stroke_mean_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each_patient_mean_added_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_stroke_mean_mrs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean_mrs_shift</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean_utility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean_added_utility</span></code></p></li>
+</ul>
+<p>Any patients who have “other” stroke types have their data set to <code class="docutils literal notranslate"><span class="pre">np.NaN</span></code> (Not A Number). The <code class="docutils literal notranslate"><span class="pre">np.NaN</span></code> values can be sidestepped in later calculations by using e.g. <code class="docutils literal notranslate"><span class="pre">np.nanmean()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./package_docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stroke outcome</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="demo_continuous_outcomes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Demo: Continuous outcome model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-method">Summary of the method:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-notes">Limitations and notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-outcomes-and-means">Base outcomes and means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-mean-mrs-and-utility">Calculating mean mRS and utility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-calculate-mean-mrs-and-utility">Example: calculate mean mRS and utility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-reference">Code reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-with-time">Probability with time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-patient-data">Example patient data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subgroup-outcome-calculations">Subgroup outcome calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Code reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-cohort-outcome-calculations">Full cohort outcome calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Code reference</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

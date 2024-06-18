@@ -1,0 +1,1812 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Demo: discrete outcome model &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'package_docs/demo_discrete_outcomes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Emergency stroke admissions predictions" href="../admission_prediction/01_msoa_regression.html" />
+    <link rel="prev" title="Documentation: Discrete outcome model" href="docs_discrete_outcome.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_geography.html">Distance-based treatment effects</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../05a_geography_stroke_types.html">Distance-based treatment effects (plot for different stroke types)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06_show_outcome_model_code.html">Show outcome model python code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">stroke-outcome package</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Stroke outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Demo: discrete outcome model</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/package_docs/demo_discrete_outcomes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Demo: discrete outcome model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Demo: discrete outcome model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-patient-data">Create patient data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-import-data-from-file">Alternative: Import data from file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-discrete-outcome-model">Run the discrete outcome model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mean-mrs-shift">Example: mean mRS shift</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-mrs-distributions-and-utility-weightings">Controlling mRS distributions and utility weightings</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-reference-data">Import reference data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-data-requirements">Custom data requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model-with-custom-data">Running the model with custom data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="demo-discrete-outcome-model">
+<h1>Demo: discrete outcome model<a class="headerlink" href="#demo-discrete-outcome-model" title="Permalink to this heading">#</a></h1>
+<p>This notebook contains a basic example of running the discrete outcome model within the <code class="docutils literal notranslate"><span class="pre">stroke-outcome</span></code> package.</p>
+<section id="notebook-setup">
+<h2>Notebook setup<a class="headerlink" href="#notebook-setup" title="Permalink to this heading">#</a></h2>
+<p>The intended versions of these packages are given in the files <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import required packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="c1"># Imports from the stroke_outcome package:</span>
+<span class="kn">from</span> <span class="nn">stroke_outcome.discrete_outcome</span> <span class="kn">import</span> <span class="n">Discrete_outcome</span>
+<span class="kn">import</span> <span class="nn">stroke_outcome.outcome_utilities</span> <span class="k">as</span> <span class="nn">outcome_utilities</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-patient-data">
+<h2>Create patient data<a class="headerlink" href="#create-patient-data" title="Permalink to this heading">#</a></h2>
+<p>The model needs the following data as inputs, with one value per patient in each array:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Data type</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Stroke type code</p></td>
+<td><p>0=other, 1=nLVO, 2=LVO</p></td>
+<td><p>int</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">stroke_type_code</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Onset to needle time</p></td>
+<td><p>minutes</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onset_to_needle_mins</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Whether IVT was chosen</p></td>
+<td><p>1=True, 0=False</p></td>
+<td><p>int or bool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ivt_chosen_bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Onset to puncture time</p></td>
+<td><p>minutes</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onset_to_puncture_mins</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Whether MT was chosen</p></td>
+<td><p>1=True, 0=False</p></td>
+<td><p>int or bool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mt_chosen_bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>* Pre-stroke mRS score</p></td>
+<td><p>mRS score</p></td>
+<td><p>int</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mrs_pre_stroke</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>* Fixed probability</p></td>
+<td><p>None</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x_pre_stroke</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>* Either the pre-stroke mRS score or the fixed probability score should be provided. If both are given, the fixed probability score is prioritised and the mRS score is discarded.</p>
+<p>These are expected in a dictionary (or a pandas DataFrame? check this). For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set random seed for repeatability:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># All patients share these same treatment times:</span>
+<span class="n">time_to_ivt_mins</span> <span class="o">=</span> <span class="mf">90.0</span>
+<span class="n">time_to_mt_mins</span> <span class="o">=</span> <span class="mf">120.0</span>
+
+<span class="c1"># Numbers of patients with each stroke type:</span>
+<span class="n">n_nlvo</span> <span class="o">=</span> <span class="mi">65</span>
+<span class="n">n_lvo</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">n_total</span> <span class="o">=</span> <span class="n">n_lvo</span> <span class="o">+</span> <span class="n">n_nlvo</span>
+
+<span class="c1"># Store the patient details in this dictionary:</span>
+<span class="n">outcome_inputs_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="c1"># Mix of LVO and nLVO:</span>
+    <span class="n">stroke_type_code</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">n_lvo</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">n_nlvo</span><span class="p">),</span>
+    <span class="c1"># Onset to needle time is fixed to 90mins:</span>
+    <span class="n">onset_to_needle_mins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_total</span><span class="p">,</span> <span class="n">time_to_ivt_mins</span><span class="p">),</span>
+    <span class="c1"># Randomly pick whether IVT is chosen with around 15% yes: </span>
+    <span class="n">ivt_chosen_bool</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">n_total</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="c1"># Onset to puncture time is fixed to 120mins:</span>
+    <span class="n">onset_to_puncture_mins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_total</span><span class="p">,</span> <span class="n">time_to_mt_mins</span><span class="p">),</span>
+    <span class="c1"># Randomly pick whether MT is chosen for LVOs with around 30% yes:</span>
+    <span class="n">mt_chosen_bool</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">n_lvo</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n_nlvo</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="c1"># Randomly pick some pre-stroke mRS scores from 0 to 5:</span>
+    <span class="n">mrs_pre_stroke</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_total</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Convert this to a DataFrame for easier viewing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pop them into a dataframe:</span>
+<span class="n">outcome_inputs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">outcome_inputs_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">outcome_inputs_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+<span class="p">)</span>
+
+<span class="c1"># Show the first ten patients&#39; details:</span>
+<span class="n">outcome_inputs_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>stroke_type_code</th>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>onset_to_needle_mins</th>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>ivt_chosen_bool</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>onset_to_puncture_mins</th>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+      <td>120.0</td>
+    </tr>
+    <tr>
+      <th>mt_chosen_bool</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>mrs_pre_stroke</th>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note: even though all patients here have valid treatment times, the model only uses the times for patients who answer <code class="docutils literal notranslate"><span class="pre">True</span></code> in the treatment chosen arrays.</p>
+</section>
+<section id="alternative-import-data-from-file">
+<h2>Alternative: Import data from file<a class="headerlink" href="#alternative-import-data-from-file" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome_inputs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;patients.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome_inputs_df</span><span class="p">[</span><span class="s1">&#39;mrs_pre_stroke&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">outcome_inputs_df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome_inputs_df</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>stroke_type_code</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>onset_to_needle_mins</th>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+    </tr>
+    <tr>
+      <th>ivt_chosen_bool</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>onset_to_puncture_mins</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>480</td>
+      <td>0</td>
+      <td>480</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>480</td>
+      <td>0</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <th>mt_chosen_bool</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>mrs_pre_stroke</th>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="run-the-discrete-outcome-model">
+<h2>Run the discrete outcome model<a class="headerlink" href="#run-the-discrete-outcome-model" title="Permalink to this heading">#</a></h2>
+<p>Initiate the outcome model object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">discrete_outcome</span> <span class="o">=</span> <span class="n">Discrete_outcome</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Provide it with the data we created above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">discrete_outcome</span><span class="o">.</span><span class="n">assign_patients_to_trial</span><span class="p">(</span><span class="n">outcome_inputs_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The model is expecting to receive patient data for some of the keys in the <code class="docutils literal notranslate"><span class="pre">trial</span></code> dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">discrete_outcome</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stroke_type_code
+stroke_type_code_on_input
+onset_to_needle_mins
+ivt_chosen_bool
+ivt_no_effect_bool
+onset_to_puncture_mins
+mt_chosen_bool
+mt_no_effect_bool
+mrs_pre_stroke
+fixed_prob_pre_stroke
+</pre></div>
+</div>
+</div>
+</div>
+<p>We don’t need to define <code class="docutils literal notranslate"><span class="pre">ivt_no_effect_bool</span></code> and <code class="docutils literal notranslate"><span class="pre">mt_no_effect_bool</span></code> because they are created when the outcomes are calculated. Those two arrays record whether each patient was treated after the time of no effect.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">x_pre_stroke</span></code> is provided, it will be used to calculate new values for <code class="docutils literal notranslate"><span class="pre">mrs_pre_stroke</span></code>. Otherwise, if <code class="docutils literal notranslate"><span class="pre">x_pre_stroke</span></code> is not provided, it will be calculated from the <code class="docutils literal notranslate"><span class="pre">mrs_pre_stroke</span></code> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate outcomes:</span>
+<span class="n">patient_data_dict</span><span class="p">,</span> <span class="n">outcomes_by_stroke_type</span><span class="p">,</span> <span class="n">full_cohort_outcomes</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">discrete_outcome</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">())</span>
+
+<span class="c1"># Make a copy of the results:</span>
+<span class="n">outcomes_by_stroke_type</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">outcomes_by_stroke_type</span><span class="p">)</span>
+<span class="n">full_cohort_outcomes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">full_cohort_outcomes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/anna/miniconda3/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/anna/miniconda3/lib/python3.9/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>A copy is made of the output results as currently the original results can be overwritten when a new instance of the <code class="docutils literal notranslate"><span class="pre">Discrete_outcome</span></code> class is created.</p></li>
+</ul>
+<p>The model also produces statistics about the input patient population:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">discrete_outcome</span><span class="o">.</span><span class="n">stroke_type_stats_df</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total</th>
+      <th>IVT</th>
+      <th>MT</th>
+      <th>IVT no effect</th>
+      <th>MT no effect</th>
+      <th>No treatment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>nLVO: Count</th>
+      <td>3.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>nLVO: Proportion of this stroke type</th>
+      <td>1.000000</td>
+      <td>0.666667</td>
+      <td>0.000000</td>
+      <td>0.333333</td>
+      <td>0.000000</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>nLVO: Proportion of full cohort</th>
+      <td>0.214286</td>
+      <td>0.142857</td>
+      <td>0.000000</td>
+      <td>0.071429</td>
+      <td>0.000000</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>LVO: Count</th>
+      <td>11.000000</td>
+      <td>6.000000</td>
+      <td>8.000000</td>
+      <td>3.000000</td>
+      <td>4.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>LVO: Proportion of this stroke type</th>
+      <td>1.000000</td>
+      <td>0.545455</td>
+      <td>0.727273</td>
+      <td>0.272727</td>
+      <td>0.363636</td>
+      <td>0.090909</td>
+    </tr>
+    <tr>
+      <th>LVO: Proportion of full cohort</th>
+      <td>0.785714</td>
+      <td>0.428571</td>
+      <td>0.571429</td>
+      <td>0.214286</td>
+      <td>0.285714</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>Other: Count</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Other: Proportion of this stroke type</th>
+      <td>1.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Other: Proportion of full cohort</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<p>The main function returns three sets of results, which we’ve called <code class="docutils literal notranslate"><span class="pre">patient_data_dict</span></code>, <code class="docutils literal notranslate"><span class="pre">outcomes_by_stroke_type</span></code> and <code class="docutils literal notranslate"><span class="pre">full_cohort_outcomes</span></code>.</p>
+<p>The first result is a dictionary of the input patient information. This is important for two reasons. Firsly, if not all of the data required for the model was provided by the user, then the output dictionary shows a record of the placeholder data that was used instead. Usually the placeholder data is all zeroes. Secondly, in special cases the input patient data is overwritten. The main special case is patients who have an nLVO and are given MT, where the model updates this so that they are assigned as LVO instead.</p>
+<p>The other two are dictionaries and hold similar information. The important difference is that <code class="docutils literal notranslate"><span class="pre">outcomes_by_stroke_type</span></code> contains separate information for each occlusion and treatment type, and that  <code class="docutils literal notranslate"><span class="pre">full_cohort_outcomes</span></code> contains one set of information that matches the input patient types.</p>
+<p>The output patient data dictionary contains the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">patient_data_dict</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">patient_data_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>stroke_type_code</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>stroke_type_code_on_input</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>onset_to_needle_mins</th>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>378</td>
+    </tr>
+    <tr>
+      <th>ivt_chosen_bool</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>ivt_no_effect_bool</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>onset_to_puncture_mins</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>480</td>
+      <td>0</td>
+      <td>480</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>480</td>
+      <td>0</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <th>mt_chosen_bool</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>mt_no_effect_bool</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>mrs_pre_stroke</th>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>fixed_prob_pre_stroke</th>
+      <td>0.747289</td>
+      <td>0.996485</td>
+      <td>0.102543</td>
+      <td>0.625106</td>
+      <td>0.074729</td>
+      <td>0.915893</td>
+      <td>0.52428</td>
+      <td>0.982475</td>
+      <td>0.520959</td>
+      <td>0.461934</td>
+      <td>0.999098</td>
+      <td>0.621112</td>
+      <td>0.87199</td>
+      <td>0.153145</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">outcomes_by_stroke_type</span></code> contains the following keys for each of <code class="docutils literal notranslate"><span class="pre">lvo_ivt</span></code>, <code class="docutils literal notranslate"><span class="pre">lvo_mt</span></code>, and <code class="docutils literal notranslate"><span class="pre">nlvo_ivt</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">separate_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes_by_stroke_type</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">separate_keys</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">separate_keys</span><span class="p">)</span><span class="o">//</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="n">short_key</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">:])</span>  <span class="c1"># Remove lvo_ivt label</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+ &#39;</span> <span class="o">+</span> <span class="n">short_key</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+ each_patient_mrs_dist_post_stroke
++ each_patient_mrs_not_treated
++ each_patient_mrs_post_stroke
++ each_patient_utility_not_treated
++ each_patient_utility_post_stroke
++ each_patient_mrs_shift
++ each_patient_utility_shift
++ valid_patients_mean_mrs_post_stroke
++ valid_patients_mean_mrs_not_treated
++ valid_patients_mean_mrs_shift
++ valid_patients_mean_utility_post_stroke
++ valid_patients_mean_utility_not_treated
++ valid_patients_mean_utility_shift
++ treated_patients_mean_mrs_post_stroke
++ treated_patients_mean_mrs_shift
++ treated_patients_mean_utility_post_stroke
++ treated_patients_mean_utility_shift
++ improved_patients_mean_mrs_post_stroke
++ improved_patients_mean_mrs_shift
++ improved_patients_mean_utility_post_stroke
++ improved_patients_mean_utility_shift
++ proportion_of_valid_patients_who_improved
++ proportion_of_treated_patients_who_improved
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">full_cohort_outcomes</span></code> combines the three subgroups back into one big array in the same order as the input data. It contains:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_cohort_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_cohort_outcomes</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">full_cohort_keys</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;+ &#39;</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+ each_patient_mrs_dist_post_stroke
++ each_patient_mrs_post_stroke
++ each_patient_mrs_not_treated
++ each_patient_mrs_shift
++ each_patient_utility_post_stroke
++ each_patient_utility_not_treated
++ each_patient_utility_shift
++ mean_mrs_post_stroke
++ mean_mrs_not_treated
++ mean_mrs_shift
++ mean_utility
++ mean_utility_not_treated
++ mean_utility_shift
+</pre></div>
+</div>
+</div>
+</div>
+<section id="example-mean-mrs-shift">
+<h3>Example: mean mRS shift<a class="headerlink" href="#example-mean-mrs-shift" title="Permalink to this heading">#</a></h3>
+<p>The mean mRS shift is stored in various different ways depending on what exactly you want to measure. In the separate subgroups, you can see the mean mRS shift for only the patients who were treated:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separate subgroup results:</span>
+<span class="n">keys_to_print</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;nlvo_ivt_treated_patients_mean_mrs_shift&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_ivt_treated_patients_mean_mrs_shift&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_mt_treated_patients_mean_mrs_shift&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys_to_print</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcomes_by_stroke_type</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.000
+0.000
+-0.375
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the combined full cohort results, you can see the mean mRS shift for each patient separately:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combined full cohort results:</span>
+<span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_shift&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.,  0.,  0., -1.,  0., -1.,  0.,  0.,  0.,  0.,  0.,  0., -1.,
+        0.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is also a full cohort mean mRS shift value…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;mean_mrs_shift&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.214
+</pre></div>
+</div>
+</div>
+</div>
+<p>… which is the mean of all values in the previous array including the zeroes. This might not be as useful a metric as the three separate mean mRS shifts from the nLVO+IVT, LVO+IVT, and LVO+MT subgroups.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="controlling-mrs-distributions-and-utility-weightings">
+<h1>Controlling mRS distributions and utility weightings<a class="headerlink" href="#controlling-mrs-distributions-and-utility-weightings" title="Permalink to this heading">#</a></h1>
+<p>The model contains datasets for mRS distributions and utility weights. These are automatically loaded and used in the model. If you want to use different data, you can provide it when you create the model.</p>
+<p>Custom times of no effect for thrombolysis and thrombectomy can be passed into the model. The default values match the mRS distributions imported from file.</p>
+<section id="import-reference-data">
+<h2>Import reference data<a class="headerlink" href="#import-reference-data" title="Permalink to this heading">#</a></h2>
+<p>These functions import data from <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files that are included in the <code class="docutils literal notranslate"><span class="pre">stroke-outcome</span></code> package. Each function imports both a copy of the data in the table and the notes in the header at the top of the file.</p>
+<p><strong>Data set 1:</strong> Cumulative probability distributions of modified Rankin scale (mRS):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">,</span> <span class="n">mrs_dists_notes</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">outcome_utilities</span><span class="o">.</span><span class="n">import_mrs_dists_from_file</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mRS&lt;=0</th>
+      <th>mRS&lt;=1</th>
+      <th>mRS&lt;=2</th>
+      <th>mRS&lt;=3</th>
+      <th>mRS&lt;=4</th>
+      <th>mRS&lt;=5</th>
+      <th>mRS&lt;=6</th>
+    </tr>
+    <tr>
+      <th>Stroke type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.582881</td>
+      <td>0.745419</td>
+      <td>0.848859</td>
+      <td>0.951082</td>
+      <td>0.993055</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_nlvo_ivt_deaths</th>
+      <td>0.576469</td>
+      <td>0.737219</td>
+      <td>0.839522</td>
+      <td>0.940620</td>
+      <td>0.982131</td>
+      <td>0.989000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.417894</td>
+      <td>0.560853</td>
+      <td>0.679283</td>
+      <td>0.843494</td>
+      <td>0.957269</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_ivt_deaths</th>
+      <td>0.403644</td>
+      <td>0.541728</td>
+      <td>0.656119</td>
+      <td>0.814731</td>
+      <td>0.924626</td>
+      <td>0.965900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_mt_deaths</th>
+      <td>0.402850</td>
+      <td>0.540662</td>
+      <td>0.654829</td>
+      <td>0.813128</td>
+      <td>0.922807</td>
+      <td>0.964000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.197144</td>
+      <td>0.460000</td>
+      <td>0.580032</td>
+      <td>0.707768</td>
+      <td>0.855677</td>
+      <td>0.917702</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.197271</td>
+      <td>0.460000</td>
+      <td>0.577583</td>
+      <td>0.702252</td>
+      <td>0.845244</td>
+      <td>0.904454</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.429808</td>
+      <td>0.630000</td>
+      <td>0.738212</td>
+      <td>0.848427</td>
+      <td>0.929188</td>
+      <td>0.956300</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.050000</td>
+      <td>0.129000</td>
+      <td>0.265000</td>
+      <td>0.429000</td>
+      <td>0.676000</td>
+      <td>0.811000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.047898</td>
+      <td>0.123576</td>
+      <td>0.253858</td>
+      <td>0.410962</td>
+      <td>0.647576</td>
+      <td>0.776900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.047781</td>
+      <td>0.123274</td>
+      <td>0.253237</td>
+      <td>0.409957</td>
+      <td>0.645993</td>
+      <td>0.775000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.112916</td>
+      <td>0.200000</td>
+      <td>0.327377</td>
+      <td>0.484757</td>
+      <td>0.698212</td>
+      <td>0.811443</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.314082</td>
+      <td>0.436315</td>
+      <td>0.554431</td>
+      <td>0.712335</td>
+      <td>0.853604</td>
+      <td>0.916750</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mrs_dists_notes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># If these change, please ensure the no-effect times are still correct.
+#
+# Acronyms:                                      No-effect times:
+#   lvo:  large-vessel occlusion                 IVT: 378mins (6.3hr)
+#   nlvo: non-large-vessel occlusion             MT:  480mins (8hr)
+#   ivt:  intra-veneous thrombolysis
+#   mt:   mechanical thrombectomy
+#   t0:   time zero, zero minutes after stroke onset.
+#
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>OPTIONAL Data set 2:</strong> Utility score for each mRS level.</p>
+<p>This does not have to be provided to the model. If it is not, default values are used. The default values are from the Wang et al. 2020 paper.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utility_dists</span><span class="p">,</span> <span class="n">utility_dists_notes</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">outcome_utilities</span><span class="o">.</span><span class="n">import_utility_dists_from_file</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utility_dists</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mRS=0</th>
+      <th>mRS=1</th>
+      <th>mRS=2</th>
+      <th>mRS=3</th>
+      <th>mRS=4</th>
+      <th>mRS=5</th>
+      <th>mRS=6</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wang2020</th>
+      <td>0.97</td>
+      <td>0.88</td>
+      <td>0.74</td>
+      <td>0.55</td>
+      <td>0.20</td>
+      <td>-0.19</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Dijkland2018</th>
+      <td>0.95</td>
+      <td>0.93</td>
+      <td>0.83</td>
+      <td>0.62</td>
+      <td>0.42</td>
+      <td>0.11</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">utility_dists_notes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># 
+# References:
+#   Wang et al. 2020:     Stroke. 2020;51:2411–2417
+#   Dijkland et al. 2018: Stroke. 2018;49:965–971
+</pre></div>
+</div>
+</div>
+</div>
+<p>Choose one of these distributions to use as the utility weights:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utility_weights</span> <span class="o">=</span> <span class="n">utility_dists</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Wang2020&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">utility_weights</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.97,  0.88,  0.74,  0.55,  0.2 , -0.19,  0.  ])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="custom-data-requirements">
+<h3>Custom data requirements<a class="headerlink" href="#custom-data-requirements" title="Permalink to this heading">#</a></h3>
+<p>If you would rather use custom data for the mRS and utility distributions, you can skip the above imports. The outcome model can accept any data in these formats:</p>
+<ul class="simple">
+<li><p>mRS distributions: must be a pandas DataFrame with:</p>
+<ul>
+<li><p>columns for each mRS from 0 to 6 inclusive, named just as in the imported table above</p></li>
+<li><p>rows for each group named just as in the imported table above</p></li>
+<li><p>values between 0 and 1.</p></li>
+</ul>
+</li>
+<li><p>utility weights: must be a numpy array with:</p>
+<ul>
+<li><p>shape (7,), i.e. a one-dimensional array containing one value for each mRS from 0 to 6 inclusive</p></li>
+<li><p>values consistent with a utility of 1 for full health and a utility of 0 for death.</p></li>
+</ul>
+</li>
+</ul>
+<p>If the custom mRS distributions use different times of no effect, make sure that the new times are passed into the outcome model when it is initialised.</p>
+</section>
+<section id="running-the-model-with-custom-data">
+<h3>Running the model with custom data<a class="headerlink" href="#running-the-model-with-custom-data" title="Permalink to this heading">#</a></h3>
+<p>The following code creates another model object with the mRS distributions and utility weights given explicitly:</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./package_docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="docs_discrete_outcome.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Documentation: Discrete outcome model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../admission_prediction/01_msoa_regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Emergency stroke admissions predictions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Demo: discrete outcome model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-patient-data">Create patient data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-import-data-from-file">Alternative: Import data from file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-discrete-outcome-model">Run the discrete outcome model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mean-mrs-shift">Example: mean mRS shift</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-mrs-distributions-and-utility-weightings">Controlling mRS distributions and utility weightings</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-reference-data">Import reference data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-data-requirements">Custom data requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-model-with-custom-data">Running the model with custom data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
