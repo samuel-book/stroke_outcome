@@ -1,5 +1,7 @@
 # Definitions for maths
 
+_work in progress_
+
 All of the quantities we will define are only valid in the time range covered by our data, which is $0\leq t \leq t_{\mathrm{ne}}$ for the no-effect time $t_{\mathrm{ne}}$.
 
 ## Probability

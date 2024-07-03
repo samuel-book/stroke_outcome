@@ -13,3 +13,7 @@ execute:
 launch_buttons:
   notebook_interface        : classic  
   binderhub_url             : ""
+  
+parse:
+  myst_enable_extensions:
+  - html_image

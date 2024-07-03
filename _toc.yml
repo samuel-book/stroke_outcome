@@ -1,17 +1,22 @@
 format: jb-book
 root: intro
 parts:
-- caption: Outcome model
+- caption: 📚 Definitions reference
   chapters:
-  - file: 01_mRS_datasets_full
-  - file: 02_mRS_outcomes_maths
-  - file: 03_demo_of_outcome_model
-  - file: 04_matrix
-  - file: 05_geography
-  - file: 05a_geography_stroke_types
-  - file: 06_show_outcome_model_code
-  - file: 90_proportion_ischaemic_with_lvo
-- caption: stroke-outcome package
+  - file: definitions_reference/definitions_stroke
+  - file: definitions_reference/definitions_maths
+- caption: 🧮 Outcome model
+  chapters:
+  - file: outcome_model_methods/01_mrs_dist_derivation
+  - file: outcome_model_methods/01b_excess_deaths
+  - file: outcome_model_methods/01c_extrapolate_time_zero
+  - file: outcome_model_methods/02_probs_with_time
+  - file: outcome_model_methods/02b_formulae
+  - file: outcome_model_methods/02c_extra_maths
+- caption: 👑 Interactive demo
+  chapters:
+  - file: streamlit
+- caption: 📦 stroke-outcome package
   chapters:
   - file: package_docs/intro
   - file: package_docs/docs_continuous_outcome
@@ -25,3 +30,11 @@ parts:
   - file: england_wales/02_lsoa_analysis_added_utility
   - file: england_wales/03_lsoa_analysis_mrs_less_equal_2
   - file: england_wales/04_lsoa_analysis_mrs_mean_shift
+- caption: Other to sort
+  chapters:
+  - file: 03_demo_of_outcome_model
+  - file: 04_matrix
+  - file: 05_geography
+  - file: 05a_geography_stroke_types
+  - file: 06_show_outcome_model_code
+  - file: 90_proportion_ischaemic_with_lvo

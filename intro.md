@@ -33,8 +33,8 @@ Until now, modelling the outcome from stroke reperfusion treatment was a dichoto
 ## A basic overview
 
 More details and definitions are given in the Details pages. There are links to these pages in the left sidebar.
-+ Stroke definitions - stroke types, treatment types, effects of time...
-+ Maths definitions - probability, odds, log-odds...
++ Definitions for stroke - stroke types, treatment types, effects of time...
++ Definitions for maths - probability, odds, log-odds...
 
 
 ### Which patients can be modelled?
@@ -131,14 +131,17 @@ For an overview on SAMueL and our results so far:
 
 SAMueL-2 is part of the Peninsula Collaboration for Health Operational Research and Data Science [PenCHORD](https://arc-swp.nihr.ac.uk/research-and-implementation/research-teams/penchord/).
 
-The stroke outcome model will also be used in other projects, including OPTIMIST (OPTimising IMplementation of Ischaemic Stroke Thrombectomy). 
+The stroke outcome model is continuing to be used in other projects, including:
++ <a href="https://github.com/stroke-modelling/"><img src="https://avatars.githubusercontent.com/u/141143213" alt="Stroke-Modelling organisation logo" height="20"></a> [https://github.com/stroke-modelling/](https://github.com/stroke-modelling/) Python packages for easily using our models.
++ <a href="https://github.com/stroke-optimist/"><img src="https://avatars.githubusercontent.com/u/77266176" alt="OPTIMIST organisation logo" height="20"></a> [https://github.com/stroke-optimist/](https://github.com/stroke-optimist/) Stroke OPTIMIST Project: OPTimising IMplementation of Ischaemic Stroke Thrombectomy.
++ <a href="https://github.com/stroke-digital-twin/"><img src="https://avatars.githubusercontent.com/u/145005029" alt="Stroke-Digital-Twin organisation logo" height="20"></a> [https://github.com/stroke-digital-twin/](https://github.com/stroke-digital-twin/) Digital twins of the stroke pathway.
 
 
 ## Contents of this book
 
 The left sidebar contains links to all of the pages in this book.
 
-### Definitions reference
+### 📚 Definitions reference
 
 These pages contain more details than can fit on this main introduction page.
 
@@ -147,31 +150,45 @@ The "Stroke" page contains information about the types and treatments of stroke.
 The "Mathematics" page contains information about the maths that is required to calculate the mRS distributions.
 
 
-:::{figure-md} streamlit_outcomes
-<a href="https://samuel2-stroke-outcome.streamlit.app/"><img align="right" src="https://raw.githubusercontent.com/samuel_book/stroke_outcome/main/images/streamlit_stroke_outcomes.gif" alt="Preview of the Streamlit app for the stroke outcome demo."></a>
+### 🧮 Outcome model methods
 
-:::
+The method behind the model.
+
++ Deriving the mRS distributions - full details of the data sources, assumptions, and maths used to create each mRS distribution.
+  + Excess deaths - Methods for calculating the excess death rates for nLVO and IVT, LVO and IVT, and LVO and MT.
+  + Extrapolation - Method for using limited log-odds data at fixed times to find new log-odds data at other times.
++ Probability with time - method for interpolating between the time-zero and time-of-no-effect mRS distributions to find the probability distributions at any treatment time.
+
+There are also some bonus pages that go into much more detail on some topics. These pages are not essential for understanding how the outcome model works.
+
+Extra pages with more details:
++ Maths for probabilities - defining the probability distribution at any treatment time as a mathematical function.
++ Extra details on maths for probabilities - digging into how the formula for probability with time works.
+
+
+<a href="https://samuel2-stroke-outcome.streamlit.app/"><img align="right" width="200px" src="./images/streamlit_stroke_outcomes.gif" alt="Preview of the Streamlit app for the stroke outcome demo."></a>
 
 ### 👑 Interactive demo
 
-[![Open in Streamlit][streamlit-img]][streamlit-link]
 
 Try an interactive demo!
 
 The models are used in an online Streamlit app. In the demo, you can pick the treatment times for some patients and see their outcomes from the stroke outcome model.
 
-:::{figure-md} github_package
-<a href="https://github.com/stroke-modelling/stroke-outcome/"><img align="left" src="https://raw.githubusercontent.com/samuel_book/stroke_outcome/main/images/github_stroke-outcome_rotated_m5.png" alt="Preview of the GitHub repository for the stroke-outcome package."></a>
+[![Open in Streamlit][streamlit-img]][streamlit-link] [https://samuel2-stroke-outcome.streamlit.app/](https://samuel2-stroke-outcome.streamlit.app/)
 
-:::
 
 ### 📦 stroke-outcome package
 
-[![GitHub Badge][github-img]][github-link] [![PyPI][pypi-img]][pypi-link]
+<a href="https://github.com/stroke-modelling/stroke-outcome/"><img align="left" width="200px" src="./images/github_stroke-outcome_rotated_m5.png" alt="Preview of the GitHub repository for the stroke-outcome package."></a>
 
 Use the models yourself!
 
 The code is written in the `python` programming language. The source code is open and viewable on GitHub, and the full code can be downloaded from the Python Package Index (PyPI). There are instructions for how to download and use the code on the GitHub page.
+
+[![GitHub Badge][github-img]][github-link] [https://github.com/stroke-modelling/stroke-outcome/](https://github.com/stroke-modelling/stroke-outcome/)
+
+[![PyPI][pypi-img]][pypi-link] [https://pypi.org/project/stroke-outcome/](https://pypi.org/project/stroke-outcome/)
 
 The orignal code used in this online book is also available on GitHub. It may be found at [https://github.com/samuel-book/stroke_outcome](https://github.com/samuel-book/stroke_outcome).
 
