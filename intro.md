@@ -109,7 +109,7 @@ For each patient-treatment cohort, we estimate two mRS distributions:
 The method is built by synthesising data from multiple sources {numref}`figure {number} <data_cauldron>`, including reperfusion treatment clinical trials and 3 years' worth of stroke admission data for England and Wales. The details are given on the __LINK ME__"" page and this cartoon gives a taste of how many data sources were combined:
 
 :::{figure-md} data_cauldron
-<img src="./images/data_cauldron.png" width="600">
+<img src="./images/data_sources/data_cauldron.png" width="600">
 
 Synthesis of multiple data sources into a disability-level model
 :::

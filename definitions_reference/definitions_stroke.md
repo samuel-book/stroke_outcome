@@ -42,7 +42,7 @@ In other words, the sooner a patient recieves reperfusion treatment, the fewer s
 
 The deacy in effectiveness of reperfusion is shown in the figure below (left panel = odds ratio, right panel = log odds ratio, IVT = thrombolysis, MT = thrombectomy).
 
-![](./images/odds_decay.png)
+![](../images/odds_decay.png)
 
 In order to estimate these two mRS distributions, we use data from reperfusion treatment clinical trials and stroke admission data from England and Wales.
 
@@ -99,7 +99,7 @@ The method is built by synthesising data from multiple sources {numref}`figure {
 The following graphic shows which data sources are used in each step of the mRS distribution derivations:
 
 :::{figure-md} data_source_grid
-<img src="./bonus_notebooks/images/data_sources_derivation_grid_noheaders.png">
+<img src="../images/data_sources/data_sources_derivation_grid_noheaders.png">
 
 Flowchart of the use of multiple data sources in a disability-level model
 :::
