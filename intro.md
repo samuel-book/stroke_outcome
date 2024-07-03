@@ -20,7 +20,7 @@ Detailed methodology and code are found in the notebooks on [derivation of mRS d
 
 ## Modified Rankin Scale
 
-Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke.
+Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke or other causes of neurological disability [Saver *et al*., 2010].
 
 The scale runs from 0-6, running from perfect health without symptoms to death:
 
@@ -35,6 +35,25 @@ The scale runs from 0-6, running from perfect health without symptoms to death:
 | 6     | Dead.                                                                                                                  |
 
 Note: From this point onwards we will refer to disability distributions as mRS distributions.
+
+
+## Reperfusion treatment for ischaemic stroke
+
+Ischaemic stroke is a stroke caused by the blockage of blood supply to an area of the brain, caused by a clot. Ischaemic strokes account for 80-85% of all strokes, with the remainder being *haemorrhagic* strokes where loss of blood supply is caused by a bleed in the brain.
+
+*Reperfusion* describes the restoration of blood flow following an ischaemic stroke. There are two potential reperfusion treatments:
+
+* *Thrombolysis* (also known as as *intravenous thrombolysis*, IVT) is a medical therapy where *clot-busting* drugs are used to reduce or remove the blood clot. About 20% of all stroke patients are suitable for thrombolysis. 
+
+* *Thrombectomy* (also known as *mechanical thrombectomy*, MT) is the mechanical removal of a clot, by a mesh device under image guidance. Thrombectomy is suitable only for clots in a large vessel (these generally cause the worst strokes), and is a suitable treatment in about 10% of all stroke patients.
+
+## Decay of effect of reperfusion treatment
+
+Reperfusion treatment becomes less effective with increasing time after stroke (with the loss of effect occurring over some hours). Emberson *et al.* and Fransen *et al.* have described the declining effect as the declining *odds ratio* of achieving an essentially *'good outcome'* following thrombolysis (Emberson) or thrombectomy (Fransen). A *'good outcome'* has been described differently with studied on thrombolysis generally using a threshold of mRS 0-1 at 3-6 months, and thrombectomy studies generally using a threshold of mRS 0-2 at 3-6 months. The *odds ratio* describes the odds of a *'good outcome'* relative to the odds of a *'good outcome'* in an untreated control group.
+
+The deacy in effectiveness of reperfusion is shown in the figure below (left panel = odds ratio, right panel = log odds ratio, IVT = thrombolysis, MT = thrombectomy).
+
+![](./images/odds_decay.png)
 
 ## Method and Results
 
@@ -261,6 +280,8 @@ McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number
 SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html
 
 Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke Outcome. Stroke. 2020 Aug 1;51(8):2411-7.
+
+Saver JL, Filip B, Hamilton S, et al. Improving the Reliability of Stroke Disability Grading in Clinical Trials and Clinical Practice. Stroke 2010;41:992–5. doi:10.1161/STROKEAHA.109.571364
 
 
 ## Notes
