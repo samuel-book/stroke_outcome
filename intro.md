@@ -1,4 +1,5 @@
-# Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+# Introduction
+
 
 [![GitHub Badge][github-img]][github-link] [![Jupyter Book Badge][jupyterbooks-img]][jupyterbooks-link] [![PyPI][pypi-img]][pypi-link] [![DOI][doi-img]][doi-link] [![Open in Streamlit][streamlit-img]][streamlit-link]
 
@@ -19,6 +20,7 @@
 [streamlit-img]: https://static.streamlit.io/badges/streamlit_badge_black_white.svg
 [streamlit-link]: https://samuel2-stroke-outcome.streamlit.app/
 
+# Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
 
 This online Jupyter book describes the methodology for estimating disability outcomes and utility for stroke patients.
 

@@ -15,7 +15,7 @@ parts:
   - file: outcome_model_methods/02c_extra_maths
 - caption: 👑 Interactive demo
   chapters:
-  - file: streamlit
+  - file: streamlit/streamlit
 - caption: 📦 stroke-outcome package
   chapters:
   - file: package_docs/intro
