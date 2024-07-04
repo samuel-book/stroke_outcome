@@ -10,6 +10,7 @@ parts:
   - file: outcome_model_methods/01_mrs_dist_derivation
   - file: outcome_model_methods/01b_excess_deaths
   - file: outcome_model_methods/01c_extrapolate_time_zero
+  - file: outcome_model_methods/01d_lvo_proportion
   - file: outcome_model_methods/02_probs_with_time
   - file: outcome_model_methods/02b_formulae
   - file: outcome_model_methods/02c_extra_maths
