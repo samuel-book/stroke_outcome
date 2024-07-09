@@ -23,9 +23,9 @@ parts:
   - file: package_docs/demo_discrete_outcomes
 - caption: 📈 General results
   chapters:
-  - file: 04_matrix
-  - file: 05_geography
-  - file: 05a_geography_stroke_types
+  - file: general_results/04_matrix
+  - file: general_results/05_geography
+  - file: general_results/05a_geography_stroke_types
 - caption: 🌍 Application to England and Wales
   chapters:
   - file: england_wales/01_model_outcomes

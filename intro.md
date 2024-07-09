@@ -32,7 +32,7 @@ The outcomes depend on:
 Until now, modelling the outcome from stroke reperfusion treatment was a dichotomous affair, with a patient classified as either being disability free, or with stroke related disabilities. The method described here aims to provide a more granular disability outcome, describing the resulting disability as one of six levels (ranging from disability free, to death).
 
 
-## A basic overview
+## Overview
 
 More details and definitions are given in the Details pages. There are links to these pages in the left sidebar.
 + Definitions for stroke - stroke types, treatment types, effects of time...
@@ -108,7 +108,7 @@ For each patient-treatment cohort, we estimate two mRS distributions:
 + mRS distribution if treatment is given at *t = 0* (time of stroke onset),
 + mRS distribution if treatment is given at *t = No Effect* (time of no effect).
 
-The method is built by synthesising data from multiple sources {numref}`figure {number} <data_cauldron>`, including reperfusion treatment clinical trials and 3 years' worth of stroke admission data for England and Wales. The details are given on the __LINK ME__"" page and this cartoon gives a taste of how many data sources were combined:
+The method is built by synthesising data from multiple sources {numref}`figure {number} <data_cauldron>`, including reperfusion treatment clinical trials and 3 years' worth of stroke admission data for England and Wales. The details are given on the "Derivation of mRS distributions..." page and this cartoon gives a taste of how many data sources were combined:
 
 :::{figure-md} data_cauldron
 <img src="./images/data_sources/data_cauldron.png" width="600">
@@ -118,9 +118,11 @@ Synthesis of multiple data sources into a disability-level model
 
 We can then use interpolation to determine the disability distribution at any point inbetween.
 
-The resulting mRS distributions are shown in the following image.
+The resulting mRS distributions with time are shown in the following image.
 
-__TO DO: find the image__
+_work in progress_ - make a version of this image with the reference no-treatment, no-effect, time-zero, pre-stroke distributions too. 
+
+![](./images/probs_with_time.jpg)
 
 
 ## SAMueL-2 project
@@ -159,25 +161,15 @@ The method behind the model.
 + Deriving the mRS distributions - full details of the data sources, assumptions, and maths used to create each mRS distribution.
   + Excess deaths - Methods for calculating the excess death rates for nLVO and IVT, LVO and IVT, and LVO and MT.
   + Extrapolation - Method for using limited log-odds data at fixed times to find new log-odds data at other times.
+  + Proportion of ischaemic patients with LVO - sanity check for the proportions of patients with each stroke type.
 + Probability with time - method for interpolating between the time-zero and time-of-no-effect mRS distributions to find the probability distributions at any treatment time.
 
 There are also some bonus pages that go into much more detail on some topics. These pages are not essential for understanding how the outcome model works.
 
 Extra pages with more details:
-+ Maths for probabilities - defining the probability distribution at any treatment time as a mathematical function.
-+ Extra details on maths for probabilities - digging into how the formula for probability with time works.
++ "Formulae for probabilities with time" - defining the probability distribution at any treatment time as a mathematical function.
++ "Logistic functions" - digging into how the formula for probability with time works.
 
-
-<a href="https://samuel2-stroke-outcome.streamlit.app/"><img align="right" width="200px" src="./images/streamlit_stroke_outcomes.gif" alt="Preview of the Streamlit app for the stroke outcome demo."></a>
-
-### 👑 Interactive demo
-
-
-Try an interactive demo!
-
-The models are used in an online Streamlit app. In the demo, you can pick the treatment times for some patients and see their outcomes from the stroke outcome model.
-
-[![Open in Streamlit][streamlit-img]][streamlit-link] [https://samuel2-stroke-outcome.streamlit.app/](https://samuel2-stroke-outcome.streamlit.app/)
 
 
 ### 📦 stroke-outcome package
@@ -186,20 +178,34 @@ The models are used in an online Streamlit app. In the demo, you can pick the tr
 
 Use the models yourself!
 
-The code is written in the `python` programming language. The source code is open and viewable on GitHub, and the full code can be downloaded from the Python Package Index (PyPI). There are instructions for how to download and use the code on the GitHub page.
-
 [![GitHub Badge][github-img]][github-link] [https://github.com/stroke-modelling/stroke-outcome/](https://github.com/stroke-modelling/stroke-outcome/)
 
 [![PyPI][pypi-img]][pypi-link] [https://pypi.org/project/stroke-outcome/](https://pypi.org/project/stroke-outcome/)
 
+The code is written in the `python` programming language. The source code is open and viewable on GitHub, and the full code can be downloaded from the Python Package Index (PyPI). There are instructions for how to download and use the code on the GitHub page.
+
 The orignal code used in this online book is also available on GitHub. It may be found at [https://github.com/samuel-book/stroke_outcome](https://github.com/samuel-book/stroke_outcome).
 
 
-### 🚑 Distance-based treatment
+### 📈 General results
 
-Basic geography model and 🌍 Application to England and Wales
++ Calculate outcomes for treatments at different times.
++ Make a basic grid of travel times to stroke units. Varying travel times means varying treatment times and so varying outcomes.
 
-__TO DO: summarise__.
+
+### 🌍 Application to England and Wales
+
+Map the outcomes for any point in England and Wales based on the travel times to each stroke unit.
+
+
+### 👑 Interactive demo
+<a href="https://samuel2-stroke-outcome.streamlit.app/"><img align="right" width="200px" src="./images/streamlit_stroke_outcomes.gif" alt="Preview of the Streamlit app for the stroke outcome demo."></a>
+
+Try an interactive demo!
+
+The models are used in an online Streamlit app. In the demo, you can pick the treatment times for some patients and see their outcomes from the stroke outcome model.
+
+[![Open in Streamlit][streamlit-img]][streamlit-link] [https://samuel2-stroke-outcome.streamlit.app/](https://samuel2-stroke-outcome.streamlit.app/)
 
 
 
