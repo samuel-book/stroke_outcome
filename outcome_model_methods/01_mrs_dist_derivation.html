@@ -1,0 +1,1782 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Derivation of mRS distributions from reference data &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'outcome_model_methods/01_mrs_dist_derivation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Excess death rate calculations" href="01b_excess_deaths.html" />
+    <link rel="prev" title="Definitions for maths" href="../definitions_reference/definitions_maths.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/outcome_model_methods/01_mrs_dist_derivation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Derivation of mRS distributions from reference data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-method">General method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-documents">Related documents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-data-sources">Summary of data sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-stroke-data">1. Pre-stroke data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-treatment">2. No treatment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-with-no-treatment">LVO with no treatment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlvo-with-no-treatment">nLVO with no treatment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-for-nlvo-with-no-treatment">Sanity check for nLVO with no treatment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treatment-at-the-no-effect-time">3. Treatment at the no-effect time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlvo-treated-with-ivt-at-the-no-effect-time">nLVO treated with IVT at the no-effect time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-ivt-at-the-no-effect-time">LVO treated with IVT at the no-effect time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-mt-at-the-no-effect-time">LVO treated with MT at the no-effect time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treatment-at-time-zero">4. Treatment at time zero</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlvo-treated-with-ivt-at-time-zero">nLVO treated with IVT at time zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-ivt-at-time-zero">LVO treated with IVT at time zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-mt-at-time-zero">LVO treated with MT at time zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-for-recanalisation-rate">Sanity check for recanalisation rate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result-all-distributions">Result - all distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-references">Data references</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="derivation-of-mrs-distributions-from-reference-data">
+<h1>Derivation of mRS distributions from reference data<a class="headerlink" href="#derivation-of-mrs-distributions-from-reference-data" title="Permalink to this heading">#</a></h1>
+<p>This document calculates the modified Rankin Scale (mRS) distributions used in the stroke outcome modelling.</p>
+<section id="plain-english-summary">
+<h2>Plain English summary:<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>When we predict the outcome of a person who has had a stroke, we want to be able to say what is the likely improvement in disability level they would experience due to the treatment.</p>
+<p>The modified Rankin Scale is used to assign a level of disability to a patient who has had a stroke. When looking at the mRS scores of a whole population, some scores are more likely to occur than others depending on who is included in that population. The improvement in disability level they can get will depend on the time from when their stroke symptoms began and when they receive treatment. The best possible outcome would be if they were treated immediately after they had their stroke. The benefit of treatment reduces over time until the treatment no longer offers any benefit, and they will not be better off than having no treatment. We can look at the proportion of people with each mRS score as the <em>probability</em> of having that mRS score.</p>
+<p>The main aim of the stroke outcome model is to be able to predict the range of mRS scores of various different populations. We would like to know the expected mRS scores of groups of people before a stroke, people who received no treatment for their stroke, and people who were treated at any chosen time after their stroke began. There is no real-life data for this last group of people. However we can create a model that creates that data by combining other real-life datasets. The real-life datasets come from various clinical trials.</p>
+<p>We assume that the mRS scores of people after stroke depend on their time to treatment. The more time that passes between the start of the stroke and the treatment, the more likely it is that people will have higher disability scores. This continues up until a <em>time of no effect</em> where the patients cannot benefit from the treatment but still run the risks of death due to the treatment.</p>
+<p>This document shows how to combine the real-life datasets to create mRS distributions that will be used everywhere in the stroke outcome model.</p>
+<p>The final datasets will cover these three main groups of people:</p>
+<ul class="simple">
+<li><p>Patients with a non-Large-Vessel Occlusion (nLVO) who were treated with intravenous thrombolysis (IVT).</p></li>
+<li><p>Patients with a Large-Vessel Occlusion (LVO) who were treated with intravenous thrombolysis (IVT).</p></li>
+<li><p>Patients with a Large-Vessel Occlusion (LVO) who were treated with mechanical thrombectomy (MT).</p></li>
+</ul>
+</section>
+<section id="general-method">
+<h2>General method<a class="headerlink" href="#general-method" title="Permalink to this heading">#</a></h2>
+<p>This document runs through the following steps in more detail.</p>
+<p>The steps to create the mRS distributions are:</p>
+<ol class="arabic simple">
+<li><p>Find the mRS distributions of populations before their stroke.</p>
+<ul class="simple">
+<li><p>These data are available in the SSNAP data.</p></li>
+<li><p>We split the full cohort of patients into nLVO and LVO based on their NIHSS score.</p></li>
+</ul>
+</li>
+<li><p>Find the mRS distributions of populations that received no treatment.</p>
+<ul class="simple">
+<li><p>This data is available for two groups. The first group is patients with LVOs. The second group is a mix of patients with nLVOs and patients with LVOs.</p></li>
+<li><p>We combine the groups and pick out only the patients with nLVO.</p></li>
+</ul>
+</li>
+<li><p>Find the mRS distributions of populations that were treated after the time of no effect.</p>
+<ul class="simple">
+<li><p>At the time of no effect, we assume that patients given the treatment will see no benefit but still run the risk of death.</p></li>
+<li><p>We take the distributions for populations that received no treatment and adjust them for this excess death rate.</p></li>
+</ul>
+</li>
+<li><p>Find the mRS distributions of populations that were treated at time zero.</p>
+<ul class="simple">
+<li><p>For IVT:</p>
+<ul>
+<li><p>We take reference data points for mRS<span class="math notranslate nohighlight">\(\leq\)</span>1 at time zero and the mRS distributions at the time of no effect.</p></li>
+<li><p>Plugging these into a formula for the changing probability of the mRS<span class="math notranslate nohighlight">\(\leq\)</span>1 score with time lets us find the probability distributions at time zero.</p></li>
+<li><p>Fixing this point, we take a weighted combination of the pre-stroke and no-effect distributions so that the combination’s mRS<span class="math notranslate nohighlight">\(\leq\)</span>1 point matches the fixed point.</p></li>
+</ul>
+</li>
+<li><p>For MT:</p>
+<ul>
+<li><p>Define the time-zero distribution as a weighted combination of 75% of the pre-stroke distribution and 25% of the no-effect distribution.</p></li>
+<li><p>Adjust the excess death rate until the mRS distribution at a reference data time matches the mortality rate at that reference time.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>The resulting mRS distributions are then saved for future use.</p>
+</section>
+<section id="related-documents">
+<h2>Related documents<a class="headerlink" href="#related-documents" title="Permalink to this heading">#</a></h2>
+<p>There are lots of details that go into calculating the mRS distributions and this document would become far too long if everything were contained here.</p>
+<p>The following details are calculated in the linked documents:  <strong>TO DO: ADD LINKS</strong></p>
+<ul class="simple">
+<li><p>Excess deaths due to IVT.</p></li>
+<li><p>Excess deaths due to MT.</p></li>
+<li><p>Derivation of the formula for probability at time zero.</p></li>
+</ul>
+</section>
+<section id="summary-of-data-sources">
+<h2>Summary of data sources<a class="headerlink" href="#summary-of-data-sources" title="Permalink to this heading">#</a></h2>
+<p>The following image shows a flowchart summary of which data sources are used to create each mRS distribution.</p>
+<p><img alt="An image showing a box for each derived mRS distribution. Arrows are drawn to each mRS distribution box from boxes containing each data source." src="outcome_model_methods/.../images/data_sources/data_sources_derivation_grid_noheaders_small.png" /></p>
+<p>The following summary contains the same information with the addition of the actual mRS distribution values and of several images. The images show the exact parts of each paper or data source that contain the reference data, and those images are used throughout the rest of this document.</p>
+<p><img alt="An image showing tables of the final derived mRS distributions. Around the tables there are inset images of data sources and a brief description of each. A large amount of arrows connect the data sources to the specific mRS distributions that they were used for." src="outcome_model_methods/.../images/data_sources/data_sources_summary.png" /></p>
+</section>
+<section id="notebook-setup">
+<h2>Notebook setup<a class="headerlink" href="#notebook-setup" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store the derived mRS distributions in this dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function is used to fix rounding errors. All of the derived mRS distributions will be given to 3 decimal places, but rounding the data to this from a higher precision can sometimes cause the final distribution to not sum to 1.</p>
+<p>The basic steps of the function are:</p>
+<ol class="arabic simple">
+<li><p>Add together the values to 3 decimal places. The sum should be less than 1 exactly.</p></li>
+<li><p>Look at the 4th digit of each number. Starting with the largest 4th digit, round up the three-decimal-place part to the next value.</p></li>
+<li><p>Continue rounding up until the sum is 1 exactly.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stroke_outcome.outcome_utilities</span> <span class="kn">import</span> <span class="n">fudge_sum_one</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pre-stroke-data">
+<h2>1. Pre-stroke data<a class="headerlink" href="#pre-stroke-data" title="Permalink to this heading">#</a></h2>
+<p><img alt="Method for finding the pre-stroke mRS distributions. 1. Collect data. Take SAMueL-1 survey data for patients with ischaemic stroke only. The data includes pre-stroke mRS scores. 2. Split into nLVO and LVO. Split the data into two groups using the NIHSS scale cutoff: LVO with NIHSS greater than 10 (&gt;=11); nLVO with NIHSS of 10 or less (&lt; 11). 3. Find the proportions of each group with each mRS score. → Result: nLVO pre-stroke and LVO pre-stroke mRS distributions." src="outcome_model_methods/images/data_sources/data_sources_pre-stroke.png" /></p>
+<p>Copy the values directly from the SAMueL-1 survey data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_nlvo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.582771</span><span class="p">,</span> <span class="mf">0.163513</span><span class="p">,</span> <span class="mf">0.103988</span><span class="p">,</span> <span class="mf">0.101109</span><span class="p">,</span> <span class="mf">0.041796</span><span class="p">,</span> <span class="mf">0.006822</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">])</span>
+<span class="n">pre_stroke_lvo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.407796</span><span class="p">,</span> <span class="mf">0.143538</span><span class="p">,</span> <span class="mf">0.120133</span><span class="p">,</span> <span class="mf">0.166050</span><span class="p">,</span> <span class="mf">0.118023</span><span class="p">,</span> <span class="mf">0.044460</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Round to 3 decimal places and force sum to be exactly 1 by nudging the smallest fractions down or the largest fractions up as required.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use append to make sure the mRS=6 value can&#39;t be changed.</span>
+<span class="n">pre_stroke_nlvo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">pre_stroke_nlvo</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">pre_stroke_lvo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">pre_stroke_lvo</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store the results in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_nlvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pre_stroke_nlvo</span>
+<span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pre_stroke_lvo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Show the results here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_nlvo&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.583 0.163 0.104 0.101 0.042 0.007 0.   ]
+[0.408 0.144 0.12  0.166 0.118 0.044 0.   ]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="no-treatment">
+<h2>2. No treatment<a class="headerlink" href="#no-treatment" title="Permalink to this heading">#</a></h2>
+<section id="lvo-with-no-treatment">
+<h3>LVO with no treatment<a class="headerlink" href="#lvo-with-no-treatment" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distributions for LVO with no treatment. 1. Collect data. Use the “Control population” set of data with no changes. → Result: LVO no treatment mRS distribution." src="../_images/data_sources_lvo-no-treatment.png" /></p>
+<p>Copy the values directly from the HERMES data and place them into the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">0.050</span><span class="p">,</span> <span class="mf">0.079</span><span class="p">,</span> <span class="mf">0.136</span><span class="p">,</span> <span class="mf">0.164</span><span class="p">,</span> <span class="mf">0.247</span><span class="p">,</span> <span class="mf">0.135</span><span class="p">,</span> <span class="mf">0.189</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check that the values sum to 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nlvo-with-no-treatment">
+<h3>nLVO with no treatment<a class="headerlink" href="#nlvo-with-no-treatment" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distribution for nLVO with no treatment. 1. Collect data. The sizes of the bars are not given in the text. Measure the number of pixels in each section of each “Placebo” bar in the image. Combine the bars and scale so that they sum to 1. → Result: combined nLVO &amp; LVO no treatment mRS distribution. 2. Find a reference probability. The proportion 727 out of 1573 is 46%. → Probability P(mRS&lt;=1)=0.46. 3. Remove the LVO patients. To reach P(mRS&lt;=1)=0.46 in the nLVO-only distribution, use the following weighted distributions: Scale the “nLVO &amp; LVO” distribution up to 149%. Scale the “LVO” distribution down to 49%. Take the difference to leave only the “nLVO” patients. → Result: mRS distribution for nLVO with no treatment." src="../_images/data_sources_nlvo-no-treatment.png" /></p>
+<p><strong>1. Collect data</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_nlvo_lvo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.1486</span><span class="p">,</span> <span class="mf">0.2022</span><span class="p">,</span> <span class="mf">0.1253</span><span class="p">,</span> <span class="mf">0.1397</span><span class="p">,</span> <span class="mf">0.1806</span><span class="p">,</span> <span class="mf">0.0861</span><span class="p">,</span> <span class="mf">0.1175</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_nlvo_lvo</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">no_treatment_nlvo_lvo</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">no_treatment_nlvo_lvo</span><span class="p">),</span> <span class="n">no_treatment_nlvo_lvo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999999999999999 [0.149 0.202 0.125 0.14  0.181 0.086 0.117]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2. Find a reference probability</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_mrsleq1_nlvo</span> <span class="o">=</span> <span class="mf">0.46</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3. Remove the LVO patients</strong></p>
+<p>Assume that the combined nLVO and LVO mRS distribution is made up of a weighted sum of a separate nLVO and LVO distribution.</p>
+<p>Define these probabilities for mRS &lt;= 1:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_1\)</span> for nLVO &amp; LVO,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_2\)</span> for LVO,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_3\)</span> for nLVO</p></li>
+</ul>
+<p>And calculate the weight <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p>The nLVO probability <span class="math notranslate nohighlight">\(P_3\)</span> is found by:</p>
+<ol class="arabic simple">
+<li><p>scaling up the combined nLVO &amp; LVO distribution to <span class="math notranslate nohighlight">\((1 + w)\)</span></p></li>
+<li><p>scaling down the LVO distribution to <span class="math notranslate nohighlight">\(w\)</span></p></li>
+<li><p>taking the difference</p></li>
+</ol>
+<p>As a formula, this is:</p>
+<div class="math notranslate nohighlight">
+\[ P_3 = (1 + w) \times P_1 - w \times P_2\]</div>
+<p>Rearrange to find the weight <span class="math notranslate nohighlight">\(w\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ w \times (P_1 - P_2) = P_3 - P_1 \]</div>
+<div class="math notranslate nohighlight">
+\[ w = \frac{P_3 - P_1}{P_1 - P_2} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sum the probabilities of mRS=0 and mRS=1 in the no-treatment dist:</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">no_treatment_nlvo_lvo</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>          <span class="c1"># nLVO &amp; LVO</span>
+
+<span class="c1"># Sum the probabilities of mRS=0 and mRS=1 in the no-treatment dist:</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># LVO</span>
+
+<span class="n">p3</span> <span class="o">=</span> <span class="n">p_mrsleq1_nlvo</span>                             <span class="c1"># nLVO</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">p3</span> <span class="o">-</span> <span class="n">p1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p2</span><span class="p">)</span>
+
+<span class="n">w</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49099099099099125
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use this weight to calculate the new distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_nlvo</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">no_treatment_nlvo_lvo</span><span class="p">)</span> <span class="o">-</span>
+    <span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="n">no_treatment_nlvo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.19760811, 0.26239189, 0.1195991 , 0.12821622, 0.14859459,
+       0.06194144, 0.08164865])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Round to the same precision as the no-treatment LVO distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_nlvo</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">no_treatment_nlvo</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">no_treatment_nlvo</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">no_treatment_nlvo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.198 0.262 0.12  0.128 0.148 0.062 0.082]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store this result in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no_treatment_nlvo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check that the mRS &lt;= 1 values sum to the target probability:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.46
+</pre></div>
+</div>
+</div>
+</div>
+<p>Are the values the same to a few decimal places?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">p_mrsleq1_nlvo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sanity-check-for-nlvo-with-no-treatment">
+<h3>Sanity check for nLVO with no treatment<a class="headerlink" href="#sanity-check-for-nlvo-with-no-treatment" title="Permalink to this heading">#</a></h3>
+<p><img alt="Sanity check for the weights of splitting nLVO and LVO patients with no treatment. The weight used is 49%. We show that another weight 48% used in the IST-3 trial is close enough to the used weight. 1. Check Lees et al 2010 data. Number of patients in total is 3670. The nLVO/LVO split is not given. 2. Check IST-3 2012 data. Number of patients in total is 3035. Of these, 1464 have nLVO (NIHSS &lt;= 10) and 1571 have LVO (NIHSS &gt;= 11). → 51.7...% LVO, 48.2...% nLVO. 3. Check Emberson et al. 2014 data. Number of patients in total is 6756. Of these, 3199 have nLVO (NIHSS &lt;= 10) and 3557 have LVO (NIHSS &gt;= 11). → 52.6…% LVO, 47.3...% nLVO. The patients in Emberson are mostly made up of: 3035 from IST-3 + 3670 from Lees et al. 2010 = 6705 patients. → Expect the same nLVO/LVO split for Lees et al. 2010 as in IST-3. 4. Compare with derived split. 51% LVO, 49% nLVO – close enough to the above." src="../_images/data_sources_sanity_nlvo-lvo-split.png" /></p>
+</section>
+</section>
+<section id="treatment-at-the-no-effect-time">
+<h2>3. Treatment at the no-effect time<a class="headerlink" href="#treatment-at-the-no-effect-time" title="Permalink to this heading">#</a></h2>
+<section id="nlvo-treated-with-ivt-at-the-no-effect-time">
+<h3>nLVO treated with IVT at the no-effect time<a class="headerlink" href="#nlvo-treated-with-ivt-at-the-no-effect-time" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distribution for nLVO treated with IVT at the no-effect time. 1. Apply excess deaths to “no treatment” distribution. For a population treated at the time of no effect, expect no improvement compared with the no-treatment distribution but for some additional deaths. Assume excess death is equally likely for all patients. → Result: mRS distribution for nLVO treated with IVT at the no-effect time." src="../_images/data_sources_nlvo-ivt-no-effect.png" /></p>
+<p>This step uses the excess death rate for nLVO with IVT which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<p>Calculate the excess deaths by multiplying the no-treatment distribution by 0.011. Subtract the excess deaths from the mRS 0 to 5 bins, and add them on to the mRS=6 bin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_nlvo_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.011</span><span class="p">),</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.011</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_nlvo_ivt_deaths</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.195822, 0.259118, 0.11868 , 0.126592, 0.146372, 0.061318,
+       0.092098])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_nlvo_ivt_deaths</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">no_effect_nlvo_ivt_deaths</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">no_effect_nlvo_ivt_deaths</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">no_effect_nlvo_ivt_deaths</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.196 0.259 0.119 0.127 0.146 0.061 0.092]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store this result in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_nlvo_ivt_deaths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no_effect_nlvo_ivt_deaths</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lvo-treated-with-ivt-at-the-no-effect-time">
+<h3>LVO treated with IVT at the no-effect time<a class="headerlink" href="#lvo-treated-with-ivt-at-the-no-effect-time" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distribution for LVO treated with IVT at the no-effect time. 1. Apply excess deaths to “no treatment” distribution. For a population treated at the time of no effect, expect no improvement compared with the no-treatment distribution but for some additional deaths. Assume excess death is equally likely for all patients. → Result: mRS distribution for LVO treated with IVT at the no-effect time." src="../_images/data_sources_lvo-ivt-no-effect.png" /></p>
+<p>This step uses the excess death rate for LVO with IVT which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<p>Calculate the excess deaths by multiplying the no-treatment distribution by 0.034. Subtract the excess deaths from the mRS 0 to 5 bins, and add them on to the mRS=6 bin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_lvo_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.034</span><span class="p">),</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.034</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_lvo_ivt_deaths</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.0483  , 0.076314, 0.131376, 0.158424, 0.238602, 0.13041 ,
+       0.216574])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_lvo_ivt_deaths</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">no_effect_lvo_ivt_deaths</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">no_effect_lvo_ivt_deaths</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">no_effect_lvo_ivt_deaths</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.048 0.076 0.131 0.159 0.239 0.13  0.217]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store this result in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_ivt_deaths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no_effect_lvo_ivt_deaths</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lvo-treated-with-mt-at-the-no-effect-time">
+<h3>LVO treated with MT at the no-effect time<a class="headerlink" href="#lvo-treated-with-mt-at-the-no-effect-time" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distribution for LVO treated with MT at the no-effect time. 1. Apply excess deaths to “no treatment” distribution. For a population treated at the time of no effect, expect no improvement compared with the no-treatment distribution but for some additional deaths. Use the excess death rate of 4.0%. Assume excess death is equally likely for all patients. → Result: mRS distribution for LVO treated with MT at the no-effect time." src="../_images/data_sources_lvo-mt-no-effect.png" /></p>
+<p>This step uses the excess death rate for LVO with MT which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<p>Calculate the excess deaths by multiplying the no-treatment distribution by 0.040. Subtract the excess deaths from the mRS 0 to 5 bins, and add them on to the mRS=6 bin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_lvo_mt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.040</span><span class="p">),</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.040</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_lvo_mt_deaths</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.048  , 0.07584, 0.13056, 0.15744, 0.23712, 0.1296 , 0.22144])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_effect_lvo_mt_deaths</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">no_effect_lvo_mt_deaths</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">no_effect_lvo_mt_deaths</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">no_effect_lvo_mt_deaths</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.048 0.076 0.131 0.157 0.237 0.13  0.221]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store this result in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_mt_deaths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no_effect_lvo_mt_deaths</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="treatment-at-time-zero">
+<h2>4. Treatment at time zero<a class="headerlink" href="#treatment-at-time-zero" title="Permalink to this heading">#</a></h2>
+<section id="nlvo-treated-with-ivt-at-time-zero">
+<h3>nLVO treated with IVT at time zero<a class="headerlink" href="#nlvo-treated-with-ivt-at-time-zero" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distribution for nLVO treated with IVT at time zero. 1. Get reference probability at no-effect time. Take the probability of mRS being less than or equal to 1. This matches the data that went into the formula for probability at time zero. → P(mRS&lt;=1 | t=t_ne) = 45.5%. 2. Calculate a reference probability at time zero. Plug the values of a and PR=45.5% into the formula. → P(mRS&lt;=1 | t=0) = 64.2%. 3. Combine mRS distributions. To reach P(mRS&lt;=1 | t=0)=0.642 in the time-zero distribution, use the following weighted distributions: Apply the excess deaths to the pre-stroke data. Multiply the “pre-stroke data with excess deaths” data by 0.643. Multiply the “IVT at no-effect time” data by 0.357. Add these two sets of data together. → Result: mRS distribution for nLVO treated with IVT at time zero." src="../_images/data_sources_nlvo-ivt-time-zero.png" /></p>
+<p><strong>1. Get reference probability at no-effect time</strong></p>
+<p>Sum the probabilities for mRS=0 and mRS=1 at the time of no effect:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_mrsleq1_tne</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_nlvo_ivt_deaths&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">p_mrsleq1_tne</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.455
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2. Calculate a reference probability at time zero.</strong></p>
+<p>This step uses a formula for calculating probability for mRS&lt;=1 at time zero which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.76296</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p_mrsleq1_tne</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">p_mrsleq1_tne</span><span class="p">))</span>
+<span class="n">p_mrsleq1_t0</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">t</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">p_mrsleq1_t0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.642
+</pre></div>
+</div>
+</div>
+</div>
+<p>This formula is not valid for the other mRS scores. To find the full mRS distribution at time zero, we have to combine two mRS distributions (the pre-stroke with excess deaths and the treatment at the no-effect time distributions) so that the combined mRS&lt;=1 value matches this reference value we’ve just calculated.</p>
+<p><strong>3. Combine mRS distributions.</strong></p>
+<p>This step uses the excess death rate for nLVO patients with IVT which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<p>Calculate the excess deaths by multiplying the no-treatment distribution by 0.011. Subtract the excess deaths from the mRS 0 to 5 bins, and add them on to the mRS=6 bin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_nlvo_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_nlvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.011</span><span class="p">),</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_nlvo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_nlvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.011</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The time-zero distribution is a weighted combination of the pre-stroke and no-effect distributions.</p>
+<p>Define these probabilities for mRS &lt;= 1:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_1\)</span> for time-zero,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_2\)</span> for pre-stroke,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_3\)</span> for no-effect.</p></li>
+</ul>
+<p>And calculate the weight <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p>The time-zero probability <span class="math notranslate nohighlight">\(P_1\)</span> is found by:</p>
+<ol class="arabic simple">
+<li><p>scaling down the no-effect distribution to <span class="math notranslate nohighlight">\((1 - w)\)</span></p></li>
+<li><p>scaling down the pre-stroke distribution to <span class="math notranslate nohighlight">\(w\)</span></p></li>
+<li><p>taking the sum</p></li>
+</ol>
+<p>As a formula, this is:</p>
+<div class="math notranslate nohighlight">
+\[ P_1 = (1 - w) \times P_3 + w \times P_2\]</div>
+<p>Rearrange to find the weight <span class="math notranslate nohighlight">\(w\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ w \times (P_2 - P_3) = P_1 - P_3 \]</div>
+<div class="math notranslate nohighlight">
+\[ w = \frac{P_1 - P_3}{P_2 - P_3} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">p_mrsleq1_t0</span>
+
+<span class="c1"># Sum the probabilities of mRS=0 and mRS=1 in the pre-stroke dist:</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_nlvo&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">p3</span> <span class="o">=</span> <span class="n">p_mrsleq1_tne</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p3</span><span class="p">)</span>
+
+<span class="n">w</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6426116838487973
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use this weight to calculate the new distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_zero_nlvo</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_nlvo_ivt_deaths&#39;</span><span class="p">])</span> <span class="o">+</span> 
+    <span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_nlvo&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="n">time_zero_nlvo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44469072, 0.19730928, 0.10936082, 0.1102921 , 0.07916838,
+       0.02629897, 0.03287973])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Round to the same precision as the no-treatment LVO distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_zero_nlvo</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">time_zero_nlvo</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">time_zero_nlvo</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">time_zero_nlvo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.445 0.197 0.11  0.11  0.079 0.026 0.033]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store this result in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;t0_treatment_nlvo_ivt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_zero_nlvo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check that the mRS &lt;= 1 values sum to the target probability:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;t0_treatment_nlvo_ivt&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.642
+</pre></div>
+</div>
+</div>
+</div>
+<p>Are the values the same to a few decimal places?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;t0_treatment_nlvo_ivt&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">p_mrsleq1_t0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lvo-treated-with-ivt-at-time-zero">
+<h3>LVO treated with IVT at time zero<a class="headerlink" href="#lvo-treated-with-ivt-at-time-zero" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distribution for LVO treated with IVT at time zero. 1. Get reference probability at no-effect time. Take the probability of mRS being less than or equal to 1. This matches the data that went into the formula for probability at time zero. → P(mRS&lt;=1 | t=t_ne) = 12.4%. 2. Calculate a reference probability at time zero. Plug the values of a and PR=12.4% into the formula. → P(mRS&lt;=1 | t=0) = 23.3%. 3. Combine mRS distributions. To reach P(mRS&lt;=1 | t=0)=0.233 in the time-zero distribution, use the following weighted distributions: Apply the excess deaths to the pre-stroke data. Multiply the “pre-stroke data with excess deaths” data by 0.255. Multiply the “IVT at no-effect time” data by 0.745. Add these two sets of data together. → Result: mRS distribution for LVO treated with IVT at time zero." src="../_images/data_sources_lvo-ivt-time-zero.png" /></p>
+<p><strong>1. Get reference probability at no-effect time</strong></p>
+<p>Sum the probabilities for mRS=0 and mRS=1 at the time of no effect:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_mrsleq1_tne</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_ivt_deaths&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">p_mrsleq1_tne</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.124
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2. Calculate a reference probability at time zero.</strong></p>
+<p>This step uses a formula for calculating probability for mRS&lt;=1 at time zero which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.76296</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p_mrsleq1_tne</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">p_mrsleq1_tne</span><span class="p">))</span>
+<span class="n">p_mrsleq1_t0</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">t</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">t</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">p_mrsleq1_t0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.233
+</pre></div>
+</div>
+</div>
+</div>
+<p>This formula is not valid for the other mRS scores. To find the full mRS distribution at time zero, we have to combine two mRS distributions (the pre-stroke with excess deaths and the treatment at the no-effect time distributions) so that the combined mRS&lt;=1 value matches this reference value we’ve just calculated.</p>
+<p><strong>3. Combine mRS distributions.</strong></p>
+<p>This step uses the excess death rate for LVO patients with IVT which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<p>Calculate the excess deaths by multiplying the no-treatment distribution by 0.034. Subtract the excess deaths from the mRS 0 to 5 bins, and add them on to the mRS=6 bin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_lvo_ivt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.034</span><span class="p">),</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.034</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The time-zero distribution is a weighted combination of the pre-stroke and no-effect distributions.</p>
+<p>Define these probabilities for mRS &lt;= 1:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_1\)</span> for time-zero,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_2\)</span> for pre-stroke,</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_3\)</span> for no-effect.</p></li>
+</ul>
+<p>And calculate the weight <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p>The time-zero probability <span class="math notranslate nohighlight">\(P_1\)</span> is found by:</p>
+<ol class="arabic simple">
+<li><p>scaling down the no-effect distribution to <span class="math notranslate nohighlight">\((1 - w)\)</span></p></li>
+<li><p>scaling down the pre-stroke distribution to <span class="math notranslate nohighlight">\(w\)</span></p></li>
+<li><p>taking the sum</p></li>
+</ol>
+<p>As a formula, this is:</p>
+<div class="math notranslate nohighlight">
+\[ P_1 = (1 - w) \times P_3 + w \times P_2\]</div>
+<p>Rearrange to find the weight <span class="math notranslate nohighlight">\(w\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ w \times (P_2 - P_3) = P_1 - P_3 \]</div>
+<div class="math notranslate nohighlight">
+\[ w = \frac{P_1 - P_3}{P_2 - P_3} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">p_mrsleq1_t0</span>
+
+<span class="c1"># Sum the probabilities of mRS=0 and mRS=1 in the pre-stroke dist:</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">p3</span> <span class="o">=</span> <span class="n">p_mrsleq1_tne</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p3</span><span class="p">)</span>
+
+<span class="n">w</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25467289719626174
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use this weight to calculate the new distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_zero_lvo</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_ivt_deaths&#39;</span><span class="p">])</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="n">time_zero_lvo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.13968224, 0.09331776, 0.1281986 , 0.16078271, 0.20818458,
+       0.10809813, 0.16173598])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Round to the same precision as the no-treatment LVO distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_zero_lvo</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">time_zero_lvo</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">time_zero_lvo</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">time_zero_lvo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.14  0.093 0.128 0.161 0.208 0.108 0.162]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store this result in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_zero_lvo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check that the mRS &lt;= 1 values sum to the target probability:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.233
+</pre></div>
+</div>
+</div>
+</div>
+<p>Are the values the same to a few decimal places?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">p_mrsleq1_t0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lvo-treated-with-mt-at-time-zero">
+<h3>LVO treated with MT at time zero<a class="headerlink" href="#lvo-treated-with-mt-at-time-zero" title="Permalink to this heading">#</a></h3>
+<p><img alt="Method for finding mRS distribution for LVO treated with MT at time zero. 1. Define time-zero distribution. Combine 75% of the full-effect data with 25% of the no-effect data. The full-effect data is the pre-stroke data with the excess deaths as a result of MT. 2. Add excess deaths to pre-stroke distribution. 3. Combine the data for full effect and no effect of recanalisation. Multiply the “LVO pre-stroke with excess deaths” data by 0.75. Multiply the “LVO MT at no-effect time” data by 0.25. Add these two sets of data together. → Result: mRS distribution for LVO treated with MT at time zero." src="../_images/data_sources_lvo-mt-time-zero.png" /></p>
+<p><strong>2. Add excess deaths to pre-stroke distribution.</strong></p>
+<p>This step uses the excess death rate for LVO patients with MT which is calculated in this document. <strong>TO DO: ADD LINK</strong></p>
+<p>Calculate the excess deaths by multiplying the no-treatment distribution by 0.040. Subtract the excess deaths from the mRS 0 to 5 bins, and add them on to the mRS=6 bin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_lvo_mt_deaths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.040</span><span class="p">),</span>
+    <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;pre_stroke_lvo&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.040</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stroke_lvo_mt_deaths</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">pre_stroke_lvo_mt_deaths</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pre_stroke_lvo_mt_deaths</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">pre_stroke_lvo_mt_deaths</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.392 0.138 0.115 0.16  0.113 0.042 0.04 ]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3. Combine the data for full effect and no effect of recanalisation.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_zero_lvo_mt</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="mf">0.75</span> <span class="o">*</span> <span class="n">pre_stroke_lvo_mt_deaths</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_mt_deaths&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="n">time_zero_lvo_mt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.306  , 0.1225 , 0.119  , 0.15925, 0.144  , 0.064  , 0.08525])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_zero_lvo_mt</span> <span class="o">=</span> <span class="n">fudge_sum_one</span><span class="p">(</span><span class="n">time_zero_lvo_mt</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">time_zero_lvo_mt</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">time_zero_lvo_mt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [0.306 0.123 0.119 0.159 0.144 0.064 0.085]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Store this result in the dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_mt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_zero_lvo_mt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sanity-check-for-recanalisation-rate">
+<h3>Sanity check for recanalisation rate<a class="headerlink" href="#sanity-check-for-recanalisation-rate" title="Permalink to this heading">#</a></h3>
+<p><img alt="Sanity check for MT success rate. 1. Extrapolate the line back to time zero. End points from the graph (given in “Tertiary analysis” section): Assume the decrease with time is constant and that the graph shows a straight line. This gives an average decrease in probability of 4.8% per hour. At time zero, the probability would be 55% + (3 x 4.8%) = 69.4%. Pre-stroke probability of mRS 0-2 is: 0.408+0.144+0.120 = 67.2%. → for successful recanalisation, use the full recovery mRS distribution. 2. Check treatment at 8 hours. From the graph, the end point is 31%. Scaling down by 0.75 successful recanalisation gives 31% x 0.75 = 23.25%. Probability of mRS 0-2 given MT at time of no effect (8 hours) is 0.048 + 0.076 + 0.131 = 25.5%. 3. Check treatment at 0 hours. From the graph, the extrapolated point at time zero is 69.4%. Scaling down by 0.75 successful recanalisation rate, 69.4% x 0.75 = 52.05%. MT at time zero probability of mRS 0-2 is: 0.306 + 0.123 + 0.119 = 54.8%. → 75% successful recanalisation gives a good enough match." src="../_images/data_sources_sanity_mt-success-rate.png" /></p>
+</section>
+</section>
+<section id="result-all-distributions">
+<h2>Result - all distributions<a class="headerlink" href="#result-all-distributions" title="Permalink to this heading">#</a></h2>
+<p>Firstly create a DataFrame of the non-cumulative mRS distributions. Each entry has a value for mRS=0, mRS=1, …, mRS=6.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mrs_dists</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">mrs_dists</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">df_dists</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.583</td>
+      <td>0.163</td>
+      <td>0.104</td>
+      <td>0.101</td>
+      <td>0.042</td>
+      <td>0.007</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.408</td>
+      <td>0.144</td>
+      <td>0.120</td>
+      <td>0.166</td>
+      <td>0.118</td>
+      <td>0.044</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.050</td>
+      <td>0.079</td>
+      <td>0.136</td>
+      <td>0.164</td>
+      <td>0.247</td>
+      <td>0.135</td>
+      <td>0.189</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.198</td>
+      <td>0.262</td>
+      <td>0.120</td>
+      <td>0.128</td>
+      <td>0.148</td>
+      <td>0.062</td>
+      <td>0.082</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.196</td>
+      <td>0.259</td>
+      <td>0.119</td>
+      <td>0.127</td>
+      <td>0.146</td>
+      <td>0.061</td>
+      <td>0.092</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.048</td>
+      <td>0.076</td>
+      <td>0.131</td>
+      <td>0.159</td>
+      <td>0.239</td>
+      <td>0.130</td>
+      <td>0.217</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.048</td>
+      <td>0.076</td>
+      <td>0.131</td>
+      <td>0.157</td>
+      <td>0.237</td>
+      <td>0.130</td>
+      <td>0.221</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.445</td>
+      <td>0.197</td>
+      <td>0.110</td>
+      <td>0.110</td>
+      <td>0.079</td>
+      <td>0.026</td>
+      <td>0.033</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.140</td>
+      <td>0.093</td>
+      <td>0.128</td>
+      <td>0.161</td>
+      <td>0.208</td>
+      <td>0.108</td>
+      <td>0.162</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.306</td>
+      <td>0.123</td>
+      <td>0.119</td>
+      <td>0.159</td>
+      <td>0.144</td>
+      <td>0.064</td>
+      <td>0.085</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Then create a DataFrame of the cumulative mRS distributions. Each entry has a value for mRS&lt;=0, mRS&lt;=1, …, mRS&lt;=6.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dists_cumulative</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">mrs_dists</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">mrs_dists</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">df_dists_cumulative</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.583</td>
+      <td>0.746</td>
+      <td>0.850</td>
+      <td>0.951</td>
+      <td>0.993</td>
+      <td>1.000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.408</td>
+      <td>0.552</td>
+      <td>0.672</td>
+      <td>0.838</td>
+      <td>0.956</td>
+      <td>1.000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.050</td>
+      <td>0.129</td>
+      <td>0.265</td>
+      <td>0.429</td>
+      <td>0.676</td>
+      <td>0.811</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.198</td>
+      <td>0.460</td>
+      <td>0.580</td>
+      <td>0.708</td>
+      <td>0.856</td>
+      <td>0.918</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.196</td>
+      <td>0.455</td>
+      <td>0.574</td>
+      <td>0.701</td>
+      <td>0.847</td>
+      <td>0.908</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.048</td>
+      <td>0.124</td>
+      <td>0.255</td>
+      <td>0.414</td>
+      <td>0.653</td>
+      <td>0.783</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.048</td>
+      <td>0.124</td>
+      <td>0.255</td>
+      <td>0.412</td>
+      <td>0.649</td>
+      <td>0.779</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.445</td>
+      <td>0.642</td>
+      <td>0.752</td>
+      <td>0.862</td>
+      <td>0.941</td>
+      <td>0.967</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.140</td>
+      <td>0.233</td>
+      <td>0.361</td>
+      <td>0.522</td>
+      <td>0.730</td>
+      <td>0.838</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.306</td>
+      <td>0.429</td>
+      <td>0.548</td>
+      <td>0.707</td>
+      <td>0.851</td>
+      <td>0.915</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Save these derived mRS distributions to file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dists</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./mrs_dists.csv&#39;</span><span class="p">)</span>
+<span class="n">df_dists_cumulative</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./mrs_dists_cumulative.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Draw these mRS distributions as a bar chart:</p>
+<p><img alt="A bar chart with one row per mRS distribution where each row shows a series of stacked bars in the proportions of the mRS distribution." src="../_images/input_mrs_dists1.png" /></p>
+</section>
+<section id="data-references">
+<h2>Data references<a class="headerlink" href="#data-references" title="Permalink to this heading">#</a></h2>
+<p>de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45.</p>
+<p>Emberson J, Lees KR, Lyden P, et al. <em>Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials.</em> The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
+<p>Fransen, P., Berkhemer, O., Lingsma, H. et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol. 2016 Feb 1;73(2):190–6. DOI: 10.1001/jamaneurol.2015.3886</p>
+<p>Goyal M, Menon BK, van Zwam WH, et al. <em>Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials.</em> The Lancet 2016;387:1723-1731. doi:10.1016/S0140-6736(16)00163-X</p>
+<p>Hui W, Wu C, Zhao W, Sun H, Hao J, Liang H, et al. Efficacy and Safety of Recanalization Therapy for Acute Ischemic Stroke With Large Vessel Occlusion. Stroke. 2020 Jul;51(7):2026–35.</p>
+<p>IST-3 collaborative group, Sandercock P, Wardlaw JM, Lindley RI, Dennis M, Cohen G, et al. The benefits and harms of intravenous thrombolysis with recombinant tissue plasminogen activator within 6 h of acute ischaemic stroke (the third international stroke trial [IST-3]): a randomised controlled trial. Lancet. 2012 379:2352-63.</p>
+<p>Lees KR, Bluhmki E, von Kummer R, et al. <em>Time to treatment with intravenous alteplase and outcome in stroke: an updated pooled analysis of ECASS, ATLANTIS, NINDS, and EPITHET trials</em>. The Lancet 2010;375:1695-703. doi:10.1016/S0140-6736(10)60491-6</p>
+<p>McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26.</p>
+<p>SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html">https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./outcome_model_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../definitions_reference/definitions_maths.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Definitions for maths</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01b_excess_deaths.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Excess death rate calculations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-method">General method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-documents">Related documents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-data-sources">Summary of data sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-stroke-data">1. Pre-stroke data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-treatment">2. No treatment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-with-no-treatment">LVO with no treatment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlvo-with-no-treatment">nLVO with no treatment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-for-nlvo-with-no-treatment">Sanity check for nLVO with no treatment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treatment-at-the-no-effect-time">3. Treatment at the no-effect time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlvo-treated-with-ivt-at-the-no-effect-time">nLVO treated with IVT at the no-effect time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-ivt-at-the-no-effect-time">LVO treated with IVT at the no-effect time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-mt-at-the-no-effect-time">LVO treated with MT at the no-effect time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treatment-at-time-zero">4. Treatment at time zero</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlvo-treated-with-ivt-at-time-zero">nLVO treated with IVT at time zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-ivt-at-time-zero">LVO treated with IVT at time zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-treated-with-mt-at-time-zero">LVO treated with MT at time zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-for-recanalisation-rate">Sanity check for recanalisation rate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result-all-distributions">Result - all distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-references">Data references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

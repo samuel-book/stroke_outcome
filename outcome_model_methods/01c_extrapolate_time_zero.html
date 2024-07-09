@@ -1,0 +1,1047 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Extrapolating a known odds ratio back to time zero &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'outcome_model_methods/01c_extrapolate_time_zero';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Proportion of ischaemic patients with LVO" href="01d_lvo_proportion.html" />
+    <link rel="prev" title="Excess death rate calculations" href="01b_excess_deaths.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/outcome_model_methods/01c_extrapolate_time_zero.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Extrapolating a known odds ratio back to time zero</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Extrapolating a known odds ratio back to time zero</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-data">Gather data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-available-data">Plot the available data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-straight-line-model-for-log-odds-ratio">Define a straight line model for log(odds ratio)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrapolate-to-t-0">Extrapolate to t=0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-new-value">Plot the new value</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-this-log-or-to-probability">Convert this log(OR) to probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-probability-at-time-zero">Calculate the probability at time zero</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-extrapolation">General extrapolation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a">Find <span class="math notranslate nohighlight">\(a\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-b">Find <span class="math notranslate nohighlight">\(b\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-function">General function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="extrapolating-a-known-odds-ratio-back-to-time-zero">
+<h1>Extrapolating a known odds ratio back to time zero<a class="headerlink" href="#extrapolating-a-known-odds-ratio-back-to-time-zero" title="Permalink to this heading">#</a></h1>
+<p>This document shows how to extrapolate a probability back to time zero using a reference data point. The main example uses a probability at time one hour from the Emberson meta-analysis.</p>
+<p>The important results from this example are:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Occlusion type</p></th>
+<th class="head"><p>mRS&lt;=1 Probability at time=0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nLVO</p></td>
+<td><p>0.6416</p></td>
+</tr>
+<tr class="row-odd"><td><p>LVO</p></td>
+<td><p>0.2329</p></td>
+</tr>
+</tbody>
+</table>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>We want to find information about the modified Rankin Scale (mRS) distribution for a population of patients treated with intravenous thrombolysis (IVT) at zero minutes after their stroke began. This data does not exist in real life because realistically nobody can be treated that quickly. Instead we have to use the available data and fit a model to it to find a formula for changing probability with time. Then we can plug time zero into this formula to find the probability at time zero.</p>
+<p>The available data is from a meta-analysis of thrombolysis by Emberson et al. 2014. They provide:</p>
+<ul class="simple">
+<li><p>The odds ratio of a good outcome (mRS<span class="math notranslate nohighlight">\(\leq\)</span>1) with thrombolysis at a treatment time of one hour.</p></li>
+<li><p>The odds ratio of a good outcome (mRS<span class="math notranslate nohighlight">\(\leq\)</span>1) with thrombolysis at the time of no effect, 6.3 hours.</p></li>
+<li><p>The fact that plotting log-odds against time gives a straight line graph.</p></li>
+</ul>
+<p>We can take their data at times of 1 hour and 6.3 hours and recreate the straight-line fit to these points. By continuing to draw the straight line back to time zero, we can define the odds ratio of a good outcome at that time.</p>
+<p>We then combine that result with the mRS probability distribution that we previously derived for thrombolysis at the time-of-no-effect <strong>TO DO: add link</strong>. This allows us to define a probability of a good outcome for treatment at time zero.</p>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<p>The exact results from this example are only valid when mRS<span class="math notranslate nohighlight">\(\leq\)</span>1. This is because the reference data is for only the mRS<span class="math notranslate nohighlight">\(\leq\)</span>1 group.</p>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>To set up the extrapolation generally, we will do the following steps:</p>
+<ul class="simple">
+<li><p>Gather the odds ratio with time data from Emberson et al. 2014</p></li>
+<li><p>Recreate the straight line fit in the form <span class="math notranslate nohighlight">\(\log(\mathrm{odds\ ratio}) = a + bt\)</span></p></li>
+<li><p>Define the log(odds ratio) at time zero</p></li>
+<li><p>Convert this to a formula for probability at time zero</p></li>
+</ul>
+<p>To convert the new log(odds ratio) to probability at our chosen start time of zero hours, we have to provide an already-known probability at the time-of-no-effect.</p>
+<p><img alt="Summary image for calculating change decay over time. 1. Get reference data points. Take two odds ratio points from this chart and convert them to log(odds ratio), where “log” means “natural log”. 2. Straight line fit. Connect the two “log(odds ratio)” and time points with a straight line. The slope of the line is: b = -0.1211… The line hits time zero at a log(odds ratio) value: a= 0.76296. 3. Convert to probability. If we use a reference probability value, then we can calibrate the straight line fit and use it to calculate a probability of mRS &lt;= 1 at any time. For a reference point at the no-effect time tne, the probability at time zero is given by a formula. 4. Usage. This straight line fit applies to mRS &lt;= 1 data only. The same value of a can be used to fit the decay with time for: nLVO and LVO patients combined; nLVO patients only; LVO patients only." src="../_images/data_sources_decay.png" /></p>
+</section>
+<section id="notebook-admin">
+<h2>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep notebook cleaner once finalised</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up MatPlotLib</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># Change default colour scheme:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gather-data">
+<h2>Gather data<a class="headerlink" href="#gather-data" title="Permalink to this heading">#</a></h2>
+<p>We’re mainly using the plot of odds ratio with time from Emberson et al. 2014 (their Figure 1):</p>
+<blockquote>
+<div><p><img alt="" src="../_images/emberson-et-al-2014_figure-1_odds-ratio-with-time.png" /></p>
+</div></blockquote>
+<blockquote>
+<div><p>n.b. The y-axis is definitely “odds ratio”. The dark blue line was calculated using “log(odds ratio)” and then transformed to “odds ratio” for the graph.</p>
+</div></blockquote>
+<p>We can define a few points from this figure:</p>
+<ul class="simple">
+<li><p>The time-of-no-effect <span class="math notranslate nohighlight">\(t_{\mathrm{ne}} = 6.3\mathrm{hr}\)</span> (marked with white square).</p></li>
+<li><p>The odds ratio <span class="math notranslate nohighlight">\(OR(\mathrm{mRS}\leq 1\ |\ t=t_{\mathrm{ne}}) = 1.0\)</span> (marked with white square).</p></li>
+<li><p>The odds ratio <span class="math notranslate nohighlight">\(OR(\mathrm{mRS}\leq 1\ |\ t=1\mathrm{hr}) \sim 1.9\)</span> (intersection of the main dark blue line with the y-axis).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_ne</span> <span class="o">=</span> <span class="mf">6.3</span>  <span class="c1"># hours</span>
+<span class="n">OR_mRSleq1_tne</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">OR_mRSleq1_t1</span> <span class="o">=</span> <span class="mf">1.9</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-the-available-data">
+<h3>Plot the available data<a class="headerlink" href="#plot-the-available-data" title="Permalink to this heading">#</a></h3>
+<p>We’ll plot the data in terms of log(odds ratio) and draw a straight line connecting the points. This will match the data behind the main dark blue line in Figure 1 from Emberson et al. 2014.</p>
+<p>Define x and y coordinates for the t=1hr and t=t_ne points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_t1</span> <span class="o">=</span> <span class="mi">1</span>                         <span class="c1"># hours</span>
+<span class="n">y_t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">OR_mRSleq1_t1</span><span class="p">)</span>     <span class="c1"># from the data</span>
+
+<span class="n">x_tne</span> <span class="o">=</span> <span class="n">t_ne</span>                      <span class="c1"># hours</span>
+<span class="n">y_tne</span> <span class="o">=</span> <span class="mi">0</span>                         <span class="c1"># by definition, log(1)=0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define some coordinates of the straight line connecting these two points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the step from the t=1 point to the t_ne point:</span>
+<span class="n">x_step</span> <span class="o">=</span> <span class="n">x_tne</span> <span class="o">-</span> <span class="n">x_t1</span>
+<span class="n">y_step</span> <span class="o">=</span> <span class="n">y_tne</span> <span class="o">-</span> <span class="n">y_t1</span>
+
+<span class="c1"># Starting from the t=1hr point, step forwards and backwards in t:</span>
+<span class="n">x_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_t1</span> <span class="o">-</span> <span class="n">x_step</span><span class="p">,</span> <span class="n">x_t1</span> <span class="o">+</span> <span class="n">x_step</span><span class="p">]</span>
+<span class="n">y_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_t1</span> <span class="o">-</span> <span class="n">y_step</span><span class="p">,</span> <span class="n">y_t1</span> <span class="o">+</span> <span class="n">y_step</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mark these two data points:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_t1</span><span class="p">,</span> <span class="n">y_t1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Patient treated at 6.3hr&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_tne</span><span class="p">,</span> <span class="n">y_tne</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Patient treated at 1hr&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="c1"># Draw a straight line passing through the two points:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_line</span><span class="p">,</span> <span class="n">y_line</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ọther plot setup:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;log(odds ratio)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to treatment time (hours)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;log(odds ratio)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/46e53a77538ba96fdbd3dda57969f930fac258e11c93f133b90f2bc5ce3d0245.png" src="../_images/46e53a77538ba96fdbd3dda57969f930fac258e11c93f133b90f2bc5ce3d0245.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="define-a-straight-line-model-for-log-odds-ratio">
+<h2>Define a straight line model for log(odds ratio)<a class="headerlink" href="#define-a-straight-line-model-for-log-odds-ratio" title="Permalink to this heading">#</a></h2>
+<p>Here, we want to define log(OR) for mRS<span class="math notranslate nohighlight">\(\leq\)</span>1 at <span class="math notranslate nohighlight">\(t=0\)</span>. We can connect the two known points with a straight line, <span class="math notranslate nohighlight">\(\log(OR)=a+bt\)</span>, and then continue the line backwards in time to <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p>At <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>, we know that <span class="math notranslate nohighlight">\(\log\bigl[OR(\mathrm{mRS}\ |\ t=t_{\mathrm{ne}})\bigr] = 0 \)</span> and so</p>
+<div class="math notranslate nohighlight">
+\[ a+b \cdot t_{\mathrm{ne}} = 0 \]</div>
+<div class="math notranslate nohighlight">
+\[ b  = -\frac{a}{t_{\mathrm{ne}}} \]</div>
+<p>Then for a generic <span class="math notranslate nohighlight">\(t\)</span>, we use this <span class="math notranslate nohighlight">\(b\)</span> with <span class="math notranslate nohighlight">\(a + b t = \log(OR) \)</span> to find <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align*}
+a -\frac{a\cdot t}{t_{\mathrm{ne}}} &amp; = \log(OR) \\
+a\left(1 - \frac{t}{t_{\mathrm{ne}}}\right) &amp; = \log(OR) \\
+\end{align*}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[ a = \frac{\log(OR)}{1 - \frac{t}{t_{\mathrm{ne}}}} \]</div>
+<p>At <span class="math notranslate nohighlight">\(t=1\,\)</span>hr,</p>
+<div class="math notranslate nohighlight">
+\[ a = \frac{\log(1.9)}{1 - \frac{1\,\mathrm{hr}}{6.3\,\mathrm{hr}}} \]</div>
+<p>This contains only known values and so we can calculate <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<blockquote>
+<div><p>Note that the units of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t_{\mathrm{ne}}\)</span> <em>must</em> match here. In the equations above, we have used hours. If we had to use minutes instead, we would use:
+$<span class="math notranslate nohighlight">\( a = \frac{\log(1.9)}{1 - \frac{60\,\mathrm{minutes}}{6.3\times60\,\mathrm{minutes}}} \)</span>$</p>
+</div></blockquote>
+</section>
+<section id="extrapolate-to-t-0">
+<h2>Extrapolate to t=0<a class="headerlink" href="#extrapolate-to-t-0" title="Permalink to this heading">#</a></h2>
+<p>Now that we’ve defined <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, we can use the same straight line equation to find the log(odds ratio) at <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p>At <span class="math notranslate nohighlight">\(t=0\)</span>, the straight line <span class="math notranslate nohighlight">\(a+bt = a +0 = a \)</span> and so:</p>
+<div class="math notranslate nohighlight">
+\[ \log\bigl[OR(\mathrm{mRS}\leq1\ |\ t=0\,\mathrm{hr})\bigr] = a \]</div>
+<p>Calculate <span class="math notranslate nohighlight">\(a\)</span> using time in hours:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">OR_mRSleq1_t1</span><span class="p">)</span> <span class="o">/</span>
+    <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">t_ne</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7629583929973748
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-the-new-value">
+<h3>Plot the new value<a class="headerlink" href="#plot-the-new-value" title="Permalink to this heading">#</a></h3>
+<p>We can compare the newly-calculated log(OR) value with the plot from before:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define x and y coordinates of the t=0 point:</span>
+<span class="n">x_t0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y_t0</span> <span class="o">=</span> <span class="n">a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mark the data points:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_t1</span><span class="p">,</span> <span class="n">y_t1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Patient treated at 6.3hr&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_tne</span><span class="p">,</span> <span class="n">y_tne</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Patient treated at 1hr&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_t0</span><span class="p">,</span> <span class="n">y_t0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Extrapolated point&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+
+<span class="c1"># Draw a straight line connecting the points:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_line</span><span class="p">,</span> <span class="n">y_line</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ọther plot setup:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;log(odds ratio)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to treatment time (hours)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;log(odds ratio)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/extrapolate-emberson-fig1.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6bd31bf345af1e774529471fbbeac99fb06262a2ac9e1c13ebfc5ead39f6a9d4.png" src="../_images/6bd31bf345af1e774529471fbbeac99fb06262a2ac9e1c13ebfc5ead39f6a9d4.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="convert-this-log-or-to-probability">
+<h2>Convert this log(OR) to probability<a class="headerlink" href="#convert-this-log-or-to-probability" title="Permalink to this heading">#</a></h2>
+<p>We can use the new value of log(odds ratio) at <span class="math notranslate nohighlight">\(t=0\)</span> to define a probability at <span class="math notranslate nohighlight">\(t=0\)</span>, assuming that we already know a probability at the time-of-no-effect, <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq x\ |\ t_{\mathrm{ne}})\)</span>.</p>
+<p>By definition, the odds ratio:</p>
+<div class="math notranslate nohighlight">
+\[ OR(\mathrm{mRS},x,t) = \left\{ \frac{P(\mathrm{mRS}\leq x\ |\ t)}{P(\mathrm{mRS}&gt;x\ |\ t)} \right\} \div \left\{ \frac{P(\mathrm{mRS}\leq x\ |\ t_{\mathrm{ne}})}{P(\mathrm{mRS}&gt;x\ |\ t_{\mathrm{ne}})} \right\} \]</div>
+<p>Filling in the unknowns and rearranging:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{P(\mathrm{mRS}\leq 1\ |\ t=0)}{P(\mathrm{mRS}&gt;1\ |\ t=0)}  = OR(\mathrm{mRS}\leq1,t=0) \cdot \left\{ \frac{P(\mathrm{mRS}\leq 1\ |\ t_{\mathrm{ne}})}{P(\mathrm{mRS}&gt;1\ |\ t_{\mathrm{ne}})} \right\} \]</div>
+<p>To rearrange this equation to find probability, we’ll set <span class="math notranslate nohighlight">\(P=P(\mathrm{mRS}\leq 1\ |\ t=0)\)</span> and set the entire right-hand-side of the equation to a new constant <span class="math notranslate nohighlight">\(R\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{P}{1 - P}  &amp; = R \\
+P &amp; = R(1-P) \\
+P + (P\cdot R) &amp; = R \\
+P(1 + R) &amp; = R \\
+P &amp; = \frac{R}{1 + R} \\
+\end{align*}
+\end{split}\]</div>
+<p>This is ugly to write out in full, so we define <span class="math notranslate nohighlight">\(P_R = P(\mathrm{mRS}\leq 1\ |\ t_{\mathrm{ne}})\)</span> and use <span class="math notranslate nohighlight">\(\log\bigl[OR(\mathrm{mRS}\leq1\ |\ t=0\,\mathrm{hr})\bigr] = a\)</span> from before so that:</p>
+<div class="math notranslate nohighlight">
+\[ P(\mathrm{mRS}\leq 1\ |\ t=0) = \frac{e^{a} \cdot \left\{ \frac{P_{R}}{1 - P_{R}} \right\}}{1 + e^{a} \cdot \left\{ \frac{P_{R}}{1 - P_{R}} \right\}} \]</div>
+</section>
+<section id="calculate-the-probability-at-time-zero">
+<h2>Calculate the probability at time zero<a class="headerlink" href="#calculate-the-probability-at-time-zero" title="Permalink to this heading">#</a></h2>
+<p>We can take probabilities of mRS&lt;=1 at the time-of-no-effect from the derived mRS distribution.  <strong>TO DO - put link here</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq 1\ |\ t_{\mathrm{ne}} \ |\ \mathrm{nLVO}) = 0.455\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq 1\ |\ t_{\mathrm{ne}} \ |\ \mathrm{LVO}) = 0.124\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Probability of mRS&lt;=1 at t=t_ne (a.k.a. probability P_R):</span>
+<span class="n">p_mRSleq1_tne_nlvo</span> <span class="o">=</span> <span class="mf">0.455</span>
+<span class="n">p_mRSleq1_tne_lvo</span> <span class="o">=</span> <span class="mf">0.124</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For each probability, we calculate <span class="math notranslate nohighlight">\(R\)</span> and then <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq 1\ |\ t=0)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">p_mRSleq1_tne_nlvo</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_mRSleq1_tne_nlvo</span><span class="p">)</span>
+<span class="n">p_mRSleq1_t0_nlvo</span> <span class="o">=</span> <span class="n">R</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">p_mRSleq1_tne_lvo</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_mRSleq1_tne_lvo</span><span class="p">)</span>
+<span class="n">p_mRSleq1_t0_lvo</span> <span class="o">=</span> <span class="n">R</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nLVO mRS&lt;=1 Probability at time=0: </span><span class="si">{</span><span class="n">p_mRSleq1_t0_nlvo</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO  mRS&lt;=1 Probability at time=0: </span><span class="si">{</span><span class="n">p_mRSleq1_t0_lvo</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nLVO mRS&lt;=1 Probability at time=0:  0.6416
+LVO  mRS&lt;=1 Probability at time=0:  0.2329
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="general-extrapolation">
+<h1>General extrapolation<a class="headerlink" href="#general-extrapolation" title="Permalink to this heading">#</a></h1>
+<p>The previous sections gave results that were specific to the data from Emberson et al. 2014. The following sections redo the formulae for any general case.</p>
+<blockquote>
+<div><p>This section isn’t essential for following the examples above.</p>
+</div></blockquote>
+<p>In the current example we have chosen the reference data points at times <span class="math notranslate nohighlight">\(t=1\)</span>hr and <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>, but generally any two times <span class="math notranslate nohighlight">\(t=t_1\)</span> and <span class="math notranslate nohighlight">\(t=t_2\)</span> could be used so long as we know the following:</p>
+<p>For <span class="math notranslate nohighlight">\(t_1\)</span>:</p>
+<ul class="simple">
+<li><p>the time <span class="math notranslate nohighlight">\(t_1\)</span>, and</p></li>
+<li><p>odds ratio <span class="math notranslate nohighlight">\(OR(t=t_1)\)</span>.</p></li>
+</ul>
+<p>For <span class="math notranslate nohighlight">\(t_2\)</span>:</p>
+<ul class="simple">
+<li><p>the time <span class="math notranslate nohighlight">\(t_2\)</span>,</p></li>
+<li><p>odds ratio <span class="math notranslate nohighlight">\(OR(t=t_2)\)</span>, and</p></li>
+<li><p>probability <span class="math notranslate nohighlight">\(P(t=t_2)\)</span> for the conversion.</p></li>
+</ul>
+<p>This is most convenient for <span class="math notranslate nohighlight">\(t_2=t_{\mathrm{ne}}\)</span> because we know that <span class="math notranslate nohighlight">\(OR(t=t_{\mathrm{ne}})=1\)</span> by definition. Also, <span class="math notranslate nohighlight">\(t_1\)</span> can be bigger or smaller than <span class="math notranslate nohighlight">\(t_2\)</span>. By defining a straight line for log(odds ratio) in the form <span class="math notranslate nohighlight">\(a+bt\)</span> we can extrapolate to find the log(odds ratio) at any <span class="math notranslate nohighlight">\(t\)</span>, not just for <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<blockquote>
+<div><p>Important: Make sure the two odds ratios are defined in the same way. Are both using the same baseline at <span class="math notranslate nohighlight">\(t=t_\mathrm{ne}\)</span>?</p>
+</div></blockquote>
+<section id="find-a">
+<h2>Find <span class="math notranslate nohighlight">\(a\)</span><a class="headerlink" href="#find-a" title="Permalink to this heading">#</a></h2>
+<p>To find <span class="math notranslate nohighlight">\(a\)</span> for two generic data points at times <span class="math notranslate nohighlight">\(t_1\)</span> and <span class="math notranslate nohighlight">\(t_2\)</span>, we write the log(odds ratio) for each:</p>
+<div class="math notranslate nohighlight">
+\[ a + b t_1 = \log(OR_1) \]</div>
+<div class="math notranslate nohighlight">
+\[ a + b t_2 = \log(OR_2) \]</div>
+<p>We can combine these by isolating <span class="math notranslate nohighlight">\(b\)</span> in each case:</p>
+<div class="math notranslate nohighlight">
+\[ b = \frac{\log(OR_2) - a}{t_2} = \frac{\log(OR_1) - a}{t_1}  \]</div>
+<p>And then rearrange to find <span class="math notranslate nohighlight">\(a\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+t_1 \log(OR_2) - t_1 a &amp; = t_2 \log(OR_1) - t_2 a  \\ \\ 
+t_2 a - t_1 a &amp; = t_2 \log(OR_1) - t_1 \log(OR_2) \\ \\
+a (t_2 - t_1) &amp; = t_2 \log(OR_1) - t_1 \log(OR_2) \\ \\
+a &amp; = \frac{t_2 \log(OR_1) - t_1 \log(OR_2)}{t_2 - t_1} \\
+\end{align*}
+\end{split}\]</div>
+<p>To put this into the same form as Equation 3, the <span class="math notranslate nohighlight">\(a\)</span> defined for <span class="math notranslate nohighlight">\(t=t_\mathrm{ne}\)</span>, we multiply the right hand side by <span class="math notranslate nohighlight">\(\left(\frac{1}{t_2} \div \frac{1}{t_2}\right)\)</span> which is equal to 1:</p>
+<div class="math notranslate nohighlight">
+\[ a = \frac{\log(OR_1) - \frac{t_1}{t_2} \log(OR_2)}{1 - \frac{t_1}{t_2}} \]</div>
+<p>When <span class="math notranslate nohighlight">\(t_2=t_\mathrm{ne}\)</span>, then <span class="math notranslate nohighlight">\(\log(OR_2)=0\)</span> by definition and the formula for <span class="math notranslate nohighlight">\(a\)</span> matches Equation 3.</p>
+</section>
+<section id="find-b">
+<h2>Find <span class="math notranslate nohighlight">\(b\)</span><a class="headerlink" href="#find-b" title="Permalink to this heading">#</a></h2>
+<p>It is straightforward to find <span class="math notranslate nohighlight">\(b\)</span> given two values of log(odds ratio) at two times when we know that the two points are connected by a straight line.</p>
+<p>By definition, the gradient <span class="math notranslate nohighlight">\(m\)</span> of a straight line <span class="math notranslate nohighlight">\(y=m\cdot x+c\)</span> between two coordinates <span class="math notranslate nohighlight">\((x_1, y_1)\)</span> and <span class="math notranslate nohighlight">\((x_2, y_2)\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[ m = \frac{y_2 - y_1}{x_2 - x_1} \]</div>
+<p>So for our straight line of <span class="math notranslate nohighlight">\(\log(OR) = a+bt\)</span> with two coordinates <span class="math notranslate nohighlight">\((t_1, \log[OR_1])\)</span> and <span class="math notranslate nohighlight">\((t_2, \log[OR_2])\)</span>, we find the gradient:</p>
+<div class="math notranslate nohighlight">
+\[ b = \frac{\log(OR_2) - \log(OR_1)}{t_2 - t_1} \]</div>
+</section>
+<section id="general-function">
+<h2>General function<a class="headerlink" href="#general-function" title="Permalink to this heading">#</a></h2>
+<p>We have combined the steps above into a function <code class="docutils literal notranslate"><span class="pre">extrapolate_odds_ratio()</span></code> that is stored in the <code class="docutils literal notranslate"><span class="pre">outcome_utilities</span></code> module. The function takes the known times, odds ratios and probabilities, and extrapolates the straight line of log(odds ratio) to a given time <span class="math notranslate nohighlight">\(t_e\)</span>. It returns the probability and odds ratio at <span class="math notranslate nohighlight">\(t_e\)</span> and the constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> that make the straight line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stroke_outcome.outcome_utilities</span> <span class="kn">import</span> <span class="n">extrapolate_odds_ratio</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>extrapolate_odds_ratio<span class="o">??</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+extrapolate_odds_ratio<span class=" -Color -Color-Blue">(</span>
+    t_1<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+    OR_1<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+    t_2<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+    OR_2<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+    p_2<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+    t_e<span class=" -Color -Color-Blue">:</span> float <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Source:</span>   
+<span class=" -Color -Color-Green">def</span> extrapolate_odds_ratio<span class=" -Color -Color-Blue">(</span>
+        t_1<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+        OR_1<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+        t_2<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+        OR_2<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+        p_2<span class=" -Color -Color-Blue">:</span> float<span class=" -Color -Color-Blue">,</span>
+        t_e<span class=" -Color -Color-Blue">:</span> float <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Cyan">0</span>
+        <span class=" -Color -Color-Blue">):</span>
+    <span class=" -Color -Color-Blue">&quot;&quot;&quot;</span>
+<span class=" -Color -Color-Blue">    Use two odds ratios to extrapolate the straight line fit and find</span>
+<span class=" -Color -Color-Blue">    the odds ratio at a given time, then convert to probability.</span>
+
+<span class=" -Color -Color-Blue">    The three time parameters MUST use the same units, e.g. hours.</span>
+
+<span class=" -Color -Color-Blue">    Inputs:</span>
+<span class=" -Color -Color-Blue">    t_1, t_2   - float. Times for data points 1 and 2.</span>
+<span class=" -Color -Color-Blue">    OR_1, OR_2 - float. Odds ratios at times t_1 and t_2.</span>
+<span class=" -Color -Color-Blue">    p_2        - float. Probability at time t_2.</span>
+<span class=" -Color -Color-Blue">    t_e        - float. Time to extrapolate the line to.</span>
+
+<span class=" -Color -Color-Blue">    Returns:</span>
+<span class=" -Color -Color-Blue">    OR_e - float. Extrapolated odds ratio at time t_e.</span>
+<span class=" -Color -Color-Blue">    p_e  - float. Extrapolated probability at time t_e.</span>
+<span class=" -Color -Color-Blue">    a, b - float. Constants for the straight line fit a+bt.</span>
+<span class=" -Color -Color-Blue">    &quot;&quot;&quot;</span>
+    <span class=" -Color -Color-Red"># Calculate &quot;a&quot;, the log(odds ratio) at time t=0:</span>
+    a <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">(</span>
+        <span class=" -Color -Color-Blue">(</span>np<span class=" -Color -Color-Blue">.</span>log<span class=" -Color -Color-Blue">(</span>OR_1<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-</span> <span class=" -Color -Color-Blue">(</span>t_1<span class=" -Color -Color-Blue">/</span>t_2<span class=" -Color -Color-Blue">)*</span>np<span class=" -Color -Color-Blue">.</span>log<span class=" -Color -Color-Blue">(</span>OR_2<span class=" -Color -Color-Blue">))</span> <span class=" -Color -Color-Blue">/</span>
+        <span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">1.0</span> <span class=" -Color -Color-Blue">-</span> <span class=" -Color -Color-Blue">(</span>t_1<span class=" -Color -Color-Blue">/</span>t_2<span class=" -Color -Color-Blue">))</span>
+    <span class=" -Color -Color-Blue">)</span>
+
+    <span class=" -Color -Color-Red"># Calculate &quot;b&quot;, the gradient of the log(odds ratio) straight line.</span>
+    b <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">(</span>np<span class=" -Color -Color-Blue">.</span>log<span class=" -Color -Color-Blue">(</span>OR_2<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-</span> np<span class=" -Color -Color-Blue">.</span>log<span class=" -Color -Color-Blue">(</span>OR_1<span class=" -Color -Color-Blue">))</span> <span class=" -Color -Color-Blue">/</span> <span class=" -Color -Color-Blue">(</span>t_2 <span class=" -Color -Color-Blue">-</span> t_1<span class=" -Color -Color-Blue">)</span>
+
+    <span class=" -Color -Color-Red"># Use these to calculate the odds ratio at time t_e:</span>
+    OR_e <span class=" -Color -Color-Blue">=</span> np<span class=" -Color -Color-Blue">.</span>exp<span class=" -Color -Color-Blue">(</span>a <span class=" -Color -Color-Blue">+</span> b <span class=" -Color -Color-Blue">*</span> t_e<span class=" -Color -Color-Blue">)</span>
+
+    <span class=" -Color -Color-Red"># Rearrange odds ratio formula:</span>
+    <span class=" -Color -Color-Red"># ORe = {pe/(1-pe)} / {p2/(1-p2)}</span>
+    <span class=" -Color -Color-Red"># pe/(1-pe) = ORe * p2/(1-p2)</span>
+    <span class=" -Color -Color-Red"># Calculate R, the right-hand-side of this equation:</span>
+    R <span class=" -Color -Color-Blue">=</span> OR_e <span class=" -Color -Color-Blue">*</span> p_2 <span class=" -Color -Color-Blue">/</span> <span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">-</span> p_2<span class=" -Color -Color-Blue">)</span>
+
+    <span class=" -Color -Color-Red"># Rearrange pe/(1-pe)=R to find pe, probability at time t=t_e:</span>
+    p_e <span class=" -Color -Color-Blue">=</span> R <span class=" -Color -Color-Blue">/</span> <span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">1</span> <span class=" -Color -Color-Blue">+</span> R<span class=" -Color -Color-Blue">)</span>
+
+    <span class=" -Color -Color-Green">return</span> OR_e<span class=" -Color -Color-Blue">,</span> p_e<span class=" -Color -Color-Blue">,</span> a<span class=" -Color -Color-Blue">,</span> b
+<span class=" -Color -Color-Red">File:</span>      ~/miniconda3/lib/python3.9/site-packages/stroke_outcome/outcome_utilities.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\phantom{gap}\)</span></p>
+<p>Check that this gives the same results as we found earlier in the notebook for the nLVO data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OR_0</span><span class="p">,</span> <span class="n">p_0</span><span class="p">,</span> <span class="n">a_0</span><span class="p">,</span> <span class="n">b_0</span> <span class="o">=</span> <span class="n">extrapolate_odds_ratio</span><span class="p">(</span>
+    <span class="n">t_1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">OR_1</span><span class="o">=</span><span class="mf">1.9</span><span class="p">,</span>                             <span class="c1"># t=1hr data</span>
+    <span class="n">t_2</span><span class="o">=</span><span class="n">t_ne</span><span class="p">,</span> <span class="n">OR_2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p_2</span><span class="o">=</span><span class="n">p_mRSleq1_tne_nlvo</span><span class="p">,</span>    <span class="c1"># t=t_ne data </span>
+    <span class="n">t_e</span><span class="o">=</span><span class="mi">0</span>                                 <span class="c1"># Extrapolate to this time.</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define the gradient of the straight line we plotted initially, before calculating <span class="math notranslate nohighlight">\(b\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient</span> <span class="o">=</span> <span class="n">y_step</span> <span class="o">/</span> <span class="n">x_step</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  | From function | From notebook |&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P |    </span><span class="si">{</span><span class="n">p_0</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">    |    </span><span class="si">{</span><span class="n">p_mRSleq1_t0_nlvo</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">    |&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a |    </span><span class="si">{</span><span class="n">a_0</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">    |    </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">    |&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;b |    </span><span class="si">{</span><span class="n">b_0</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">    |    </span><span class="si">{</span><span class="n">gradient</span><span class="si">:</span><span class="s1">7.4f</span><span class="si">}</span><span class="s1">    |&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  | From function | From notebook |
+P |     0.6416    |     0.6416    |
+a |     0.7630    |     0.7630    |
+b |    -0.1211    |    -0.1211    |
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p>Emberson J, Lees KR, Lyden P, et al. <em>Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials</em>. The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./outcome_model_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01b_excess_deaths.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Excess death rate calculations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01d_lvo_proportion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Proportion of ischaemic patients with LVO</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Extrapolating a known odds ratio back to time zero</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-data">Gather data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-available-data">Plot the available data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-straight-line-model-for-log-odds-ratio">Define a straight line model for log(odds ratio)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrapolate-to-t-0">Extrapolate to t=0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-new-value">Plot the new value</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-this-log-or-to-probability">Convert this log(OR) to probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-probability-at-time-zero">Calculate the probability at time zero</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#general-extrapolation">General extrapolation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a">Find <span class="math notranslate nohighlight">\(a\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-b">Find <span class="math notranslate nohighlight">\(b\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-function">General function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

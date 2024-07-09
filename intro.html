@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT) &#8212; Stroke outcome modelling</title>
+    <title>Introduction &#8212; Stroke outcome modelling</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset" href="01_mRS_datasets_full.html" />
+    <link rel="next" title="Definitions for stroke" href="definitions_reference/definitions_stroke.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,42 +156,33 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_geography.html">Distance-based treatment effects</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="05a_geography_stroke_types.html">Distance-based treatment effects (plot for different stroke types)</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="06_show_outcome_model_code.html">Show outcome model python code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions_reference/definitions_maths.html">Definitions for maths</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">stroke-outcome package</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="package_docs/intro.html">Stroke outcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
@@ -201,14 +192,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general_results/05_geography.html">Distance-based treatment effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="england_wales/02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="england_wales/03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
-<li class="toctree-l1"><a class="reference internal" href="england_wales/04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="streamlit/streamlit.html">Streamlit app</a></li>
 </ul>
 
     </div>
@@ -345,7 +341,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -355,45 +351,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-rankin-scale">Modified Rankin Scale</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-and-results">Method and Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-treatment-cohort-1-nlvo-ivt">Patient-treatment cohort 1: nLVO-IVT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-0-for-nlvo-ivt">mRS distribution at <em>t = 0</em> (for nLVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-no-effect-for-nlvo-ivt">mRS distribution at <em>t = No Effect</em> (for nLVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-nlvo-ivt">Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for nLVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-nlvo-ivt">Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for nLVO-IVT)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-disability-outcomes-and-utility-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt">Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-patients-can-be-modelled">Which patients can be modelled?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-treatments-are-available">Which treatments are available?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-the-treatment-time-matter">Why does the treatment time matter?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-these-outcomes">What are these outcomes?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-these-models-calculate">What do these models calculate?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-treatment-cohort-2-lvo-ivt">Patient-treatment cohort 2: LVO-IVT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-0-for-lvo-ivt">mRS distribution at <em>t = 0</em> (for LVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-no-effect-for-lvo-ivt">mRS distribution at <em>t = No Effect</em> (for LVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-ivt">Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-ivt">Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-IVT)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-treatment-cohort-3-lvo-mt">Patient-treatment cohort 3: LVO-MT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-0-for-lvo-mt">mRS distribution at <em>t = 0</em> (for LVO-MT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-no-effect-for-lvo-mt">mRS distribution at <em>t = No Effect</em> (for LVO-MT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-mt">Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-MT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-mt">Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-MT)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-comparator-control-groups">Note on comparator control groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-weighted-mrs-outcomes">Utility-weighted mRS outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-plots">Summary plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-sampled-mrs-distribution-shift">Example of sampled mRS distribution shift</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-england-and-wales">Application to England and Wales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-used-in-modelling">References used in modelling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-deaths-due-to-treatment">Excess deaths due to treatment</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ivt-deaths-due-to-fatal-intracranial-haemorrhage-emberson-et-al-2014">IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014):</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mt-deaths-goyal-et-al-2016">MT deaths (Goyal et al., 2016):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samuel-2-project">SAMueL-2 project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents-of-this-book">Contents of this book</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-reference">📚 Definitions reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outcome-model-methods">🧮 Outcome model methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stroke-outcome-package">📦 stroke-outcome package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-results">📈 General results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-england-and-wales">🌍 Application to England and Wales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-demo">👑 Interactive demo</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -404,23 +385,56 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="predicting-disability-outcomes-and-utility-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/stroke-modelling/stroke-outcome/"><img alt="GitHub Badge" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" /></a> <a class="reference external" href="https://samuel-book.github.io/stroke_outcome/intro.html"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a> <a class="reference external" href="https://pypi.org/project/stroke-outcome/"><img alt="PyPI" src="https://img.shields.io/pypi/v/stroke-outcome?label=pypi%20package" /></a> <a class="reference external" href="https://zenodo.org/badge/latestdoi/673336639"><img alt="DOI" src="https://zenodo.org/badge/673336639.svg" /></a> <a class="reference external" href="https://samuel2-stroke-outcome.streamlit.app/"><img alt="Open in Streamlit" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" /></a></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="predicting-disability-outcomes-and-utility-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt">
 <h1>Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)<a class="headerlink" href="#predicting-disability-outcomes-and-utility-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt" title="Permalink to this heading">#</a></h1>
-<p>This online Jupyter describes the basic methodology for estimating disability outcomes for stroke patients, depending on time to treatment with intravenous thrombolysis (IVT) or mechanical thrombectomy (MT). The orignal code for the book may be found at <a class="github reference external" href="https://github.com/samuel-book/stroke_outcome">samuel-book/stroke_outcome</a>.</p>
-<p>The methodology described here is for patients with an ischaemic stroke (a stroke that is caused by a clot). These patients can be further defined by the location of the clot: those with a large vessel occlusion (LVO); and those not with a large vessel occlusion (nLVO). Patients with an nLVO can be treated with thrombolysis (IVT), a clot-busting medication. Patients with an LVO can be treated with IVT and/or thrombectomy (MT), which physically removes the clot. The benefit received by the patient from either treatment (IVT and/or MT) are time dependent, such that the sooner they are administered, the better the outcome, with each treatment having no effect after a specified duration (6.3 hours for IVT, and 8 hours for MT). In other words, the sooner a patient recieves reperfusion treatment the fewer stroke related disabilities they could end up with.</p>
+<p>This online Jupyter book describes the methodology for estimating disability outcomes and utility for stroke patients.</p>
+<p>The outcomes depend on:</p>
+<ul class="simple">
+<li><p>the type of stroke.</p></li>
+<li><p>the type of treatment, where different types of strokes may be treated in different ways.</p></li>
+<li><p>the time to treatment, where earlier treatment tends to give better outcomes.</p></li>
+</ul>
 <p>Until now, modelling the outcome from stroke reperfusion treatment was a dichotomous affair, with a patient classified as either being disability free, or with stroke related disabilities. The method described here aims to provide a more granular disability outcome, describing the resulting disability as one of six levels (ranging from disability free, to death).</p>
-<p>This method calculates disability outcome estimates for three patient-treatment cohorts: 1) nLVO-IVT (patients with an nLVO that are treated with IVT), 2) LVO-IVT (patients with an LVO that are treated with IVT), 3) LVO-MT (patients with an LVO that are treated with MT). The result is provided as a distribution of disability (with six levels) following reperfusion treatment at any point between these two time stages: 1) receiving reperfusion treatment as soon as their stroke began (this will be referred to as time of stroke onset, and we will use the terminology “<em>t = 0</em>”), and 2) receiving reperfusion treatment at the duration after stroke onset where the treatment has no effect (this will be referred to as time of no effect, and we will use the terminology “<em>t = No Effect</em>”).</p>
-<p>The method is built by synthesising data from multiple sources <a class="reference internal" href="#data-cauldron"><span class="std std-numref">figure 1</span></a>, including reperfusion treatment clinical trials (Lees et al. 2010, Emberson et al. 2014, Goyal et al. 2016, Fransen et al. 2016, and Hui et al. 2020) and 3 years worth of stroke admission data for England and Wales (Sentinel Stroke National Audit Programme, SSNAP) to define the distribution of disability for each of the three patient-treatment cohorts at the two time stages (<em>t = 0</em> &amp; <em>t = No Effect</em>), and we use interpolation to determine the disability distribution at any point inbetween.</p>
-<figure class="align-default" id="data-cauldron">
-<a class="reference internal image-reference" href="_images/data_cauldron.png"><img alt="_images/data_cauldron.png" src="_images/data_cauldron.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Synthesis of multiple data sources into a disability-level model</span><a class="headerlink" href="#data-cauldron" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Detailed methodology and code are found in the notebooks on <a class="reference internal" href="01_mRS_datasets_full.html"><span class="doc std std-doc">derivation of mRS distributions</span></a> and <a class="reference internal" href="02_mRS_outcomes_maths.html"><span class="doc std std-doc">decay of effect over time</span></a>.</p>
-<section id="modified-rankin-scale">
-<h2>Modified Rankin Scale<a class="headerlink" href="#modified-rankin-scale" title="Permalink to this heading">#</a></h2>
-<p>Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p>More details and definitions are given in the Details pages. There are links to these pages in the left sidebar.</p>
+<ul class="simple">
+<li><p>Definitions for stroke - stroke types, treatment types, effects of time…</p></li>
+<li><p>Definitions for maths - probability, odds, log-odds…</p></li>
+</ul>
+<section id="which-patients-can-be-modelled">
+<h3>Which patients can be modelled?<a class="headerlink" href="#which-patients-can-be-modelled" title="Permalink to this heading">#</a></h3>
+<p>The methodology described here is for patients with an <em>ischaemic</em> stroke.
+Ischaemic stroke is a stroke caused by the blockage of blood supply to an area of the brain, caused by a clot.</p>
+<p>These patients can be further defined by the location of the clot:</p>
+<ul class="simple">
+<li><p>those with a large vessel occlusion (<strong>LVO</strong>);</p></li>
+<li><p>and those not with a large vessel occlusion (<strong>nLVO</strong>).</p></li>
+</ul>
+<p>Ischaemic strokes account for 80-85% of all strokes, with the remainder being <em>haemorrhagic</em> strokes where loss of blood supply is caused by a bleed in the brain.</p>
+</section>
+<section id="which-treatments-are-available">
+<h3>Which treatments are available?<a class="headerlink" href="#which-treatments-are-available" title="Permalink to this heading">#</a></h3>
+<p><em>Reperfusion</em> describes the restoration of blood flow following an ischaemic stroke. There are two potential reperfusion treatments:</p>
+<ul class="simple">
+<li><p><em>Thrombolysis</em> (also known as as <em>intravenous thrombolysis</em>, <strong>IVT</strong>) is a medical therapy where <em>clot-busting</em> drugs are used to reduce or remove the blood clot. About 20% of all stroke patients are suitable for thrombolysis.</p></li>
+<li><p><em>Thrombectomy</em> (also known as <em>mechanical thrombectomy</em>, <strong>MT</strong>) is the physical removal of a clot, by a mesh device under image guidance. Thrombectomy is suitable only for clots in a large vessel (these generally cause the worst strokes), and is a suitable treatment in about 10% of all stroke patients.</p></li>
+</ul>
+<p>Patients with an nLVO can be treated with IVT.</p>
+<p>Patients with an LVO can be treated with IVT and/or MT.</p>
+</section>
+<section id="why-does-the-treatment-time-matter">
+<h3>Why does the treatment time matter?<a class="headerlink" href="#why-does-the-treatment-time-matter" title="Permalink to this heading">#</a></h3>
+<p>Reperfusion treatment becomes less effective with increasing time after stroke (with the loss of effect occurring over some hours). Each treatment has no effect after a specified duration (6.3 hours for IVT, and 8 hours for MT).</p>
+<p>In other words, the sooner a patient recieves reperfusion treatment, the fewer stroke related disabilities they could end up with.</p>
+</section>
+<section id="what-are-these-outcomes">
+<h3>What are these outcomes?<a class="headerlink" href="#what-are-these-outcomes" title="Permalink to this heading">#</a></h3>
+<p>Disability levels may be measured in various ways. In this project we are using the modified Rankin Scale (mRS). It is a commonly used scale for measuring the degree of disability or dependence in the daily activities of people who have suffered a stroke or other causes of neurological disability [Saver <em>et al</em>., 2010].</p>
 <p>The scale runs from 0-6, running from perfect health without symptoms to death:</p>
 <table class="table">
 <thead>
@@ -453,133 +467,8 @@ document.write(`
 </tbody>
 </table>
 <p>Note: From this point onwards we will refer to disability distributions as mRS distributions.</p>
-</section>
-<section id="method-and-results">
-<h2>Method and Results<a class="headerlink" href="#method-and-results" title="Permalink to this heading">#</a></h2>
-<p>This model contains mRS outcome distributions for three patient-treatment cohorts: 1) nLVO-IVT, 2) LVO-IVT, 3) LVO-MT. For each patient-treatment cohort, we estimate two mRS distributions: one mRS distribution if treatment is given at <em>t = 0</em> (time of stroke onset), and one mRS distribution if treatment is given at <em>t = No Effect</em> (time of no effect). In order to estimate these two mRS distributions, we use data from reperfusion treatment clinical trials and stroke admission data from England and Wales. To select the relevant patients for each cohort we will use the National Institutes of Health Stroke Scale (NIHSS) on arrival as a surrogate to classify patients as nLVO (NIHSS 0-10) or LVO (NIHSS 11+).</p>
-<p>All mRS distributions created are based on the assumption that, following treatment, the mRS distribution will lie between two extremes: 1) reperfusion perfectly restores function, and the resulting mRS distribution is the same as the pre-stroke mRS distribution (this data is obtained from the SSNAP dataset), and 2) reperfusion treatment fails to restore any function and the resulting mRS distribution is the same as a control untreated population, though with added excess deaths that may be caused by the treatment. To create required mRS distributions we find a weighting between these two extremes that give us a distribution that matches published reference points.</p>
-<p>The <em>t = 0</em> mRS distributions are calculated to give the expected mRS distributions if treatment was given immediately after stroke onset, and also include the risk of excess deaths caused by taking the treatment. Further details specific to stroke type and treatment type are given below.</p>
-<p>The <em>t = No Effect</em> mRS distributions are based on mRS distribution data when patients did not receive any treatment (this represents what will happen if the patient takes the treatment at <em>t = No Effect</em>). This data is obtained from the untreated control group in clinical trials and further adjusted to include the risk of excess deaths caused by taking the treatment. Further details specific to stroke type and treatment type are given below.</p>
-<p>The two obtained mRS distribution estimates (one for <em>t = 0</em>, and one for <em>t = No Effect</em>) are shown in two different plot formats: a block plot (with <em>t = 0</em> at the top and <em>t = No Effect</em> at the bottom) and a line plot (with <em>t = 0</em> on the left, <em>t = No Effect</em> on the right, and the space between these points show the mRS distribution for any point between these times). Below we will describe how we derived the two mRS distributions, and how they are represented in each of the charts, for each patient-treatment cohort in turn.</p>
-</section>
-<section id="patient-treatment-cohort-1-nlvo-ivt">
-<h2>Patient-treatment cohort 1: nLVO-IVT<a class="headerlink" href="#patient-treatment-cohort-1-nlvo-ivt" title="Permalink to this heading">#</a></h2>
-<p>This section describes the methodology used to obtain the two mRS distribution estimates (<em>t = 0</em> and <em>t = No Effect</em>) for the patients with an nLVO that are treated with IVT.</p>
-<section id="mrs-distribution-at-t-0-for-nlvo-ivt">
-<h3>mRS distribution at <em>t = 0</em> (for nLVO-IVT)<a class="headerlink" href="#mrs-distribution-at-t-0-for-nlvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>We assume that the mRS distribution for patients treated at <em>t = 0</em> will be a weighted average of a full recovery distribution, and a no-benefit distribution, including a correction for risk of treatment-related death (we assume that risk is independent of the time treatment is given). We need a mRS distribution for each of these, and then take a weighted combination (61% fully recovered &amp; 39% no effect), where the weights are informed by Emberson et al. 2014.</p>
-<p>The <strong>mRS distribution for fully recovered nLVO patients with IVT</strong> at <em>t = 0</em> is taken as the pre-stroke mRS distribution (this will represent a patient receiving a 100% effective treatment). This distribution comes from the SSNAP dataset, extracting the patients that have an ischaemic stroke and using NIHSS 0-10 as a surrogate for nLVO. This mRS distribution is then corrected for the excess deaths due to treatment with IVT for nLVO patients (1.10%, see appendix).</p>
-<p>The <strong>mRS distribution for nLVO patients for which IVT had no effect</strong> is assumed to be the same as patients that were not treated, but adjusted to include the risk of excess death caused by taking the treatment. Unfortunately there does not exist a large clinical trial for just nLVO patients from which we can take the results for the untreated control group. Instead we use the untreated control group of combined nLVO/LVO data from Lees et al. 2010, and from that we remove the contribution of the LVO patients by using the results from the untreated control group of LVO-only data from Goyal et al. 2016. Each mRS distribution (Lees, and Goyal) are adjusted to account for the excess deaths due to IVT treatment, this is 2.29% for the combined nLVO/LVO patients and 3.41% for LVO patients (see appendix). Weightings for these two mRS distributions (154% Lees and -54% Goyal) are chosen such that once the contribution from the LVO patients have been removed from the combined nLVO/LVO distribution, the remaining mRS distribution matches the P(mRS &lt;= 1, <em>t = No Effect</em>) of 0.46 (from the control group in Emberson with NIHSS of 0-10).</p>
-<p>The <strong>weights</strong> used to combine these two mRS distribution (61% fully recovered &amp; 39% no effect) were informed by data from Emberson et al. 2014, and found in order to match the P(mRS &lt;= 1, <em>t = 0</em>) of 0.63. It is seen from Emberson that 46% of patients with NIHSS 0-10 had mRS 0-1 in the untreated group (see figure 2 Emberson et al. 2014: (189 + 538)/(321 + 1252)). This translates into a 0.85 odds of a good outcome, which, when multipied by the odds ratio for mRS 0-1 at <em>t = 0</em> (which is 2.0, obtained from extrapolating back to <em>t = 0</em> in figure 1 “Effect of timing of alteplase treatment on good stroke outcome, mRS 0–1”), gives 1.70, before converting to a probability of 63%.</p>
-</section>
-<section id="mrs-distribution-at-t-no-effect-for-nlvo-ivt">
-<h3>mRS distribution at <em>t = No Effect</em> (for nLVO-IVT)<a class="headerlink" href="#mrs-distribution-at-t-no-effect-for-nlvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>As described above (repeated here for completeness), we  assume that patients treated at <em>t = No Effect</em> will have the same mRS distribution as patients that were not treated, but adjusted to include the risk of excess death caused by taking the treatment. Unfortunately there does not exist a large clinical trial for just nLVO patients from which we can take the results for the untreated control group. Instead we use the untreated control group of combined nLVO/LVO data from Lees et al. 2010, and from that we remove the contribution of the LVO patients by using the results from the untreated control group of LVO-only data from Goyal et al. 2016. Each mRS distribution (Lees, and Goyal) are adjusted to account for the excess deaths due to IVT treatment, this is 2.29% for the combined nLVO/LVO patients and 3.41% for LVO patients (see appendix). Weightings for these two mRS distributions (154% Lees and -54% Goyal) are chosen such that once the contribution from the LVO patients have been removed from the combined nLVO/LVO distribution, the remaining mRS distribution matches the P(mRS &lt;= 1, <em>t = No Effect</em>) of 0.46 (from the control group in Emberson with NIHSS of 0-10).</p>
-</section>
-<section id="block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-nlvo-ivt">
-<h3>Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for nLVO-IVT)<a class="headerlink" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-nlvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>Here we use a block plot to show the expected mRS distribution for nLVO strokes if IVT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#nlvo-ivt-dist"><span class="std std-numref">figure 2</span></a>.</p>
-<figure class="align-default" id="nlvo-ivt-dist">
-<a class="reference internal image-reference" href="_images/dist_bars_nLVO_treated_with_IVT.jpg"><img alt="_images/dist_bars_nLVO_treated_with_IVT.jpg" src="_images/dist_bars_nLVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Expected mRS distribution for nLVO strokes if IVT given at time of stroke onset (<em>t = 0</em>), or if IVT given at time when the effect has decayed to zero (<em>t = No Effect</em>). Both distributions include IVT-related excess deaths due to fatal intracranial haemorrhage.</span><a class="headerlink" href="#nlvo-ivt-dist" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-nlvo-ivt">
-<h3>Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for nLVO-IVT)<a class="headerlink" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-nlvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>Here we use a line plot to show the expected mRS distribution for nLVO strokes if IVT is given at any time between <em>t = 0</em> (left) and <em>t = No Effect</em> (right). It is assumed that the log odds decay uniformly over time between <em>t = 0</em> and <em>t = No Effect</em> (as modelled by Emberson et al. for IVT). The time at which being given treatment has no-effect is taken as 6.3 hours for IVT (Emberson et al. 2014).</p>
-<p>The modelled decay of effects of IVT for nLVO strokes is shown in <a class="reference internal" href="#nlvo-ivt-time"><span class="std std-numref">figure 3</span></a>.</p>
-<figure class="align-default" id="nlvo-ivt-time">
-<a class="reference internal image-reference" href="_images/probs_with_time_nLVO_treated_with_IVT.jpg"><img alt="_images/probs_with_time_nLVO_treated_with_IVT.jpg" src="_images/probs_with_time_nLVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Expected mRS distribution for nLVO strokes depending on time to treatment with IVT.</span><a class="headerlink" href="#nlvo-ivt-time" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="patient-treatment-cohort-2-lvo-ivt">
-<h2>Patient-treatment cohort 2: LVO-IVT<a class="headerlink" href="#patient-treatment-cohort-2-lvo-ivt" title="Permalink to this heading">#</a></h2>
-<p>This section describes the methodology used to obtain the two mRS distribution estimates (<em>t = 0</em> and <em>t = No Effect</em>) for the patients with an LVO that are treated with IVT.</p>
-<section id="mrs-distribution-at-t-0-for-lvo-ivt">
-<h3>mRS distribution at <em>t = 0</em> (for LVO-IVT)<a class="headerlink" href="#mrs-distribution-at-t-0-for-lvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>We assume that the mRS distribution for patients treated at <em>t = 0</em> will be a weighted average of a full recovery distribution, and a no-benefit distribution, including a correction for risk of treatment-related death (we assume that risk is independent of the time treatment is given). We need a mRS distribution for each of these, and then take a weighted combination (18% fully recovered &amp; 82% no effect), where the weights are informed by Emberson et al. 2014.</p>
-<p>The <strong>mRS distribution for fully recovered LVO patients with IVT</strong> at <em>t = 0</em> is taken as the pre-stroke mRS distribution (this will represent a patient receiving a 100% effective treatment). This distribution comes from the SSNAP dataset, extracting the patients that have an ischaemic stroke and using NIHSS 11+ as a surrogate for LVO. This mRS distribution is then corrected for the excess deaths due to treatment with IVT for LVO patients (3.41%, see appendix).</p>
-<p>The <strong>mRS distribution for LVO patients for which IVT had no effect</strong> is assumed to be the same as patients that were not treated, but adjusted to include the risk of excess death caused by taking the treatment. We obtained this mRS distribution by taking the untreated control group population from Goyal et al. 2016. This distribution is then corrected for the excess deaths due to treatment with IVT for LVO patients (3.41%, see appendix).</p>
-<p>The <strong>weights</strong> used to combine these two mRS distributions (18% fully recovered &amp; 82% no effect) are chosen to match predicted P(mRS &lt;= 1, <em>t = 0</em>) of 0.20, which is set as a target by extrapolating the control group mRS for patients with NIHSS 11+ from Emberson et al. 2014 back to a predicted odds ratio of mRS 0-1 of 2.0 at <em>t = 0</em>.</p>
-</section>
-<section id="mrs-distribution-at-t-no-effect-for-lvo-ivt">
-<h3>mRS distribution at <em>t = No Effect</em> (for LVO-IVT)<a class="headerlink" href="#mrs-distribution-at-t-no-effect-for-lvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>We assume that patients treated at <em>t = No Effect</em> will have the same mRS distribution as patients that were not treated, with an adjustment to include the risk of excess deaths caused by taking the treatment. We obtained this mRS distribution by taking the untreated control population from Goyal et al. 2016. This distribution is then corrected for the excess deaths due to treatment with IVT for LVO patients (3.41%, see appendix).</p>
-</section>
-<section id="block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-ivt">
-<h3>Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-IVT)<a class="headerlink" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>Here we use a block plot to show the expected mRS distribution for LVO strokes if IVT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#lvo-ivt-dist"><span class="std std-numref">figure 4</span></a>.</p>
-<figure class="align-default" id="lvo-ivt-dist">
-<a class="reference internal image-reference" href="_images/dist_bars_LVO_treated_with_IVT.jpg"><img alt="_images/dist_bars_LVO_treated_with_IVT.jpg" src="_images/dist_bars_LVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Expected mRS distribution for LVO strokes if IVT given at time of stroke onset (<em>t = 0</em>), or if IVT given at time when there effect has decayed to zero (<em>t = No Effect</em>). Both distributions include IVT-related excess deaths due to fatal intracranial haemorrhage.</span><a class="headerlink" href="#lvo-ivt-dist" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-ivt">
-<h3>Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-IVT)<a class="headerlink" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-ivt" title="Permalink to this heading">#</a></h3>
-<p>Here we use a line plot to show the expected mRS distribution for LVO strokes if IVT is given at any time between <em>t = 0</em> (left) and <em>t = No Effect</em> (right). It is assumed that the log odds decay uniformly over time between <em>t = 0</em> and <em>t = No Effect</em> (as modelled by Emberson et al. for IVT). The time at which being given treatment has no-effect is taken as 6.3 hours for IVT (Emberson et al. 2014).</p>
-<p>The modelled decay of effects of IVT for LVO strokes is shown in <a class="reference internal" href="#nlvo-ivt-time"><span class="std std-numref">figure 3</span></a>.</p>
-<figure class="align-default" id="lvo-ivt-time">
-<a class="reference internal image-reference" href="_images/probs_with_time_LVO_treated_with_IVT.jpg"><img alt="_images/probs_with_time_LVO_treated_with_IVT.jpg" src="_images/probs_with_time_LVO_treated_with_IVT.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Expected mRS distribution for LVO strokes depending on time to treatment with IVT.</span><a class="headerlink" href="#lvo-ivt-time" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="patient-treatment-cohort-3-lvo-mt">
-<h2>Patient-treatment cohort 3: LVO-MT<a class="headerlink" href="#patient-treatment-cohort-3-lvo-mt" title="Permalink to this heading">#</a></h2>
-<p>This section describes the methodology used to obtain the two mRS distribution estimates (<em>t = 0</em> and <em>t = No Effect</em>) for the patients with an LVO that are treated with MT.</p>
-<section id="mrs-distribution-at-t-0-for-lvo-mt">
-<h3>mRS distribution at <em>t = 0</em> (for LVO-MT)<a class="headerlink" href="#mrs-distribution-at-t-0-for-lvo-mt" title="Permalink to this heading">#</a></h3>
-<p>We assume that the mRS distribution for patients treated at <em>t = 0</em> will be a weighted average of a full recovery distribution, and a no-benefit distribution, including a correction for risk of treatment-related death (we assume that risk is independent of the time treatment is given). We need a mRS distribution for each of these, and then take a weighted combination (75% fully recovered &amp; 25% no effect), where the weights are taken from Hui et al. 2020.</p>
-<p>The <strong>mRS distribution for fully recovered LVO patients with MT</strong> at <em>t = 0</em> is taken as the pre-stroke mRS distribution (this will represent a patient receiving a 100% effective treatment). This distribution comes from the SSNAP dataset, extracting the patients that have an ischaemic stroke and using NIHSS 11+ as a surrogate for LVO. This distribution is then corrected for the excess deaths due to treatment with MT (3.6%, see appendix).</p>
-<p>The <strong>mRS distribution for LVO patients for which MT had no effect</strong> is assumed to be the same as patients that were not treated, but adjusted to include the risk of excess death caused by taking the treatment. We obtained this mRS distribution by taking the untreated control population from Goyal et al. 2016. This distribution is then corrected for the deaths due to treatment with MT (3.6%, see appendix).</p>
-<p>The <strong>weights</strong> used to combine these two mRS distributions (75% fully recovered &amp; 25% no effect) are taken from Hui et al. 2020, who reported 75% successful recanalisation with thrombectomy.</p>
-<p>*Extrapolating results of good outcome, when recanalisation has been achieved with MT, from Fransen et al. 2016 back to <em>t = 0</em>, assuming 75% recanalisation, gives the same proportion of patients with mRS &lt;= 2 as the pre-stroke mRS in the SSNAP data (therefore this extrapolation would suggest full recovery of all health with MT theoretically carried out at <em>t = 0</em>).</p>
-</section>
-<section id="mrs-distribution-at-t-no-effect-for-lvo-mt">
-<h3>mRS distribution at <em>t = No Effect</em> (for LVO-MT)<a class="headerlink" href="#mrs-distribution-at-t-no-effect-for-lvo-mt" title="Permalink to this heading">#</a></h3>
-<p>We assume that patients treated at <em>t = No Effect</em> will have the same mRS distribution as patients that were not treated, and adjusted to include the risk of excess deaths caused by taking the treatment. We obtained this mRS distribution by taking the untreated control population from Goyal et al. 2016. This distribution is then corrected for the excess deaths due to treatment with MT (3.6%, see appendix).</p>
-</section>
-<section id="block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-mt">
-<h3>Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-MT)<a class="headerlink" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-mt" title="Permalink to this heading">#</a></h3>
-<p>Here we use a block plot to show the expected mRS distribution for LVO strokes if MT is given at either time of stroke onset (<em>t = 0</em>, upper plot) or time when the effect of treatment has decayed to zero (<em>t = No Effect</em>, lower plot), shown in <a class="reference internal" href="#lvo-mt-dist"><span class="std std-numref">figure 6</span></a>.</p>
-<figure class="align-default" id="lvo-mt-dist">
-<a class="reference internal image-reference" href="_images/dist_bars_LVO_treated_with_MT.jpg"><img alt="_images/dist_bars_LVO_treated_with_MT.jpg" src="_images/dist_bars_LVO_treated_with_MT.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Expected mRS distribution for LVO strokes if MT given at time of stroke onset (<em>t = 0</em>), or if MT given at time when there effect has decayed to zero (<em>t = No Effect</em>. Both distributions include MT-related excess deaths.</span><a class="headerlink" href="#lvo-mt-dist" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-mt">
-<h3>Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-MT)<a class="headerlink" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-mt" title="Permalink to this heading">#</a></h3>
-<p>Here we use a line plot to show the expected mRS distribution if MT is given at any time between <em>t = 0</em> (left) and <em>t = No Effect</em> (right). It is assumed that the log odds decay uniformly over time between <em>t = 0</em> and <em>t = No Effect</em> (as modelled by Fransen et al. for MT). The time to no-effect treatment is taken as 8 hours for MT (Fransen et al). Note: the time to no effect from Fransen et al. did not include those patients who may be selected for late treatment based on advanced imaging. In this method we do not include late-presenting patients in our outcome modelling.</p>
-<p>The modelled decay of effects of MT are shown in <a class="reference internal" href="#lvo-mt-time"><span class="std std-numref">figure 7</span></a>.</p>
-<figure class="align-default" id="lvo-mt-time">
-<a class="reference internal image-reference" href="_images/probs_with_time_LVO_treated_with_MT.jpg"><img alt="_images/probs_with_time_LVO_treated_with_MT.jpg" src="_images/probs_with_time_LVO_treated_with_MT.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Expected mRS distribution for LVO strokes depending on time to treatment with MT.</span><a class="headerlink" href="#lvo-mt-time" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="note-on-comparator-control-groups">
-<h2>Note on comparator control groups<a class="headerlink" href="#note-on-comparator-control-groups" title="Permalink to this heading">#</a></h2>
-<p>In our calculations above, we include treatment-related deaths in our predicted mRS distribution. When estimating the clinical benefit of reperfusion treatment we calculate mRS distributions for untreated patients, without the addition of excess deaths. The method is similar to those described above, but without addition of excess deaths. Calculations may be found in the found in the <a class="reference internal" href="01_mRS_datasets_full.html"><span class="doc std std-doc">derivation of mRS distributions</span></a> notebook.</p>
-</section>
-<section id="utility-weighted-mrs-outcomes">
-<h2>Utility-weighted mRS outcomes<a class="headerlink" href="#utility-weighted-mrs-outcomes" title="Permalink to this heading">#</a></h2>
-<p>In addition to mRS, we may calculate utility-weighted mRS (UW-mRS).</p>
-<p>UW-mRS incorporates both treatment effect and patient perceived quality of life as a single outcome measure for stroke trials.</p>
-<p>UW-mRS scores are based on a pooled analysis of 20,000+ patients, from Wang et al (2020). The Utilities for each mRS level are shown below.</p>
+<p>In addition to mRS, we may calculate utility-weighted mRS (UW-mRS). UW-mRS incorporates both treatment effect and patient perceived quality of life as a single outcome measure for stroke trials.</p>
+<p>The default utility scores used in the model are based on a pooled analysis of 20,000+ patients, from Wang et al (2020). The Utilities for each mRS level are shown below.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>mRS Score</p></th>
@@ -605,122 +494,110 @@ document.write(`
 </tbody>
 </table>
 </section>
-<section id="summary-plots">
-<h2>Summary plots<a class="headerlink" href="#summary-plots" title="Permalink to this heading">#</a></h2>
-<p>The effect of time to treatment with IVT or MT, in isolation is shown in <a class="reference internal" href="#time-to-treatment"><span class="std std-numref">figure 8</span></a>. The combined effect of IVT and MT in a mixed nLVO/LVO population is shown in <a class="reference internal" href="#utility-all"><span class="std std-numref">figure 9</span></a></p>
-<figure class="align-default" id="time-to-treatment">
-<a class="reference internal image-reference" href="_images/time_to_treatment.jpg"><img alt="_images/time_to_treatment.jpg" src="_images/time_to_treatment.jpg" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">The effect of time to treatment on effectiveness of treatment, shown individually for nLVO treated with IVT, and LVO treated with MT or IVT alone (the effect of MT is based on clinical trails where 85% of patients had previously received IVT). Effectiveness is shown as mean mRS (left) , the proportion of patients with mRS &lt;= 2 (middle), and added utility (right).</span><a class="headerlink" href="#time-to-treatment" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="utility-all">
-<a class="reference internal image-reference" href="_images/matrix_utility_and_mRS.jpg"><img alt="_images/matrix_utility_and_mRS.jpg" src="_images/matrix_utility_and_mRS.jpg" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">The effect of time to treatment with IVT and MT on a mixed nLVO/LVO population (LVO making up 35% of all treated ischaemic strokes).</span><a class="headerlink" href="#utility-all" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="example-of-sampled-mrs-distribution-shift">
-<h2>Example of sampled mRS distribution shift<a class="headerlink" href="#example-of-sampled-mrs-distribution-shift" title="Permalink to this heading">#</a></h2>
-<p>Figure <a class="reference internal" href="#treatment-shift"><span class="std std-numref">10</span></a> shows the effect of thrombectomy delivered at 120 mins after a stroke in five patients. Each patient has a value of ‘P’ sampled from a range of 0-1.</p>
+<section id="what-do-these-models-calculate">
+<h3>What do these models calculate?<a class="headerlink" href="#what-do-these-models-calculate" title="Permalink to this heading">#</a></h3>
+<p>This method calculates disability outcome distribution estimates for three patient-treatment cohorts:</p>
+<ol class="arabic simple">
+<li><p>nLVO-IVT (patients with an nLVO that are treated with IVT)</p></li>
+<li><p>LVO-IVT (patients with an LVO that are treated with IVT)</p></li>
+<li><p>LVO-MT (patients with an LVO that are treated with MT).</p></li>
+</ol>
+<p>For each patient-treatment cohort, we estimate two mRS distributions:</p>
 <ul class="simple">
-<li><p>Patient #1 (P=0.1): mRS untreated = 1, mRS treated = 0</p></li>
-<li><p>Patient #2 (P=0.3): mRS untreated = 3, mRS treated = 1</p></li>
-<li><p>Patient #3 (P=0.5): mRS untreated = 4, mRS treated = 3</p></li>
-<li><p>Patient #4 (P=0.7): mRS untreated = 5, mRS treated = 4</p></li>
-<li><p>Patient #5 (P=0.9): mRS untreated = 6, mRS treated = 6</p></li>
+<li><p>mRS distribution if treatment is given at <em>t = 0</em> (time of stroke onset),</p></li>
+<li><p>mRS distribution if treatment is given at <em>t = No Effect</em> (time of no effect).</p></li>
 </ul>
-<figure class="align-default" id="treatment-shift">
-<a class="reference internal image-reference" href="_images/treatment_shift.jpg"><img alt="_images/treatment_shift.jpg" src="_images/treatment_shift.jpg" style="width: 600px;" /></a>
+<p>The method is built by synthesising data from multiple sources <a class="reference internal" href="#data-cauldron"><span class="std std-numref">figure 1</span></a>, including reperfusion treatment clinical trials and 3 years’ worth of stroke admission data for England and Wales. The details are given on the “Derivation of mRS distributions…” page and this cartoon gives a taste of how many data sources were combined:</p>
+<figure class="align-default" id="data-cauldron">
+<a class="reference internal image-reference" href="_images/data_cauldron.png"><img alt="_images/data_cauldron.png" src="_images/data_cauldron.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">The predicted effect of treatment of a selection of five patients with LVO, given thrombectomy at 120 mins after stroke. The dotted lines represent the mRS shift for each patient if they received no treatment (top), or received MT at 120 minutes after stroke onset (bottom).</span><a class="headerlink" href="#treatment-shift" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Synthesis of multiple data sources into a disability-level model</span><a class="headerlink" href="#data-cauldron" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>We can then use interpolation to determine the disability distribution at any point inbetween.</p>
+<p>The resulting mRS distributions with time are shown in the following image.</p>
+<p><em>work in progress</em> - make a version of this image with the reference no-treatment, no-effect, time-zero, pre-stroke distributions too.</p>
+<p><img alt="" src="_images/probs_with_time1.jpg" /></p>
+</section>
+</section>
+<section id="samuel-2-project">
+<h2>SAMueL-2 project<a class="headerlink" href="#samuel-2-project" title="Permalink to this heading">#</a></h2>
+<p>The stroke outcome models are part of SAMueL-2, (Stroke Audit and Machine Learning 2). More details about SAMueL-2 generally are available at the <a class="reference external" href="https://samuel-book.github.io/samuel-2/">online book</a>, and our published papers, presentations and other useful documents are available at <a class="reference external" href="https://github.com/samuel-book/samuel-2-reference">this GitHub repository</a>.</p>
+<p>For an overview on SAMueL and our results so far:</p>
+<ul class="simple">
+<li><p>Article on SAMueL-1 results on <a class="reference external" href="https://github.com/samuel-book/samuel-2-reference/blob/main/samuel_1_papers_report/2022_stroke_paper.pdf">machine learning for thrombolysis</a>. Allen M, James C, Frost J, Liabo K, Pearn K, Monks T, et al. Using simulation and machine learning to maximise the benefit of intravenous thrombolysis in acute stroke in England and Wales: the SAMueL modelling and qualitative study. Health Soc Care Deliv Res 2022;10(31) <a class="reference external" href="https://doi.org/10.3310/GVZL5699">https://doi.org/10.3310/GVZL5699</a>.</p></li>
+</ul>
+<p>SAMueL-2 is part of the Peninsula Collaboration for Health Operational Research and Data Science <a class="reference external" href="https://arc-swp.nihr.ac.uk/research-and-implementation/research-teams/penchord/">PenCHORD</a>.</p>
+<p>The stroke outcome model is continuing to be used in other projects, including:</p>
+<ul class="simple">
+<li><p><a href="https://github.com/stroke-modelling/"><a class="reference internal" href="https://avatars.githubusercontent.com/u/141143213"><img alt="Stroke-Modelling organisation logo" src="https://avatars.githubusercontent.com/u/141143213" style="height: 20px;" /></a></a> <a class="github reference external" href="https://github.com/stroke-modelling/">stroke-modelling/</a> Python packages for easily using our models.</p></li>
+<li><p><a href="https://github.com/stroke-optimist/"><a class="reference internal" href="https://avatars.githubusercontent.com/u/77266176"><img alt="OPTIMIST organisation logo" src="https://avatars.githubusercontent.com/u/77266176" style="height: 20px;" /></a></a> <a class="github reference external" href="https://github.com/stroke-optimist/">stroke-optimist/</a> Stroke OPTIMIST Project: OPTimising IMplementation of Ischaemic Stroke Thrombectomy.</p></li>
+<li><p><a href="https://github.com/stroke-digital-twin/"><a class="reference internal" href="https://avatars.githubusercontent.com/u/145005029"><img alt="Stroke-Digital-Twin organisation logo" src="https://avatars.githubusercontent.com/u/145005029" style="height: 20px;" /></a></a> <a class="github reference external" href="https://github.com/stroke-digital-twin/">stroke-digital-twin/</a> Digital twins of the stroke pathway.</p></li>
+</ul>
+</section>
+<section id="contents-of-this-book">
+<h2>Contents of this book<a class="headerlink" href="#contents-of-this-book" title="Permalink to this heading">#</a></h2>
+<p>The left sidebar contains links to all of the pages in this book.</p>
+<section id="definitions-reference">
+<h3>📚 Definitions reference<a class="headerlink" href="#definitions-reference" title="Permalink to this heading">#</a></h3>
+<p>These pages contain more details than can fit on this main introduction page.</p>
+<p>The “Stroke” page contains information about the types and treatments of stroke.</p>
+<p>The “Mathematics” page contains information about the maths that is required to calculate the mRS distributions.</p>
+</section>
+<section id="outcome-model-methods">
+<h3>🧮 Outcome model methods<a class="headerlink" href="#outcome-model-methods" title="Permalink to this heading">#</a></h3>
+<p>The method behind the model.</p>
+<ul class="simple">
+<li><p>Deriving the mRS distributions - full details of the data sources, assumptions, and maths used to create each mRS distribution.</p>
+<ul>
+<li><p>Excess deaths - Methods for calculating the excess death rates for nLVO and IVT, LVO and IVT, and LVO and MT.</p></li>
+<li><p>Extrapolation - Method for using limited log-odds data at fixed times to find new log-odds data at other times.</p></li>
+<li><p>Proportion of ischaemic patients with LVO - sanity check for the proportions of patients with each stroke type.</p></li>
+</ul>
+</li>
+<li><p>Probability with time - method for interpolating between the time-zero and time-of-no-effect mRS distributions to find the probability distributions at any treatment time.</p></li>
+</ul>
+<p>There are also some bonus pages that go into much more detail on some topics. These pages are not essential for understanding how the outcome model works.</p>
+<p>Extra pages with more details:</p>
+<ul class="simple">
+<li><p>“Formulae for probabilities with time” - defining the probability distribution at any treatment time as a mathematical function.</p></li>
+<li><p>“Logistic functions” - digging into how the formula for probability with time works.</p></li>
+</ul>
+</section>
+<section id="stroke-outcome-package">
+<h3>📦 stroke-outcome package<a class="headerlink" href="#stroke-outcome-package" title="Permalink to this heading">#</a></h3>
+<p><a href="https://github.com/stroke-modelling/stroke-outcome/"><a class="reference internal" href="_images/github_stroke-outcome_rotated_m5.png"><img alt="Preview of the GitHub repository for the stroke-outcome package." class="align-left" src="_images/github_stroke-outcome_rotated_m5.png" style="width: 200px;" /></a></a></p>
+<p>Use the models yourself!</p>
+<p><a class="reference external" href="https://github.com/stroke-modelling/stroke-outcome/"><img alt="GitHub Badge" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" /></a> <a class="github reference external" href="https://github.com/stroke-modelling/stroke-outcome/">stroke-modelling/stroke-outcome</a></p>
+<p><a class="reference external" href="https://pypi.org/project/stroke-outcome/"><img alt="PyPI" src="https://img.shields.io/pypi/v/stroke-outcome?label=pypi%20package" /></a> <a class="reference external" href="https://pypi.org/project/stroke-outcome/">https://pypi.org/project/stroke-outcome/</a></p>
+<p>The code is written in the <code class="docutils literal notranslate"><span class="pre">python</span></code> programming language. The source code is open and viewable on GitHub, and the full code can be downloaded from the Python Package Index (PyPI). There are instructions for how to download and use the code on the GitHub page.</p>
+<p>The orignal code used in this online book is also available on GitHub. It may be found at <a class="github reference external" href="https://github.com/samuel-book/stroke_outcome">samuel-book/stroke_outcome</a>.</p>
+</section>
+<section id="general-results">
+<h3>📈 General results<a class="headerlink" href="#general-results" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Calculate outcomes for treatments at different times.</p></li>
+<li><p>Make a basic grid of travel times to stroke units. Varying travel times means varying treatment times and so varying outcomes.</p></li>
+</ul>
 </section>
 <section id="application-to-england-and-wales">
-<h2>Application to England and Wales<a class="headerlink" href="#application-to-england-and-wales" title="Permalink to this heading">#</a></h2>
-<p>An example of application to organisation of stroke care in England and Wales is shown in figure <a class="reference internal" href="#england-wales-utility"><span class="std std-numref">11</span></a>. This figure shows the added utility of reperfusion therapy.</p>
-<figure class="align-default" id="england-wales-utility">
-<a class="reference internal image-reference" href="_images/added_utility_six_in_one.jpg"><img alt="_images/added_utility_six_in_one.jpg" src="_images/added_utility_six_in_one.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">A comparison of <em>drip and ship</em> and <em>mothership</em> models of organisation of care, and the effect on added utility. Top row: nLVO. Bottom row: LVO. In each row the maps show (left-to-right): <em>Drip and ship</em>, <em>Mothership</em>, the advantage of <em>Mothership</em> over <em>Drip and ship</em>.</span><a class="headerlink" href="#england-wales-utility" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>These results may be weighted by the proportion of nLVO and LVO, and the proportion of each which may be expected to be treated. Figure <a class="reference internal" href="#england-wales-weighted-utility"><span class="std std-numref">12</span></a> shows the overall expected benefit of <em>drip and ship</em> and <em>mothership</em> models of organisation of care, considering these weightings.</p>
-<figure class="align-default" id="england-wales-weighted-utility">
-<a class="reference internal image-reference" href="_images/added_utility_weighted_results.jpg"><img alt="_images/added_utility_weighted_results.jpg" src="_images/added_utility_weighted_results.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">A comparison of <em>drip and ship</em> and <em>mothership</em> models of organisation of care,and the effect on added utility weighted by the proportion of nLVO and LVO and their expected treatment rates. Added utiility is averaged across all emergency stroke admissions.</span><a class="headerlink" href="#england-wales-weighted-utility" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<h3>🌍 Application to England and Wales<a class="headerlink" href="#application-to-england-and-wales" title="Permalink to this heading">#</a></h3>
+<p>Map the outcomes for any point in England and Wales based on the travel times to each stroke unit.</p>
 </section>
-<section id="references-used-in-modelling">
-<h2>References used in modelling<a class="headerlink" href="#references-used-in-modelling" title="Permalink to this heading">#</a></h2>
-<p>de la Ossa Herrero N, Carrera D, Gorchs M, Querol M, Millán M, Gomis M, et al. Design and Validation of a Prehospital Stroke Scale to Predict Large Arterial Occlusion The Rapid Arterial Occlusion Evaluation Scale. Stroke; a journal of cerebral circulation. 2013 Nov 26;45.</p>
-<p>Emberson J, Lees KR, Lyden P, et al. <em>Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials.</em> The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
-<p>Fransen, P., Berkhemer, O., Lingsma, H. et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol. 2016 Feb 1;73(2):190–6. DOI: 10.1001/jamaneurol.2015.3886</p>
-<p>Goyal M, Menon BK, van Zwam WH, et al. <em>Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials.</em> The Lancet 2016;387:1723-1731. doi:10.1016/S0140-6736(16)00163-X</p>
-<p>Hui W, Wu C, Zhao W, Sun H, Hao J, Liang H, et al. Efficacy and Safety of Recanalization Therapy for Acute Ischemic Stroke With Large Vessel Occlusion. Stroke. 2020 Jul;51(7):2026–35.</p>
-<p>IST-3 collaborative group, Sandercock P, Wardlaw JM, Lindley RI, Dennis M, Cohen G, et al. The benefits and harms of intravenous thrombolysis with recombinant tissue plasminogen activator within 6 h of acute ischaemic stroke (the third international stroke trial [IST-3]): a randomised controlled trial. Lancet. 2012 379:2352-63.</p>
-<p>Lees KR, Bluhmki E, von Kummer R, et al. <em>Time to treatment with intravenous alteplase and outcome in stroke: an updated pooled analysis of ECASS, ATLANTIS, NINDS, and EPITHET trials</em>. The Lancet 2010;375:1695-703. doi:10.1016/S0140-6736(10)60491-6</p>
-<p>McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26.</p>
-<p>SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html">https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html</a></p>
-<p>Wang X, Moullaali TJ, Li Q, Berge E, Robinson TG, Lindley R, et al. Utility-Weighted Modified Rankin Scale Scores for the Assessment of Stroke Outcome. Stroke. 2020 Aug 1;51(8):2411-7.</p>
-</section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>In Goyal’s metanalysis of MT, 85.1% of patients in the trial had also received IVT. The trial results therefore mostly reflect IVT/MT vs MT alone. If patients first attend an IVT-only centre, then it is possible that if they respond well to IVT they will not proceed to MT (they are, arguably, more likely to proceed to MT when IVT and MT are more tightly coupled in time). The overall benefit in LVO patients is likely to a conditional sum of IVT and MT benefit - that is patients may first benefit from IVT, and those patients who do not respond well to IVT may benefit from additional MT. Currently in the UK 52% of patients are admitted directly to an MT-capable centre (Phil White, private communication).</p></li>
-</ul>
-</section>
-<section id="appendix">
-<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h2>
-<section id="excess-deaths-due-to-treatment">
-<h3>Excess deaths due to treatment<a class="headerlink" href="#excess-deaths-due-to-treatment" title="Permalink to this heading">#</a></h3>
-<section id="ivt-deaths-due-to-fatal-intracranial-haemorrhage-emberson-et-al-2014">
-<h4>IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014):<a class="headerlink" href="#ivt-deaths-due-to-fatal-intracranial-haemorrhage-emberson-et-al-2014" title="Permalink to this heading">#</a></h4>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>NIHSS</p></th>
-<th class="head"><p>Treated</p></th>
-<th class="head"><p>Control</p></th>
-<th class="head"><p>Excess</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0-10</p></td>
-<td><p>1.41%</p></td>
-<td><p>0.32%</p></td>
-<td><p>1.10%</p></td>
-</tr>
-<tr class="row-odd"><td><p>11+</p></td>
-<td><p>3.85%</p></td>
-<td><p>0.45%</p></td>
-<td><p>3.41%</p></td>
-</tr>
-<tr class="row-even"><td><p>All</p></td>
-<td><p>2.68%</p></td>
-<td><p>0.39%</p></td>
-<td><p>2.29%</p></td>
-</tr>
-</tbody>
-</table>
-<p>Excess deaths due to IVT are assumed to occur independently of time. Differing risks of death are applied according to whether the patient is assumed nLVO (NIHSS 0-10 as a surrogate for nLVO) or LVO (NIHSS 11+, as a surrogate for LVO). Note: Rounding errors exist in the “Excess” column.</p>
-<p>We use Embersons 2.29% excess deaths from IVT on all patients (nLVO and LVO) with the combined nLVO/LVO population from Lees et al. 2010. From the available trial data, we assume that the split between nLVO/LVO is as near the same in both Lees and Emberson:</p>
-<ul class="simple">
-<li><p>Lees has 3670 patients, they provide a granular level of mRS distribution for their population (combined nLVO/LVO) but they do not provide the proportions of the split.</p></li>
-<li><p>Emberson has 6756 patients (they have the 3035 patients from IST-3 in addition to those in Lees, with 51 unaccounted for), they provide the excess deaths by stroke severity. To obtain their value of 2.29% excess deaths from IVT for all patients, this requires a weighting of 48.27% nLVO and 51.73% LVO.</p></li>
-<li><p>IST-3 has 3035 patients and provide proportion of patients by stroke severity: 48.24% nLVO and 51.76% LVO. This is as near as the same that we have calculated in Emberson.</p></li>
-<li><p>Assuming that Lees contains the other patients in Emberson (those not from IST-3), then it is a fair assumption that Lees has the same split (nLVO/LVO) of patients as Emberson, and so can use 2.29% excess deaths from IVT for Lees combined nLVO/LVO population.</p></li>
-</ul>
-</section>
-<section id="mt-deaths-goyal-et-al-2016">
-<h4>MT deaths (Goyal et al., 2016):<a class="headerlink" href="#mt-deaths-goyal-et-al-2016" title="Permalink to this heading">#</a></h4>
-<p>Though MT was found to reduce death rate overall, Goyal et al. reported a 15.3% death rate for patients treated with MT, with an average onset-to-treatment time of 285 mins. By extrapolating from this, we estimate that MT has an inherant 4% risk of death, in order for the model to predict a 15.3% death rate with MT treatment at 285 minutes (though it should be noted this is a figure used to adjust death rate in modelling and is not a causal measure of death due to MT). For further maths see the <code class="docutils literal notranslate"><span class="pre">excess_deaths_mt</span></code> in the bonus notebooks.</p>
+<section id="interactive-demo">
+<h3>👑 Interactive demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h3>
+<p><a href="https://samuel2-stroke-outcome.streamlit.app/"><a class="reference internal" href="_images/streamlit_stroke_outcomes.gif"><img alt="Preview of the Streamlit app for the stroke outcome demo." class="align-right" src="_images/streamlit_stroke_outcomes.gif" style="width: 200px;" /></a></a></p>
+<p>Try an interactive demo!</p>
+<p>The models are used in an online Streamlit app. In the demo, you can pick the treatment times for some patients and see their outcomes from the stroke outcome model.</p>
+<p><a class="reference external" href="https://samuel2-stroke-outcome.streamlit.app/"><img alt="Open in Streamlit" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" /></a> <a class="reference external" href="https://samuel2-stroke-outcome.streamlit.app/">https://samuel2-stroke-outcome.streamlit.app/</a></p>
 </section>
 </section>
-</section>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -760,11 +637,11 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="01_mRS_datasets_full.html"
+       href="definitions_reference/definitions_stroke.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</p>
+        <p class="prev-next-title">Definitions for stroke</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -783,45 +660,30 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-rankin-scale">Modified Rankin Scale</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-and-results">Method and Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-treatment-cohort-1-nlvo-ivt">Patient-treatment cohort 1: nLVO-IVT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-0-for-nlvo-ivt">mRS distribution at <em>t = 0</em> (for nLVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-no-effect-for-nlvo-ivt">mRS distribution at <em>t = No Effect</em> (for nLVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-nlvo-ivt">Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for nLVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-nlvo-ivt">Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for nLVO-IVT)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-disability-outcomes-and-utility-after-treatment-of-stroke-with-thrombolysis-ivt-or-thrombectomy-mt">Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-patients-can-be-modelled">Which patients can be modelled?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-treatments-are-available">Which treatments are available?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-the-treatment-time-matter">Why does the treatment time matter?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-these-outcomes">What are these outcomes?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-these-models-calculate">What do these models calculate?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-treatment-cohort-2-lvo-ivt">Patient-treatment cohort 2: LVO-IVT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-0-for-lvo-ivt">mRS distribution at <em>t = 0</em> (for LVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-no-effect-for-lvo-ivt">mRS distribution at <em>t = No Effect</em> (for LVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-ivt">Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-IVT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-ivt">Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-IVT)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-treatment-cohort-3-lvo-mt">Patient-treatment cohort 3: LVO-MT</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-0-for-lvo-mt">mRS distribution at <em>t = 0</em> (for LVO-MT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mrs-distribution-at-t-no-effect-for-lvo-mt">mRS distribution at <em>t = No Effect</em> (for LVO-MT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-plot-showing-the-mrs-distribution-estimates-for-t-0-and-t-no-effect-for-lvo-mt">Block plot showing the mRS distribution estimates for <em>t = 0</em> and <em>t = No Effect</em> (for LVO-MT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plot-showing-mrs-distribution-estimates-relationship-between-time-to-treatment-and-effect-for-lvo-mt">Line plot showing mRS distribution estimates: Relationship between time to treatment and effect (for LVO-MT)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-comparator-control-groups">Note on comparator control groups</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-weighted-mrs-outcomes">Utility-weighted mRS outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-plots">Summary plots</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-sampled-mrs-distribution-shift">Example of sampled mRS distribution shift</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-england-and-wales">Application to England and Wales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-used-in-modelling">References used in modelling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-deaths-due-to-treatment">Excess deaths due to treatment</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ivt-deaths-due-to-fatal-intracranial-haemorrhage-emberson-et-al-2014">IVT deaths due to fatal intracranial haemorrhage (Emberson et al., 2014):</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mt-deaths-goyal-et-al-2016">MT deaths (Goyal et al., 2016):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#samuel-2-project">SAMueL-2 project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents-of-this-book">Contents of this book</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-reference">📚 Definitions reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outcome-model-methods">🧮 Outcome model methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stroke-outcome-package">📦 stroke-outcome package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-results">📈 General results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-england-and-wales">🌍 Application to England and Wales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-demo">👑 Interactive demo</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+
   </nav></div>
 
 </div></div>

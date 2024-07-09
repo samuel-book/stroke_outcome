@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '01_mRS_datasets_full';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment" href="02_mRS_outcomes_maths.html" />
-    <link rel="prev" title="Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)" href="intro.html" />
+    <link rel="next" title="Calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment" href="02_mRS_outcomes_maths.html" />
+    <link rel="prev" title="Definitions for maths" href="definitions_maths.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,20 +161,17 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions_maths.html">Definitions for maths</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="02_mRS_outcomes_maths.html">Calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
 
 
 
@@ -192,14 +189,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="06_show_outcome_model_code.html">Show outcome model python code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">stroke-outcome package</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="streamlit.html">Streamlit app</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="package_docs/intro.html">Stroke outcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="package_docs/demo_continuous_outcomes.html">Continuous outcome model demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="package_docs/demo_discrete_outcomes.html">Discrete outcome model demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
@@ -419,7 +420,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="defining-modified-rankin-scale-mrs-probability-distributions-for-untreated-patients-and-predicted-distributions-if-treatment-given-at-time-of-stroke-onset">
+  <section id="defining-modified-rankin-scale-mrs-probability-distributions-for-untreated-patients-and-predicted-distributions-if-treatment-given-at-time-of-stroke-onset">
 <h1>Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset<a class="headerlink" href="#defining-modified-rankin-scale-mrs-probability-distributions-for-untreated-patients-and-predicted-distributions-if-treatment-given-at-time-of-stroke-onset" title="Permalink to this heading">#</a></h1>
 <section id="plain-english-summary">
 <h2>Plain English Summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
@@ -460,7 +461,7 @@ document.write(`
 <p>In this notebook we describe how we estimate the spread of disability levels if treatment was given immediately after the stroke (at <em>t = 0</em>), and what the spread of disability levels would be if the treatment was given at a time when it was no longer effective (at <em>t = No Effect</em>). These are two key pieces of information we will later use to estimate the spread of disability levels if we know the time after stroke symptoms began when a person was treated with either thrombolysis (IVT), a clot-busting medication, or thrombectomy (MT), the physical removal of a clot. The methodology described here is for patients with an ischaemic stroke (a stroke that is caused by a clot), where the location of the clot is either in a large vessel occlusion (LVO), or not (nLVO).</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="method">
+<section id="method">
 <h1>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
 <p>A more in depth description of the method is found in the document <a class="reference internal" href="intro.html"><span class="doc std std-doc">predicting granular disability outcomes after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</span></a></p>
 <p>This model contains mRS outcome distributions for three patient-treatment cohorts: 1) nLVO-IVT (patients with an nLVO that are treated with IVT), 2) LVO-IVT (patients with an LVO that are treated with IVT), 3) LVO-MT (patients with an LVO that are treated with MT). For each patient-treatment cohort, we estimate two mRS distributions: one mRS distribution if treatment is given at <em>t = 0</em> (time of stroke onset), and one mRS distribution if treatment is given at <em>t = No Effect</em> (time of no effect). In order to estimate these two mRS distributions, we use data from reperfusion treatment clinical trials and stroke admission data from England and Wales (Sentinel Stroke National Audit Programme, SSNAP). To select the relevant patients for each cohort we will use the National Institutes of Health Stroke Scale (NIHSS) on arrival as a surrogate to classify patients as nLVO (NIHSS 0-10) or LVO (NIHSS 11+).</p>
@@ -505,7 +506,7 @@ document.write(`
 <li><p>For <em>LVO patients</em> the <em>no treatment mRS distribution</em> is taken from the untreated control population from Goyal et al. 2016.</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-code">
+<section id="the-code">
 <h1>The code<a class="headerlink" href="#the-code" title="Permalink to this heading">#</a></h1>
 <p>Now we will show the code to calculate the mRS distributions that we have explained above.</p>
 <section id="import-packages">
@@ -1953,7 +1954,7 @@ Name: t0_treatment_lvo_ivt, dtype: float64
 <p>IST-3 collaborative group, Sandercock P, Wardlaw JM, Lindley RI, Dennis M, Cohen G, et al. The benefits and harms of intravenous thrombolysis with recombinant tissue plasminogen activator within 6 h of acute ischaemic stroke (the third international stroke trial [IST-3]): a randomised controlled trial. Lancet. 2012 379:2352-63.</p>
 <p>Lees KR, Bluhmki E, von Kummer R, et al. <em>Time to treatment with intravenous alteplase and outcome in stroke: an updated pooled analysis of ECASS, ATLANTIS, NINDS, and EPITHET trials</em>. The Lancet 2010;375:1695-703. doi:10.1016/S0140-6736(10)60491-6</p>
 <p>McMeekin P, White P, James MA, Price CI, Flynn D, Ford GA. Estimating the number of UK stroke patients eligible for endovascular thrombectomy. European Stroke Journal. 2017;2:319–26.</p>
-<p>SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html">https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html</a></p>
+<p>SAMueL-1 data on mRS before stroke (DOI: 10.5281/zenodo.6896710): https://samuel-book.github.io/samuel-1/descriptive_stats/08_prestroke_mrs.html</p>
 </section>
 <section id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h2>
@@ -2051,12 +2052,12 @@ Name: t0_treatment_lvo_ivt, dtype: float64
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="definitions_maths.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)</p>
+        <p class="prev-next-title">Definitions for maths</p>
       </div>
     </a>
     <a class="right-next"
@@ -2064,7 +2065,7 @@ Name: t0_treatment_lvo_ivt, dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</p>
+        <p class="prev-next-title">Calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

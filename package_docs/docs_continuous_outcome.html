@@ -159,42 +159,33 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_geography.html">Distance-based treatment effects</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../05a_geography_stroke_types.html">Distance-based treatment effects (plot for different stroke types)</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../06_show_outcome_model_code.html">Show outcome model python code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">stroke-outcome package</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Stroke outcome</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Documentation: Continuous outcome model</a></li>
@@ -204,14 +195,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
 </ul>
 
     </div>

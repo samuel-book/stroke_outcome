@@ -1,0 +1,1345 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Extra: Formulae for probabilities with time &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'outcome_model_methods/02b_formulae';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extra: Logistic functions" href="02c_extra_maths.html" />
+    <link rel="prev" title="Calculating outcome probabilities with time to treatment" href="02_probs_with_time.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/outcome_model_methods/02b_formulae.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Extra: Formulae for probabilities with time</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Extra: Formulae for probabilities with time</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-find-variation-with-time">Steps to find variation with time</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-straight-line-formula-for-log-odds">Find a straight line formula for log(odds)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-an-exponential-formula-for-odds-with-time">Find an exponential formula for odds with time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-logistic-formula-for-probability-with-time">Find a logistic formula for probability with time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-mrs-distributions">Application to mRS distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-the-data">Collect the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-new-time-distributions">Plot the new time distributions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="extra-formulae-for-probabilities-with-time">
+<h1>Extra: Formulae for probabilities with time<a class="headerlink" href="#extra-formulae-for-probabilities-with-time" title="Permalink to this heading">#</a></h1>
+<p>In this notebook we explain how to derive various formulae for probability and odds depending on time to treatment that will be used in predicting modified Rankin Scale (mRS) after stroke.</p>
+<p>The main results for an mRS band <span class="math notranslate nohighlight">\(x\)</span> and a time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Formula</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Probability</p></td>
+<td><p>$$ P(\mathrm{mRS}\leq x\</p></td>
+</tr>
+<tr class="row-odd"><td><p>Odds</p></td>
+<td><p>$$ O(\mathrm{mRS}\leq x\</p></td>
+</tr>
+<tr class="row-even"><td><p>Log(odds)</p></td>
+<td><p>$$ \log\bigl[O(\mathrm{mRS}\leq x\</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constant <span class="math notranslate nohighlight">\(A_x\)</span></p></td>
+<td><p>$$ A_x = \log\left[ \frac{P(\mathrm{mRS}\leq x\</p></td>
+</tr>
+<tr class="row-even"><td><p>Constant <span class="math notranslate nohighlight">\(b_x\)</span></p></td>
+<td><p>$$ b_x = \frac{1}{t_{\mathrm{ne}}} \left( \log\left[ \frac{P(\mathrm{mRS}\leq x\</p></td>
+</tr>
+</tbody>
+</table>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>We have <a class="reference external" href="https://github.com/samuel-book/stroke_outcome/blob/main/mrs_datasets_full.ipynb">previously derived</a> the probabilities of mRS at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>, the time of no effect. We need to use the data we have at these two fixed times to create formulae that describe probability at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Since we know that probability, odds, and log(odds) are all linked,
+we only need to find a formula for one of these distributions.
+That formula can then be converted into the forms required to find the other quantities.
+We’ll start with the simplest formula, which is for log(odds).</p>
+<p>In the literature, the log(odds ratio) has been presented at regular time intervals and falls off approximately linearly with time <span class="math notranslate nohighlight">\(t\)</span>. This allows it to be modelled as a straight line.</p>
+<blockquote>
+<div><p><img alt="" src="../_images/odds_decay.png" /></p>
+<p>The right-hand plot shows the falling log-odds ratio with time. It uses data for thrombolysis from Emberson et al. 2014 and data for thrombectomy from Fransen et al. 2016.</p>
+</div></blockquote>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>The steps here are, for mRS<span class="math notranslate nohighlight">\(\leq\)</span>5<span class="math notranslate nohighlight">\(^*\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Define log(odds), a straight-line formula <span class="math notranslate nohighlight">\(A + bt\)</span>.</p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> using the known probabilities at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>.</p></li>
+<li><p>Define odds, an exponential decay, by converting log(odds).</p></li>
+<li><p>Define probability as a function of <span class="math notranslate nohighlight">\(t\)</span> by converting odds.</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(^*\)</span> We cannot include mRS<span class="math notranslate nohighlight">\(\leq\)</span>6 in these calculations, but luckily we already know that <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq6)=1.0\)</span> at all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Note: in this document we calculate log(odds) instead of log(odds radio) like in the plot above. It doesn’t make any difference to the final result.
+The log(odds ratio) is used so that it is clear at what time the log(odds ratio) falls below zero, and so when to define the time of no effect.
+Since we are using data where we already know this time of no effect and the probability distributions at that time, we can skip a step and directly model log(odds) as a straight line.
+We can make this simplification because the straight line fits to log(odds) and to log(odds ratio) share a gradient and only differ in their start and end values (their displacement in <span class="math notranslate nohighlight">\(y\)</span>).</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notebook-admin">
+<h1>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep notebook cleaner once finalised</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up MatPlotLib</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># Change default colour scheme:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="steps-to-find-variation-with-time">
+<h1>Steps to find variation with time<a class="headerlink" href="#steps-to-find-variation-with-time" title="Permalink to this heading">#</a></h1>
+<section id="find-a-straight-line-formula-for-log-odds">
+<h2>Find a straight line formula for log(odds)<a class="headerlink" href="#find-a-straight-line-formula-for-log-odds" title="Permalink to this heading">#</a></h2>
+<p>We start with two different ways to write log(odds):</p>
+<ul class="simple">
+<li><p>Firstly, in terms of probability we have defined $<span class="math notranslate nohighlight">\( \log\bigl[O(\mathrm{mRS}\leq x\ |\ t)\bigr] = \log\left[ \frac{P(\mathrm{mRS}\leq x\ |\ t)}{1-P(\mathrm{mRS}\leq x\ |\ t)} \right] \)</span>$</p></li>
+<li><p>Secondly, we assume that there is a linear relationship between log(odds) and time for all values of mRS. This gives $<span class="math notranslate nohighlight">\( \log\bigl[O(\mathrm{mRS}\leq x\ |\ t)\bigr] = A_x + b_xt \)</span><span class="math notranslate nohighlight">\( where the values of the constants \)</span>A<span class="math notranslate nohighlight">\( and \)</span>b<span class="math notranslate nohighlight">\( are different for each mRS band \)</span>x<span class="math notranslate nohighlight">\(. **\)</span>A<span class="math notranslate nohighlight">\( is log(odds) at t=0**, and **\)</span>b<span class="math notranslate nohighlight">\( is the gradient of the straight line**. We expect \)</span>b_x<span class="math notranslate nohighlight">\( to always be negative because the log(odds) is always greater at \)</span>t=0$ than at the no-effect time.</p></li>
+</ul>
+<p>Equating these gives the following relation that holds for all <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ A_x + b_xt = \log\left[ \frac{P(\mathrm{mRS}\leq x\ |\ t)}{1-P(\mathrm{mRS}\leq x\ |\ t)} \right] \]</div>
+<p>To find <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, we need to consider the values of log(odds) when <span class="math notranslate nohighlight">\(t=0\,\)</span>hr or <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>, as this is the data available to us.</p>
+<p>When <span class="math notranslate nohighlight">\(t=0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ A_x = \log\left[ \frac{P(\mathrm{mRS}\leq x\ |\ t=0)}{1-P(\mathrm{mRS}\leq x\ |\ t=0)} \right] \]</div>
+<p>When <span class="math notranslate nohighlight">\(t=t_{\mathrm{ne}}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+A_x + b_xt_{\mathrm{ne}} &amp;= \log\left[ \frac{P(\mathrm{mRS}\leq x\ |\ t_\mathrm{ne})}{1-P(\mathrm{mRS}\leq x\ |\ t_\mathrm{ne})} \right] \\
+b_x &amp;= \frac{1}{t_{\mathrm{ne}}} \left( \log\left[ \frac{P(\mathrm{mRS}\leq x\ |\ t_\mathrm{ne})}{1-P(\mathrm{mRS}\leq x\ |\ t_\mathrm{ne})} \right] - A_x\right) 
+\end{align*}
+\end{split}\]</div>
+<p>In both cases, we know all of the <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(t\)</span> terms on the right-hand-side and so we can calculate <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+</section>
+<section id="find-an-exponential-formula-for-odds-with-time">
+<h2>Find an exponential formula for odds with time<a class="headerlink" href="#find-an-exponential-formula-for-odds-with-time" title="Permalink to this heading">#</a></h2>
+<p>We can take the exponential of <span class="math notranslate nohighlight">\( \log\bigl[O(\mathrm{mRS}\leq x\ |\ t)\bigr] = A_x + b_xt \)</span> to find an equation for odds:</p>
+<div class="math notranslate nohighlight">
+\[ O(\mathrm{mRS}\leq x\ |\ t) = e^{Ax + bx\cdot t} \]</div>
+<p>To see how this behaves, we can split the two terms in the exponential:</p>
+<div class="math notranslate nohighlight">
+\[ O(\mathrm{mRS}\leq x\ |\ t) = e^{Ax} \cdot e^{bx\cdot t} \]</div>
+<p>and use <span class="math notranslate nohighlight">\(A_x = \log\bigl[O(\mathrm{mRS}\leq x\ |\ t=0)\bigr]\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[ O(\mathrm{mRS}\leq x\ |\ t) = O(\mathrm{mRS}\leq x\ |\ t=0) \cdot e^{bx\cdot t} \]</div>
+<p>This tells us that odds will decay exponentially with time because <span class="math notranslate nohighlight">\(b_x\)</span> is always negative.</p>
+</section>
+<section id="find-a-logistic-formula-for-probability-with-time">
+<h2>Find a logistic formula for probability with time<a class="headerlink" href="#find-a-logistic-formula-for-probability-with-time" title="Permalink to this heading">#</a></h2>
+<p>Now we can set the expression for the odds ratio in exponential form equal to its definition in terms of probability:</p>
+<div class="math notranslate nohighlight">
+\[O(\mathrm{mRS}\leq x\ |\ t) \phantom{g} = \phantom{g} e^{Ax + bx\cdot t} \phantom{g} = \phantom{g} \frac{P(\mathrm{mRS}\leq x\ |\ t)}{1 - P(\mathrm{mRS}\leq x\ |\ t)} \]</div>
+<p>By setting <span class="math notranslate nohighlight">\(P \equiv P(\mathrm{mRS}\leq x\ |\ t)\)</span> and odds <span class="math notranslate nohighlight">\(O \equiv e^{Ax + bx \cdot t}\)</span>, we can invert this to find a formula for <span class="math notranslate nohighlight">\(P\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*} 
+O &amp; = \frac{P}{1 - P} \\
+O(1-P) &amp; = P \\
+O - (O\cdot P) &amp; = P \\ 
+O &amp; = P + (O\cdot P) \\
+O &amp; = P(1+O) \\
+\frac{O}{1+O} &amp; = P \\
+\end{align*}
+\end{split}\]</div>
+<p>To simplify this, we can multiply the left-hand-side by a factor of <span class="math notranslate nohighlight">\(\frac{1}{O}\div\frac{1}{O}\)</span>, which is equal to 1:</p>
+<div class="math notranslate nohighlight">
+\[ P \phantom{g} = \phantom{g} \frac{O}{1+O} \cdot  \frac{\frac{1}{O}}{\frac{1}{O}} \phantom{g} = \phantom{g}  \frac{1}{\frac{1}{O} + 1}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\frac{1}{O} = O^{-1} = \bigl(e^{Ax+bx\cdot t}\bigr)^{-1} = e^{-(Ax+bx\cdot t)}\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[ P(\mathrm{mRS}\leq x\ |\ t) = \frac{1}{1+e^{-(Ax + bx\cdot t)}} \]</div>
+<p>Finally, we have a formula to calculate <span class="math notranslate nohighlight">\(P\)</span> at any time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<blockquote>
+<div><p><strong>An optional extra step:</strong></p>
+<p>This equation for <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq x\ |\ t)\)</span> is almost in the form of a <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_function">logistic function</a>:</p>
+<div class="math notranslate nohighlight">
+\[ f(x) = \frac{L}{1 + e^{-k(x - x_0)}} \]</div>
+<p>With one more rearrangement <span class="math notranslate nohighlight">\( A_x + b_x t = b_x\left(t +\frac{Ax}{bx}\right) \)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[ P(\mathrm{mRS}\leq x\ |\ t) = \frac{1}{1+\exp{\bigl[-b_x\left(t +\frac{Ax}{bx}\right)\bigr]}} \]</div>
+<p>Compared with <span class="math notranslate nohighlight">\(f(x)\)</span> above, <span class="math notranslate nohighlight">\(L=1\)</span>, <span class="math notranslate nohighlight">\(k=b_x\)</span>, <span class="math notranslate nohighlight">\(x=t\)</span>, and <span class="math notranslate nohighlight">\(x_0 = -\frac{Ax}{bx}\)</span>.</p>
+</div></blockquote>
+</section>
+<section id="application-to-mrs-distributions">
+<h2>Application to mRS distributions<a class="headerlink" href="#application-to-mrs-distributions" title="Permalink to this heading">#</a></h2>
+<section id="collect-the-data">
+<h3>Collect the data<a class="headerlink" href="#collect-the-data" title="Permalink to this heading">#</a></h3>
+<p>Load mRS distributions of probabilities in each bin, <span class="math notranslate nohighlight">\(P(\mathrm{mRS}=x)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_prob_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./outcome_utilities/mrs_dist_probs_bins.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+
+<span class="n">mrs_prob_all</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+    <tr>
+      <th>Stroke type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.582881</td>
+      <td>0.162538</td>
+      <td>0.103440</td>
+      <td>0.102223</td>
+      <td>0.041973</td>
+      <td>0.006945</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_nlvo_ivt_deaths</th>
+      <td>0.576469</td>
+      <td>0.160750</td>
+      <td>0.102302</td>
+      <td>0.101099</td>
+      <td>0.041511</td>
+      <td>0.006869</td>
+      <td>0.011000</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.417894</td>
+      <td>0.142959</td>
+      <td>0.118430</td>
+      <td>0.164211</td>
+      <td>0.113775</td>
+      <td>0.042731</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_ivt_deaths</th>
+      <td>0.403644</td>
+      <td>0.138084</td>
+      <td>0.114392</td>
+      <td>0.158611</td>
+      <td>0.109895</td>
+      <td>0.041274</td>
+      <td>0.034100</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_mt_deaths</th>
+      <td>0.401178</td>
+      <td>0.137241</td>
+      <td>0.113693</td>
+      <td>0.157643</td>
+      <td>0.109224</td>
+      <td>0.041022</td>
+      <td>0.040000</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.197144</td>
+      <td>0.262856</td>
+      <td>0.120032</td>
+      <td>0.127736</td>
+      <td>0.147909</td>
+      <td>0.062025</td>
+      <td>0.082298</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.197271</td>
+      <td>0.262729</td>
+      <td>0.117583</td>
+      <td>0.124669</td>
+      <td>0.142991</td>
+      <td>0.059211</td>
+      <td>0.095546</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.429808</td>
+      <td>0.200192</td>
+      <td>0.108212</td>
+      <td>0.110215</td>
+      <td>0.080760</td>
+      <td>0.027113</td>
+      <td>0.043700</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.050000</td>
+      <td>0.079000</td>
+      <td>0.136000</td>
+      <td>0.164000</td>
+      <td>0.247000</td>
+      <td>0.135000</td>
+      <td>0.189000</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.047898</td>
+      <td>0.075678</td>
+      <td>0.130282</td>
+      <td>0.157104</td>
+      <td>0.236614</td>
+      <td>0.129324</td>
+      <td>0.223100</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.047534</td>
+      <td>0.075104</td>
+      <td>0.129292</td>
+      <td>0.155911</td>
+      <td>0.234818</td>
+      <td>0.128342</td>
+      <td>0.229000</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.112916</td>
+      <td>0.087084</td>
+      <td>0.127377</td>
+      <td>0.157380</td>
+      <td>0.213454</td>
+      <td>0.113231</td>
+      <td>0.188557</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.312767</td>
+      <td>0.121706</td>
+      <td>0.117593</td>
+      <td>0.157210</td>
+      <td>0.140622</td>
+      <td>0.062852</td>
+      <td>0.087250</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Cumulative probabilities, <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq x))\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_cprob_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./outcome_utilities/mrs_dist_probs_cumsum.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+
+<span class="n">mrs_cprob_all</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+    <tr>
+      <th>Stroke type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.582881</td>
+      <td>0.745419</td>
+      <td>0.848859</td>
+      <td>0.951082</td>
+      <td>0.993055</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_nlvo_ivt_deaths</th>
+      <td>0.576469</td>
+      <td>0.737219</td>
+      <td>0.839522</td>
+      <td>0.940620</td>
+      <td>0.982131</td>
+      <td>0.989000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.417894</td>
+      <td>0.560853</td>
+      <td>0.679283</td>
+      <td>0.843494</td>
+      <td>0.957269</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_ivt_deaths</th>
+      <td>0.403644</td>
+      <td>0.541728</td>
+      <td>0.656119</td>
+      <td>0.814731</td>
+      <td>0.924626</td>
+      <td>0.965900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_mt_deaths</th>
+      <td>0.401178</td>
+      <td>0.538419</td>
+      <td>0.652112</td>
+      <td>0.809754</td>
+      <td>0.918978</td>
+      <td>0.960000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.197144</td>
+      <td>0.460000</td>
+      <td>0.580032</td>
+      <td>0.707768</td>
+      <td>0.855677</td>
+      <td>0.917702</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.197271</td>
+      <td>0.460000</td>
+      <td>0.577583</td>
+      <td>0.702252</td>
+      <td>0.845244</td>
+      <td>0.904454</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.429808</td>
+      <td>0.630000</td>
+      <td>0.738212</td>
+      <td>0.848427</td>
+      <td>0.929188</td>
+      <td>0.956300</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.050000</td>
+      <td>0.129000</td>
+      <td>0.265000</td>
+      <td>0.429000</td>
+      <td>0.676000</td>
+      <td>0.811000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.047898</td>
+      <td>0.123576</td>
+      <td>0.253858</td>
+      <td>0.410962</td>
+      <td>0.647576</td>
+      <td>0.776900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.047534</td>
+      <td>0.122637</td>
+      <td>0.251930</td>
+      <td>0.407841</td>
+      <td>0.642658</td>
+      <td>0.771000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.112916</td>
+      <td>0.200000</td>
+      <td>0.327377</td>
+      <td>0.484757</td>
+      <td>0.698212</td>
+      <td>0.811443</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.312767</td>
+      <td>0.434474</td>
+      <td>0.552066</td>
+      <td>0.709276</td>
+      <td>0.849898</td>
+      <td>0.912750</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plot-the-new-time-distributions">
+<h3>Plot the new time distributions<a class="headerlink" href="#plot-the-new-time-distributions" title="Permalink to this heading">#</a></h3>
+<p>Find the probabilities with time for three main groups of patients:</p>
+<ul class="simple">
+<li><p>nLVO treated with IVT</p></li>
+<li><p>LVO treated with IVT</p></li>
+<li><p>LVO treated with MT</p></li>
+</ul>
+<p>The following cell defines some colours:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colour_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="s1">&#39;#0072B2&#39;</span><span class="p">,</span> <span class="s1">&#39;#009E73&#39;</span><span class="p">,</span> <span class="s1">&#39;#D55E00&#39;</span><span class="p">,</span> <span class="s1">&#39;#CC79A7&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;#F0E442&#39;</span><span class="p">,</span> <span class="s1">&#39;#56B4E9&#39;</span><span class="p">,</span> <span class="s1">&#39;DarkSlateGray&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;&lt;U13&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cell draws the variations with time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_three_with_time</span><span class="p">(</span><span class="n">ylabels</span><span class="p">,</span> <span class="n">data_lists</span><span class="p">,</span> <span class="n">t_ne</span><span class="o">=</span><span class="mf">8.0</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">data_list</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_lists</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+        <span class="n">d_t0</span> <span class="o">=</span> <span class="n">data_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">d_no</span> <span class="o">=</span> <span class="n">data_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">t_ne</span><span class="p">],</span> <span class="p">[</span><span class="n">d_t0</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">d_no</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+                       <span class="n">color</span><span class="o">=</span><span class="n">colour_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> 
+                       <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$\leq$</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabels</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">ylabels</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_ne</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to treatment time (hours)&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">d</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">],</span> 
+                      <span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;mRS&#39;</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="c1"># axs[1].set_ylim(0.0, 11.5)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cell runs the plotting function for the main three groups of patients. Each time it reads the relevant data from the data we imported earlier, calculates A and b, and then uses those to calculate probability, odds, and log odds across very many times. The varying probabilities, odds, and log-odds with time are then plotted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_data_and_plot</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">occ</span><span class="p">,</span> <span class="n">tre</span><span class="p">,</span> <span class="n">df_consts</span><span class="p">):</span>
+
+    <span class="n">t_ne</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="k">if</span> <span class="n">tre</span> <span class="o">==</span> <span class="s1">&#39;ivt&#39;</span> <span class="k">else</span> <span class="mf">8.0</span>
+
+    <span class="c1"># Which data will we keep?</span>
+    <span class="n">t0_st</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;t0_treatment_</span><span class="si">{</span><span class="n">occ</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">tre</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">ne_st</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;no_effect_</span><span class="si">{</span><span class="n">occ</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">tre</span><span class="si">}</span><span class="s1">_deaths&#39;</span>
+
+    <span class="c1"># Read data from the reference dataframe:</span>
+    <span class="n">mrs_prob_t0</span> <span class="o">=</span> <span class="n">mrs_prob_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">t0_st</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">mrs_prob_ne</span> <span class="o">=</span> <span class="n">mrs_prob_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ne_st</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">mrs_cprob_t0</span> <span class="o">=</span> <span class="n">mrs_cprob_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">t0_st</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">mrs_cprob_ne</span> <span class="o">=</span> <span class="n">mrs_cprob_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ne_st</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1"># Convert probs to odds:</span>
+    <span class="n">mrs_odds_cumsum_t0</span> <span class="o">=</span> <span class="n">mrs_cprob_t0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">mrs_cprob_t0</span><span class="p">)</span>
+    <span class="n">mrs_odds_cumsum_ne</span> <span class="o">=</span> <span class="n">mrs_cprob_ne</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">mrs_cprob_ne</span><span class="p">)</span>
+    <span class="c1"># Manually set mRS&lt;=6 values to infinity, since P(mRS&lt;=6)=1:</span>
+    <span class="n">mrs_odds_cumsum_t0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> 
+    <span class="n">mrs_odds_cumsum_ne</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="c1"># Convert odds to log-odds:</span>
+    <span class="n">mrs_logodds_cumsum_t0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mrs_odds_cumsum_t0</span><span class="p">)</span>
+    <span class="n">mrs_logodds_cumsum_ne</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mrs_odds_cumsum_ne</span><span class="p">)</span>
+
+    <span class="c1"># Gather everything for the plot:</span>
+    <span class="n">data_lists</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="n">mrs_cprob_t0</span><span class="p">,</span> <span class="n">mrs_cprob_ne</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">mrs_odds_cumsum_t0</span><span class="p">,</span> <span class="n">mrs_odds_cumsum_ne</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">mrs_logodds_cumsum_t0</span><span class="p">,</span> <span class="n">mrs_logodds_cumsum_ne</span><span class="p">]</span>
+        <span class="p">]</span>
+
+    <span class="c1"># Calculate constants:</span>
+    <span class="c1"># Use the [:-1] slice to exclude mRS&lt;=6.</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mrs_cprob_t0</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> 
+         <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">mrs_cprob_t0</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> 
+    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mrs_cprob_ne</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> 
+         <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">mrs_cprob_ne</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span><span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="n">t_ne</span>
+    <span class="c1"># Place these constants in the shared results DataFrame:</span>
+    <span class="n">df_consts</span><span class="p">[[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">occ</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">tre</span><span class="si">}</span><span class="s1">_A&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">occ</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">tre</span><span class="si">}</span><span class="s1">_b&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1"># Plot setup:</span>
+    <span class="n">ylabels</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;Probability</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$P$(mRS$\leq$ x | t) = &#39;</span><span class="o">+</span>
+        <span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{1}</span><span class="s1">{1 + e^{-(Ax + bx\cdot t)}}$&#39;</span><span class="p">),</span> 
+        <span class="s1">&#39;Odds</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$O$(mRS$\leq$ x | t) = $e^{(A_x + b_x\cdot t)}$&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;log(Odds)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$\log$[$O$(mRS$\leq$ x | t)] = $A_x + b_x\cdot t$&#39;</span>
+        <span class="p">]</span>
+    <span class="c1"># Plot over this time range:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_ne</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    
+    <span class="c1"># Make the same plot as earlier...</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_three_with_time</span><span class="p">(</span><span class="n">ylabels</span><span class="p">,</span> <span class="n">data_lists</span><span class="p">,</span> <span class="n">t_ne</span><span class="p">)</span>
+    
+    <span class="c1"># ... and now add lines to connect the starting data points: </span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">d</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># Probability:</span>
+                <span class="n">yvals</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">d</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># Odds:</span>
+                <span class="n">yvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span> <span class="c1"># log(odds):</span>
+                <span class="n">yvals</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colour_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Set shared axis limits:</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; with &#39;</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./images/time_varying_probs_odds_logodds_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> 
+                <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we create the plots, store a copy of the A and b constants in this dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_consts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">df_consts</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;mrs&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_data_and_plot</span><span class="p">(</span><span class="s1">&#39;nLVO_IVT&#39;</span><span class="p">,</span> <span class="s1">&#39;nlvo&#39;</span><span class="p">,</span> <span class="s1">&#39;ivt&#39;</span><span class="p">,</span> <span class="n">df_consts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d9422eafb99365eb3599bce508351138e93aa97a607867935b1d25946ad08764.png" src="../_images/d9422eafb99365eb3599bce508351138e93aa97a607867935b1d25946ad08764.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_data_and_plot</span><span class="p">(</span><span class="s1">&#39;LVO_IVT&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo&#39;</span><span class="p">,</span> <span class="s1">&#39;ivt&#39;</span><span class="p">,</span> <span class="n">df_consts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a395b647f888a78fae8d6c31a695d6e9c00fc6f9dff29f1321a94a6eb6d427de.png" src="../_images/a395b647f888a78fae8d6c31a695d6e9c00fc6f9dff29f1321a94a6eb6d427de.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_data_and_plot</span><span class="p">(</span><span class="s1">&#39;LVO_MT&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo&#39;</span><span class="p">,</span> <span class="s1">&#39;mt&#39;</span><span class="p">,</span> <span class="n">df_consts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c2a86f536654048effc765c9f9fdd8ce468a652a5aaed573b29ad904f8464d81.png" src="../_images/c2a86f536654048effc765c9f9fdd8ce468a652a5aaed573b29ad904f8464d81.png" />
+</div>
+</div>
+<p>The values of A and b for each occlusion-treatment combination:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_consts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nlvo_ivt_A</th>
+      <th>nlvo_ivt_b</th>
+      <th>lvo_ivt_A</th>
+      <th>lvo_ivt_b</th>
+      <th>lvo_mt_A</th>
+      <th>lvo_mt_b</th>
+    </tr>
+    <tr>
+      <th>mrs</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.282636</td>
+      <td>-0.177905</td>
+      <td>-2.061295</td>
+      <td>-0.147351</td>
+      <td>-0.787214</td>
+      <td>-0.276300</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.532217</td>
+      <td>-0.109930</td>
+      <td>-1.386294</td>
+      <td>-0.090905</td>
+      <td>-0.263622</td>
+      <td>-0.213008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.036698</td>
+      <td>-0.114895</td>
+      <td>-0.720071</td>
+      <td>-0.056837</td>
+      <td>0.209022</td>
+      <td>-0.162171</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.722319</td>
+      <td>-0.137186</td>
+      <td>-0.060990</td>
+      <td>-0.047460</td>
+      <td>0.891870</td>
+      <td>-0.158096</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.574277</td>
+      <td>-0.139128</td>
+      <td>0.838796</td>
+      <td>-0.036570</td>
+      <td>1.733804</td>
+      <td>-0.143360</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.085734</td>
+      <td>-0.133017</td>
+      <td>1.459413</td>
+      <td>-0.033607</td>
+      <td>2.347684</td>
+      <td>-0.141715</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>As expected, <span class="math notranslate nohighlight">\(A\)</span> is equal to the log-odds at <span class="math notranslate nohighlight">\(t=0\,\)</span>hr and all of the <span class="math notranslate nohighlight">\(b\)</span> values are negative because log(odds) decreases with time.</p>
+<p>Save the constants to file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_consts</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;probs_time_constants.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
+<p>Emberson J, Lees KR, Lyden P, et al. Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials. The Lancet 2014;384:1929–35. doi:10.1016/S0140-6736(14)60584-5</p>
+<p>Fransen PSS, Berkhemer OA, Lingsma HF, et al. Time to Reperfusion and Treatment Effect for Acute Ischemic Stroke: A Randomized Clinical Trial. JAMA Neurol 2016;73:190–6. doi:10.1001/jamaneurol.2015.3886</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./outcome_model_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_probs_with_time.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calculating outcome probabilities with time to treatment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02c_extra_maths.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Extra: Logistic functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Extra: Formulae for probabilities with time</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-find-variation-with-time">Steps to find variation with time</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-straight-line-formula-for-log-odds">Find a straight line formula for log(odds)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-an-exponential-formula-for-odds-with-time">Find an exponential formula for odds with time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-a-logistic-formula-for-probability-with-time">Find a logistic formula for probability with time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-to-mrs-distributions">Application to mRS distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collect-the-data">Collect the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-new-time-distributions">Plot the new time distributions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1075 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Extra: Logistic functions &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'outcome_model_methods/02c_extra_maths';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stroke outcome" href="../package_docs/intro.html" />
+    <link rel="prev" title="Extra: Formulae for probabilities with time" href="02b_formulae.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/outcome_model_methods/02c_extra_maths.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Extra: Logistic functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-the-probability-lines-bend-differently">Why do the probability lines bend differently?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-a-and-b-mean-for-probability">What do <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> mean for probability?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="extra-logistic-functions">
+<h1>Extra: Logistic functions<a class="headerlink" href="#extra-logistic-functions" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>This document isn’t essential for understanding how the stroke outcome model works.</p>
+</div></blockquote>
+<p>This document digs into some of the details of the logistic functions that define the change of outcome probability with time.</p>
+<section id="notebook-setup">
+<h2>Notebook setup<a class="headerlink" href="#notebook-setup" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep notebook cleaner once finalised</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up MatPlotLib</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># Change default colour scheme:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data">
+<h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time of no effect:</span>
+<span class="n">t_ne</span> <span class="o">=</span> <span class="mf">8.0</span>  <span class="c1"># hours</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_constants</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;probs_time_constants.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">df_constants</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nlvo_ivt_A</th>
+      <th>nlvo_ivt_b</th>
+      <th>lvo_ivt_A</th>
+      <th>lvo_ivt_b</th>
+      <th>lvo_mt_A</th>
+      <th>lvo_mt_b</th>
+    </tr>
+    <tr>
+      <th>mrs</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.282636</td>
+      <td>-0.177905</td>
+      <td>-2.061295</td>
+      <td>-0.147351</td>
+      <td>-0.787214</td>
+      <td>-0.276300</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.532217</td>
+      <td>-0.109930</td>
+      <td>-1.386294</td>
+      <td>-0.090905</td>
+      <td>-0.263622</td>
+      <td>-0.213008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.036698</td>
+      <td>-0.114895</td>
+      <td>-0.720071</td>
+      <td>-0.056837</td>
+      <td>0.209022</td>
+      <td>-0.162171</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.722319</td>
+      <td>-0.137186</td>
+      <td>-0.060990</td>
+      <td>-0.047460</td>
+      <td>0.891870</td>
+      <td>-0.158096</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.574277</td>
+      <td>-0.139128</td>
+      <td>0.838796</td>
+      <td>-0.036570</td>
+      <td>1.733804</td>
+      <td>-0.143360</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.085734</td>
+      <td>-0.133017</td>
+      <td>1.459413</td>
+      <td>-0.033607</td>
+      <td>2.347684</td>
+      <td>-0.141715</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_cprob_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./outcome_utilities/mrs_dist_probs_cumsum.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+
+<span class="n">mrs_cprob_all</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+    <tr>
+      <th>Stroke type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.582881</td>
+      <td>0.745419</td>
+      <td>0.848859</td>
+      <td>0.951082</td>
+      <td>0.993055</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_nlvo_ivt_deaths</th>
+      <td>0.576469</td>
+      <td>0.737219</td>
+      <td>0.839522</td>
+      <td>0.940620</td>
+      <td>0.982131</td>
+      <td>0.989000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.417894</td>
+      <td>0.560853</td>
+      <td>0.679283</td>
+      <td>0.843494</td>
+      <td>0.957269</td>
+      <td>1.000000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_ivt_deaths</th>
+      <td>0.403644</td>
+      <td>0.541728</td>
+      <td>0.656119</td>
+      <td>0.814731</td>
+      <td>0.924626</td>
+      <td>0.965900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_mt_deaths</th>
+      <td>0.401178</td>
+      <td>0.538419</td>
+      <td>0.652112</td>
+      <td>0.809754</td>
+      <td>0.918978</td>
+      <td>0.960000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.197144</td>
+      <td>0.460000</td>
+      <td>0.580032</td>
+      <td>0.707768</td>
+      <td>0.855677</td>
+      <td>0.917702</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.197271</td>
+      <td>0.460000</td>
+      <td>0.577583</td>
+      <td>0.702252</td>
+      <td>0.845244</td>
+      <td>0.904454</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.429808</td>
+      <td>0.630000</td>
+      <td>0.738212</td>
+      <td>0.848427</td>
+      <td>0.929188</td>
+      <td>0.956300</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.050000</td>
+      <td>0.129000</td>
+      <td>0.265000</td>
+      <td>0.429000</td>
+      <td>0.676000</td>
+      <td>0.811000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.047898</td>
+      <td>0.123576</td>
+      <td>0.253858</td>
+      <td>0.410962</td>
+      <td>0.647576</td>
+      <td>0.776900</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.047534</td>
+      <td>0.122637</td>
+      <td>0.251930</td>
+      <td>0.407841</td>
+      <td>0.642658</td>
+      <td>0.771000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.112916</td>
+      <td>0.200000</td>
+      <td>0.327377</td>
+      <td>0.484757</td>
+      <td>0.698212</td>
+      <td>0.811443</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.312767</td>
+      <td>0.434474</td>
+      <td>0.552066</td>
+      <td>0.709276</td>
+      <td>0.849898</td>
+      <td>0.912750</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Pick out these values for the examples here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">df_constants</span><span class="p">[</span><span class="s1">&#39;lvo_mt_A&#39;</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">df_constants</span><span class="p">[</span><span class="s1">&#39;lvo_mt_b&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mRS_prob_cumsum_t0_treatment</span> <span class="o">=</span> <span class="n">mrs_cprob_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_mt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">mRS_prob_cumsum_no_effect</span> <span class="o">=</span> <span class="n">mrs_cprob_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_mt_deaths&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-do-the-probability-lines-bend-differently">
+<h2>Why do the probability lines bend differently?<a class="headerlink" href="#why-do-the-probability-lines-bend-differently" title="Permalink to this heading">#</a></h2>
+<p>In the graph of probability with time, the lines for each mRS follow a different path. The gradient of the bottom mRS<span class="math notranslate nohighlight">\(\leq\)</span>0 line becomes less negative with increasing time, as though gradually curving upwards, whereas the top mRS<span class="math notranslate nohighlight">\(\leq\)</span>4 line has a gradient becoming more negative with time, as though curving downwards.</p>
+<p>The reason for this is best explained by showing a similar line, another logistic function, with a new parameter <span class="math notranslate nohighlight">\(v=-b(t+\frac{A}{b})\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[ P(v) = \frac{1}{1+e^{v}} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define some new parameter &quot;v&quot; for the x-axis:</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Add a couple of key lines:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;Gainsboro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;Gainsboro&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot probability as a function of &quot;v&quot;:</span>
+<span class="n">p_v</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">p_v</span><span class="p">)</span>
+
+<span class="c1"># Draw the straight line connection:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">p_v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">p_v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="c1"># The usual setup:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;P(v)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06b1242a078669b10cfe8d11159e5441afece1f84e8b71cc9922365949c855a8.png" src="../_images/06b1242a078669b10cfe8d11159e5441afece1f84e8b71cc9922365949c855a8.png" />
+</div>
+</div>
+<p>The bend of <span class="math notranslate nohighlight">\(P(v)\)</span> changes at <span class="math notranslate nohighlight">\(v=0\)</span>, where <span class="math notranslate nohighlight">\(P(v)=0.5\)</span>. The <span class="math notranslate nohighlight">\(P(\mathrm{mRS})\)</span> lines are different shapes because some of them show mostly the <span class="math notranslate nohighlight">\(v&gt;0\)</span> curve (i.e. mRS=0,1), and the rest the <span class="math notranslate nohighlight">\(v&lt;0\)</span> part (i.e. mRS<span class="math notranslate nohighlight">\(\geq\)</span>2). This can be viewed as the <span class="math notranslate nohighlight">\(v\)</span>-axis here being offset to the right in the <span class="math notranslate nohighlight">\(P(t)\)</span> plots above. The size of the offset is different for each mRS line.</p>
+<p>The find the offset, we can convert from <span class="math notranslate nohighlight">\(v\)</span> to <span class="math notranslate nohighlight">\(t\)</span>. Because <span class="math notranslate nohighlight">\(v=-b(t+\frac{A}{b}) =-(A+bt)\)</span>, then <span class="math notranslate nohighlight">\(t=-\frac{1}{b}(v+A)\)</span>. On the <span class="math notranslate nohighlight">\(t\)</span>-axis, the key point corresponding to <span class="math notranslate nohighlight">\(v=0\)</span> is <span class="math notranslate nohighlight">\(t_k=-\frac{A}{b}\)</span>. This <span class="math notranslate nohighlight">\(t_k\)</span> is different for each of the mRS lines, which is why each <span class="math notranslate nohighlight">\(P(t)\)</span> line shows a different shift sideways from <span class="math notranslate nohighlight">\(P(v)\)</span>.</p>
+<p>We can plot the <span class="math notranslate nohighlight">\(P(t)\)</span> lines again and add the key points where the bend changes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_ne</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">t_long</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">t_ne</span><span class="o">+</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Store the key times t_k in this list:</span>
+<span class="n">tk_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Use a wider figure than usual:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">A_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>    
+    <span class="c1"># Plot probability:</span>
+    <span class="n">p_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A_i</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A_i</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">l</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p_i</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;mRS &lt;= </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">colour</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span>
+    
+    <span class="c1"># Plot probability over the longer time range:</span>
+    <span class="n">p_long</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A_i</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t_long</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A_i</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t_long</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_long</span><span class="p">,</span> <span class="n">p_long</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Mark t=0 and t=t_ne data:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>    <span class="n">mRS_prob_cumsum_t0_treatment</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_ne</span><span class="p">,</span> <span class="n">mRS_prob_cumsum_no_effect</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate the key time and store it:</span>
+    <span class="n">t_k</span> <span class="o">=</span> <span class="o">-</span><span class="n">A_i</span><span class="o">/</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">tk_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_k</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_k</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A_i</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t_k</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">A_i</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t_k</span><span class="p">)),</span>
+                <span class="n">facecolor</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> 
+                <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    
+<span class="c1"># # Add vertical lines at valid time boundaries:</span>
+<span class="c1"># for v_pos in [0.0, t_ne]:</span>
+<span class="c1">#     plt.axvline(v_pos, lw=1, color=&#39;Gainsboro&#39;, zorder=0)</span>
+    
+<span class="c1"># Add a horizontal line at P=0.5:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># The usual setup:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to treatment time (hours)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e5617cfc06e773737e8dfa103f86df89bcfd7702cf20078edbaf57532af0be86.png" src="../_images/e5617cfc06e773737e8dfa103f86df89bcfd7702cf20078edbaf57532af0be86.png" />
+</div>
+</div>
+<p>Note that the scattered points above at <span class="math notranslate nohighlight">\(t=t_k\)</span> all share a probability <span class="math notranslate nohighlight">\(P(t=t_k)=0.5\)</span>.</p>
+<p>Print the key times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mRS | Key time&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">  | </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">tk_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="si">:</span><span class="s1">2.0f</span><span class="si">}</span><span class="s1"> hours &#39;</span><span class="o">+</span>
+          <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tk_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">%</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="mf">60.0</span><span class="si">:</span><span class="s1">2.0f</span><span class="si">}</span><span class="s1"> mins&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mRS | Key time
+ 0  | -2 hours 51 mins
+ 1  | -1 hours 14 mins
+ 2  |  1 hours 17 mins
+ 3  |  5 hours 38 mins
+ 4  | 12 hours  6 mins
+ 5  | 16 hours 34 mins
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-do-a-and-b-mean-for-probability">
+<h2>What do <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> mean for probability?<a class="headerlink" href="#what-do-a-and-b-mean-for-probability" title="Permalink to this heading">#</a></h2>
+<p>We have defined probability as a logistic function:</p>
+<div class="math notranslate nohighlight">
+\[ P = \frac{1}{1+e^{-b\left(t +\frac{A}{b}\right)}} \]</div>
+<p>Changing <em>A</em> and <em>b</em> then changes the slope of the function and its offset left and right.</p>
+<p>To see these changes, we’ll plot a logistic function with an arbitrary <em>A</em> and <em>b</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.91</span> 
+<span class="n">b_start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And compare it with probability data <span class="math notranslate nohighlight">\(P(\mathrm{mRS}\leq \mathrm{mRS}_x)\)</span> for this value of mRS<span class="math notranslate nohighlight">\(_x\)</span> where we know the target values of <em>A</em> and <em>b</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mRS_x</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">A_target</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">mRS_x</span><span class="p">]</span>
+<span class="n">b_target</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">mRS_x</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A_target</span><span class="p">,</span> <span class="n">b_target</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8918699522503979 -0.1580959999968494
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll also plot over this time range, which is longer than usual:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">t_ne</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="n">t_ne</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To save repeating some code, we’ll put the plot setup into this function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_probs_logistic</span><span class="p">():</span>
+    <span class="c1"># Mark the central point of the standard logistic function:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Plot the two known data points for this mRS:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="n">t_ne</span><span class="p">],</span> 
+                <span class="p">[</span><span class="n">mRS_prob_cumsum_t0_treatment</span><span class="p">[</span><span class="n">mRS_x</span><span class="p">],</span>
+                 <span class="n">mRS_prob_cumsum_no_effect</span><span class="p">[</span><span class="n">mRS_x</span><span class="p">]],</span> 
+                <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># The usual setup:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;P(t)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t (hours)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we’ll plot the effect of changing <em>A</em>. At time zero, <span class="math notranslate nohighlight">\( P(t=0) = \frac{1}{1+e^{-A}} \)</span> so <em>A</em> adjusts the x-offset of the curve. We can show this by plotting a series of curves where everything is identical except for <em>A</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_probs_logistic</span><span class="p">()</span>
+
+<span class="c1"># Plot lines for this many values of A...</span>
+<span class="n">n_lines</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1"># ... in these colours:</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n_lines</span><span class="p">))</span>
+
+<span class="c1"># Plot probability as a function of time:</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">A_line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">A_start</span><span class="p">,</span> <span class="n">A_target</span><span class="p">,</span> <span class="n">n_lines</span><span class="p">)):</span>
+    <span class="n">p_t</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">b_start</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">A_line</span><span class="o">/</span><span class="n">b_start</span><span class="p">))</span> <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">p_t</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;A = </span><span class="si">{</span><span class="n">A_line</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span> <span class="c1"># outside axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bdc4f250ceea8615cc0c11bd67b94673fcee41af8140c10719a71d2d5fe9985f.png" src="../_images/bdc4f250ceea8615cc0c11bd67b94673fcee41af8140c10719a71d2d5fe9985f.png" />
+</div>
+</div>
+<p>For the palest line, changing <em>A</em> has fixed the probability line in the right spot at time zero. However, the line is currently nowhere near the data point at the no-effect time. To fix this, we have to change the value of <em>b</em>.</p>
+<p>Changing <em>b</em> effectively changes two things simultaneously. It changes the slope of the line, so that the logistic function looks more flattened out or stretched tall. But since <em>b</em> cannot change the value of the probability at time zero, changing <em>b</em> must also move the probability line left or right to account for the changes. This is seen in the following plot, where every parameter of each curve is identical except for <em>b</em>. The palest yellow line is the same as in the previous plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_probs_logistic</span><span class="p">()</span>
+
+<span class="c1"># Plot lines for this many values of b...</span>
+<span class="n">n_lines</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1"># ... in these colours:</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n_lines</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">b_line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">b_start</span><span class="p">,</span> <span class="n">b_target</span><span class="p">,</span> <span class="n">n_lines</span><span class="p">)):</span>
+    <span class="c1"># Plot probability as a function of time:</span>
+    <span class="n">p_t</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">b_line</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">A_target</span><span class="o">/</span><span class="n">b_line</span><span class="p">))</span> <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">p_t</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;b = </span><span class="si">{</span><span class="n">b_line</span><span class="si">:</span><span class="s1">1.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span> <span class="c1"># outside axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8d7608dbc2672042c06acd5c38f32955680628f96f8396050f86cf02204e7a25.png" src="../_images/8d7608dbc2672042c06acd5c38f32955680628f96f8396050f86cf02204e7a25.png" />
+</div>
+</div>
+<p>Each line has a different slope because of the changed <em>b</em>, but also a different x-offset - the lines cross <span class="math notranslate nohighlight">\(P(t)=0.5\)</span> at different times. The darkest line uses the only combination of <em>A</em> and <em>b</em> that will pass through both data points simultaneously.</p>
+<p>Since our calculated <span class="math notranslate nohighlight">\(P(\mathrm{mRS})\)</span> lines all use different values of <em>A</em> and <em>b</em>, we end up plotting each line with a different slope and x-offset.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./outcome_model_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02b_formulae.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Extra: Formulae for probabilities with time</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../package_docs/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stroke outcome</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-the-probability-lines-bend-differently">Why do the probability lines bend differently?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-a-and-b-mean-for-probability">What do <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> mean for probability?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

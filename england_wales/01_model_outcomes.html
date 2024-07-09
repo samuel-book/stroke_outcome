@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'england_wales/01_model_outcomes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Analysis of LSOA results: Added utility" href="02_lsoa_analysis_added_utility.html" />
-    <link rel="prev" title="Emergency stroke admissions predictions" href="../admission_prediction/01_msoa_regression.html" />
+    <link rel="next" title="Mapping LSOA results" href="02_lsoa_analysis_added_utility.html" />
+    <link rel="prev" title="Distance-based treatment effects" href="../general_results/05_geography.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,59 +157,55 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Predicting disability outcomes and utility after treatment of stroke with thrombolysis (IVT) or thrombectomy (MT)
+                    Introduction
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Outcome model</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_mRS_datasets_full.html">Defining modified Rankin Scale (mRS) probability distributions for untreated patients, and predicted distributions if treatment given at time of stroke onset</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../02_mRS_outcomes_maths.html">Mathematics for calculating odds and probabilities of mRS-level outcomes after stroke, based on time to reperfusion treatment</a></li>
-
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_geography.html">Distance-based treatment effects</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../05a_geography_stroke_types.html">Distance-based treatment effects (plot for different stroke types)</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../06_show_outcome_model_code.html">Show outcome model python code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">stroke-outcome package</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Continuous outcome model demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Discrete outcome model demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
 </ul>
 
     </div>
@@ -356,25 +352,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Model outcomes for drip’and’ship vs mothership based on greography</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-data">Load and parse data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-hospital-data">Load and parse hospital data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-lsoa-travel-matrix">Load and parse LSOA travel matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-inter-hospital-travel-time-for-mt">Load and parse inter_hospital travel time for MT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-lsoa-hospital-travel-time">Find LSOA-hospital travel time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-inter-hospital-travel-time">Find inter-hospital travel time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-travel-time-information">Gather travel time information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-on-stroke-pathway-timings">Add on stroke pathway timings</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-results">Calculate results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-outcomes">Add outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-outcomes">Calculate outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-results">Show results</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -391,110 +382,85 @@ document.write(`
 <p>Travel times are estimated using Open Street Map[1], accessed by routino [2].</p>
 <p>[1] <a class="reference external" href="https://www.openstreetmap.org/">https://www.openstreetmap.org/</a></p>
 <p>[2] <a class="reference external" href="https://packages.debian.org/sid/routino">https://packages.debian.org/sid/routino</a></p>
-<section id="global-variables-to-use">
-<h2>Global variables to use<a class="headerlink" href="#global-variables-to-use" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit_to_england</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">onset_to_ambulance_arrival</span> <span class="o">=</span> <span class="mi">60</span>
-<span class="n">arrival_to_ivt</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">arrival_to_mt</span> <span class="o">=</span> <span class="mi">90</span>
-<span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">=</span> <span class="mi">60</span>
-
-<span class="c1"># File name for saved results</span>
-<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;lsoa_base&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">
-<h1>Calculate treatment rates based on expected proportions of LVO/nLVO<a class="headerlink" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stroke_type_propotions</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;haemorragic&#39;</span><span class="p">:</span> <span class="mf">0.136</span><span class="p">,</span>
-    <span class="s1">&#39;lvo&#39;</span><span class="p">:</span> <span class="mf">0.33</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.136</span><span class="p">),</span>
-    <span class="s1">&#39;nlvo&#39;</span><span class="p">:</span> <span class="mf">0.67</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.136</span><span class="p">)}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_ivt</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">target_mt</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">prop_mt_previously_receiving_ivt</span> <span class="o">=</span> <span class="mf">0.85</span>
-
-<span class="n">prop_lvo_receiving_mt</span> <span class="o">=</span> <span class="n">target_mt</span> <span class="o">/</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prop_lvo_receiving_mt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.351
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_lvo_receiving_ivt</span> <span class="o">=</span> <span class="n">prop_lvo_receiving_mt</span> <span class="o">*</span> <span class="n">prop_mt_previously_receiving_ivt</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prop_lvo_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.298
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_nlvo_receiving_ivt</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">target_ivt</span> <span class="o">-</span> <span class="p">(</span><span class="n">prop_lvo_receiving_ivt</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]))</span> <span class="o">/</span> 
-    <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prop_nlvo_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.199
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check sums</span>
-<span class="n">prop_all_receiving_ivt</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prop_all_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.200
-</pre></div>
-</div>
-</div>
-</div>
+<ul class="simple">
+<li><p>load in stroke-map package</p></li>
+<li><p>Calculate travel time from each LSOA to its nearest acute stroke unit and to its nearest unit providing thrombectomy</p></li>
+<li><p>Add on fixed pathway timings (onset to call, ambulance on scene, door-in-door-out etc.) to find time to thrombolysis and time to thrombectomy</p></li>
+<li><p>Feed treatment times into the outcome model to find outcomes for each patient subgroup at those treatment times.</p></li>
+</ul>
 <section id="load-packages">
 <h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="kn">from</span> <span class="nn">utilities.clinical_outcome</span> <span class="kn">import</span> <span class="n">Clinical_outcome</span>
+<span class="kn">import</span> <span class="nn">copy</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adjust max rows to show</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stroke_maps</span>
+<span class="kn">import</span> <span class="nn">stroke_outcome</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stroke_maps</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.5.0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stroke_outcome</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.1.6&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stroke_maps.load_data</span>
+<span class="kn">import</span> <span class="nn">stroke_maps.catchment</span>
+
+<span class="kn">from</span> <span class="nn">stroke_outcome.continuous_outcome</span> <span class="kn">import</span> <span class="n">Continuous_outcome</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="global-variables-to-use">
+<h2>Global variables to use<a class="headerlink" href="#global-variables-to-use" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit_to_england</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># File name for saved results</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;lsoa_base&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -507,132 +473,575 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get list of hopsitals and limit to those used in 2022</span>
-<span class="n">hospitals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/stroke_hospitals_2022.csv&#39;</span><span class="p">)</span>
-<span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[[</span><span class="s1">&#39;Use_IVT&#39;</span><span class="p">,</span> <span class="s1">&#39;Use_MT&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">hospitals</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">load_data</span><span class="o">.</span><span class="n">stroke_unit_region_lookup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;use&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[[</span><span class="s1">&#39;use_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;use_mt&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;use&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="n">hospitals</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;England&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;England&#39;</span>
     <span class="n">hospitals</span> <span class="o">=</span> <span class="n">hospitals</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="load-and-parse-lsoa-travel-matrix">
-<h3>Load and parse LSOA travel matrix<a class="headerlink" href="#load-and-parse-lsoa-travel-matrix" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
-<span class="n">admissions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s1">&#39;./data/lsoa_predicted_admissions.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;lsoa11nm&#39;</span><span class="p">)</span>
-<span class="n">travel_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s1">&#39;./data/lsoa_travel_time_matrix_calibrated.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;LSOA&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospitals</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c1"># Limit to England if required</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stroke_team</th>
+      <th>short_code</th>
+      <th>ssnap_name</th>
+      <th>use_ivt</th>
+      <th>use_mt</th>
+      <th>use_msu</th>
+      <th>transfer_unit_postcode</th>
+      <th>lsoa</th>
+      <th>lsoa_code</th>
+      <th>region</th>
+      <th>region_code</th>
+      <th>region_type</th>
+      <th>country</th>
+      <th>icb</th>
+      <th>icb_code</th>
+      <th>isdn</th>
+      <th>use</th>
+    </tr>
+    <tr>
+      <th>postcode</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SY231ER</th>
+      <td>Bronglais Hospital (Aberystwyth)</td>
+      <td>AB</td>
+      <td>Bronglais Hospital</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>nearest</td>
+      <td>Ceredigion 002A</td>
+      <td>W01000512</td>
+      <td>Hywel Dda University Health Board</td>
+      <td>W11000025</td>
+      <td>LHB</td>
+      <td>Wales</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>CB20QQ</th>
+      <td>Addenbrooke's Hospital, Cambridge</td>
+      <td>AD</td>
+      <td>Addenbrooke's Hospital</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>nearest</td>
+      <td>Cambridge 013D</td>
+      <td>E01017995</td>
+      <td>NHS Cambridgeshire and Peterborough ICB - 06H</td>
+      <td>E38000260</td>
+      <td>SICBL</td>
+      <td>England</td>
+      <td>NHS Cambridgeshire and Peterborough Integrated...</td>
+      <td>E54000056</td>
+      <td>East of England (South)</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>L97AL</th>
+      <td>University Hospital Aintree, Liverpool</td>
+      <td>AI</td>
+      <td>University Hospital Aintree</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>nearest</td>
+      <td>Liverpool 005A</td>
+      <td>E01006654</td>
+      <td>NHS Cheshire and Merseyside ICB - 99A</td>
+      <td>E38000101</td>
+      <td>SICBL</td>
+      <td>England</td>
+      <td>NHS Cheshire and Merseyside Integrated Care Board</td>
+      <td>E54000008</td>
+      <td>Cheshire and Merseyside</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>CH495PE</th>
+      <td>Arrowe Park Hospital, Wirral</td>
+      <td>AR</td>
+      <td>Wirral Arrowe Park Hospital</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>nearest</td>
+      <td>Wirral 025B</td>
+      <td>E01007251</td>
+      <td>NHS Cheshire and Merseyside ICB - 12F</td>
+      <td>E38000208</td>
+      <td>SICBL</td>
+      <td>England</td>
+      <td>NHS Cheshire and Merseyside Integrated Care Board</td>
+      <td>E54000008</td>
+      <td>Cheshire and Merseyside</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>BA13NG</th>
+      <td>Royal United Hospital Bath</td>
+      <td>BA</td>
+      <td>Royal United Hospital Bath</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>nearest</td>
+      <td>Bath and North East Somerset 008B</td>
+      <td>E01014428</td>
+      <td>NHS Bath and North East Somerset, Swindon and ...</td>
+      <td>E38000231</td>
+      <td>SICBL</td>
+      <td>England</td>
+      <td>NHS Bath and North East Somerset, Swindon and ...</td>
+      <td>E54000040</td>
+      <td>Gloucester, BSW, BNSSG and Somerset</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="find-lsoa-hospital-travel-time">
+<h3>Find LSOA-hospital travel time<a class="headerlink" href="#find-lsoa-hospital-travel-time" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">travel_matrix</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">load_data</span><span class="o">.</span><span class="n">travel_time_matrix_lsoa</span><span class="p">()</span>
+
+<span class="c1"># Show the first five rows and columns:</span>
+<span class="n">travel_matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>B152TH</th>
+      <th>B714HJ</th>
+      <th>B95SS</th>
+      <th>BA13NG</th>
+      <th>BA214AT</th>
+    </tr>
+    <tr>
+      <th>LSOA</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Adur 001A</th>
+      <td>173.3</td>
+      <td>179.8</td>
+      <td>171.2</td>
+      <td>161.5</td>
+      <td>152.9</td>
+    </tr>
+    <tr>
+      <th>Adur 001B</th>
+      <td>173.3</td>
+      <td>179.8</td>
+      <td>172.3</td>
+      <td>161.5</td>
+      <td>152.9</td>
+    </tr>
+    <tr>
+      <th>Adur 001C</th>
+      <td>173.3</td>
+      <td>180.9</td>
+      <td>172.3</td>
+      <td>150.8</td>
+      <td>151.9</td>
+    </tr>
+    <tr>
+      <th>Adur 001D</th>
+      <td>173.3</td>
+      <td>180.9</td>
+      <td>172.3</td>
+      <td>161.5</td>
+      <td>152.9</td>
+    </tr>
+    <tr>
+      <th>Adur 001E</th>
+      <td>174.4</td>
+      <td>180.9</td>
+      <td>173.3</td>
+      <td>150.8</td>
+      <td>151.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Limit LSOAs to England if required.</span>
+<span class="c1"># Only keep LSOAs that are matched to the SICBL region type.</span>
+<span class="c1"># SICBL are for England and LHB are for Wales.</span>
 <span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
-    <span class="n">england_lsoa</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">admissions</span><span class="p">[</span><span class="n">admissions</span><span class="p">[</span><span class="s1">&#39;England&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-    <span class="n">admissions</span> <span class="o">=</span> <span class="n">admissions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">england_lsoa</span><span class="p">]</span>
-    <span class="n">travel_matrix</span> <span class="o">=</span> <span class="n">travel_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">england_lsoa</span><span class="p">]</span>
-
-<span class="c1"># Identify closest IVT unit</span>
-<span class="n">ivt_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use_IVT&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Postcode&#39;</span><span class="p">])</span>
-<span class="n">lsoa_ivt_travel_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">ivt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">lsoa_ivt_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">ivt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># Identify closest MT Unit</span>
-<span class="n">mt_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use_MT&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Postcode&#39;</span><span class="p">])</span>
-<span class="n">lsoa_mt_travel_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">mt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">lsoa_mt_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">mt_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># Identify closest MSU base</span>
-<span class="n">msu_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;Use_MSU&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Postcode&#39;</span><span class="p">])</span>
-<span class="n">lsoa_msu_travel_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">msu_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">lsoa_msu_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">msu_hospitals</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="load-and-parse-inter-hospital-travel-time-for-mt">
-<h3>Load and parse inter_hospital travel time for MT<a class="headerlink" href="#load-and-parse-inter-hospital-travel-time-for-mt" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
-<span class="n">inter_hospital_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s1">&#39;./data/inter_hospital_time_calibrated.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;from_postcode&#39;</span><span class="p">)</span>
-
-<span class="c1"># Restrict to IVT and MSU hospitals in use</span>
-<span class="n">inter_hospital_time</span> <span class="o">=</span> <span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ivt_hospitals</span><span class="p">][</span><span class="n">mt_hospitals</span><span class="p">]</span>
-
-<span class="c1"># Set distance between same hospitals to zero</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">col</span><span class="p">:</span>
-            <span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="c1"># Identify closest transfer unit</span>
-<span class="n">mt_transfer_time</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">mt_transfer_unit</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">inter_hospital_time</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="calculate-results">
-<h2>Calculate results<a class="headerlink" href="#calculate-results" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up table for results</span>
-<span class="n">lsoa_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lsoa_ivt_unit</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">lsoa_list</span><span class="p">)</span>
-
-<span class="c1"># Collate info</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_ivt_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_ivt_travel_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_mt_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_mt_travel_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mt_transfer_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mt_transfer_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;msu_unit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_msu_unit</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;msu_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lsoa_msu_travel_time</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">]</span>
-
-<span class="c1"># Set up lists for total times to treatment</span>
-<span class="n">ivt_drip_ship</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">ivt_mothership</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">mt_drip_ship</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">mt_mothership</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># Calculate total times for treatment</span>
-<span class="k">for</span> <span class="n">lsoa</span> <span class="ow">in</span> <span class="n">lsoa_list</span><span class="p">:</span>
-    <span class="c1"># Time to IVT for drip and ship</span>
-    <span class="n">ivt_drip_ship</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="n">arrival_to_ivt</span><span class="p">)</span>
-    <span class="c1"># Time to IVT for mothership</span>
-    <span class="n">ivt_mothership</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="n">arrival_to_ivt</span><span class="p">)</span>
-    <span class="c1"># Time to MT for drip and ship</span>
-    <span class="n">mt_drip_ship</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> 
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">*</span> 
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">])</span> <span class="o">+</span> <span class="n">arrival_to_mt</span><span class="p">)</span>
-    <span class="c1"># Time to MT for mothership</span>
-    <span class="n">mt_mothership</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>  <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">][</span><span class="n">lsoa</span><span class="p">]</span> <span class="o">+</span> <span class="n">arrival_to_mt</span><span class="p">)</span>
+    <span class="c1"># Load the LSOA-region lookup data:</span>
+    <span class="n">df_lsoa_regions</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">load_data</span><span class="o">.</span><span class="n">lsoa_region_lookup</span><span class="p">()</span>
+    <span class="n">df_regions</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">load_data</span><span class="o">.</span><span class="n">region_lookup</span><span class="p">()</span>
     
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ivt_drip_ship</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ivt_mothership</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mt_drip_ship</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mt_mothership</span>
+    <span class="c1"># Merge the ISDN names into the LSOA-region lookup:</span>
+    <span class="n">df_lsoa_regions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">df_lsoa_regions</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+        <span class="n">df_regions</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[[</span><span class="s1">&#39;region_code&#39;</span><span class="p">,</span> <span class="s1">&#39;isdn&#39;</span><span class="p">]],</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">&#39;region_code&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
+    <span class="p">)</span>
+    <span class="c1"># Pick out the names of LSOA contained within SICBL:</span>
+    <span class="n">england_lsoa</span> <span class="o">=</span> <span class="n">df_lsoa_regions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_lsoa_regions</span><span class="p">[</span><span class="s1">&#39;region_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;SICBL&#39;</span><span class="p">,</span> <span class="s1">&#39;lsoa&#39;</span><span class="p">]</span>
+    <span class="c1"># Limit the travel matrix to only those LSOA:</span>
+    <span class="n">travel_matrix_mask</span> <span class="o">=</span> <span class="n">travel_matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">england_lsoa</span><span class="p">)</span>
+    <span class="n">travel_matrix</span> <span class="o">=</span> <span class="n">travel_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">travel_matrix_mask</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identify closest IVT unit</span>
+<span class="n">ivt_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;use_ivt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df_catchment_ivt</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">catchment</span><span class="o">.</span><span class="n">find_nearest_unit</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">ivt_hospitals</span><span class="p">])</span>
 
-<span class="c1"># Sort</span>
-<span class="n">results</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_catchment_ivt</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c1"># Show results</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit_travel_time</th>
+      <th>unit_postcode</th>
+    </tr>
+    <tr>
+      <th>LSOA</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Adur 001A</th>
+      <td>17.6</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>Adur 001B</th>
+      <td>18.7</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>Adur 001C</th>
+      <td>17.6</td>
+      <td>BN112DH</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identify closest MT unit</span>
+<span class="n">mt_hospitals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospitals</span><span class="p">[</span><span class="n">hospitals</span><span class="p">[</span><span class="s1">&#39;use_mt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df_catchment_mt</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">catchment</span><span class="o">.</span><span class="n">find_nearest_unit</span><span class="p">(</span><span class="n">travel_matrix</span><span class="p">[</span><span class="n">mt_hospitals</span><span class="p">])</span>
+
+<span class="n">df_catchment_mt</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit_travel_time</th>
+      <th>unit_postcode</th>
+    </tr>
+    <tr>
+      <th>LSOA</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Adur 001A</th>
+      <td>17.6</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>Adur 001B</th>
+      <td>18.7</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>Adur 001C</th>
+      <td>19.8</td>
+      <td>BN25BE</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="find-inter-hospital-travel-time">
+<h3>Find inter-hospital travel time<a class="headerlink" href="#find-inter-hospital-travel-time" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_transfer</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">catchment</span><span class="o">.</span><span class="n">calculate_transfer_units</span><span class="p">(</span><span class="n">hospitals</span><span class="p">)</span>
+
+<span class="n">df_transfer</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>transfer_unit_travel_time</th>
+      <th>transfer_unit_postcode</th>
+    </tr>
+    <tr>
+      <th>postcode</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SY231ER</th>
+      <td>135.8</td>
+      <td>CF144XW</td>
+    </tr>
+    <tr>
+      <th>CB20QQ</th>
+      <td>0.0</td>
+      <td>CB20QQ</td>
+    </tr>
+    <tr>
+      <th>L97AL</th>
+      <td>0.0</td>
+      <td>L97AL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="gather-travel-time-information">
+<h3>Gather travel time information<a class="headerlink" href="#gather-travel-time-information" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy over IVT unit info:</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">df_catchment_ivt</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;unit_travel_time&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unit_postcode&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_ivt_unit&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># Merge in MT unit info:</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">results</span><span class="p">,</span> <span class="n">df_catchment_mt</span><span class="p">,</span>
+    <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
+<span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;unit_travel_time&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_mt_time&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unit_postcode&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_mt_unit&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># Merge in transfer unit info:</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">results</span><span class="p">,</span> <span class="n">df_transfer</span><span class="p">,</span>
+    <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
+<span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;transfer_unit_travel_time&#39;</span><span class="p">:</span> <span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;transfer_unit_postcode&#39;</span><span class="p">:</span> <span class="s1">&#39;transfer_mt_unit&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># Is a transfer required?</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-on-stroke-pathway-timings">
+<h3>Add on stroke pathway timings<a class="headerlink" href="#add-on-stroke-pathway-timings" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">onset_to_ambulance_arrival</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">arrival_to_ivt</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">arrival_to_mt</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drip-and-ship:</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">arrival_to_ivt</span>
+<span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>   
+    <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">+</span> 
+    <span class="c1"># The times in the following line are only added on if a transfer is required:</span>
+    <span class="p">((</span><span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">])</span> <span class="o">+</span>
+    <span class="n">arrival_to_mt</span>
+<span class="p">)</span>
+
+<span class="c1"># Mothership:</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">arrival_to_ivt</span>
+<span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">arrival_to_mt</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show results</span>
 <span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
@@ -655,7 +1064,7 @@ document.write(`
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
+      <th>LSOA</th>
       <th>Adur 001A</th>
       <th>Adur 001B</th>
       <th>Adur 001C</th>
@@ -665,14 +1074,6 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>closest_ivt_unit</th>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN112DH</td>
-      <td>BN112DH</td>
-      <td>BN112DH</td>
-    </tr>
-    <tr>
       <th>closest_ivt_time</th>
       <td>17.6</td>
       <td>18.7</td>
@@ -681,12 +1082,12 @@ document.write(`
       <td>16.5</td>
     </tr>
     <tr>
-      <th>closest_mt_unit</th>
+      <th>closest_ivt_unit</th>
       <td>BN25BE</td>
       <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
     </tr>
     <tr>
       <th>closest_mt_time</th>
@@ -697,7 +1098,7 @@ document.write(`
       <td>19.8</td>
     </tr>
     <tr>
-      <th>transfer_mt_unit</th>
+      <th>closest_mt_unit</th>
       <td>BN25BE</td>
       <td>BN25BE</td>
       <td>BN25BE</td>
@@ -713,28 +1114,20 @@ document.write(`
       <td>31.6</td>
     </tr>
     <tr>
+      <th>transfer_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
       <th>mt_transfer_required</th>
       <td>False</td>
       <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>msu_unit</th>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-    </tr>
-    <tr>
-      <th>msu_time</th>
-      <td>17.6</td>
-      <td>18.7</td>
-      <td>19.8</td>
-      <td>19.8</td>
-      <td>19.8</td>
     </tr>
     <tr>
       <th>ivt_drip_ship</th>
@@ -745,20 +1138,20 @@ document.write(`
       <td>106.5</td>
     </tr>
     <tr>
-      <th>ivt_mothership</th>
-      <td>107.6</td>
-      <td>108.7</td>
-      <td>109.8</td>
-      <td>109.8</td>
-      <td>109.8</td>
-    </tr>
-    <tr>
       <th>mt_drip_ship</th>
       <td>167.6</td>
       <td>168.7</td>
       <td>259.2</td>
       <td>259.2</td>
       <td>258.1</td>
+    </tr>
+    <tr>
+      <th>ivt_mothership</th>
+      <td>107.6</td>
+      <td>108.7</td>
+      <td>109.8</td>
+      <td>109.8</td>
+      <td>109.8</td>
     </tr>
     <tr>
       <th>mt_mothership</th>
@@ -773,15 +1166,20 @@ document.write(`
 </div></div></div>
 </div>
 </section>
-<section id="add-outcomes">
-<h2>Add outcomes<a class="headerlink" href="#add-outcomes" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="calculate-outcomes">
+<h2>Calculate outcomes<a class="headerlink" href="#calculate-outcomes" title="Permalink to this heading">#</a></h2>
+<p>Calculate the proportion mRS&lt;=2 in the no-treatment population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load mRS distributions</span>
-<span class="n">mrs_dists</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s1">&#39;./utilities/mrs_dist_probs_cumsum.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
-
-<span class="n">mrs_dists</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span><span class="p">,</span> <span class="n">mrs_dists_notes</span> <span class="o">=</span> <span class="n">stroke_outcome</span><span class="o">.</span><span class="n">outcome_utilities</span><span class="o">.</span><span class="n">import_mrs_dists_from_file</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dists</span>
 </pre></div>
 </div>
 </div>
@@ -804,13 +1202,13 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
+      <th>mRS&lt;=0</th>
+      <th>mRS&lt;=1</th>
+      <th>mRS&lt;=2</th>
+      <th>mRS&lt;=3</th>
+      <th>mRS&lt;=4</th>
+      <th>mRS&lt;=5</th>
+      <th>mRS&lt;=6</th>
     </tr>
     <tr>
       <th>Stroke type</th>
@@ -826,133 +1224,103 @@ document.write(`
   <tbody>
     <tr>
       <th>pre_stroke_nlvo</th>
-      <td>0.582881</td>
-      <td>0.745419</td>
-      <td>0.848859</td>
-      <td>0.951082</td>
-      <td>0.993055</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>pre_stroke_nlvo_ivt_deaths</th>
-      <td>0.576469</td>
-      <td>0.737219</td>
-      <td>0.839522</td>
-      <td>0.940620</td>
-      <td>0.982131</td>
-      <td>0.989000</td>
-      <td>1.0</td>
+      <td>0.583</td>
+      <td>0.746</td>
+      <td>0.850</td>
+      <td>0.951</td>
+      <td>0.993</td>
+      <td>1.000</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>pre_stroke_lvo</th>
-      <td>0.417894</td>
-      <td>0.560853</td>
-      <td>0.679283</td>
-      <td>0.843494</td>
-      <td>0.957269</td>
-      <td>1.000000</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>pre_stroke_lvo_ivt_deaths</th>
-      <td>0.403644</td>
-      <td>0.541728</td>
-      <td>0.656119</td>
-      <td>0.814731</td>
-      <td>0.924626</td>
-      <td>0.965900</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>pre_stroke_lvo_mt_deaths</th>
-      <td>0.402850</td>
-      <td>0.540662</td>
-      <td>0.654829</td>
-      <td>0.813128</td>
-      <td>0.922807</td>
-      <td>0.964000</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>no_treatment_nlvo</th>
-      <td>0.197144</td>
-      <td>0.460000</td>
-      <td>0.580032</td>
-      <td>0.707768</td>
-      <td>0.855677</td>
-      <td>0.917702</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>no_effect_nlvo_ivt_deaths</th>
-      <td>0.197271</td>
-      <td>0.460000</td>
-      <td>0.577583</td>
-      <td>0.702252</td>
-      <td>0.845244</td>
-      <td>0.904454</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>t0_treatment_nlvo_ivt</th>
-      <td>0.429808</td>
-      <td>0.630000</td>
-      <td>0.738212</td>
-      <td>0.848427</td>
-      <td>0.929188</td>
-      <td>0.956300</td>
-      <td>1.0</td>
+      <td>0.408</td>
+      <td>0.552</td>
+      <td>0.672</td>
+      <td>0.838</td>
+      <td>0.956</td>
+      <td>1.000</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>no_treatment_lvo</th>
-      <td>0.050000</td>
-      <td>0.129000</td>
-      <td>0.265000</td>
-      <td>0.429000</td>
-      <td>0.676000</td>
-      <td>0.811000</td>
-      <td>1.0</td>
+      <td>0.050</td>
+      <td>0.129</td>
+      <td>0.265</td>
+      <td>0.429</td>
+      <td>0.676</td>
+      <td>0.811</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.198</td>
+      <td>0.460</td>
+      <td>0.580</td>
+      <td>0.708</td>
+      <td>0.856</td>
+      <td>0.918</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.196</td>
+      <td>0.455</td>
+      <td>0.574</td>
+      <td>0.701</td>
+      <td>0.847</td>
+      <td>0.908</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>no_effect_lvo_ivt_deaths</th>
-      <td>0.047898</td>
-      <td>0.123576</td>
-      <td>0.253858</td>
-      <td>0.410962</td>
-      <td>0.647576</td>
-      <td>0.776900</td>
-      <td>1.0</td>
+      <td>0.048</td>
+      <td>0.124</td>
+      <td>0.255</td>
+      <td>0.414</td>
+      <td>0.653</td>
+      <td>0.783</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>no_effect_lvo_mt_deaths</th>
-      <td>0.047781</td>
-      <td>0.123274</td>
-      <td>0.253237</td>
-      <td>0.409957</td>
-      <td>0.645993</td>
-      <td>0.775000</td>
-      <td>1.0</td>
+      <td>0.048</td>
+      <td>0.124</td>
+      <td>0.255</td>
+      <td>0.412</td>
+      <td>0.649</td>
+      <td>0.779</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.445</td>
+      <td>0.642</td>
+      <td>0.752</td>
+      <td>0.862</td>
+      <td>0.941</td>
+      <td>0.967</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>t0_treatment_lvo_ivt</th>
-      <td>0.112916</td>
-      <td>0.200000</td>
-      <td>0.327377</td>
-      <td>0.484757</td>
-      <td>0.698212</td>
-      <td>0.811443</td>
-      <td>1.0</td>
+      <td>0.140</td>
+      <td>0.233</td>
+      <td>0.361</td>
+      <td>0.522</td>
+      <td>0.730</td>
+      <td>0.838</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>t0_treatment_lvo_mt</th>
-      <td>0.314082</td>
-      <td>0.436315</td>
-      <td>0.554431</td>
-      <td>0.712335</td>
-      <td>0.853604</td>
-      <td>0.916750</td>
-      <td>1.0</td>
+      <td>0.306</td>
+      <td>0.429</td>
+      <td>0.548</td>
+      <td>0.707</td>
+      <td>0.851</td>
+      <td>0.915</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -960,134 +1328,541 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Clinical_outcome</span><span class="p">(</span><span class="n">mrs_dists</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_treatment_nlvo_mrsleq2</span> <span class="o">=</span> <span class="n">mrs_dists</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_treatment_nlvo&#39;</span><span class="p">,</span> <span class="s1">&#39;mRS&lt;=2&#39;</span><span class="p">]</span>
+<span class="n">no_treatment_lvo_mrsleq2</span> <span class="o">=</span> <span class="n">mrs_dists</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_treatment_lvo&#39;</span><span class="p">,</span> <span class="s1">&#39;mRS&lt;=2&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Demo of outcome model</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_to_ivt</span> <span class="o">=</span> <span class="mi">90</span>
-<span class="n">time_to_mt</span> <span class="o">=</span> <span class="mi">120</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
-    <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up outcome model</span>
+<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Continuous_outcome</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_cohorts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;stroke_type_code&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;stroke_type_code&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;lvo_mt&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;stroke_type_code&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
-<span class="n">outcomes</span>
+<span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]:</span>
+    <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;ivt_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+    <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;onset_to_puncture_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mt_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+
+    <span class="c1"># df_results[f&#39;{model_name}_onset_to_needle_mins&#39;] = df_patients[&#39;onset_to_needle_mins&#39;].copy()</span>
+    <span class="c1"># df_results[f&#39;{model_name}_onset_to_puncture_mins&#39;] = df_patients[&#39;onset_to_puncture_mins&#39;].copy()</span>
+    
+    <span class="k">for</span> <span class="n">cohort_name</span><span class="p">,</span> <span class="n">cohort_dict</span> <span class="ow">in</span> <span class="n">patient_cohorts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="c1"># Assign patient details:</span>
+        <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;stroke_type_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cohort_dict</span><span class="p">[</span><span class="s1">&#39;stroke_type_code&#39;</span><span class="p">]</span>
+        <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cohort_dict</span><span class="p">[</span><span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">]</span>
+        <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cohort_dict</span><span class="p">[</span><span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">]</span>
+    
+        <span class="c1"># Run outcomes:</span>
+        <span class="n">outcome_model</span><span class="o">.</span><span class="n">assign_patients_to_trial</span><span class="p">(</span><span class="n">df_patients</span><span class="p">)</span>
+        
+        <span class="c1"># Calculate outcomes:</span>
+        <span class="n">patient_data_dict</span><span class="p">,</span> <span class="n">outcomes_by_stroke_type</span><span class="p">,</span> <span class="n">full_cohort_outcomes</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">())</span>
+        
+        <span class="c1"># Make a copy of the results:</span>
+        <span class="n">outcomes_by_stroke_type</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">outcomes_by_stroke_type</span><span class="p">)</span>
+        <span class="n">full_cohort_outcomes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">full_cohort_outcomes</span><span class="p">)</span>
+        
+        <span class="c1"># Place the relevant results into the results dataframe:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_utility_shift&#39;</span><span class="p">])</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mean_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_post_stroke&#39;</span><span class="p">])</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_dist_post_stroke&#39;</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">])</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_shift&#39;</span><span class="p">])</span>        
+
+        <span class="c1"># Calculate the shift in the proportion mRS&lt;=2</span>
+        <span class="c1"># compared with the no-treatment population.</span>
+        <span class="k">if</span> <span class="n">cohort_dict</span><span class="p">[</span><span class="s1">&#39;stroke_type_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">no_treatment_mrsleq2</span> <span class="o">=</span> <span class="n">no_treatment_nlvo_mrsleq2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">no_treatment_mrsleq2</span> <span class="o">=</span> <span class="n">no_treatment_lvo_mrsleq2</span>
+        
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_added_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">-</span>
+            <span class="n">no_treatment_mrsleq2</span>
+            <span class="p">)</span>            
+</pre></div>
+</div>
+</div>
+</div>
+<p>Merge the outcome results into the travel time dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">index</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">results</span><span class="p">,</span> <span class="n">df_results</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;lvo_untreated_probs&#39;: array([0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]),
- &#39;nlvo_untreated_probs&#39;: array([0.2 , 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]),
- &#39;lvo_ivt_probs&#39;: array([0.1 , 0.08, 0.13, 0.16, 0.21, 0.12, 0.2 ]),
- &#39;lvo_mt_probs&#39;: array([0.21, 0.13, 0.13, 0.17, 0.17, 0.08, 0.11]),
- &#39;nlvo_ivt_probs&#39;: array([0.37, 0.22, 0.11, 0.12, 0.09, 0.03, 0.06]),
- &#39;lvo_untreated_mean_utility&#39;: 0.3319,
- &#39;nlvo_untreated_mean_utility&#39;: 0.5997,
- &#39;lvo_ivt_mean_utility&#39;: 0.3708,
- &#39;lvo_mt_mean_utility&#39;: 0.5266,
- &#39;nlvo_ivt_mean_utility&#39;: 0.7122,
- &#39;lvo_ivt_added_utility&#39;: 0.0389,
- &#39;lvo_mt_added_utility&#39;: 0.1947,
- &#39;nlvo_ivt_added_utility&#39;: 0.1125,
- &#39;lvo_untreated_cum_probs&#39;: array([0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.  ]),
- &#39;nlvo_untreated_cum_probs&#39;: array([0.2 , 0.46, 0.58, 0.71, 0.85, 0.91, 1.  ]),
- &#39;lvo_ivt_cum_probs&#39;: array([0.1 , 0.18, 0.31, 0.47, 0.68, 0.8 , 1.  ]),
- &#39;lvo_mt_cum_probs&#39;: array([0.21, 0.34, 0.47, 0.64, 0.81, 0.89, 1.  ]),
- &#39;nlvo_ivt_cum_probs&#39;: array([0.37, 0.59, 0.7 , 0.82, 0.91, 0.94, 1.  ]),
- &#39;lvo_untreated_mrs&lt;=2&#39;: 0.27,
- &#39;nlvo_untreated_mrs&lt;=2&#39;: 0.58,
- &#39;lvo_ivt_mrs&lt;=2&#39;: 0.31,
- &#39;lvo_mt_mrs&lt;=2&#39;: 0.47,
- &#39;nlvo_ivt_mrs&lt;=2&#39;: 0.7,
- &#39;lvo_ivt_shift&#39;: array([ 0.05,  0.  , -0.01,  0.  , -0.03, -0.02,  0.01]),
- &#39;lvo_mt_shift&#39;: array([ 0.16,  0.05, -0.01,  0.01, -0.07, -0.06, -0.08]),
- &#39;nlvo_ivt_shift&#39;: array([ 0.17, -0.04, -0.01, -0.01, -0.05, -0.03, -0.03]),
- &#39;lvo_untreated_mean_mRS&#39;: 3.64,
- &#39;nlvo_untreated_mean_mRS&#39;: 2.29,
- &#39;lvo_ivt_mean_mRS&#39;: 3.46,
- &#39;lvo_mt_mean_mRS&#39;: 2.64,
- &#39;nlvo_ivt_mean_mRS&#39;: 1.67,
- &#39;lvo_ivt_mean_shift&#39;: -0.18,
- &#39;lvo_mt_mean_shift&#39;: -1.0,
- &#39;nlvo_ivt_mean_shift&#39;: -0.62,
- &#39;lvo_ivt_improved&#39;: 0.19,
- &#39;lvo_mt_improved&#39;: 0.81,
- &#39;nlvo_ivt_improved&#39;: 0.61}
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>LSOA</th>
+      <th>Adur 001A</th>
+      <th>Adur 001B</th>
+      <th>Adur 001C</th>
+      <th>Adur 001D</th>
+      <th>Adur 001E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>closest_ivt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>17.6</td>
+      <td>17.6</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>closest_ivt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+    </tr>
+    <tr>
+      <th>closest_mt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>19.8</td>
+      <td>19.8</td>
+      <td>19.8</td>
+    </tr>
+    <tr>
+      <th>closest_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>transfer_mt_time</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>31.6</td>
+      <td>31.6</td>
+      <td>31.6</td>
+    </tr>
+    <tr>
+      <th>transfer_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>mt_transfer_required</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>ivt_drip_ship</th>
+      <td>107.6</td>
+      <td>108.7</td>
+      <td>107.6</td>
+      <td>107.6</td>
+      <td>106.5</td>
+    </tr>
+    <tr>
+      <th>mt_drip_ship</th>
+      <td>167.6</td>
+      <td>168.7</td>
+      <td>259.2</td>
+      <td>259.2</td>
+      <td>258.1</td>
+    </tr>
+    <tr>
+      <th>ivt_mothership</th>
+      <td>107.6</td>
+      <td>108.7</td>
+      <td>109.8</td>
+      <td>109.8</td>
+      <td>109.8</td>
+    </tr>
+    <tr>
+      <th>mt_mothership</th>
+      <td>167.6</td>
+      <td>168.7</td>
+      <td>169.8</td>
+      <td>169.8</td>
+      <td>169.8</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_added_utility</th>
+      <td>0.116854</td>
+      <td>0.116409</td>
+      <td>0.116854</td>
+      <td>0.116854</td>
+      <td>0.117299</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_mean_mrs</th>
+      <td>1.636531</td>
+      <td>1.639129</td>
+      <td>1.636531</td>
+      <td>1.636531</td>
+      <td>1.633936</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_mrs_less_equal_2</th>
+      <td>0.706494</td>
+      <td>0.706005</td>
+      <td>0.706494</td>
+      <td>0.706494</td>
+      <td>0.706984</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_mrs_shift</th>
+      <td>-0.643469</td>
+      <td>-0.640871</td>
+      <td>-0.643469</td>
+      <td>-0.643469</td>
+      <td>-0.646064</td>
+    </tr>
+    <tr>
+      <th>drip_ship_nlvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.126494</td>
+      <td>0.126005</td>
+      <td>0.126494</td>
+      <td>0.126494</td>
+      <td>0.126984</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_added_utility</th>
+      <td>0.058718</td>
+      <td>0.058412</td>
+      <td>0.058718</td>
+      <td>0.058718</td>
+      <td>0.059024</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mean_mrs</th>
+      <td>3.346549</td>
+      <td>3.348226</td>
+      <td>3.346549</td>
+      <td>3.346549</td>
+      <td>3.34487</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mrs_less_equal_2</th>
+      <td>0.328789</td>
+      <td>0.328468</td>
+      <td>0.328789</td>
+      <td>0.328789</td>
+      <td>0.329111</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mrs_shift</th>
+      <td>-0.293451</td>
+      <td>-0.291774</td>
+      <td>-0.293451</td>
+      <td>-0.293451</td>
+      <td>-0.29513</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.063789</td>
+      <td>0.063468</td>
+      <td>0.063789</td>
+      <td>0.063789</td>
+      <td>0.064111</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_added_utility</th>
+      <td>0.163611</td>
+      <td>0.162952</td>
+      <td>0.109278</td>
+      <td>0.109278</td>
+      <td>0.109921</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_mean_mrs</th>
+      <td>2.811357</td>
+      <td>2.814939</td>
+      <td>3.101739</td>
+      <td>3.101739</td>
+      <td>3.09835</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_mrs_less_equal_2</th>
+      <td>0.438069</td>
+      <td>0.437356</td>
+      <td>0.379811</td>
+      <td>0.379811</td>
+      <td>0.380494</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_mrs_shift</th>
+      <td>-0.828643</td>
+      <td>-0.825061</td>
+      <td>-0.538261</td>
+      <td>-0.538261</td>
+      <td>-0.54165</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_mt_added_mrs_less_equal_2</th>
+      <td>0.173069</td>
+      <td>0.172356</td>
+      <td>0.114811</td>
+      <td>0.114811</td>
+      <td>0.115494</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_added_utility</th>
+      <td>0.116854</td>
+      <td>0.116409</td>
+      <td>0.115963</td>
+      <td>0.115963</td>
+      <td>0.115963</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_mean_mrs</th>
+      <td>1.636531</td>
+      <td>1.639129</td>
+      <td>1.641728</td>
+      <td>1.641728</td>
+      <td>1.641728</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_mrs_less_equal_2</th>
+      <td>0.706494</td>
+      <td>0.706005</td>
+      <td>0.705514</td>
+      <td>0.705514</td>
+      <td>0.705514</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_mrs_shift</th>
+      <td>-0.643469</td>
+      <td>-0.640871</td>
+      <td>-0.638272</td>
+      <td>-0.638272</td>
+      <td>-0.638272</td>
+    </tr>
+    <tr>
+      <th>mothership_nlvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.126494</td>
+      <td>0.126005</td>
+      <td>0.125514</td>
+      <td>0.125514</td>
+      <td>0.125514</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_added_utility</th>
+      <td>0.058718</td>
+      <td>0.058412</td>
+      <td>0.058107</td>
+      <td>0.058107</td>
+      <td>0.058107</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mean_mrs</th>
+      <td>3.346549</td>
+      <td>3.348226</td>
+      <td>3.349902</td>
+      <td>3.349902</td>
+      <td>3.349902</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mrs_less_equal_2</th>
+      <td>0.328789</td>
+      <td>0.328468</td>
+      <td>0.328146</td>
+      <td>0.328146</td>
+      <td>0.328146</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mrs_shift</th>
+      <td>-0.293451</td>
+      <td>-0.291774</td>
+      <td>-0.290098</td>
+      <td>-0.290098</td>
+      <td>-0.290098</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.063789</td>
+      <td>0.063468</td>
+      <td>0.063146</td>
+      <td>0.063146</td>
+      <td>0.063146</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_added_utility</th>
+      <td>0.163611</td>
+      <td>0.162952</td>
+      <td>0.162292</td>
+      <td>0.162292</td>
+      <td>0.162292</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mean_mrs</th>
+      <td>2.811357</td>
+      <td>2.814939</td>
+      <td>2.818519</td>
+      <td>2.818519</td>
+      <td>2.818519</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_less_equal_2</th>
+      <td>0.438069</td>
+      <td>0.437356</td>
+      <td>0.436643</td>
+      <td>0.436643</td>
+      <td>0.436643</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_shift</th>
+      <td>-0.828643</td>
+      <td>-0.825061</td>
+      <td>-0.821481</td>
+      <td>-0.821481</td>
+      <td>-0.821481</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_added_mrs_less_equal_2</th>
+      <td>0.173069</td>
+      <td>0.172356</td>
+      <td>0.171643</td>
+      <td>0.171643</td>
+      <td>0.171643</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">
+<h2>Calculate treatment rates based on expected proportions of LVO/nLVO<a class="headerlink" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stroke_type_propotions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;haemorragic&#39;</span><span class="p">:</span> <span class="mf">0.136</span><span class="p">,</span>
+    <span class="s1">&#39;lvo&#39;</span><span class="p">:</span> <span class="mf">0.33</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.136</span><span class="p">),</span>
+    <span class="s1">&#39;nlvo&#39;</span><span class="p">:</span> <span class="mf">0.67</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.136</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Functions to get outcomes for drip’and’ship and mothership.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_drip_ship_outcomes</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate outcomes based on drip and ship times to IVT and MT&quot;&quot;&quot;</span>
-    <span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">]</span>
-    <span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">]</span>
-    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
-        <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">outcomes</span>
-
-<span class="k">def</span> <span class="nf">get_mothership_outcomes</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate outcomes based on drip and ship times to IVT and MT&quot;&quot;&quot;</span>
-    <span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ivt_mothership&#39;</span><span class="p">]</span>
-    <span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;mt_mothership&#39;</span><span class="p">]</span>
-    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">(</span>
-        <span class="n">time_to_ivt</span><span class="p">,</span> <span class="n">time_to_mt</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_spacing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">outcomes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_ivt</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">target_mt</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">prop_mt_previously_receiving_ivt</span> <span class="o">=</span> <span class="mf">0.85</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get drip and ship results</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_drip_ship_outcomes</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># Reformat</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
-<span class="n">colnames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
-<span class="n">new_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;drip_ship_&#39;</span> <span class="o">+</span> <span class="n">colname</span> <span class="k">for</span> <span class="n">colname</span> <span class="ow">in</span> <span class="n">colnames</span><span class="p">]</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">new_colnames</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="c1"># Add to results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">results</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Get mothership results</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_mothership_outcomes</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># Reformat</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
-<span class="n">colnames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
-<span class="n">new_colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mothership_&#39;</span> <span class="o">+</span> <span class="n">colname</span> <span class="k">for</span> <span class="n">colname</span> <span class="ow">in</span> <span class="n">colnames</span><span class="p">]</span>
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">outcomes</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">new_colnames</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="c1"># Add to results</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">results</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_lvo_receiving_mt</span> <span class="o">=</span> <span class="n">target_mt</span> <span class="o">/</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Add chnage in mRS &lt;=2</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drip and ship</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
-
-<span class="c1"># Mothership</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_untreated_mrs&lt;=2&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_lvo_receiving_ivt</span> <span class="o">=</span> <span class="n">prop_lvo_receiving_mt</span> <span class="o">*</span> <span class="n">prop_mt_previously_receiving_ivt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_nlvo_receiving_ivt</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">target_ivt</span> <span class="o">-</span> <span class="p">(</span><span class="n">prop_lvo_receiving_ivt</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]))</span> <span class="o">/</span> 
+    <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check sums</span>
+<span class="n">prop_all_receiving_ivt</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO with MT:   </span><span class="si">{</span><span class="n">prop_lvo_receiving_mt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO with IVT:  </span><span class="si">{</span><span class="n">prop_lvo_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nLVO with IVT: </span><span class="si">{</span><span class="n">prop_nlvo_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;All with IVT:  </span><span class="si">{</span><span class="n">prop_all_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO with MT:   0.351
+LVO with IVT:  0.298
+nLVO with IVT: 0.199
+All with IVT:  0.200
 </pre></div>
 </div>
 </div>
@@ -1095,52 +1870,13 @@ document.write(`
 <p>Add weighted benefit based on proportions of treated LVO and nLVO: Add weighted utility, mrs&lt;=2, and mean_shift based on stroke type and treatment rates</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add weighted utility for drip ship</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_drip_ship_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
-
-<span class="c1"># Add weighted utility for mothership</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_mothership_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_added_utility&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
-
-<span class="c1"># Add weighted added_mRS &lt;= 2 for drip ship</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_drip_ship_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
-
-<span class="c1"># Add weighted added mRS &lt;= 2 for mothership</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_mothership_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_added_mrs&lt;=2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
-
-<span class="c1"># Add weighted mean shift for drip ship</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_drip_ship_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_nlvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;drip_ship_lvo_mt_mean_shift&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
-
-<span class="c1"># Add weighted mean shift for mothership</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;weighted_mothership_mean_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_nlvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_ivt_mean_shift&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;mothership_lvo_mt_mean_shift&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Add admission numbers to results.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add admissions to results</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">admissions</span><span class="p">[</span><span class="s1">&#39;LSOA_predicted_admissions&#39;</span><span class="p">],</span>
-                    <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">outcome_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_mrs&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_shift&#39;</span><span class="p">,</span> <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">]:</span>
+        <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_nlvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">)</span>
+        <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1150,10 +1886,7 @@ document.write(`
 <h2>Show results<a class="headerlink" href="#show-results" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adjust max rows to show</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># Show results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show results</span>
 <span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
@@ -1176,7 +1909,7 @@ document.write(`
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
+      <th>LSOA</th>
       <th>Adur 001A</th>
       <th>Adur 001B</th>
       <th>Adur 001C</th>
@@ -1186,14 +1919,6 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>closest_ivt_unit</th>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN112DH</td>
-      <td>BN112DH</td>
-      <td>BN112DH</td>
-    </tr>
-    <tr>
       <th>closest_ivt_time</th>
       <td>17.6</td>
       <td>18.7</td>
@@ -1202,12 +1927,12 @@ document.write(`
       <td>16.5</td>
     </tr>
     <tr>
-      <th>closest_mt_unit</th>
+      <th>closest_ivt_unit</th>
       <td>BN25BE</td>
       <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
     </tr>
     <tr>
       <th>closest_mt_time</th>
@@ -1218,7 +1943,7 @@ document.write(`
       <td>19.8</td>
     </tr>
     <tr>
-      <th>transfer_mt_unit</th>
+      <th>closest_mt_unit</th>
       <td>BN25BE</td>
       <td>BN25BE</td>
       <td>BN25BE</td>
@@ -1234,28 +1959,20 @@ document.write(`
       <td>31.6</td>
     </tr>
     <tr>
+      <th>transfer_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
       <th>mt_transfer_required</th>
       <td>False</td>
       <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>msu_unit</th>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-      <td>BN25BE</td>
-    </tr>
-    <tr>
-      <th>msu_time</th>
-      <td>17.6</td>
-      <td>18.7</td>
-      <td>19.8</td>
-      <td>19.8</td>
-      <td>19.8</td>
     </tr>
     <tr>
       <th>ivt_drip_ship</th>
@@ -1266,20 +1983,20 @@ document.write(`
       <td>106.5</td>
     </tr>
     <tr>
-      <th>ivt_mothership</th>
-      <td>107.6</td>
-      <td>108.7</td>
-      <td>109.8</td>
-      <td>109.8</td>
-      <td>109.8</td>
-    </tr>
-    <tr>
       <th>mt_drip_ship</th>
       <td>167.6</td>
       <td>168.7</td>
       <td>259.2</td>
       <td>259.2</td>
       <td>258.1</td>
+    </tr>
+    <tr>
+      <th>ivt_mothership</th>
+      <td>107.6</td>
+      <td>108.7</td>
+      <td>109.8</td>
+      <td>109.8</td>
+      <td>109.8</td>
     </tr>
     <tr>
       <th>mt_mothership</th>
@@ -1290,700 +2007,324 @@ document.write(`
       <td>169.8</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_untreated_probs</th>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
+      <th>drip_ship_nlvo_ivt_added_utility</th>
+      <td>0.116854</td>
+      <td>0.116409</td>
+      <td>0.116854</td>
+      <td>0.116854</td>
+      <td>0.117299</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_untreated_probs</th>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
+      <th>drip_ship_nlvo_ivt_mean_mrs</th>
+      <td>1.636531</td>
+      <td>1.639129</td>
+      <td>1.636531</td>
+      <td>1.636531</td>
+      <td>1.633936</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_ivt_probs</th>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
+      <th>drip_ship_nlvo_ivt_mrs_less_equal_2</th>
+      <td>0.706494</td>
+      <td>0.706005</td>
+      <td>0.706494</td>
+      <td>0.706494</td>
+      <td>0.706984</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_mt_probs</th>
-      <td>[0.18, 0.12, 0.14, 0.17, 0.18, 0.09, 0.12]</td>
-      <td>[0.18, 0.12, 0.14, 0.17, 0.18, 0.09, 0.12]</td>
-      <td>[0.13, 0.11, 0.14, 0.17, 0.2, 0.1, 0.15]</td>
-      <td>[0.13, 0.11, 0.14, 0.17, 0.2, 0.1, 0.15]</td>
-      <td>[0.13, 0.11, 0.14, 0.18, 0.19, 0.1, 0.15]</td>
+      <th>drip_ship_nlvo_ivt_mrs_shift</th>
+      <td>-0.643469</td>
+      <td>-0.640871</td>
+      <td>-0.643469</td>
+      <td>-0.643469</td>
+      <td>-0.646064</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_ivt_probs</th>
-      <td>[0.36, 0.22, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.35, 0.23, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.36, 0.22, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.36, 0.22, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.36, 0.22, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_untreated_mean_utility</th>
-      <td>0.3319</td>
-      <td>0.3319</td>
-      <td>0.3319</td>
-      <td>0.3319</td>
-      <td>0.3319</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_untreated_mean_utility</th>
-      <td>0.5997</td>
-      <td>0.5997</td>
-      <td>0.5997</td>
-      <td>0.5997</td>
-      <td>0.5997</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_ivt_mean_utility</th>
-      <td>0.3664</td>
-      <td>0.3664</td>
-      <td>0.3664</td>
-      <td>0.3664</td>
-      <td>0.3664</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_mean_utility</th>
-      <td>0.4962</td>
-      <td>0.4962</td>
-      <td>0.441</td>
-      <td>0.441</td>
-      <td>0.4445</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_mean_utility</th>
-      <td>0.7045</td>
-      <td>0.7036</td>
-      <td>0.7045</td>
-      <td>0.7045</td>
-      <td>0.7045</td>
+      <th>drip_ship_nlvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.126494</td>
+      <td>0.126005</td>
+      <td>0.126494</td>
+      <td>0.126494</td>
+      <td>0.126984</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_added_utility</th>
-      <td>0.0345</td>
-      <td>0.0345</td>
-      <td>0.0345</td>
-      <td>0.0345</td>
-      <td>0.0345</td>
+      <td>0.058718</td>
+      <td>0.058412</td>
+      <td>0.058718</td>
+      <td>0.058718</td>
+      <td>0.059024</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mean_mrs</th>
+      <td>3.346549</td>
+      <td>3.348226</td>
+      <td>3.346549</td>
+      <td>3.346549</td>
+      <td>3.34487</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mrs_less_equal_2</th>
+      <td>0.328789</td>
+      <td>0.328468</td>
+      <td>0.328789</td>
+      <td>0.328789</td>
+      <td>0.329111</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mrs_shift</th>
+      <td>-0.293451</td>
+      <td>-0.291774</td>
+      <td>-0.293451</td>
+      <td>-0.293451</td>
+      <td>-0.29513</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.063789</td>
+      <td>0.063468</td>
+      <td>0.063789</td>
+      <td>0.063789</td>
+      <td>0.064111</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_added_utility</th>
-      <td>0.1643</td>
-      <td>0.1643</td>
-      <td>0.1091</td>
-      <td>0.1091</td>
-      <td>0.1126</td>
+      <td>0.163611</td>
+      <td>0.162952</td>
+      <td>0.109278</td>
+      <td>0.109278</td>
+      <td>0.109921</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_ivt_added_utility</th>
-      <td>0.1048</td>
-      <td>0.1039</td>
-      <td>0.1048</td>
-      <td>0.1048</td>
-      <td>0.1048</td>
+      <th>drip_ship_lvo_mt_mean_mrs</th>
+      <td>2.811357</td>
+      <td>2.814939</td>
+      <td>3.101739</td>
+      <td>3.101739</td>
+      <td>3.09835</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_untreated_cum_probs</th>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
+      <th>drip_ship_lvo_mt_mrs_less_equal_2</th>
+      <td>0.438069</td>
+      <td>0.437356</td>
+      <td>0.379811</td>
+      <td>0.379811</td>
+      <td>0.380494</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_untreated_cum_probs</th>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
+      <th>drip_ship_lvo_mt_mrs_shift</th>
+      <td>-0.828643</td>
+      <td>-0.825061</td>
+      <td>-0.538261</td>
+      <td>-0.538261</td>
+      <td>-0.54165</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_ivt_cum_probs</th>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_cum_probs</th>
-      <td>[0.18, 0.3, 0.44, 0.61, 0.79, 0.88, 1.0]</td>
-      <td>[0.18, 0.3, 0.44, 0.61, 0.79, 0.88, 1.0]</td>
-      <td>[0.13, 0.24, 0.38, 0.55, 0.75, 0.85, 1.0]</td>
-      <td>[0.13, 0.24, 0.38, 0.55, 0.75, 0.85, 1.0]</td>
-      <td>[0.13, 0.24, 0.38, 0.56, 0.75, 0.85, 1.0]</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_cum_probs</th>
-      <td>[0.36, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.35, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.36, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.36, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.36, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_untreated_mrs&lt;=2</th>
-      <td>0.27</td>
-      <td>0.27</td>
-      <td>0.27</td>
-      <td>0.27</td>
-      <td>0.27</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_untreated_mrs&lt;=2</th>
-      <td>0.58</td>
-      <td>0.58</td>
-      <td>0.58</td>
-      <td>0.58</td>
-      <td>0.58</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_ivt_mrs&lt;=2</th>
-      <td>0.31</td>
-      <td>0.31</td>
-      <td>0.31</td>
-      <td>0.31</td>
-      <td>0.31</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_mrs&lt;=2</th>
-      <td>0.44</td>
-      <td>0.44</td>
-      <td>0.38</td>
-      <td>0.38</td>
-      <td>0.38</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_mrs&lt;=2</th>
-      <td>0.69</td>
-      <td>0.69</td>
-      <td>0.69</td>
-      <td>0.69</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_ivt_shift</th>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_shift</th>
-      <td>[0.13, 0.04, 0.0, 0.01, -0.06, -0.05, -0.07]</td>
-      <td>[0.13, 0.04, 0.0, 0.01, -0.06, -0.05, -0.07]</td>
-      <td>[0.08, 0.03, 0.0, 0.01, -0.04, -0.04, -0.04]</td>
-      <td>[0.08, 0.03, 0.0, 0.01, -0.04, -0.04, -0.04]</td>
-      <td>[0.08, 0.03, 0.0, 0.02, -0.05, -0.04, -0.04]</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_shift</th>
-      <td>[0.16, -0.04, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.15, -0.03, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.16, -0.04, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.16, -0.04, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.16, -0.04, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_untreated_mean_mRS</th>
-      <td>3.64</td>
-      <td>3.64</td>
-      <td>3.64</td>
-      <td>3.64</td>
-      <td>3.64</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_untreated_mean_mRS</th>
-      <td>2.29</td>
-      <td>2.29</td>
-      <td>2.29</td>
-      <td>2.29</td>
-      <td>2.29</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_ivt_mean_mRS</th>
-      <td>3.48</td>
-      <td>3.48</td>
-      <td>3.48</td>
-      <td>3.48</td>
-      <td>3.48</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_mean_mRS</th>
-      <td>2.8</td>
-      <td>2.8</td>
-      <td>3.1</td>
-      <td>3.1</td>
-      <td>3.09</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_mean_mRS</th>
-      <td>1.71</td>
-      <td>1.72</td>
-      <td>1.71</td>
-      <td>1.71</td>
-      <td>1.71</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_ivt_mean_shift</th>
-      <td>-0.16</td>
-      <td>-0.16</td>
-      <td>-0.16</td>
-      <td>-0.16</td>
-      <td>-0.16</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_mean_shift</th>
-      <td>-0.84</td>
-      <td>-0.84</td>
-      <td>-0.54</td>
-      <td>-0.54</td>
-      <td>-0.55</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_mean_shift</th>
-      <td>-0.58</td>
-      <td>-0.57</td>
-      <td>-0.58</td>
-      <td>-0.58</td>
-      <td>-0.58</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_ivt_improved</th>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_improved</th>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.54</td>
-      <td>0.54</td>
-      <td>0.55</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_improved</th>
-      <td>0.58</td>
-      <td>0.57</td>
-      <td>0.58</td>
-      <td>0.58</td>
-      <td>0.58</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_untreated_probs</th>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-      <td>[0.05, 0.08, 0.14, 0.16, 0.24, 0.14, 0.19]</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_untreated_probs</th>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-      <td>[0.2, 0.26, 0.12, 0.13, 0.14, 0.06, 0.09]</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_ivt_probs</th>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-      <td>[0.09, 0.09, 0.13, 0.15, 0.22, 0.12, 0.2]</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_mt_probs</th>
-      <td>[0.18, 0.12, 0.14, 0.17, 0.18, 0.09, 0.12]</td>
-      <td>[0.18, 0.12, 0.14, 0.17, 0.18, 0.09, 0.12]</td>
-      <td>[0.18, 0.12, 0.14, 0.17, 0.18, 0.09, 0.12]</td>
-      <td>[0.18, 0.12, 0.14, 0.17, 0.18, 0.09, 0.12]</td>
-      <td>[0.18, 0.12, 0.14, 0.17, 0.18, 0.09, 0.12]</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_ivt_probs</th>
-      <td>[0.36, 0.22, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.35, 0.23, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.35, 0.23, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.35, 0.23, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-      <td>[0.35, 0.23, 0.11, 0.12, 0.1, 0.03, 0.06]</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_untreated_mean_utility</th>
-      <td>0.3319</td>
-      <td>0.3319</td>
-      <td>0.3319</td>
-      <td>0.3319</td>
-      <td>0.3319</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_untreated_mean_utility</th>
-      <td>0.5997</td>
-      <td>0.5997</td>
-      <td>0.5997</td>
-      <td>0.5997</td>
-      <td>0.5997</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_ivt_mean_utility</th>
-      <td>0.3664</td>
-      <td>0.3664</td>
-      <td>0.3664</td>
-      <td>0.3664</td>
-      <td>0.3664</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_mt_mean_utility</th>
-      <td>0.4962</td>
-      <td>0.4962</td>
-      <td>0.4962</td>
-      <td>0.4962</td>
-      <td>0.4962</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_ivt_mean_utility</th>
-      <td>0.7045</td>
-      <td>0.7036</td>
-      <td>0.7036</td>
-      <td>0.7036</td>
-      <td>0.7036</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_ivt_added_utility</th>
-      <td>0.0345</td>
-      <td>0.0345</td>
-      <td>0.0345</td>
-      <td>0.0345</td>
-      <td>0.0345</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_mt_added_utility</th>
-      <td>0.1643</td>
-      <td>0.1643</td>
-      <td>0.1643</td>
-      <td>0.1643</td>
-      <td>0.1643</td>
+      <th>drip_ship_lvo_mt_added_mrs_less_equal_2</th>
+      <td>0.173069</td>
+      <td>0.172356</td>
+      <td>0.114811</td>
+      <td>0.114811</td>
+      <td>0.115494</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_added_utility</th>
-      <td>0.1048</td>
-      <td>0.1039</td>
-      <td>0.1039</td>
-      <td>0.1039</td>
-      <td>0.1039</td>
+      <td>0.116854</td>
+      <td>0.116409</td>
+      <td>0.115963</td>
+      <td>0.115963</td>
+      <td>0.115963</td>
     </tr>
     <tr>
-      <th>mothership_lvo_untreated_cum_probs</th>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
-      <td>[0.05, 0.13, 0.27, 0.43, 0.67, 0.81, 1.0]</td>
+      <th>mothership_nlvo_ivt_mean_mrs</th>
+      <td>1.636531</td>
+      <td>1.639129</td>
+      <td>1.641728</td>
+      <td>1.641728</td>
+      <td>1.641728</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_untreated_cum_probs</th>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
-      <td>[0.2, 0.46, 0.58, 0.71, 0.85, 0.91, 1.0]</td>
+      <th>mothership_nlvo_ivt_mrs_less_equal_2</th>
+      <td>0.706494</td>
+      <td>0.706005</td>
+      <td>0.705514</td>
+      <td>0.705514</td>
+      <td>0.705514</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_cum_probs</th>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
-      <td>[0.09, 0.18, 0.31, 0.46, 0.68, 0.8, 1.0]</td>
+      <th>mothership_nlvo_ivt_mrs_shift</th>
+      <td>-0.643469</td>
+      <td>-0.640871</td>
+      <td>-0.638272</td>
+      <td>-0.638272</td>
+      <td>-0.638272</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_cum_probs</th>
-      <td>[0.18, 0.3, 0.44, 0.61, 0.79, 0.88, 1.0]</td>
-      <td>[0.18, 0.3, 0.44, 0.61, 0.79, 0.88, 1.0]</td>
-      <td>[0.18, 0.3, 0.44, 0.61, 0.79, 0.88, 1.0]</td>
-      <td>[0.18, 0.3, 0.44, 0.61, 0.79, 0.88, 1.0]</td>
-      <td>[0.18, 0.3, 0.44, 0.61, 0.79, 0.88, 1.0]</td>
+      <th>mothership_nlvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.126494</td>
+      <td>0.126005</td>
+      <td>0.125514</td>
+      <td>0.125514</td>
+      <td>0.125514</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_cum_probs</th>
-      <td>[0.36, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.35, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.35, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.35, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
-      <td>[0.35, 0.58, 0.69, 0.81, 0.91, 0.94, 1.0]</td>
+      <th>mothership_lvo_ivt_added_utility</th>
+      <td>0.058718</td>
+      <td>0.058412</td>
+      <td>0.058107</td>
+      <td>0.058107</td>
+      <td>0.058107</td>
     </tr>
     <tr>
-      <th>mothership_lvo_untreated_mrs&lt;=2</th>
-      <td>0.27</td>
-      <td>0.27</td>
-      <td>0.27</td>
-      <td>0.27</td>
-      <td>0.27</td>
+      <th>mothership_lvo_ivt_mean_mrs</th>
+      <td>3.346549</td>
+      <td>3.348226</td>
+      <td>3.349902</td>
+      <td>3.349902</td>
+      <td>3.349902</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_untreated_mrs&lt;=2</th>
-      <td>0.58</td>
-      <td>0.58</td>
-      <td>0.58</td>
-      <td>0.58</td>
-      <td>0.58</td>
+      <th>mothership_lvo_ivt_mrs_less_equal_2</th>
+      <td>0.328789</td>
+      <td>0.328468</td>
+      <td>0.328146</td>
+      <td>0.328146</td>
+      <td>0.328146</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_mrs&lt;=2</th>
-      <td>0.31</td>
-      <td>0.31</td>
-      <td>0.31</td>
-      <td>0.31</td>
-      <td>0.31</td>
+      <th>mothership_lvo_ivt_mrs_shift</th>
+      <td>-0.293451</td>
+      <td>-0.291774</td>
+      <td>-0.290098</td>
+      <td>-0.290098</td>
+      <td>-0.290098</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_mrs&lt;=2</th>
-      <td>0.44</td>
-      <td>0.44</td>
-      <td>0.44</td>
-      <td>0.44</td>
-      <td>0.44</td>
+      <th>mothership_lvo_ivt_added_mrs_less_equal_2</th>
+      <td>0.063789</td>
+      <td>0.063468</td>
+      <td>0.063146</td>
+      <td>0.063146</td>
+      <td>0.063146</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_mrs&lt;=2</th>
-      <td>0.69</td>
-      <td>0.69</td>
-      <td>0.69</td>
-      <td>0.69</td>
-      <td>0.69</td>
+      <th>mothership_lvo_mt_added_utility</th>
+      <td>0.163611</td>
+      <td>0.162952</td>
+      <td>0.162292</td>
+      <td>0.162292</td>
+      <td>0.162292</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_shift</th>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
-      <td>[0.04, 0.01, -0.01, -0.01, -0.02, -0.02, 0.01]</td>
+      <th>mothership_lvo_mt_mean_mrs</th>
+      <td>2.811357</td>
+      <td>2.814939</td>
+      <td>2.818519</td>
+      <td>2.818519</td>
+      <td>2.818519</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_shift</th>
-      <td>[0.13, 0.04, 0.0, 0.01, -0.06, -0.05, -0.07]</td>
-      <td>[0.13, 0.04, 0.0, 0.01, -0.06, -0.05, -0.07]</td>
-      <td>[0.13, 0.04, 0.0, 0.01, -0.06, -0.05, -0.07]</td>
-      <td>[0.13, 0.04, 0.0, 0.01, -0.06, -0.05, -0.07]</td>
-      <td>[0.13, 0.04, 0.0, 0.01, -0.06, -0.05, -0.07]</td>
+      <th>mothership_lvo_mt_mrs_less_equal_2</th>
+      <td>0.438069</td>
+      <td>0.437356</td>
+      <td>0.436643</td>
+      <td>0.436643</td>
+      <td>0.436643</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_shift</th>
-      <td>[0.16, -0.04, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.15, -0.03, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.15, -0.03, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.15, -0.03, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
-      <td>[0.15, -0.03, -0.01, -0.01, -0.04, -0.03, -0.03]</td>
+      <th>mothership_lvo_mt_mrs_shift</th>
+      <td>-0.828643</td>
+      <td>-0.825061</td>
+      <td>-0.821481</td>
+      <td>-0.821481</td>
+      <td>-0.821481</td>
     </tr>
     <tr>
-      <th>mothership_lvo_untreated_mean_mRS</th>
-      <td>3.64</td>
-      <td>3.64</td>
-      <td>3.64</td>
-      <td>3.64</td>
-      <td>3.64</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_untreated_mean_mRS</th>
-      <td>2.29</td>
-      <td>2.29</td>
-      <td>2.29</td>
-      <td>2.29</td>
-      <td>2.29</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_ivt_mean_mRS</th>
-      <td>3.48</td>
-      <td>3.48</td>
-      <td>3.48</td>
-      <td>3.48</td>
-      <td>3.48</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_mt_mean_mRS</th>
-      <td>2.8</td>
-      <td>2.8</td>
-      <td>2.8</td>
-      <td>2.8</td>
-      <td>2.8</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_ivt_mean_mRS</th>
-      <td>1.71</td>
-      <td>1.72</td>
-      <td>1.72</td>
-      <td>1.72</td>
-      <td>1.72</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_ivt_mean_shift</th>
-      <td>-0.16</td>
-      <td>-0.16</td>
-      <td>-0.16</td>
-      <td>-0.16</td>
-      <td>-0.16</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_mt_mean_shift</th>
-      <td>-0.84</td>
-      <td>-0.84</td>
-      <td>-0.84</td>
-      <td>-0.84</td>
-      <td>-0.84</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_ivt_mean_shift</th>
-      <td>-0.58</td>
-      <td>-0.57</td>
-      <td>-0.57</td>
-      <td>-0.57</td>
-      <td>-0.57</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_ivt_improved</th>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_mt_improved</th>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.75</td>
-      <td>0.75</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_ivt_improved</th>
-      <td>0.58</td>
-      <td>0.57</td>
-      <td>0.57</td>
-      <td>0.57</td>
-      <td>0.57</td>
-    </tr>
-    <tr>
-      <th>drip_ship_nlvo_ivt_added_mrs&lt;=2</th>
-      <td>0.11</td>
-      <td>0.11</td>
-      <td>0.11</td>
-      <td>0.11</td>
-      <td>0.11</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_ivt_added_mrs&lt;=2</th>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>0.04</td>
-    </tr>
-    <tr>
-      <th>drip_ship_lvo_mt_added_mrs&lt;=2</th>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.11</td>
-      <td>0.11</td>
-      <td>0.11</td>
-    </tr>
-    <tr>
-      <th>mothership_nlvo_ivt_added_mrs&lt;=2</th>
-      <td>0.11</td>
-      <td>0.11</td>
-      <td>0.11</td>
-      <td>0.11</td>
-      <td>0.11</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_ivt_added_mrs&lt;=2</th>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>0.04</td>
-      <td>0.04</td>
-    </tr>
-    <tr>
-      <th>mothership_lvo_mt_added_mrs&lt;=2</th>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
-      <td>0.17</td>
+      <th>mothership_lvo_mt_added_mrs_less_equal_2</th>
+      <td>0.173069</td>
+      <td>0.172356</td>
+      <td>0.171643</td>
+      <td>0.171643</td>
+      <td>0.171643</td>
     </tr>
     <tr>
       <th>weighted_drip_ship_added_utility</th>
-      <td>0.031414</td>
-      <td>0.031311</td>
-      <td>0.025895</td>
-      <td>0.025895</td>
-      <td>0.026245</td>
+      <td>0.03479</td>
+      <td>0.034647</td>
+      <td>0.029357</td>
+      <td>0.029357</td>
+      <td>0.029499</td>
+    </tr>
+    <tr>
+      <th>weighted_drip_ship_mrs_less_equal_2</th>
+      <td>0.153001</td>
+      <td>0.152846</td>
+      <td>0.147175</td>
+      <td>0.147175</td>
+      <td>0.147327</td>
+    </tr>
+    <tr>
+      <th>weighted_drip_ship_mean_mrs</th>
+      <td>0.753793</td>
+      <td>0.754593</td>
+      <td>0.782832</td>
+      <td>0.782832</td>
+      <td>0.782052</td>
+    </tr>
+    <tr>
+      <th>weighted_drip_ship_mrs_shift</th>
+      <td>-0.181807</td>
+      <td>-0.181007</td>
+      <td>-0.152768</td>
+      <td>-0.152768</td>
+      <td>-0.153548</td>
+    </tr>
+    <tr>
+      <th>weighted_drip_ship_added_mrs_less_equal_2</th>
+      <td>0.037276</td>
+      <td>0.037121</td>
+      <td>0.03145</td>
+      <td>0.03145</td>
+      <td>0.031602</td>
     </tr>
     <tr>
       <th>weighted_mothership_added_utility</th>
-      <td>0.031414</td>
-      <td>0.031311</td>
-      <td>0.031311</td>
-      <td>0.031311</td>
-      <td>0.031311</td>
+      <td>0.03479</td>
+      <td>0.034647</td>
+      <td>0.034504</td>
+      <td>0.034504</td>
+      <td>0.034504</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_added_mrs&lt;=2</th>
-      <td>0.03305</td>
-      <td>0.03305</td>
-      <td>0.02705</td>
-      <td>0.02705</td>
-      <td>0.02705</td>
+      <th>weighted_mothership_mrs_less_equal_2</th>
+      <td>0.153001</td>
+      <td>0.152846</td>
+      <td>0.152691</td>
+      <td>0.152691</td>
+      <td>0.152691</td>
     </tr>
     <tr>
-      <th>weighted_mothership_added_mrs&lt;=2</th>
-      <td>0.03305</td>
-      <td>0.03305</td>
-      <td>0.03305</td>
-      <td>0.03305</td>
-      <td>0.03305</td>
+      <th>weighted_mothership_mean_mrs</th>
+      <td>0.753793</td>
+      <td>0.754593</td>
+      <td>0.755392</td>
+      <td>0.755392</td>
+      <td>0.755392</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mean_shift</th>
-      <td>-0.1643</td>
-      <td>-0.16315</td>
-      <td>-0.1343</td>
-      <td>-0.1343</td>
-      <td>-0.1353</td>
+      <th>weighted_mothership_mrs_shift</th>
+      <td>-0.181807</td>
+      <td>-0.181007</td>
+      <td>-0.180208</td>
+      <td>-0.180208</td>
+      <td>-0.180208</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mean_shift</th>
-      <td>-0.1643</td>
-      <td>-0.16315</td>
-      <td>-0.16315</td>
-      <td>-0.16315</td>
-      <td>-0.16315</td>
-    </tr>
-    <tr>
-      <th>LSOA_predicted_admissions</th>
-      <td>2.550427</td>
-      <td>2.550427</td>
-      <td>2.550427</td>
-      <td>2.550427</td>
-      <td>2.550427</td>
+      <th>weighted_mothership_added_mrs_less_equal_2</th>
+      <td>0.037276</td>
+      <td>0.037121</td>
+      <td>0.036966</td>
+      <td>0.036966</td>
+      <td>0.036966</td>
     </tr>
   </tbody>
 </table>
@@ -2006,76 +2347,54 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>closest_ivt_time                           19.548181
-closest_mt_time                            35.427193
-transfer_mt_time                           28.129443
-mt_transfer_required                        0.683241
-msu_time                                   35.427193
-ivt_drip_ship                             109.548181
-ivt_mothership                            125.427193
-mt_drip_ship                              238.672099
-mt_mothership                             185.427193
-drip_ship_lvo_untreated_mean_utility        0.331900
-drip_ship_nlvo_untreated_mean_utility       0.599700
-drip_ship_lvo_ivt_mean_utility              0.366617
-drip_ship_lvo_mt_mean_utility               0.456181
-drip_ship_nlvo_ivt_mean_utility             0.703901
-drip_ship_lvo_ivt_added_utility             0.034717
-drip_ship_lvo_mt_added_utility              0.124281
-drip_ship_nlvo_ivt_added_utility            0.104201
-drip_ship_lvo_untreated_mrs&lt;=2              0.270000
-drip_ship_nlvo_untreated_mrs&lt;=2             0.580000
-drip_ship_lvo_ivt_mrs&lt;=2                    0.308728
-drip_ship_lvo_mt_mrs&lt;=2                     0.396104
-drip_ship_nlvo_ivt_mrs&lt;=2                   0.693751
-drip_ship_lvo_untreated_mean_mRS            3.640000
-drip_ship_nlvo_untreated_mean_mRS           2.290000
-drip_ship_lvo_ivt_mean_mRS                  3.480208
-drip_ship_lvo_mt_mean_mRS                   3.026270
-drip_ship_nlvo_ivt_mean_mRS                 1.713757
-drip_ship_lvo_ivt_mean_shift               -0.159792
-drip_ship_lvo_mt_mean_shift                -0.613730
-drip_ship_nlvo_ivt_mean_shift              -0.576243
-drip_ship_lvo_ivt_improved                  0.169799
-drip_ship_lvo_mt_improved                   0.585251
-drip_ship_nlvo_ivt_improved                 0.575272
-mothership_lvo_untreated_mean_utility       0.331900
-mothership_nlvo_untreated_mean_utility      0.599700
-mothership_lvo_ivt_mean_utility             0.364284
-mothership_lvo_mt_mean_utility              0.488187
-mothership_nlvo_ivt_mean_utility            0.697411
-mothership_lvo_ivt_added_utility            0.032384
-mothership_lvo_mt_added_utility             0.156287
-mothership_nlvo_ivt_added_utility           0.097711
-mothership_lvo_untreated_mrs&lt;=2             0.270000
-mothership_nlvo_untreated_mrs&lt;=2            0.580000
-mothership_lvo_ivt_mrs&lt;=2                   0.304252
-mothership_lvo_mt_mrs&lt;=2                    0.430266
-mothership_nlvo_ivt_mrs&lt;=2                  0.687102
-mothership_lvo_untreated_mean_mRS           3.640000
-mothership_nlvo_untreated_mean_mRS          2.290000
-mothership_lvo_ivt_mean_mRS                 3.493792
-mothership_lvo_mt_mean_mRS                  2.856401
-mothership_nlvo_ivt_mean_mRS                1.747839
-mothership_lvo_ivt_mean_shift              -0.146208
-mothership_lvo_mt_mean_shift               -0.783599
-mothership_nlvo_ivt_mean_shift             -0.542161
-mothership_lvo_ivt_improved                 0.157200
-mothership_lvo_mt_improved                  0.721664
-mothership_nlvo_ivt_improved                0.541860
-drip_ship_nlvo_ivt_added_mrs&lt;=2             0.113751
-drip_ship_lvo_ivt_added_mrs&lt;=2              0.038728
-drip_ship_lvo_mt_added_mrs&lt;=2               0.126104
-mothership_nlvo_ivt_added_mrs&lt;=2            0.107102
-mothership_lvo_ivt_added_mrs&lt;=2             0.034252
-mothership_lvo_mt_added_mrs&lt;=2              0.160266
-weighted_drip_ship_added_utility            0.027362
-weighted_mothership_added_utility           0.029618
-weighted_drip_ship_added_mrs&lt;=2             0.028984
-weighted_mothership_added_mrs&lt;=2            0.031255
-weighted_drip_ship_mean_shift              -0.141223
-weighted_mothership_mean_shift             -0.153136
-LSOA_predicted_admissions                   2.484561
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>closest_ivt_time                               19.548181
+closest_mt_time                                34.939310
+transfer_mt_time                               27.509447
+mt_transfer_required                            0.675098
+ivt_drip_ship                                 109.548181
+mt_drip_ship                                  237.563499
+ivt_mothership                                124.939310
+mt_mothership                                 184.939310
+drip_ship_nlvo_ivt_added_utility                0.116051
+drip_ship_nlvo_ivt_mean_mrs                     1.641180
+drip_ship_nlvo_ivt_mrs_less_equal_2             0.705613
+drip_ship_nlvo_ivt_mrs_shift                   -0.638820
+drip_ship_nlvo_ivt_added_mrs_less_equal_2       0.125613
+drip_ship_lvo_ivt_added_utility                 0.058182
+drip_ship_lvo_ivt_mean_mrs                      3.349481
+drip_ship_lvo_ivt_mrs_less_equal_2              0.328224
+drip_ship_lvo_ivt_mrs_shift                    -0.290519
+drip_ship_lvo_ivt_added_mrs_less_equal_2        0.063224
+drip_ship_lvo_mt_added_utility                  0.122243
+drip_ship_lvo_mt_mean_mrs                       3.031804
+drip_ship_lvo_mt_mrs_less_equal_2               0.393813
+drip_ship_lvo_mt_mrs_shift                     -0.608196
+drip_ship_lvo_mt_added_mrs_less_equal_2         0.128813
+mothership_nlvo_ivt_added_utility               0.109693
+mothership_nlvo_ivt_mean_mrs                    1.677951
+mothership_nlvo_ivt_mrs_less_equal_2            0.698638
+mothership_nlvo_ivt_mrs_shift                  -0.602049
+mothership_nlvo_ivt_added_mrs_less_equal_2      0.118638
+mothership_lvo_ivt_added_utility                0.053948
+mothership_lvo_ivt_mean_mrs                     3.372610
+mothership_lvo_ivt_mrs_less_equal_2             0.323767
+mothership_lvo_ivt_mrs_shift                   -0.267390
+mothership_lvo_ivt_added_mrs_less_equal_2       0.058767
+mothership_lvo_mt_added_utility                 0.153260
+mothership_lvo_mt_mean_mrs                      2.867150
+mothership_lvo_mt_mrs_less_equal_2              0.426915
+mothership_lvo_mt_mrs_shift                    -0.772850
+mothership_lvo_mt_added_mrs_less_equal_2        0.161915
+weighted_drip_ship_added_utility                0.030516
+weighted_drip_ship_mrs_less_equal_2             0.148426
+weighted_drip_ship_mean_mrs                     0.776622
+weighted_drip_ship_mrs_shift                   -0.158978
+weighted_drip_ship_added_mrs_less_equal_2       0.032701
+weighted_mothership_added_utility               0.032526
+weighted_mothership_mrs_less_equal_2            0.150555
+weighted_mothership_mean_mrs                    0.766351
+weighted_mothership_mrs_shift                  -0.169249
+weighted_mothership_added_mrs_less_equal_2      0.034830
 dtype: float64
 </pre></div>
 </div>
@@ -2115,12 +2434,12 @@ dtype: float64
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../admission_prediction/01_msoa_regression.html"
+       href="../general_results/05_geography.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Emergency stroke admissions predictions</p>
+        <p class="prev-next-title">Distance-based treatment effects</p>
       </div>
     </a>
     <a class="right-next"
@@ -2128,7 +2447,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Analysis of LSOA results: Added utility</p>
+        <p class="prev-next-title">Mapping LSOA results</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2147,25 +2466,20 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Model outcomes for drip’and’ship vs mothership based on greography</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-data">Load and parse data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-hospital-data">Load and parse hospital data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-lsoa-travel-matrix">Load and parse LSOA travel matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-inter-hospital-travel-time-for-mt">Load and parse inter_hospital travel time for MT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-lsoa-hospital-travel-time">Find LSOA-hospital travel time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-inter-hospital-travel-time">Find inter-hospital travel time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-travel-time-information">Gather travel time information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-on-stroke-pathway-timings">Add on stroke pathway timings</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-results">Calculate results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-outcomes">Add outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-outcomes">Calculate outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-results">Show results</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
