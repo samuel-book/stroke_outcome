@@ -5,6 +5,7 @@ parts:
   chapters:
   - file: definitions_reference/definitions_stroke
   - file: definitions_reference/definitions_maths
+  - file: definitions_reference/paper
 - caption: 🧮 Outcome model methods
   chapters:
   - file: outcome_model_methods/01_mrs_dist_derivation
@@ -25,9 +26,10 @@ parts:
   chapters:
   - file: general_results/04_matrix
   - file: general_results/05_geography
-  - file: general_results/05a_geography_stroke_types
+  - file: general_results/05a_geography_outcomes
 - caption: 🌍 Application to England and Wales
   chapters:
+  - file: admission_prediction/01_msoa_regression
   - file: england_wales/01_model_outcomes
   - file: england_wales/02_lsoa_analysis_added_utility
 - caption: 👑 Interactive demo
