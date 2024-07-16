@@ -290,8 +290,13 @@ def make_levels_with_zeroish(level_step, vmax, zeroish=5e-3, vmin=None):
     return levels
 
 
-def make_new_cmap_diverging(vmin, vmax, cmap_base, colour_middle=[1,1,1,1], 
-                            cmap_name='colourmap'):
+def make_new_cmap_diverging(
+        vmin,
+        vmax,
+        cmap_base,
+        colour_middle=[1,1,1,1], 
+        cmap_name='colourmap'
+    ):
     """
     Make a new diverging colourmap with an offset centre value.
     
@@ -302,13 +307,26 @@ def make_new_cmap_diverging(vmin, vmax, cmap_base, colour_middle=[1,1,1,1],
     
     This assumes that vmin<0, vmax>0, and abs(vmax)>abs(vmin).
     """
+    # How far away from the central value should be sampled?
+    off = 0.05
+    white_left = 0.5 - off
+    white_right = 0.5 + off
+    
     # For the bottom half, sample from the middle out to some 
     # proportion lin_min. e.g. if abs(vmin)=0.5abs(vmax) then want to 
-    # span half of the possible values. 
-    lin_min = 0.45 - 0.45*abs(vmin/vmax)
-    sample_bot = np.linspace(lin_min, 0.45, int(256*abs(vmin/vmax)))
-    # For the top half, sample all values in this section.
-    sample_top = np.linspace(0.55, 1.0, 256)
+    # span half of the possible values.
+    if abs(vmax) > abs(vmin):
+        # Sample the top half completely...
+        sample_top = np.linspace(white_right, 1.0, 256)
+        # and sample only part of the bottom half.
+        lin_min = white_left - white_left*abs(vmin/vmax)
+        sample_bot = np.linspace(lin_min, white_left, int(256*abs(vmin/vmax)))
+    else:
+        # Sample the bottom half completely...
+        sample_bot = np.linspace(0.0, white_left, 256)        
+        # and sample only part of the top half.
+        lin_max = white_right + white_right*abs(vmax/vmin)
+        sample_top = np.linspace(white_right, lin_max, int(256*abs(vmax/vmin)))
     # Sample colours from the input colour map: 
     colours_bot = plt.get_cmap(cmap_base)(sample_bot)
     colours_top = plt.get_cmap(cmap_base)(sample_top)
