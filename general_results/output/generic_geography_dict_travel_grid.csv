@@ -1,0 +1,8 @@
+ivt_x,0
+ivt_y,0
+mt_x,0
+mt_y,-60
+travel_ivt_to_mt,60
+time_travel_max,60
+grid_step,1
+grid_xy_max,62
