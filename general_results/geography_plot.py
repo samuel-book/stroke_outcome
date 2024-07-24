@@ -338,3 +338,10 @@ def make_new_cmap_diverging(
     # Turn this list of colours into a colourmap:
     cmap = colors.LinearSegmentedColormap.from_list(cmap_name, colours)
     return cmap
+
+
+def round_to_next(vmin, vmax, r=0.005):
+    """Round vmin and vmax to nicer values"""
+    vmax_r = np.ceil(np.sign(vmax) * np.abs(vmax) / r) * r
+    vmin_r = np.floor(vmin / r) * r
+    return vmin_r, vmax_r
