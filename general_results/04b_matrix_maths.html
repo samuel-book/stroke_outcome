@@ -1,0 +1,2229 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Quantifying added utility depending on time to IVT and MT &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'general_results/04b_matrix_maths';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Distance-based treatment effects" href="05_geography.html" />
+    <link rel="prev" title="Demonstration of added utility depending on time to IVT and MT" href="04_matrix.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/paper.html">Paper creation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/intro_extra.html">Extra details</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01b_population.html">Example patient population and pathway timings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantifying added utility depending on time to IVT and MT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧭 Generic geography</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="05_geography.html">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_geography_outcomes.html">Calculate distance-based treatment effects for many cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05c_geography_outcomes_plots.html">Plot distance-based treatment effects for many cohorts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../england_wales/intro_data.html">Data creation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Calculate outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01c_weighted_outcomes.html">Combine populations for weighted outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01d_weighted_outcomes_mrs_dists.html">Combine populations for weighted mRS distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../england_wales/intro_results.html">Results</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/samuel-book/stroke_outcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/general_results/04b_matrix_maths.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quantifying added utility depending on time to IVT and MT</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-model">Set up model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-treatment-effects">Individual treatment effects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#straight-line-fits">Straight line fits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-outcomes-with-time">Plot outcomes with time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-outcome-matrices">Import outcome matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-where-lvo-with-ivt-and-mt-uses-each-outcome">Find where LVO with IVT and MT uses each outcome</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-thorough-equation">More thorough equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-4-75-come-from">Where does 4.75 come from?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-patient-groups">Combining patient groups</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-mix">LVO mix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-cohort">Mixed cohort</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="quantifying-added-utility-depending-on-time-to-ivt-and-mt">
+<h1>Quantifying added utility depending on time to IVT and MT<a class="headerlink" href="#quantifying-added-utility-depending-on-time-to-ivt-and-mt" title="Permalink to this heading">#</a></h1>
+<p>In this notebook we dig into the maths behind the outcomes with time graphs from the <a class="reference internal" href="04_matrix.html"><span class="doc std std-doc">previous notebook</span></a> so that we can quantify how much time saved in MT can be balance with time added to IVT while keeping the same outcomes.</p>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>The plots that we made before show us the general trends of outcomes with time. In this notebook we find ways of writing those trends mathematically. This means that the results can be shared in a more precise way than is possible from just eyeballing a graph.</p>
+</section>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Model the individual outcome effect line graphs as straight lines and find their equations.</p></li>
+<li><p>Apply these straight line equations to the treatment time matrices. Find the slopes of the contours where the outcomes are constant, and so find a way to say link how much time saved in MT can be balanced with time added to IVT while keeping the same outcomes.</p></li>
+</ul>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p><strong>Individual treatment effects</strong></p>
+<ul class="simple">
+<li><p>Take the start and end point of each outcome with time line.</p></li>
+<li><p>Draw a straight line connecting those two points.</p></li>
+</ul>
+<p><strong>Outcome matrices</strong></p>
+<ul class="simple">
+<li><p>Add the equations for the straight line fits together in the same way and using the same patient proportions as were used to create the outcome matrices.</p></li>
+<li><p>Compare two points with different pairs of treatment times and the same final outcome. Set the equations for the two points to be equal to each other.</p></li>
+<li><p>Rearrange the formulae to find how the pairs of treatment times relate to each other, e.g. how much time to IVT can increase when time to MT decreases to keep the same outcome as before.</p></li>
+</ul>
+</section>
+<section id="load-packages">
+<h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>  <span class="c1"># for axis tick locations</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Math</span>  <span class="c1"># to display equation strings nicely</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_markdown</span> <span class="c1"># to display equation strings nicely</span>
+
+<span class="kn">from</span> <span class="nn">stroke_outcome.continuous_outcome</span> <span class="kn">import</span> <span class="n">Continuous_outcome</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_output</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
+<span class="n">dir_images</span> <span class="o">=</span> <span class="s1">&#39;images&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-up-model">
+<h2>Set up model<a class="headerlink" href="#set-up-model" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up outcome model</span>
+<span class="n">outcome_model</span> <span class="o">=</span> <span class="n">Continuous_outcome</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="individual-treatment-effects">
+<h2>Individual treatment effects<a class="headerlink" href="#individual-treatment-effects" title="Permalink to this heading">#</a></h2>
+<p>Here we consider the impact, and effect of time to treatment, for three cohorts independently:</p>
+<ol class="arabic simple">
+<li><p>nLVO receiving IVT</p></li>
+<li><p>LVO receiving IVT only</p></li>
+<li><p>LVO receiving MT (data based on trails where 85% had also received IVT)</p></li>
+</ol>
+<p>Set up shared treatment times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_time_to_ivt</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="mi">60</span>  <span class="c1"># minutes</span>
+<span class="n">max_time_to_mt</span> <span class="o">=</span> <span class="mf">8.0</span> <span class="o">*</span> <span class="mi">60</span>  <span class="c1"># minutes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import the patient data from the previous notebook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;mean_outcomes_with_time.csv&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>label</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>nlvo_ivt</td>
+      <td>0.158130</td>
+      <td>1.391000</td>
+      <td>0.752000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>nlvo_ivt</td>
+      <td>0.157768</td>
+      <td>1.393199</td>
+      <td>0.751600</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>nlvo_ivt</td>
+      <td>0.157405</td>
+      <td>1.395401</td>
+      <td>0.751199</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>nlvo_ivt</td>
+      <td>0.157042</td>
+      <td>1.397603</td>
+      <td>0.750797</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>nlvo_ivt</td>
+      <td>0.156678</td>
+      <td>1.399808</td>
+      <td>0.750396</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1234</th>
+      <td>476.0</td>
+      <td>476.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>lvo_mt</td>
+      <td>-0.011106</td>
+      <td>3.722407</td>
+      <td>0.257007</td>
+    </tr>
+    <tr>
+      <th>1235</th>
+      <td>477.0</td>
+      <td>477.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>lvo_mt</td>
+      <td>-0.011625</td>
+      <td>3.725058</td>
+      <td>0.256505</td>
+    </tr>
+    <tr>
+      <th>1236</th>
+      <td>478.0</td>
+      <td>478.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>lvo_mt</td>
+      <td>-0.012144</td>
+      <td>3.727707</td>
+      <td>0.256002</td>
+    </tr>
+    <tr>
+      <th>1237</th>
+      <td>479.0</td>
+      <td>479.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>lvo_mt</td>
+      <td>-0.012662</td>
+      <td>3.730355</td>
+      <td>0.255501</td>
+    </tr>
+    <tr>
+      <th>1238</th>
+      <td>480.0</td>
+      <td>480.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>lvo_mt</td>
+      <td>-0.013180</td>
+      <td>3.733000</td>
+      <td>0.255000</td>
+    </tr>
+  </tbody>
+</table>
+<p>1239 rows × 9 columns</p>
+</div></div></div>
+</div>
+<section id="straight-line-fits">
+<h3>Straight line fits<a class="headerlink" href="#straight-line-fits" title="Permalink to this heading">#</a></h3>
+<p>These outcomes with time are not <em>quite</em> straight lines, but we will approximate them as straight lines and see how closely they match.</p>
+<p>The following two cells find the equations of the straight line for each cohort and outcome type combination.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data setup:</span>
+<span class="c1"># The order of the keys in these dictionaries</span>
+<span class="c1"># sets up which outcome goes in which axis, and</span>
+<span class="c1"># which cohort uses each colour and linestyle.</span>
+<span class="c1"># The value for each key is the prettier label to be displayed.</span>
+<span class="n">outcome_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;mean_mrs&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean mRS&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;Proportion with mRS$\leq$2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="s1">&#39;Added utility&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">cohort_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="s1">&#39;nLVO: IVT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO: IVT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_mt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO: MT&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_equation_string</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span> <span class="n">y_intercept</span><span class="p">):</span>
+    <span class="n">eqn_str</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$y = \frac{&#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">gradient</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;}{1 hr}&#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;t </span><span class="si">{</span><span class="n">y_intercept</span><span class="si">:</span><span class="s1">+.3f</span><span class="si">}</span><span class="s1">$&#39;</span>
+    <span class="k">return</span> <span class="n">eqn_str</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dict_straight_lines</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">outcome_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outcome_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">dict_straight_lines</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">cohort_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cohort_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">data_here</span> <span class="o">=</span> <span class="n">df_patients</span><span class="p">[</span><span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cohort_label</span><span class="p">]</span>
+
+        <span class="n">t_max</span> <span class="o">=</span> <span class="n">max_time_to_mt</span> <span class="k">if</span> <span class="s1">&#39;mt&#39;</span> <span class="ow">in</span> <span class="n">cohort_label</span> <span class="k">else</span> <span class="n">max_time_to_ivt</span>
+        <span class="n">y_intercept</span> <span class="o">=</span> <span class="n">data_here</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">data_here</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_here</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span>
+            <span class="p">(</span><span class="n">t_max</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># This gradient is in terms of minutes.</span>
+        <span class="c1"># Convert to hours:</span>
+        <span class="n">gradient_hr</span> <span class="o">=</span> <span class="n">gradient</span> <span class="o">*</span> <span class="mf">60.0</span>
+        <span class="n">eqn_str</span> <span class="o">=</span> <span class="n">make_equation_string</span><span class="p">(</span><span class="n">gradient_hr</span><span class="p">,</span> <span class="n">y_intercept</span><span class="p">)</span>
+
+        <span class="n">dict_straight_lines</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="n">cohort_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">dict_straight_lines</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="n">cohort_label</span><span class="p">][</span><span class="s1">&#39;y_intercept&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_intercept</span>
+        <span class="n">dict_straight_lines</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="n">cohort_label</span><span class="p">][</span><span class="s1">&#39;gradient_minutes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gradient</span>
+        <span class="n">dict_straight_lines</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="n">cohort_label</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gradient_hr</span>
+        <span class="n">dict_straight_lines</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="n">cohort_label</span><span class="p">][</span><span class="s1">&#39;eqn_str&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eqn_str</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>View the results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dict_straight_lines</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_mrs
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nlvo_ivt</th>
+      <th>lvo_ivt</th>
+      <th>lvo_mt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>y_intercept</th>
+      <td>1.391</td>
+      <td>3.176</td>
+      <td>2.244</td>
+    </tr>
+    <tr>
+      <th>gradient_minutes</th>
+      <td>0.002455</td>
+      <td>0.001447</td>
+      <td>0.003102</td>
+    </tr>
+    <tr>
+      <th>gradient_hours</th>
+      <td>0.147302</td>
+      <td>0.086825</td>
+      <td>0.186125</td>
+    </tr>
+    <tr>
+      <th>eqn_str</th>
+      <td>$y = \frac{0.147}{1 hr}t +1.391$</td>
+      <td>$y = \frac{0.087}{1 hr}t +3.176$</td>
+      <td>$y = \frac{0.186}{1 hr}t +2.244$</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mrs_less_equal_2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nlvo_ivt</th>
+      <th>lvo_ivt</th>
+      <th>lvo_mt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>y_intercept</th>
+      <td>0.752</td>
+      <td>0.361</td>
+      <td>0.548</td>
+    </tr>
+    <tr>
+      <th>gradient_minutes</th>
+      <td>-0.000471</td>
+      <td>-0.00028</td>
+      <td>-0.00061</td>
+    </tr>
+    <tr>
+      <th>gradient_hours</th>
+      <td>-0.028254</td>
+      <td>-0.016825</td>
+      <td>-0.036625</td>
+    </tr>
+    <tr>
+      <th>eqn_str</th>
+      <td>$y = \frac{-0.028}{1 hr}t +0.752$</td>
+      <td>$y = \frac{-0.017}{1 hr}t +0.361$</td>
+      <td>$y = \frac{-0.037}{1 hr}t +0.548$</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>added_utility
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nlvo_ivt</th>
+      <th>lvo_ivt</th>
+      <th>lvo_mt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>y_intercept</th>
+      <td>0.15813</td>
+      <td>0.08938</td>
+      <td>0.2646</td>
+    </tr>
+    <tr>
+      <th>gradient_minutes</th>
+      <td>-0.000434</td>
+      <td>-0.000267</td>
+      <td>-0.000579</td>
+    </tr>
+    <tr>
+      <th>gradient_hours</th>
+      <td>-0.026065</td>
+      <td>-0.016041</td>
+      <td>-0.034723</td>
+    </tr>
+    <tr>
+      <th>eqn_str</th>
+      <td>$y = \frac{-0.026}{1 hr}t +0.158$</td>
+      <td>$y = \frac{-0.016}{1 hr}t +0.089$</td>
+      <td>$y = \frac{-0.035}{1 hr}t +0.265$</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plot-outcomes-with-time">
+<h3>Plot outcomes with time<a class="headerlink" href="#plot-outcomes-with-time" title="Permalink to this heading">#</a></h3>
+<p>The following function plots the outcomes with time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot_matrix</span> <span class="kn">import</span> <span class="n">plot_outcomes_with_time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setup for plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First three colours of seaborn colourblind:</span>
+<span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#0072B2&#39;</span><span class="p">,</span> <span class="s1">&#39;#009E73&#39;</span><span class="p">,</span> <span class="s1">&#39;#D55E00&#39;</span><span class="p">]</span> 
+<span class="n">linestyles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;-.&#39;</span><span class="p">]</span>
+
+<span class="c1"># Set up axis conversion between minutes and hours:</span>
+<span class="n">use_hours</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">if</span> <span class="n">use_hours</span><span class="p">:</span>
+    <span class="n">unit_str</span> <span class="o">=</span> <span class="s1">&#39;hours&#39;</span>
+    <span class="n">x_times_scale</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mf">60.0</span><span class="p">)</span>
+    <span class="n">xtick_max</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_time_to_mt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mf">60.0</span>
+    <span class="n">major_step</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">minor_step</span> <span class="o">=</span> <span class="p">(</span><span class="mf">15.0</span><span class="o">/</span><span class="mf">60.0</span><span class="p">)</span> <span class="c1"># 15 minutes</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">unit_str</span> <span class="o">=</span> <span class="s1">&#39;minutes&#39;</span>
+    <span class="n">x_times_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">xtick_max</span> <span class="o">=</span> <span class="n">max_time_to_mt</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">major_step</span> <span class="o">=</span> <span class="mf">60.0</span>
+    <span class="n">minor_step</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="c1"># Data setup:</span>
+<span class="c1"># The order of the keys in these dictionaries</span>
+<span class="c1"># sets up which outcome goes in which axis, and</span>
+<span class="c1"># which cohort uses each colour and linestyle.</span>
+<span class="c1"># The value for each key is the prettier label to be displayed.</span>
+<span class="n">outcome_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;mean_mrs&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean mRS&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;Proportion with mRS$\leq$2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="s1">&#39;Added utility&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">cohort_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="s1">&#39;nLVO: IVT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO: IVT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_mt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO: MT&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the straight line fits over the actual data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_outcomes_with_time</span><span class="p">(</span>
+    <span class="n">df_patients</span><span class="p">,</span>
+    <span class="n">outcome_labels</span><span class="p">,</span>
+    <span class="n">cohort_labels</span><span class="p">,</span>
+    <span class="n">x_times_scale</span><span class="p">,</span>
+    <span class="n">colours</span><span class="p">,</span>
+    <span class="n">linestyles</span><span class="p">,</span>
+    <span class="n">unit_str</span><span class="p">,</span>
+    <span class="n">major_step</span><span class="p">,</span>
+    <span class="n">minor_step</span><span class="p">,</span>
+    <span class="n">dict_straight_lines</span><span class="p">,</span>
+    <span class="n">savename</span> <span class="o">=</span> <span class="s1">&#39;./images/time_to_treatment_fits.jpg&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/82e6f01e538938b25fbb517dfc8117da0931b44287e3a48747bf75cba55acfcf.png" src="../_images/82e6f01e538938b25fbb517dfc8117da0931b44287e3a48747bf75cba55acfcf.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="import-outcome-matrices">
+<h2>Import outcome matrices<a class="headerlink" href="#import-outcome-matrices" title="Permalink to this heading">#</a></h2>
+<p>The grids use these treatment times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_step</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+<span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import matrices from file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dict_df_patients</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo&#39;</span><span class="p">,</span> <span class="s1">&#39;treated_ischaemic&#39;</span><span class="p">]:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;outcome_matrix_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">))</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dict_df_patients</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nlvo_ivt
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.158130</td>
+      <td>1.391000</td>
+      <td>0.752000</td>
+      <td>-0.889000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.154488</td>
+      <td>1.413068</td>
+      <td>0.747977</td>
+      <td>-0.866932</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_only
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.089380</td>
+      <td>3.176000</td>
+      <td>0.361000</td>
+      <td>-0.464000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.086467</td>
+      <td>3.192402</td>
+      <td>0.357948</td>
+      <td>-0.447598</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_mt_only
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_mt
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.251022</td>
+      <td>2.316221</td>
+      <td>0.533509</td>
+      <td>-1.323779</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.250796</td>
+      <td>2.317492</td>
+      <td>0.533273</td>
+      <td>-1.322508</td>
+      <td>10.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>treated_ischaemic
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.204965</td>
+      <td>1.857484</td>
+      <td>0.641840</td>
+      <td>-1.108209</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.203045</td>
+      <td>1.869066</td>
+      <td>0.639726</td>
+      <td>-1.096627</td>
+      <td>10.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="find-where-lvo-with-ivt-and-mt-uses-each-outcome">
+<h3>Find where LVO with IVT and MT uses each outcome<a class="headerlink" href="#find-where-lvo-with-ivt-and-mt-uses-each-outcome" title="Permalink to this heading">#</a></h3>
+<p>Patients who receive both IVT and MT are given the outcomes associated with whichever treatment gives the better added utility. In most cases the better treatment is MT, but the IVT data can be used when the time to IVT is low and the time to MT is high.</p>
+<p>Eyeballing the matrix, the boundary between the IVT and MT regime is approximately <span class="math notranslate nohighlight">\(t_{\mathrm{MT}} = 4.75 hr + 0.5 \times t_{\mathrm{IVT}}\)</span>.</p>
+<p>Approximate this limit by scribbling on the IVT-MT matrix.</p>
+<p>Take the columns of data, reshape them into grids, and display the grids with a colour scale.</p>
+<p>Setup for plots:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instead of the axes showing the row, column numbers of the grid,</span>
+<span class="c1"># use this extent to scale the row, column numbers to the times.</span>
+<span class="c1"># Extra division by 60 for conversion to hours.</span>
+<span class="n">grid_extent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span> <span class="o">+</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># x-limits</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span> <span class="o">+</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span>     <span class="c1"># y-limits</span>
+<span class="p">])</span> <span class="o">/</span> <span class="mf">60.0</span>
+
+<span class="c1"># How many rows and columns of data are there?</span>
+<span class="n">grid_shape</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">))</span>
+
+<span class="c1"># Data setup:</span>
+<span class="c1"># The order of the keys in these dictionaries</span>
+<span class="c1"># sets up which outcome goes in which axis, and</span>
+<span class="c1"># which cohort uses each colour and linestyle.</span>
+<span class="c1"># The value for each key is the prettier label to be displayed.</span>
+<span class="n">outcome_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="s1">&#39;Added utility&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean change in mRS&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">cohort_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="s1">&#39;nLVO treated with IVT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with IVT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with MT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with IVT and MT&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Data sources:</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="c1"># Colour setup.</span>
+<span class="n">cmaps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="s1">&#39;viridis_r&#39;</span><span class="p">]</span>
+<span class="c1"># Pick out shared colour scale limits:</span>
+<span class="n">vlims</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nb">min</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">values</span><span class="p">()]),</span>
+        <span class="nb">max</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">values</span><span class="p">()]),</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nb">min</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mrs_shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">values</span><span class="p">()]),</span>
+        <span class="nb">max</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mrs_shift&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">values</span><span class="p">()]),</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+<span class="c1"># Shared contour levels:</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.25</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span>
+    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.20</span><span class="p">,</span> <span class="mf">0.00</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotting:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot_matrix</span> <span class="kn">import</span> <span class="n">plot_matrices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cohort_name</span> <span class="o">=</span> <span class="s1">&#39;lvo_ivt_mt&#39;</span>
+<span class="n">cohort_label</span> <span class="o">=</span> <span class="n">cohort_labels</span><span class="p">[</span><span class="n">cohort_name</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_matrices</span><span class="p">(</span>
+    <span class="n">dfs</span><span class="p">[</span><span class="n">cohort_name</span><span class="p">],</span>
+    <span class="n">outcome_labels</span><span class="p">,</span>
+    <span class="n">grid_shape</span><span class="p">,</span>
+    <span class="n">grid_extent</span><span class="p">,</span>
+    <span class="n">vlims</span><span class="p">,</span>
+    <span class="n">major_step</span><span class="p">,</span>
+    <span class="n">minor_step</span><span class="p">,</span>
+    <span class="n">levels</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">cohort_label</span><span class="p">,</span>
+    <span class="n">cmaps</span><span class="o">=</span><span class="n">cmaps</span><span class="p">,</span>
+    <span class="n">return_axs</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]]:</span>
+    <span class="c1"># Scribble:</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">grid_extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">grid_extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="mf">4.75</span>
+    <span class="n">gradient</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">y0</span> <span class="o">+</span> <span class="n">gradient</span> <span class="o">*</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;LimeGreen&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02f0dd01441efeaab788fa5ead58f6c0553a3c181bfc904baa75ee0231a47409.png" src="../_images/02f0dd01441efeaab788fa5ead58f6c0553a3c181bfc904baa75ee0231a47409.png" />
+</div>
+</div>
+</section>
+<section id="more-thorough-equation">
+<h3>More thorough equation<a class="headerlink" href="#more-thorough-equation" title="Permalink to this heading">#</a></h3>
+<p>Pick out which parts of the grid use the IVT-only results and which parts use the MT-only results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">added_util_lvo_ivt_only</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">][</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">)</span>
+<span class="n">added_util_lvo_mt_only</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">][</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">)</span>
+<span class="n">added_util_lvo_ivt_mt</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">][</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">grid_shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">added_util_lvo_uses_ivt</span> <span class="o">=</span> <span class="n">added_util_lvo_ivt_mt</span> <span class="o">==</span> <span class="n">added_util_lvo_ivt_only</span>
+<span class="n">added_util_lvo_uses_mt</span> <span class="o">=</span> <span class="n">added_util_lvo_ivt_mt</span> <span class="o">==</span> <span class="n">added_util_lvo_mt_only</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">added_util_lvo_uses_ivt</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">added_util_lvo_uses_mt</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">])</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Uses IVT outcomes&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Uses MT outcomes&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;LVO treated with IVT and MT&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/35a9f3d329bbde89206017760e1af714fbec0d6a95f0c2149207d5b80568269e.png" src="../_images/35a9f3d329bbde89206017760e1af714fbec0d6a95f0c2149207d5b80568269e.png" />
+</div>
+</div>
+<p>Pick out values along the boundary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind_x0_boundary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">added_util_lvo_uses_ivt</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ind_x1_boundary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">added_util_lvo_uses_ivt</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">ind_x0_boundary</span><span class="p">,</span> <span class="n">ind_x1_boundary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(29, 48)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Translate these into treatment times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_intercept</span> <span class="o">=</span> <span class="n">time_to_mt</span><span class="p">[</span><span class="n">ind_x0_boundary</span><span class="p">]</span>
+<span class="n">y_end</span> <span class="o">=</span> <span class="n">time_to_mt</span><span class="p">[</span><span class="n">ind_x1_boundary</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Minutes: </span><span class="si">{</span><span class="n">y_intercept</span><span class="si">:</span><span class="s1">7.3f</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">y_end</span><span class="si">:</span><span class="s1">7.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hours  : </span><span class="si">{</span><span class="n">y_intercept</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">60.0</span><span class="si">:</span><span class="s1">7.3f</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">y_end</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">60.0</span><span class="si">:</span><span class="s1">7.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minutes: 290.000, 480.000
+Hours  :   4.833,   8.000
+</pre></div>
+</div>
+</div>
+</div>
+<p>These times are only accurate to the spacing in the grid, which in hours is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_step</span> <span class="o">/</span> <span class="mf">60.0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.16666666666666666
+</pre></div>
+</div>
+</div>
+</div>
+<p>The gradient of this line is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_end</span> <span class="o">-</span> <span class="n">y_intercept</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">time_to_ivt</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">time_to_ivt</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5135135135135135
+</pre></div>
+</div>
+</div>
+</div>
+<p>So the eyeballed equation is good enough.</p>
+</section>
+<section id="where-does-4-75-come-from">
+<h3>Where does 4.75 come from?<a class="headerlink" href="#where-does-4-75-come-from" title="Permalink to this heading">#</a></h3>
+<p>Can we pick out a more precise equation for this line using the straight line fits from earlier?</p>
+<p>The time 4.75 hours where the treatment grid switches from the MT-better to the IVT-better regime comes from the point in the individual treatment effect straight line fits where the added utility from LVO MT first dips below the added utility from LVO IVT. When LVO IVT is at time zero hours, the LVO MT line is the same value at a time of around 4.75hr.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a0</span> <span class="o">=</span> <span class="n">df_patients</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s1">&#39;added_utility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">a0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08938
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_mt</span> <span class="o">=</span> <span class="n">df_patients</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lvo_mt&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">a0</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]]</span>
+
+<span class="n">a_mt</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>added_utility</th>
+      <th>onset_to_needle_mins</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1052</th>
+      <td>0.089054</td>
+      <td>294.0</td>
+    </tr>
+    <tr>
+      <th>1053</th>
+      <td>0.088477</td>
+      <td>295.0</td>
+    </tr>
+    <tr>
+      <th>1054</th>
+      <td>0.087900</td>
+      <td>296.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The first time where the MT added utility drops below the IVT added utility is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Minutes: &#39;</span><span class="p">,</span> <span class="n">a_mt</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hours:   &#39;</span><span class="p">,</span> <span class="n">a_mt</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mf">60.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minutes:  294.0
+Hours:    4.9
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the step in times is 1 minute or 0.0166… hours, so the crossover time lies somewhere between this value and the previous minute.</p>
+<p>The gradients of the two lines are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_ivt</span> <span class="o">=</span> <span class="n">dict_straight_lines</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">][</span><span class="s1">&#39;lvo_ivt&#39;</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span>
+<span class="n">g_mt</span> <span class="o">=</span> <span class="n">dict_straight_lines</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">][</span><span class="s1">&#39;lvo_mt&#39;</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LVO IVT: &#39;</span><span class="p">,</span> <span class="n">g_ivt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LVO MT:  &#39;</span><span class="p">,</span> <span class="n">g_mt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ratio:   &#39;</span><span class="p">,</span> <span class="n">g_ivt</span> <span class="o">/</span> <span class="n">g_mt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO IVT:  -0.016041269841269842
+LVO MT:   -0.0347225
+Ratio:    0.461984875549567
+</pre></div>
+</div>
+</div>
+</div>
+<p>This ratio of the gradients is the slope of the IVT-better-MT-better boundary.</p>
+<p>For the final equation of that line, shouldn’t report it too precisely because the straight line fits are only approximate. Go for:</p>
+<div class="math notranslate nohighlight">
+\[
+t_\mathrm{MT} = 4.9 hr + 0.5 t_\mathrm{IVT}
+\]</div>
+<p>where the y-intercept is 4.9<span class="math notranslate nohighlight">\(\pm\)</span>0.2 hours (plus/minus ten minutes) and the gradient is 0.5<span class="math notranslate nohighlight">\(\pm\)</span>0.1. This uncertainty in gradient is arbitrary. There’s not an obvious way to calculate it from the lines directly so it’s just set to plus or minus one significant figure.</p>
+</section>
+</section>
+<section id="combining-patient-groups">
+<h2>Combining patient groups<a class="headerlink" href="#combining-patient-groups" title="Permalink to this heading">#</a></h2>
+<p>Here we examined the combined effect of IVT and MT on outcomes across nLVO and LVO ischaemic strokes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_proportions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;england_wales&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;patient_proportions.csv&#39;</span><span class="p">),</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_proportions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+haemorrhagic         0.13600
+lvo_no_treatment     0.14648
+lvo_ivt_only         0.00840
+lvo_ivt_mt           0.08500
+lvo_mt_only          0.01500
+nlvo_no_treatment    0.50252
+nlvo_ivt             0.10660
+Name: 1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="lvo-mix">
+<h3>LVO mix<a class="headerlink" href="#lvo-mix" title="Permalink to this heading">#</a></h3>
+<p>The outcome matrices have contours drawn across them. They show that the same resulting outcome can be found by many combinations of treatment times. By finding an equation for these contours, we can make general comments about how an increase in time to IVT needs to be matched with a given decrease in time to MT in order to find the same outcome.</p>
+<p>To do this, we write the combined LVO mix matrix as an equation:</p>
+<div class="math notranslate nohighlight">
+\[
+u = p_i(m_i \cdot t_i + c_i) + p_m(m_m \cdot t_m + c_m)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> are the gradient and y-intercept of the straight line fits we found earlier, and <span class="math notranslate nohighlight">\(p\)</span> is the proportion of that group that makes up the cohort. Then <span class="math notranslate nohighlight">\(t_1\)</span> is the time to treatment for the first group and <span class="math notranslate nohighlight">\(t_2\)</span> for the second group. The small letters <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are for IVT and MT.</p>
+<p>We then define two sets of treatment times, <span class="math notranslate nohighlight">\(t_{i,1}\)</span> and <span class="math notranslate nohighlight">\(t_{m,1}\)</span> and <span class="math notranslate nohighlight">\(t_{i,2}\)</span> and <span class="math notranslate nohighlight">\(t_{m,2}\)</span> and say that these have the same utility. Then the two equations can be set equal to each other:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(m_i \cdot t_{i,1} + c_i) + p_m(m_m \cdot t_{m,1} + c_m) = p_i(m_i \cdot t_{i,2} + c_i) + p_m(m_m \cdot t_{m,2} + c_m)
+\]</div>
+<p>The constants <span class="math notranslate nohighlight">\(c\)</span> are the same on both sides so cancel them out:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(m_i \cdot t_{i,1}) + p_m(m_m \cdot t_{m,1}) = p_i(m_i \cdot t_{i,2}) + p_m(m_m \cdot t_{m,2})
+\]</div>
+<p>We then set the second pairs to be equal to the first plus a factor <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+t_{i,2} = t_{i,1} + y
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+t_{m,2} = t_{m,1} + x
+\]</div>
+<p>We’ll then look to find a way of describing <span class="math notranslate nohighlight">\(x\)</span> in terms of <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Replacing the second group of times:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(m_i \cdot t_{i,1}) + p_m(m_m \cdot t_{m,1}) = p_i[m_i \cdot (t_{i,1} + y)] + p_m[m_m \cdot (t_{m,1} + x)]
+\]</div>
+<p>Then everything involving <span class="math notranslate nohighlight">\(t_1\)</span> cancels out.</p>
+<div class="math notranslate nohighlight">
+\[
+0 = p_i \cdot m_i \cdot y + p_m \cdot m_m \cdot + x
+\]</div>
+<p>Rearrange to find <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+x = -\frac{p_i \cdot m_i}{p_m \cdot m_m}y
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_lvo_treated</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">]</span>
+
+<span class="n">prop_lvo_treated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10840000000000001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_i</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_lvo_treated</span>
+<span class="n">p_im</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_lvo_treated</span>
+<span class="n">p_m</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_lvo_treated</span>
+
+<span class="n">g_i</span> <span class="o">=</span> <span class="n">dict_straight_lines</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">][</span><span class="s1">&#39;lvo_ivt&#39;</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span>
+<span class="n">g_m</span> <span class="o">=</span> <span class="n">dict_straight_lines</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">][</span><span class="s1">&#39;lvo_mt&#39;</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When IVT is better, the IVT&amp;MT population uses the IVT results and its proportion <code class="docutils literal notranslate"><span class="pre">p_im</span></code> goes with the IVT numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_ivt_better</span> <span class="o">=</span> <span class="o">-</span> <span class="p">((</span><span class="n">p_i</span> <span class="o">+</span> <span class="n">p_im</span><span class="p">)</span> <span class="o">*</span> <span class="n">g_i</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">p_m</span> <span class="o">*</span> <span class="n">g_m</span><span class="p">)</span>
+
+<span class="n">x_ivt_better</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.8766258250886376
+</pre></div>
+</div>
+</div>
+</div>
+<p>When MT is better, the IVT&amp;MT population uses the MT results and its proportion <code class="docutils literal notranslate"><span class="pre">p_im</span></code> goes with the MT numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_mt_better</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">p_i</span> <span class="o">*</span> <span class="n">g_i</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">p_im</span> <span class="o">+</span> <span class="n">p_m</span><span class="p">)</span> <span class="o">*</span> <span class="n">g_m</span><span class="p">)</span>
+
+<span class="n">x_mt_better</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03880672954616362
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_matrices</span><span class="p">(</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">],</span>
+    <span class="n">outcome_labels</span><span class="p">,</span>
+    <span class="n">grid_shape</span><span class="p">,</span>
+    <span class="n">grid_extent</span><span class="p">,</span>
+    <span class="n">vlims</span><span class="p">,</span>
+    <span class="n">major_step</span><span class="p">,</span>
+    <span class="n">minor_step</span><span class="p">,</span>
+    <span class="n">levels</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;LVO mix&#39;</span><span class="p">,</span>
+    <span class="n">cmaps</span><span class="o">=</span><span class="n">cmaps</span><span class="p">,</span>
+    <span class="n">return_axs</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x_ivt_better</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;LimeGreen&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x_mt_better</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;LimeGreen&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b1c24db08a08057a97fb419336cfc1406c7ef304056c11b82600ca93670fdec2.png" src="../_images/b1c24db08a08057a97fb419336cfc1406c7ef304056c11b82600ca93670fdec2.png" />
+</div>
+</div>
+<p>In the MT-better regime, if time to IVT is increased, time to MT must be decreased by around a third of the amount to keep the same utility.</p>
+<p>In the IVT-better regime, if time to IVT is increased, time to MT must be decreased by around three times the amount to keep the same utility.</p>
+</section>
+<section id="mixed-cohort">
+<h3>Mixed cohort<a class="headerlink" href="#mixed-cohort" title="Permalink to this heading">#</a></h3>
+<p>The method for finding the gradients of the contours is similar for the LVO mix. Now we add in the nLVO factors too and label them with <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>The outcome is:</p>
+<div class="math notranslate nohighlight">
+\[
+u = p_n(m_n \cdot t_n + c_n) + p_i(m_i \cdot t_i + c_i) + p_m(m_m \cdot t_m + c_m)
+\]</div>
+<p>Setting two outcomes at different times equal:</p>
+<div class="math notranslate nohighlight">
+\[
+p_n(m_n \cdot t_{i,1} + c_n) + p_i(m_i \cdot t_{i,1} + c_i) + p_m(m_m \cdot t_{m,1} + c_m) = p_n(m_n \cdot t_{i,1} + c_n) + p_i(m_i \cdot t_{i,1} + c_i) + p_m(m_m \cdot t_{m,1} + c_m) 
+\]</div>
+<p>The constants <span class="math notranslate nohighlight">\(c\)</span> are the same on both sides so cancel them out:</p>
+<div class="math notranslate nohighlight">
+\[
+p_n(m_n \cdot t_{i,1}) + p_i(m_i \cdot t_{i,1}) + p_m(m_m \cdot t_{m,1}) = p_n(m_n \cdot t_{i,2}) + p_i(m_i \cdot t_{i,2}) + p_m(m_m \cdot t_{m,2})
+\]</div>
+<p>Introduce <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> as before:</p>
+<div class="math notranslate nohighlight">
+\[
+p_n(m_n \cdot t_{i,1}) +  p_i(m_i \cdot t_{i,1}) + p_m(m_m \cdot t_{m,1}) = p_n[m_n \cdot (t_{i,1} + y)] + p_i[m_i \cdot (t_{i,1} + y)] + p_m[m_m \cdot (t_{m,1} + x)]
+\]</div>
+<p>Then everything involving <span class="math notranslate nohighlight">\(t_1\)</span> cancels out.</p>
+<div class="math notranslate nohighlight">
+\[
+0 = p_n \cdot m_n \cdot y + p_i \cdot m_i \cdot y + p_m \cdot m_m \cdot + x
+\]</div>
+<p>Rearrange to find <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+x = -\frac{p_n \cdot m_n + p_i \cdot m_i}{p_m \cdot m_m}y
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_treated</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">]</span>
+
+<span class="n">prop_treated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.21500000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_i</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_treated</span>
+<span class="n">p_im</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_treated</span>
+<span class="n">p_m</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_treated</span>
+<span class="n">p_n</span> <span class="o">=</span> <span class="n">patient_proportions</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_treated</span>
+
+<span class="n">g_i</span> <span class="o">=</span> <span class="n">dict_straight_lines</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">][</span><span class="s1">&#39;lvo_ivt&#39;</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span>
+<span class="n">g_m</span> <span class="o">=</span> <span class="n">dict_straight_lines</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">][</span><span class="s1">&#39;lvo_mt&#39;</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span>
+<span class="n">g_n</span> <span class="o">=</span> <span class="n">dict_straight_lines</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">][</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">][</span><span class="s1">&#39;gradient_hours&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When IVT is better, the IVT&amp;MT population uses the IVT results and its proportion <code class="docutils literal notranslate"><span class="pre">p_im</span></code> goes with the IVT numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_ivt_better</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(((</span><span class="n">p_i</span> <span class="o">+</span> <span class="n">p_im</span><span class="p">)</span> <span class="o">*</span> <span class="n">g_i</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">p_n</span> <span class="o">*</span> <span class="n">g_n</span><span class="p">))</span><span class="o">/</span> <span class="p">(</span><span class="n">p_m</span> <span class="o">*</span> <span class="n">g_m</span><span class="p">)</span>
+
+<span class="n">x_ivt_better</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-8.211375070904195
+</pre></div>
+</div>
+</div>
+</div>
+<p>When MT is better, the IVT&amp;MT population uses the MT results and its proportion <code class="docutils literal notranslate"><span class="pre">p_im</span></code> goes with the MT numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_mt_better</span> <span class="o">=</span> <span class="o">-</span> <span class="p">((</span><span class="n">p_i</span> <span class="o">*</span> <span class="n">g_i</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">p_n</span> <span class="o">*</span> <span class="n">g_n</span><span class="p">))</span> <span class="o">/</span> <span class="p">((</span><span class="n">p_im</span> <span class="o">+</span> <span class="n">p_m</span><span class="p">)</span> <span class="o">*</span> <span class="n">g_m</span><span class="p">)</span>
+
+<span class="n">x_mt_better</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.8390191164184972
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data setup:</span>
+<span class="c1"># The order of the keys in these dictionaries</span>
+<span class="c1"># sets up which outcome goes in which axis, and</span>
+<span class="c1"># which cohort uses each colour and linestyle.</span>
+<span class="c1"># The value for each key is the prettier label to be displayed.</span>
+<span class="n">outcome_labels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean population added utility&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean population change in mRS&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Colour setup:</span>
+<span class="n">cmaps</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="s1">&#39;viridis_r&#39;</span><span class="p">]</span>
+<span class="c1"># Contour levels:</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
+    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="c1"># Use default colour limits:</span>
+<span class="n">vlims</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make the plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_matrices</span><span class="p">(</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;treated_ischaemic&#39;</span><span class="p">],</span>
+    <span class="n">outcome_labels</span><span class="p">,</span>
+    <span class="n">grid_shape</span><span class="p">,</span>
+    <span class="n">grid_extent</span><span class="p">,</span>
+    <span class="n">vlims</span><span class="p">,</span>
+    <span class="n">major_step</span><span class="p">,</span>
+    <span class="n">minor_step</span><span class="p">,</span>
+    <span class="n">levels</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mixed LVO/nLVO (treated population)&#39;</span><span class="p">,</span>
+    <span class="n">cmaps</span><span class="o">=</span><span class="n">cmaps</span><span class="p">,</span>
+    <span class="n">return_axs</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x_ivt_better</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;LimeGreen&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.75</span><span class="p">,</span> <span class="mf">4.75</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x_mt_better</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;LimeGreen&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/297d7265796f312a14e790f859404b23521e9168403910a326782231957b4c41.png" src="../_images/297d7265796f312a14e790f859404b23521e9168403910a326782231957b4c41.png" />
+</div>
+</div>
+<p>The lines don’t match the contours exactly because the straight line fits to changing outcomes with time are only approximate.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p><strong>Individual treatment effects</strong></p>
+<p>We fitted the change of outcomes with time using the following straight line equations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pick out just the equations:</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">key_dict</span> <span class="ow">in</span> <span class="n">dict_straight_lines</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">display_markdown</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;__</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">__&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">cohort_name</span><span class="p">,</span> <span class="n">cohort_dict</span> <span class="ow">in</span> <span class="n">key_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">display_markdown</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="n">cohort_dict</span><span class="p">[</span><span class="s1">&#39;eqn_str&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><strong>mean_mrs</strong></p>
+<p>nlvo_ivt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{0.147}{1 hr}t +1.391\]</div>
+<p>lvo_ivt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{0.087}{1 hr}t +3.176\]</div>
+<p>lvo_mt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{0.186}{1 hr}t +2.244\]</div>
+<p><strong>mrs_less_equal_2</strong></p>
+<p>nlvo_ivt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{-0.028}{1 hr}t +0.752\]</div>
+<p>lvo_ivt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{-0.017}{1 hr}t +0.361\]</div>
+<p>lvo_mt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{-0.037}{1 hr}t +0.548\]</div>
+<p><strong>added_utility</strong></p>
+<p>nlvo_ivt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{-0.026}{1 hr}t +0.158\]</div>
+<p>lvo_ivt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{-0.016}{1 hr}t +0.089\]</div>
+<p>lvo_mt:</p>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle y = \frac{-0.035}{1 hr}t +0.265\]</div>
+</div>
+</div>
+<p>These lines are in the form <span class="math notranslate nohighlight">\(y = m\cdot t + c\)</span>. The slope of the line is <span class="math notranslate nohighlight">\(m\)</span>, the fraction just before <span class="math notranslate nohighlight">\(t\)</span>. It shows the change in outcome over one hour. The final number <span class="math notranslate nohighlight">\(c\)</span> is the value of the line when <span class="math notranslate nohighlight">\(t\)</span> is zero.</p>
+<p>We can use these to create generalised statements, for example delaying MT by an hour decreases the average utility by 0.035. These statements should not be given too precisely because the straight line fits are not perfect matches to the original data.</p>
+<p><strong>Outcome matrices</strong></p>
+<p>LVO treated with both MT and IVT uses the MT outcomes if time to treatment <span class="math notranslate nohighlight">\(t_{\mathrm{MT}} &lt; 4.75 hr + 0.5 \times t_{\mathrm{IVT}}\)</span>.</p>
+<p>In the MT-better regime, if time to IVT is increased, time to MT must be decreased by around four-fifths of the amount to keep the same utility. If time to MT is decreased by less than four-fifths of the amount that time to IVT is increased by, then the overall outcome will worsen.</p>
+<p>In the IVT-better regime, if time to IVT is increased, time to MT must be decreased by around eight times the amount to keep the same utility. If time to MT is decreased by less than eight times the amount that time to IVT is increased by, then the overall outcome will worsen.</p>
+<p>Again any statements should not be too precise because the imprecision of the straight line fits from earlier have fed through into these grids. Overlaying the lines from these conclusions on the original matrix with contours show that the match is quite good, but not perfect.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./general_results"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_matrix.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Demonstration of added utility depending on time to IVT and MT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="05_geography.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Distance-based treatment effects</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-model">Set up model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-treatment-effects">Individual treatment effects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#straight-line-fits">Straight line fits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-outcomes-with-time">Plot outcomes with time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-outcome-matrices">Import outcome matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-where-lvo-with-ivt-and-mt-uses-each-outcome">Find where LVO with IVT and MT uses each outcome</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-thorough-equation">More thorough equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-4-75-come-from">Where does 4.75 come from?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-patient-groups">Combining patient groups</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lvo-mix">LVO mix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-cohort">Mixed cohort</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

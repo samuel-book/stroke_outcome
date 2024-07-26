@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'general_results/05_geography';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Model outcomes for drip’and’ship vs mothership based on greography" href="../england_wales/01_model_outcomes.html" />
-    <link rel="prev" title="Demonstration of added utility depending on time to IVT and MT" href="04_matrix.html" />
+    <link rel="next" title="Calculate distance-based treatment effects for many cohorts" href="05_geography_outcomes.html" />
+    <link rel="prev" title="Quantifying added utility depending on time to IVT and MT" href="04b_matrix_maths.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,43 +167,69 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/paper.html">Paper creation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/intro_extra.html">Extra details</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
 </ul>
+</li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01b_population.html">Example patient population and pathway timings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04b_matrix_maths.html">Quantifying added utility depending on time to IVT and MT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧭 Generic geography</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_geography_outcomes.html">Calculate distance-based treatment effects for many cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05c_geography_outcomes_plots.html">Plot distance-based treatment effects for many cohorts</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../england_wales/intro_data.html">Data creation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Calculate outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01c_weighted_outcomes.html">Combine populations for weighted outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01d_weighted_outcomes_mrs_dists.html">Combine populations for weighted mRS distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../england_wales/intro_results.html">Results</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
 <ul class="nav bd-sidenav">
@@ -249,6 +275,21 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+<a href="https://github.com/samuel-book/stroke_outcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
 
 
 
@@ -354,6 +395,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-travel-time-grids">Define travel time grids</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-travel-time-grids">Plot travel time grids</a></li>
@@ -362,6 +406,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-outcomes">Plot the outcomes</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -375,7 +420,38 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="distance-based-treatment-effects">
 <h1>Distance-based treatment effects<a class="headerlink" href="#distance-based-treatment-effects" title="Permalink to this heading">#</a></h1>
-<p>Based on the figures from Holodinsky et al. 2017 - “Drip and Ship Versus Direct to Comprehensive Stroke Center”</p>
+<p>This notebook is a basic example of a grid of generic geography with different travel times to different stroke units and the effects of travel time on outcomes.</p>
+<p>The grid and resulting circle plots are based on the figures from Holodinsky et al. 2017 - “Drip and Ship Versus Direct to Comprehensive Stroke Center”.</p>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>People who are having a stroke need to get to a hospital as quickly as possible for treatment. We can test the effects of the time to treatment by changing various times in the stroke pathway, for example the time between the 999 call and the ambulance arriving or the time between arrival at the hospital and the start of the treatment. However we cannot change the actual travel time of patients from their homes to the hospitals. This means it is important to know how the time to treatment and so the outcomes after treatment will depend on the travel time to the hospital.</p>
+<p>We can look at the travel times in the real world by using a map of part of England and Wales. However this is complicated and requires many assumptions. Perhaps a patient at a point far away in distance from the hospital is very close to a motorway and can span the large distance quickly. Perhaps a patient nearby as the crow flies actually lives down a long narrow twisty road that has to be navigated slowly. If you were looking at a map of an unfamiliar part of the country, you wouldn’t know about these details and it would make the map harder to interpret at first glance.</p>
+<p>Instead of using a real world map we can make our own generic geography that gets rid of all of the assumptions of the real world. We can get rid of hills and twisty roads and have a constant travel speed everywhere. Then the travel time to the hospital just depends on the distance to it.</p>
+<p>This generic grid is more powerful when we are considering two stroke units. For a patient located at any point on the grid, we can immediately see their travel time to the nearest stroke unit and how much further it is to the other option. Every point on the grid will have a different combination of travel time to the nearest unit and travel time to the second unit. This lets us draw conclusions about travel time differences in general. If we want to, we can then apply those results to specific parts of England and Wales.</p>
+</section>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Plot the difference in travel times at any point on a grid of generic geography.</p></li>
+<li><p>Plot the difference in expected outcomes after treatment based on those travel times.</p></li>
+</ul>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>Travel times:</p>
+<ul class="simple">
+<li><p>Create a grid. Set the IVT centre to be in the centre and the MT centre to be at the bottom in the middle.</p></li>
+<li><p>Find the travel time from each point on the grid to the IVT centre.</p></li>
+<li><p>Find the travel time from each point on the grid to the MT centre.</p></li>
+<li><p>Find the difference in travel times.</p></li>
+</ul>
+<p>Outcomes:</p>
+<ul class="simple">
+<li><p>Add the fixed stroke pathway times to the travel times to find a different time to treatment at each point on the grid.</p></li>
+<li><p>Feed these treatment times into the stroke outcome model.</p></li>
+<li><p>Plot the difference in outcomes from attending the IVT centre and from attending the MT centre. The differences will vary around the grid.</p></li>
+</ul>
+</section>
 <section id="notebook-admin">
 <h2>Notebook admin<a class="headerlink" href="#notebook-admin" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -492,7 +568,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_time_travel_directly_to_ivt</span> <span class="o">=</span> <span class="n">make_time_grid</span><span class="p">(</span>
-    <span class="n">time_travel_max</span><span class="p">,</span>
+    <span class="n">grid_xy_max</span><span class="p">,</span>
     <span class="n">grid_step</span><span class="p">,</span>
     <span class="n">x_offset</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
     <span class="n">y_offset</span><span class="o">=</span><span class="n">ivt_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -504,7 +580,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_time_travel_directly_to_mt</span> <span class="o">=</span> <span class="n">make_time_grid</span><span class="p">(</span>
-    <span class="n">time_travel_max</span><span class="p">,</span>
+    <span class="n">grid_xy_max</span><span class="p">,</span>
     <span class="n">grid_step</span><span class="p">,</span>
     <span class="n">x_offset</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
     <span class="n">y_offset</span><span class="o">=</span><span class="n">mt_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -843,6 +919,19 @@ document.write(`
 </div>
 </section>
 </section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>We have shown the basic method to find:</p>
+<ul class="simple">
+<li><p>a grid of travel times</p></li>
+<li><p>a grid of outcomes</p></li>
+<li><p>the difference in travel times and outcomes from attending the nearer or the farther stroke unit.</p></li>
+</ul>
+<p>And we have shown how these can be plotted as circle plots.</p>
+<p>We see that a grid of travel times or outcomes to a single unit will show a circle pattern, and that the difference between two grids based on travel to different stroke units creates a curve pattern.</p>
+<p>We see that the improvement in outcomes through redirection is greatest in areas nearer the MT unit (bottom of the plots, lower difference in travel time) and smallest in areas farther away from the MT unit (top of the plots, higher difference in travel time).</p>
+<p>In the next notebook we will calculate these outcomes and combine the results for an example patient population.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -876,20 +965,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="04_matrix.html"
+       href="04b_matrix_maths.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Demonstration of added utility depending on time to IVT and MT</p>
+        <p class="prev-next-title">Quantifying added utility depending on time to IVT and MT</p>
       </div>
     </a>
     <a class="right-next"
-       href="../england_wales/01_model_outcomes.html"
+       href="05_geography_outcomes.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model outcomes for drip’and’ship vs mothership based on greography</p>
+        <p class="prev-next-title">Calculate distance-based treatment effects for many cohorts</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -908,6 +997,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-admin">Notebook admin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-travel-time-grids">Define travel time grids</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-travel-time-grids">Plot travel time grids</a></li>
@@ -916,6 +1008,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-outcomes">Plot the outcomes</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 

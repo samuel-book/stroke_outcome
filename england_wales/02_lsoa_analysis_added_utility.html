@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Mapping LSOA results &#8212; Stroke outcome modelling</title>
+    <title>Mapping outcomes &#8212; Stroke outcome modelling</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'england_wales/02_lsoa_analysis_added_utility';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Streamlit app" href="../streamlit/streamlit.html" />
-    <link rel="prev" title="Model outcomes for drip’and’ship vs mothership based on greography" href="01_model_outcomes.html" />
+    <link rel="next" title="Mapping outliers" href="04_outlier_areas.html" />
+    <link rel="prev" title="Results" href="intro_results.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,43 +165,69 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/paper.html">Paper creation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/intro_extra.html">Extra details</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/01b_population.html">Example patient population and pathway timings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04b_matrix_maths.html">Quantifying added utility depending on time to IVT and MT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧭 Generic geography</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography_outcomes.html">Calculate distance-based treatment effects for many cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05c_geography_outcomes_plots.html">Plot distance-based treatment effects for many cohorts</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mapping LSOA results</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro_data.html">Data creation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_model_outcomes.html">Calculate outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_weighted_outcomes.html">Combine populations for weighted outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01d_weighted_outcomes_mrs_dists.html">Combine populations for weighted mRS distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_results.html">Results</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
 <ul class="nav bd-sidenav">
@@ -247,6 +273,21 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+<a href="https://github.com/samuel-book/stroke_outcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
 
 
 
@@ -342,7 +383,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Mapping LSOA results</h1>
+    <h1>Mapping outcomes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -352,7 +393,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proportions-of-stroke-types-analysis-of-samuel-data">Proportions of stroke types: Analysis of SAMueL data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">Import packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-shape-file">Load shape file</a></li>
@@ -361,7 +404,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-difference-between-mothership-and-drip-and-ship">Calculate difference between Mothership and Drip and Ship</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-plot">Basic plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-the-plots">Draw the plots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -373,56 +422,36 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mapping-lsoa-results">
-<h1>Mapping LSOA results<a class="headerlink" href="#mapping-lsoa-results" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;lsoa_base&#39;</span>
-<span class="n">limit_to_england</span> <span class="o">=</span> <span class="kc">False</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="proportions-of-stroke-types-analysis-of-samuel-data">
-<h2>Proportions of stroke types: Analysis of SAMueL data<a class="headerlink" href="#proportions-of-stroke-types-analysis-of-samuel-data" title="Permalink to this heading">#</a></h2>
-<p>Data from SAMueL using NIHSS 11+ as a surrogate for LVO:</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Admission type</p></th>
-<th class="head"><p>All arrivals</p></th>
-<th class="head"><p>Arrival within 6 hrs known onset</p></th>
-<th class="head"><p>Arrival within 4 hrs known onset</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Proportion all admissions</p></td>
-<td><p>100</p></td>
-<td><p>42.9</p></td>
-<td><p>37.1</p></td>
-</tr>
-<tr class="row-odd"><td><p>Proportion haemorrhagic</p></td>
-<td><p>11.5</p></td>
-<td><p>13.6</p></td>
-<td><p>14.1</p></td>
-</tr>
-<tr class="row-even"><td><p>Proportion ischaemic</p></td>
-<td><p>88.5</p></td>
-<td><p>86.4</p></td>
-<td><p>85.9</p></td>
-</tr>
-<tr class="row-odd"><td><p>Proportion ischaemic with NIHSS 0-10</p></td>
-<td><p>74.9</p></td>
-<td><p>67.4</p></td>
-<td><p>65.7</p></td>
-</tr>
-<tr class="row-even"><td><p>Proportion ischaemic with NIHSS 11+</p></td>
-<td><p>25.1</p></td>
-<td><p>32.6</p></td>
-<td><p>34.3</p></td>
-</tr>
-</tbody>
-</table>
-<p>For original analysis see: <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/10_using_nihss_10_for_lvo.html">https://samuel-book.github.io/samuel-1/descriptive_stats/10_using_nihss_10_for_lvo.html</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="mapping-outcomes">
+<h1>Mapping outcomes<a class="headerlink" href="#mapping-outcomes" title="Permalink to this heading">#</a></h1>
+<p>This notebook creates maps of England and Wales to show the variation in outcomes from the different scenarios calculated earlier.</p>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>This notebook takes the outcome data we saved earlier and creates maps of England and Wales.</p>
+</section>
+<section id="aim">
+<h2>Aim<a class="headerlink" href="#aim" title="Permalink to this heading">#</a></h2>
+<p>Create maps to show:</p>
+<ul class="simple">
+<li><p>change in added utility compared with no treatment</p></li>
+<li><p>change in mean mRS score compared with no treatment</p></li>
+<li><p>change in proportion of the population with an mRS score of 2 or less</p></li>
+</ul>
+<p>for each of these cohorts:</p>
+<ul class="simple">
+<li><p>nLVO treated with IVT</p></li>
+<li><p>LVO treated with mixed methods</p></li>
+<li><p>the treated ischaemic population</p></li>
+</ul>
+<p>for each of these scenarios:</p>
+<ul class="simple">
+<li><p>drip-and-ship</p></li>
+<li><p>mothership</p></li>
+</ul>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>We load LSOA shapes from the Office for National Statistics and merge this geography data into the outcome data. Then we draw the shape of each LSOA with a colour that depends on the outcome value. All of the LSOAs on a map use the same range of colours so that they can be directly compared.</p>
 </section>
 <section id="import-packages">
 <h2>Import packages<a class="headerlink" href="#import-packages" title="Permalink to this heading">#</a></h2>
@@ -430,16 +459,27 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import contextily as ctx</span>
 <span class="kn">import</span> <span class="nn">geopandas</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># For plotting:</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.gridspec</span> <span class="kn">import</span> <span class="n">GridSpec</span>
 
 <span class="kn">import</span> <span class="nn">stroke_maps.load_data</span>
 <span class="kn">import</span> <span class="nn">stroke_maps.catchment</span>
 <span class="kn">import</span> <span class="nn">stroke_maps.geo</span>  <span class="c1"># to make catchment area geometry</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_output</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
+<span class="n">limit_to_england</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -544,14 +584,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load country outline</span>
-<span class="c1"># outline = geopandas.read_file(&#39;./data/Countries_(December_2022)_GB_BFC.zip&#39;)</span>
 <span class="k">if</span> <span class="n">limit_to_england</span><span class="p">:</span>
-    <span class="c1"># mask = outline[&#39;CTRY22NM&#39;] == &#39;England&#39;</span>
-    <span class="c1"># outline = outline[mask]</span>
     <span class="n">outline</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">load_data</span><span class="o">.</span><span class="n">england_outline</span><span class="p">()</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># mask = (outline[&#39;CTRY22NM&#39;] == &#39;England&#39;) | (outline[&#39;CTRY22NM&#39;] == &#39;Wales&#39;)</span>
-    <span class="c1"># outline = outline[mask]</span>
     <span class="n">outline</span> <span class="o">=</span> <span class="n">stroke_maps</span><span class="o">.</span><span class="n">load_data</span><span class="o">.</span><span class="n">englandwales_outline</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -840,7 +875,7 @@ document.write(`
 <h3>Load LSOA model output data<a class="headerlink" href="#load-lsoa-model-output-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;cohort_outcomes_weighted.csv&#39;</span><span class="p">))</span>
 <span class="n">lsoa_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
@@ -944,243 +979,387 @@ document.write(`
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_added_utility</th>
-      <td>0.116854</td>
-      <td>0.116409</td>
-      <td>0.116854</td>
+      <td>0.11685</td>
+      <td>0.11641</td>
+      <td>0.11685</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_mean_mrs</th>
-      <td>1.636531</td>
-      <td>1.639129</td>
-      <td>1.636531</td>
+      <td>1.63653</td>
+      <td>1.63913</td>
+      <td>1.63653</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_mrs_less_equal_2</th>
-      <td>0.706494</td>
-      <td>0.706005</td>
-      <td>0.706494</td>
+      <td>0.70649</td>
+      <td>0.706</td>
+      <td>0.70649</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_mrs_shift</th>
-      <td>-0.643469</td>
-      <td>-0.640871</td>
-      <td>-0.643469</td>
+      <td>-0.64347</td>
+      <td>-0.64087</td>
+      <td>-0.64347</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.126494</td>
-      <td>0.126005</td>
-      <td>0.126494</td>
+      <td>0.12649</td>
+      <td>0.126</td>
+      <td>0.12649</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_added_utility</th>
-      <td>0.058718</td>
-      <td>0.058412</td>
-      <td>0.058718</td>
+      <td>0.05872</td>
+      <td>0.05841</td>
+      <td>0.05872</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_mean_mrs</th>
-      <td>3.346549</td>
-      <td>3.348226</td>
-      <td>3.346549</td>
+      <td>3.34655</td>
+      <td>3.34823</td>
+      <td>3.34655</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_mrs_less_equal_2</th>
-      <td>0.328789</td>
-      <td>0.328468</td>
-      <td>0.328789</td>
+      <td>0.32879</td>
+      <td>0.32847</td>
+      <td>0.32879</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_mrs_shift</th>
-      <td>-0.293451</td>
-      <td>-0.291774</td>
-      <td>-0.293451</td>
+      <td>-0.29345</td>
+      <td>-0.29177</td>
+      <td>-0.29345</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.063789</td>
-      <td>0.063468</td>
-      <td>0.063789</td>
+      <td>0.06379</td>
+      <td>0.06347</td>
+      <td>0.06379</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_added_utility</th>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.10928</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_mean_mrs</th>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>3.10174</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_mrs_less_equal_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.37981</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_mrs_shift</th>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.53826</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_added_mrs_less_equal_2</th>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.11481</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_added_utility</th>
-      <td>0.163611</td>
-      <td>0.162952</td>
-      <td>0.109278</td>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.10928</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_mean_mrs</th>
-      <td>2.811357</td>
-      <td>2.814939</td>
-      <td>3.101739</td>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>3.10174</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_mrs_less_equal_2</th>
-      <td>0.438069</td>
-      <td>0.437356</td>
-      <td>0.379811</td>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.37981</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_mrs_shift</th>
-      <td>-0.828643</td>
-      <td>-0.825061</td>
-      <td>-0.538261</td>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.53826</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_added_mrs_less_equal_2</th>
-      <td>0.173069</td>
-      <td>0.172356</td>
-      <td>0.114811</td>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.11481</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_added_utility</th>
-      <td>0.116854</td>
-      <td>0.116409</td>
-      <td>0.115963</td>
+      <td>0.11685</td>
+      <td>0.11641</td>
+      <td>0.11596</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_mean_mrs</th>
-      <td>1.636531</td>
-      <td>1.639129</td>
-      <td>1.641728</td>
+      <td>1.63653</td>
+      <td>1.63913</td>
+      <td>1.64173</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_mrs_less_equal_2</th>
-      <td>0.706494</td>
-      <td>0.706005</td>
-      <td>0.705514</td>
+      <td>0.70649</td>
+      <td>0.706</td>
+      <td>0.70551</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_mrs_shift</th>
-      <td>-0.643469</td>
-      <td>-0.640871</td>
-      <td>-0.638272</td>
+      <td>-0.64347</td>
+      <td>-0.64087</td>
+      <td>-0.63827</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.126494</td>
-      <td>0.126005</td>
-      <td>0.125514</td>
+      <td>0.12649</td>
+      <td>0.126</td>
+      <td>0.12551</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_added_utility</th>
-      <td>0.058718</td>
-      <td>0.058412</td>
-      <td>0.058107</td>
+      <td>0.05872</td>
+      <td>0.05841</td>
+      <td>0.05811</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_mean_mrs</th>
-      <td>3.346549</td>
-      <td>3.348226</td>
-      <td>3.349902</td>
+      <td>3.34655</td>
+      <td>3.34823</td>
+      <td>3.3499</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_mrs_less_equal_2</th>
-      <td>0.328789</td>
-      <td>0.328468</td>
-      <td>0.328146</td>
+      <td>0.32879</td>
+      <td>0.32847</td>
+      <td>0.32815</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_mrs_shift</th>
-      <td>-0.293451</td>
-      <td>-0.291774</td>
-      <td>-0.290098</td>
+      <td>-0.29345</td>
+      <td>-0.29177</td>
+      <td>-0.2901</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.063789</td>
-      <td>0.063468</td>
-      <td>0.063146</td>
+      <td>0.06379</td>
+      <td>0.06347</td>
+      <td>0.06315</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_added_utility</th>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.16229</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mean_mrs</th>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>2.81852</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_less_equal_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.43664</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_shift</th>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.82148</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_added_mrs_less_equal_2</th>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.17164</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_added_utility</th>
-      <td>0.163611</td>
-      <td>0.162952</td>
-      <td>0.162292</td>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.16229</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_mean_mrs</th>
-      <td>2.811357</td>
-      <td>2.814939</td>
-      <td>2.818519</td>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>2.81852</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_mrs_less_equal_2</th>
-      <td>0.438069</td>
-      <td>0.437356</td>
-      <td>0.436643</td>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.43664</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_mrs_shift</th>
-      <td>-0.828643</td>
-      <td>-0.825061</td>
-      <td>-0.821481</td>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.82148</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_added_mrs_less_equal_2</th>
-      <td>0.173069</td>
-      <td>0.172356</td>
-      <td>0.171643</td>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.17164</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_added_utility</th>
-      <td>0.03479</td>
-      <td>0.034647</td>
-      <td>0.029357</td>
+      <th>drip_ship_lvo_mix_added_utility</th>
+      <td>0.15548</td>
+      <td>0.15485</td>
+      <td>0.10536</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mrs_less_equal_2</th>
-      <td>0.153001</td>
-      <td>0.152846</td>
-      <td>0.147175</td>
+      <th>drip_ship_lvo_mix_mrs_less_equal_2</th>
+      <td>0.4296</td>
+      <td>0.42892</td>
+      <td>0.37586</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mean_mrs</th>
-      <td>0.753793</td>
-      <td>0.754593</td>
-      <td>0.782832</td>
+      <th>drip_ship_lvo_mix_mrs_shift</th>
+      <td>-0.78717</td>
+      <td>-0.78373</td>
+      <td>-0.51929</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mrs_shift</th>
-      <td>-0.181807</td>
-      <td>-0.181007</td>
-      <td>-0.152768</td>
+      <th>drip_ship_lvo_mix_added_mrs_less_equal_2</th>
+      <td>0.1646</td>
+      <td>0.16392</td>
+      <td>0.11086</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_added_mrs_less_equal_2</th>
-      <td>0.037276</td>
-      <td>0.037121</td>
-      <td>0.03145</td>
+      <th>mothership_lvo_mix_added_utility</th>
+      <td>0.15548</td>
+      <td>0.15485</td>
+      <td>0.15422</td>
     </tr>
     <tr>
-      <th>weighted_mothership_added_utility</th>
-      <td>0.03479</td>
-      <td>0.034647</td>
-      <td>0.034504</td>
+      <th>mothership_lvo_mix_mrs_less_equal_2</th>
+      <td>0.4296</td>
+      <td>0.42892</td>
+      <td>0.42823</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mrs_less_equal_2</th>
-      <td>0.153001</td>
-      <td>0.152846</td>
-      <td>0.152691</td>
+      <th>mothership_lvo_mix_mrs_shift</th>
+      <td>-0.78717</td>
+      <td>-0.78373</td>
+      <td>-0.7803</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mean_mrs</th>
-      <td>0.753793</td>
-      <td>0.754593</td>
-      <td>0.755392</td>
+      <th>mothership_lvo_mix_added_mrs_less_equal_2</th>
+      <td>0.1646</td>
+      <td>0.16392</td>
+      <td>0.16323</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mrs_shift</th>
-      <td>-0.181807</td>
-      <td>-0.181007</td>
-      <td>-0.180208</td>
+      <th>drip_ship_weighted_added_utility</th>
+      <td>0.03392</td>
+      <td>0.03379</td>
+      <td>0.02764</td>
     </tr>
     <tr>
-      <th>weighted_mothership_added_mrs_less_equal_2</th>
-      <td>0.037276</td>
-      <td>0.037121</td>
-      <td>0.036966</td>
+      <th>drip_ship_weighted_mrs_less_equal_2</th>
+      <td>0.14107</td>
+      <td>0.14092</td>
+      <td>0.13432</td>
+    </tr>
+    <tr>
+      <th>drip_ship_weighted_mrs_shift</th>
+      <td>-0.17815</td>
+      <td>-0.1774</td>
+      <td>-0.14454</td>
+    </tr>
+    <tr>
+      <th>drip_ship_weighted_added_mrs_less_equal_2</th>
+      <td>0.03626</td>
+      <td>0.03611</td>
+      <td>0.02951</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_added_utility</th>
+      <td>0.03392</td>
+      <td>0.03379</td>
+      <td>0.03366</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_mrs_less_equal_2</th>
+      <td>0.14107</td>
+      <td>0.14092</td>
+      <td>0.14077</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_mrs_shift</th>
+      <td>-0.17815</td>
+      <td>-0.1774</td>
+      <td>-0.17665</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_added_mrs_less_equal_2</th>
+      <td>0.03626</td>
+      <td>0.03611</td>
+      <td>0.03597</td>
+    </tr>
+    <tr>
+      <th>drip_ship_weighted_treated_added_utility</th>
+      <td>0.13633</td>
+      <td>0.13579</td>
+      <td>0.11106</td>
+    </tr>
+    <tr>
+      <th>drip_ship_weighted_treated_mrs_less_equal_2</th>
+      <td>0.56689</td>
+      <td>0.5663</td>
+      <td>0.53979</td>
+    </tr>
+    <tr>
+      <th>drip_ship_weighted_treated_mrs_shift</th>
+      <td>-0.71592</td>
+      <td>-0.7129</td>
+      <td>-0.58086</td>
+    </tr>
+    <tr>
+      <th>drip_ship_weighted_treated_added_mrs_less_equal_2</th>
+      <td>0.14571</td>
+      <td>0.14512</td>
+      <td>0.11861</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_added_utility</th>
+      <td>0.13633</td>
+      <td>0.13579</td>
+      <td>0.13525</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_mrs_less_equal_2</th>
+      <td>0.56689</td>
+      <td>0.5663</td>
+      <td>0.56571</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_mrs_shift</th>
+      <td>-0.71592</td>
+      <td>-0.7129</td>
+      <td>-0.70988</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_added_mrs_less_equal_2</th>
+      <td>0.14571</td>
+      <td>0.14512</td>
+      <td>0.14453</td>
     </tr>
   </tbody>
 </table>
@@ -1225,16 +1404,16 @@ document.write(`
       <th>Shape__Area</th>
       <th>Shape__Length</th>
       <th>...</th>
-      <th>weighted_drip_ship_added_utility</th>
-      <th>weighted_drip_ship_mrs_less_equal_2</th>
-      <th>weighted_drip_ship_mean_mrs</th>
-      <th>weighted_drip_ship_mrs_shift</th>
-      <th>weighted_drip_ship_added_mrs_less_equal_2</th>
-      <th>weighted_mothership_added_utility</th>
-      <th>weighted_mothership_mrs_less_equal_2</th>
-      <th>weighted_mothership_mean_mrs</th>
-      <th>weighted_mothership_mrs_shift</th>
-      <th>weighted_mothership_added_mrs_less_equal_2</th>
+      <th>mothership_weighted_mrs_shift</th>
+      <th>mothership_weighted_added_mrs_less_equal_2</th>
+      <th>drip_ship_weighted_treated_added_utility</th>
+      <th>drip_ship_weighted_treated_mrs_less_equal_2</th>
+      <th>drip_ship_weighted_treated_mrs_shift</th>
+      <th>drip_ship_weighted_treated_added_mrs_less_equal_2</th>
+      <th>mothership_weighted_treated_added_utility</th>
+      <th>mothership_weighted_treated_mrs_less_equal_2</th>
+      <th>mothership_weighted_treated_mrs_shift</th>
+      <th>mothership_weighted_treated_added_mrs_less_equal_2</th>
     </tr>
   </thead>
   <tbody>
@@ -1251,16 +1430,16 @@ document.write(`
       <td>3.641032e+05</td>
       <td>3054.751704</td>
       <td>...</td>
-      <td>0.034790</td>
-      <td>0.153001</td>
-      <td>0.753793</td>
-      <td>-0.181807</td>
-      <td>0.037276</td>
-      <td>0.034790</td>
-      <td>0.153001</td>
-      <td>0.753793</td>
-      <td>-0.181807</td>
-      <td>0.037276</td>
+      <td>-0.17815</td>
+      <td>0.03626</td>
+      <td>0.13633</td>
+      <td>0.56689</td>
+      <td>-0.71592</td>
+      <td>0.14571</td>
+      <td>0.13633</td>
+      <td>0.56689</td>
+      <td>-0.71592</td>
+      <td>0.14571</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1275,16 +1454,16 @@ document.write(`
       <td>2.921732e+05</td>
       <td>2977.102897</td>
       <td>...</td>
-      <td>0.034647</td>
-      <td>0.152846</td>
-      <td>0.754593</td>
-      <td>-0.181007</td>
-      <td>0.037121</td>
-      <td>0.034647</td>
-      <td>0.152846</td>
-      <td>0.754593</td>
-      <td>-0.181007</td>
-      <td>0.037121</td>
+      <td>-0.17740</td>
+      <td>0.03611</td>
+      <td>0.13579</td>
+      <td>0.56630</td>
+      <td>-0.71290</td>
+      <td>0.14512</td>
+      <td>0.13579</td>
+      <td>0.56630</td>
+      <td>-0.71290</td>
+      <td>0.14512</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1299,16 +1478,16 @@ document.write(`
       <td>5.281768e+06</td>
       <td>11671.349143</td>
       <td>...</td>
-      <td>0.029357</td>
-      <td>0.147175</td>
-      <td>0.782832</td>
-      <td>-0.152768</td>
-      <td>0.031450</td>
-      <td>0.034504</td>
-      <td>0.152691</td>
-      <td>0.755392</td>
-      <td>-0.180208</td>
-      <td>0.036966</td>
+      <td>-0.17665</td>
+      <td>0.03597</td>
+      <td>0.11106</td>
+      <td>0.53979</td>
+      <td>-0.58086</td>
+      <td>0.11861</td>
+      <td>0.13525</td>
+      <td>0.56571</td>
+      <td>-0.70988</td>
+      <td>0.14453</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1323,16 +1502,16 @@ document.write(`
       <td>2.452292e+05</td>
       <td>2134.908586</td>
       <td>...</td>
-      <td>0.029357</td>
-      <td>0.147175</td>
-      <td>0.782832</td>
-      <td>-0.152768</td>
-      <td>0.031450</td>
-      <td>0.034504</td>
-      <td>0.152691</td>
-      <td>0.755392</td>
-      <td>-0.180208</td>
-      <td>0.036966</td>
+      <td>-0.17665</td>
+      <td>0.03597</td>
+      <td>0.11106</td>
+      <td>0.53979</td>
+      <td>-0.58086</td>
+      <td>0.11861</td>
+      <td>0.13525</td>
+      <td>0.56571</td>
+      <td>-0.70988</td>
+      <td>0.14453</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1347,20 +1526,20 @@ document.write(`
       <td>2.402445e+05</td>
       <td>2447.096939</td>
       <td>...</td>
-      <td>0.029499</td>
-      <td>0.147327</td>
-      <td>0.782052</td>
-      <td>-0.153548</td>
-      <td>0.031602</td>
-      <td>0.034504</td>
-      <td>0.152691</td>
-      <td>0.755392</td>
-      <td>-0.180208</td>
-      <td>0.036966</td>
+      <td>-0.17665</td>
+      <td>0.03597</td>
+      <td>0.11159</td>
+      <td>0.54036</td>
+      <td>-0.58379</td>
+      <td>0.11918</td>
+      <td>0.13525</td>
+      <td>0.56571</td>
+      <td>-0.70988</td>
+      <td>0.14453</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 64 columns</p>
+<p>5 rows × 88 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1369,7 +1548,7 @@ document.write(`
 <h2>Calculate difference between Mothership and Drip and Ship<a class="headerlink" href="#calculate-difference-between-mothership-and-drip-and-ship" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cohort_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_mt&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cohort_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_mix&#39;</span><span class="p">,</span> <span class="s1">&#39;weighted_treated&#39;</span><span class="p">]</span>
 
 <span class="n">outcome_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_shift&#39;</span><span class="p">]</span>
 </pre></div>
@@ -1388,328 +1567,392 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="plots">
-<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this heading">#</a></h2>
+<section id="basic-plot">
+<h2>Basic plot<a class="headerlink" href="#basic-plot" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_six</span><span class="p">(</span>
-        <span class="n">data_field</span><span class="p">,</span>
-        <span class="n">data_name</span><span class="p">,</span>
-        <span class="n">lsoa_data_gdf</span><span class="p">,</span>
-        <span class="n">hospitals_gdf</span><span class="p">,</span>
-        <span class="n">outline</span><span class="p">,</span>
-        <span class="n">reverse_cmaps</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">):</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-    
-    <span class="c1">################### Plot data values ###################</span>
-    
-    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="sa">f</span><span class="s1">&#39;drip_ship_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s1">&#39;mothership_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s1">&#39;drip_ship_lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s1">&#39;mothership_lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span>
-    <span class="p">]</span>
-    
-    <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="sa">f</span><span class="s1">&#39;Drip and ship nLVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s1">&#39;Mothership nLVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s1">&#39;Drip and ship LVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>    
-        <span class="sa">f</span><span class="s1">&#39;Mothership LVO </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span>
-    <span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col</span> <span class="o">=</span> <span class="s1">&#39;drip_ship_nlvo_ivt_added_utility&#39;</span>
 
-    <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;inferno&#39;</span>
-    <span class="n">cmap_diff</span> <span class="o">=</span> <span class="s1">&#39;bwr_r&#39;</span>
-    <span class="k">if</span> <span class="n">reverse_cmaps</span><span class="p">:</span>
-        <span class="n">cmap</span> <span class="o">+=</span> <span class="s1">&#39;_r&#39;</span>
-        <span class="n">cmap_diff</span> <span class="o">+=</span> <span class="s1">&#39;_r&#39;</span>
-        <span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_r_r&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">cmap_diff</span> <span class="o">=</span> <span class="n">cmap_diff</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_r_r&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    
-    <span class="c1"># Indexes for subplots (to leave gaps on right for diff between Mothership and Drip and Ship)</span>
-    <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-    
+<span class="c1"># Figure setup:</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot data</span>
+<span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>             <span class="c1"># Set which axes to use for plot</span>
+    <span class="n">column</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>        <span class="c1"># Column to apply colour</span>
+    <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Avoids artefact boundry lines</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span>  <span class="c1"># Make LSOA boundary same colour as area</span>
+    <span class="c1"># Adjust size of colourmap key, and add label</span>
+    <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="n">col</span><span class="p">},</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>       <span class="c1"># Set to display legend</span>
+<span class="p">)</span>
+
+<span class="c1"># Add country border</span>
+<span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Add hospitals</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_ivt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_mt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ca9b2bd5242c71e8ae074fe0f81fd28afa17099899b8b87c3af5750cc2b92271.png" src="../_images/ca9b2bd5242c71e8ae074fe0f81fd28afa17099899b8b87c3af5750cc2b92271.png" />
+</div>
+</div>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this heading">#</a></h2>
+<section id="define-functions">
+<h3>Define functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h3>
+<p>These functions find shared colour limits across multiple columns of data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_vlims_scenarios</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">):</span>
+    <span class="n">scenarios</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]</span>
+    <span class="c1"># Colour limits for separate scenarios:</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scenarios</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cohorts</span><span class="p">]</span>
     <span class="c1"># Find maximum of data</span>
     <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">])</span>
     <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">])</span>
-    
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    
-        <span class="c1"># Plot data</span>
-        <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="c1"># Set which axes to use for plot (only one here)</span>
-                     <span class="n">column</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="c1"># Column to apply colour</span>
-                     <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Avoids artifact boundry lines</span>
-                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="c1"># Make LSOA boundry same colour as area</span>
-                     <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="c1"># Manual scale min (remove to make automatic)</span>
-                     <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="c1"># Manual scale max (remove to make automatic)</span>
-                     <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="c1"># Colour map to use</span>
-                     <span class="c1"># Adjust size of colourmap key, and add label</span>
-                     <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">},</span>
-                     <span class="c1"># Set to display legend</span>
-                     <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        
-        <span class="c1"># Add country boarder</span>
-        <span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-        
-        <span class="c1"># Add hospitals</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_ivt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-        <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_mt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-        <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-    
-        <span class="c1"># Tighten map around mainland England and Wales</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">120000</span><span class="p">)</span>
-    
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span> <span class="c1"># Turn of axis line and numbers</span>
-    
-    <span class="c1">################### Plot differences between mothership and drip and ship ###################</span>
-    
-    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="sa">f</span><span class="s1">&#39;nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s1">&#39;lvo_mt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span>
-    <span class="p">]</span>
-    
+    <span class="k">return</span> <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span>
+
+<span class="k">def</span> <span class="nf">find_vlims_diff</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">):</span>
+    <span class="c1"># Colour limits for difference maps:</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cohorts</span><span class="p">]</span>
     <span class="c1"># Find absolute maximum of data extent</span>
-    <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]),</span> 
+    <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">]),</span>
                    <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">])))</span>
     <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
+    <span class="k">return</span> <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function plots the maps:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">cax_diff</span><span class="p">,</span> <span class="n">axs_cols</span><span class="p">,</span> <span class="n">axs_params</span><span class="p">,</span> <span class="n">colour_params</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axs_cols</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axs_cols</span><span class="p">[</span><span class="n">row</span><span class="p">])):</span>
+            <span class="c1"># Axis to plot on:</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+            <span class="c1"># Data information:</span>
+            <span class="n">col_data</span> <span class="o">=</span> <span class="n">axs_cols</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+            <span class="c1"># Colour information:</span>
+            <span class="n">colour_params_type</span> <span class="o">=</span> <span class="n">axs_params</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">colour_params</span><span class="p">[</span><span class="n">colour_params_type</span><span class="p">]</span>
+            <span class="n">cbar_ax</span> <span class="o">=</span> <span class="n">cax</span> <span class="k">if</span> <span class="n">colour_params_type</span> <span class="o">==</span> <span class="s1">&#39;shared&#39;</span> <span class="k">else</span> <span class="n">cax_diff</span>
+            
+            <span class="c1"># Plot data</span>
+            <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+                <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                <span class="n">column</span><span class="o">=</span><span class="n">col_data</span><span class="p">,</span>      <span class="c1"># Column to apply colour</span>
+                <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>    <span class="c1"># Avoids artefact boundry lines</span>
+                <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span>     <span class="c1"># Make LSOA boundry same colour as area</span>
+                <span class="n">vmin</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;vmin&#39;</span><span class="p">],</span>  <span class="c1"># Manual scale min (remove to make automatic)</span>
+                <span class="n">vmax</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;vmax&#39;</span><span class="p">],</span>  <span class="c1"># Manual scale max (remove to make automatic)</span>
+                <span class="n">cmap</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">],</span>  <span class="c1"># Colour map to use</span>
+                <span class="c1"># Adjust size of colourmap key, and add label</span>
+                <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;cbar_label&#39;</span><span class="p">]},</span>
+                <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>          <span class="c1"># Set to display legend</span>
+                <span class="n">cax</span><span class="o">=</span><span class="n">cbar_ax</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These functions set up the figure and standard formatting across all axes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_up_fig_nine</span><span class="p">():</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+
+    <span class="c1"># Set up GridSpec so that each map subplot takes up two gs subplots</span>
+    <span class="c1"># in height. This lets the shared colourbar sit midway up two</span>
+    <span class="c1"># subplots instead of being offset or twice the height of the other.</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">GridSpec</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">axs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])],</span>
+        <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])],</span>
+        <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">])],</span>
+    <span class="p">])</span>
+    <span class="n">cax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">cax_diff</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">cax_diff</span>
+
+<span class="k">def</span> <span class="nf">set_up_axis_and_extras</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">outline</span><span class="p">,</span> <span class="n">hospitals_gdf</span><span class="p">):</span>
+    <span class="c1"># Add country border</span>
+    <span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
     
-    <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;nLVO advantage of Mothership (</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
-              <span class="sa">f</span><span class="s1">&#39;LVO advantage of Mothership (</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]</span>
+    <span class="c1"># Add hospitals</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_ivt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_mt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+    <span class="c1"># ax.set_axis_off() # Turn of axis line and numbers</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">spine</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Tighten map around mainland England and Wales</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">120000</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function makes the plots for nine maps together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_nine</span><span class="p">(</span>
+        <span class="n">lsoa_data_gdf</span><span class="p">,</span>
+        <span class="n">axs_cols</span><span class="p">,</span>
+        <span class="n">axs_params</span><span class="p">,</span>
+        <span class="n">colour_params</span><span class="p">,</span>
+        <span class="n">hospitals_gdf</span><span class="p">,</span>
+        <span class="n">outline</span><span class="p">,</span>
+        <span class="n">col_titles</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">row_titles</span><span class="o">=</span><span class="p">[],</span>
+        <span class="n">savename</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+    <span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">cax_diff</span> <span class="o">=</span> <span class="n">set_up_fig_nine</span><span class="p">()</span>
+
+    <span class="n">plot_data</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">cax_diff</span><span class="p">,</span> <span class="n">axs_cols</span><span class="p">,</span> <span class="n">axs_params</span><span class="p">,</span> <span class="n">colour_params</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">():</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">set_up_axis_and_extras</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">outline</span><span class="p">,</span> <span class="n">hospitals_gdf</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row_title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row_titles</span><span class="p">):</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">row_title</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mf">50.0</span><span class="p">)</span><span class="c1">#, ha=&#39;right&#39;)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col_title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">col_titles</span><span class="p">):</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">col_title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
     
-    <span class="c1"># Indexes for subplots</span>
-    <span class="n">indexes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-    
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">indexes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    
-        <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="c1"># Set which axes to use for plot (only one here)</span>
-                     <span class="n">column</span><span class="o">=</span><span class="n">cols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="c1"># Column to apply colour</span>
-                     <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Avoids artifact boundry lines</span>
-                     <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="c1"># Make LSOA boundry same colour as area</span>
-                     <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="c1"># Manual scale min (remove to make automatic)</span>
-                     <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="c1"># Manual scale max (remove to make automatic)</span>
-                     <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_diff</span><span class="p">,</span> <span class="c1"># Colour map to use</span>
-                     <span class="c1"># Adjust size of colourmap key, and add label</span>
-                     <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;Advantage of Mothership (</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">},</span>
-                     <span class="c1"># Set to display legend</span>
-                     <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
-        <span class="c1"># Add country boarder</span>
-        <span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-        
-        <span class="c1"># Add hospitals</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_ivt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-        <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-        <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_mt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-        <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-    
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span> <span class="c1"># Turn of axis line and numbers    </span>
-    
-        <span class="c1"># Tighten map around mainland England and Wales</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">120000</span><span class="p">)</span>
-        
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_six_in_one.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">savename</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">savename</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="draw-the-plots">
+<h3>Draw the plots<a class="headerlink" href="#draw-the-plots" title="Permalink to this heading">#</a></h3>
+<p>Settings for the nine-in-one plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_six</span><span class="p">(</span>
-    <span class="s1">&#39;added_utility&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;added utility&#39;</span><span class="p">,</span>
-    <span class="n">lsoa_data_gdf</span><span class="p">,</span>
-    <span class="n">hospitals_gdf</span><span class="p">,</span>
-    <span class="n">outline</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nLVO&#39;</span><span class="p">,</span> <span class="s1">&#39;LVO&#39;</span><span class="p">,</span> <span class="s1">&#39;Treated ischaemic population&#39;</span><span class="p">]</span>
+<span class="n">row_titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Drip and ship&#39;</span><span class="p">,</span> <span class="s1">&#39;Mothership&#39;</span><span class="p">,</span> <span class="s1">&#39;Advantage of</span><span class="se">\n</span><span class="s1"> mothership&#39;</span><span class="p">]</span>
+
+<span class="n">cohorts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_mix&#39;</span><span class="p">,</span> <span class="s1">&#39;weighted_treated&#39;</span><span class="p">]</span>
+
+<span class="n">axs_params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;shared&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;shared&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/2d25b67e820f37186ad8922dd7d87d8a2175713dabb075483a2a08715cca2716.png" src="../_images/2d25b67e820f37186ad8922dd7d87d8a2175713dabb075483a2a08715cca2716.png" />
 </div>
-</div>
+<p>Settings for added utility:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_six</span><span class="p">(</span>
-    <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;added mRS &lt;= 2&#39;</span><span class="p">,</span>
-    <span class="n">lsoa_data_gdf</span><span class="p">,</span>
-    <span class="n">hospitals_gdf</span><span class="p">,</span>
-    <span class="n">outline</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/b17be1a13fa90894b2d31816bce27296422a5ae69f9e3cfb15bd10988384d579.png" src="../_images/b17be1a13fa90894b2d31816bce27296422a5ae69f9e3cfb15bd10988384d579.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_six</span><span class="p">(</span>
-    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mRS mean shift&#39;</span><span class="p">,</span>
-    <span class="n">lsoa_data_gdf</span><span class="p">,</span>
-    <span class="n">hospitals_gdf</span><span class="p">,</span>
-    <span class="n">outline</span><span class="p">,</span>
-    <span class="n">reverse_cmaps</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/cd7ff9ad02c08e7de94d615b9da7fbec1dbfaa9bab5fcd5152321ee6c811e9d2.png" src="../_images/cd7ff9ad02c08e7de94d615b9da7fbec1dbfaa9bab5fcd5152321ee6c811e9d2.png" />
-</div>
-</div>
-<p>Plot weighted benefit</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_three</span><span class="p">(</span>
-        <span class="n">data_field</span><span class="p">,</span>
-        <span class="n">data_name</span><span class="p">,</span>
-        <span class="n">lsoa_data_gdf</span><span class="p">,</span>
-        <span class="n">hospitals_gdf</span><span class="p">,</span>
-        <span class="n">outline</span><span class="p">,</span>
-        <span class="n">reverse_cmaps</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">):</span>
-    <span class="c1"># Check weighted data exists</span>
-    <span class="n">col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;weighted_drip_ship_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span>
-    
-    <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;inferno&#39;</span>
-    <span class="n">cmap_diff</span> <span class="o">=</span> <span class="s1">&#39;bwr_r&#39;</span>
-    <span class="k">if</span> <span class="n">reverse_cmaps</span><span class="p">:</span>
-        <span class="n">cmap</span> <span class="o">+=</span> <span class="s1">&#39;_r&#39;</span>
-        <span class="n">cmap_diff</span> <span class="o">+=</span> <span class="s1">&#39;_r&#39;</span>
-        <span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_r_r&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">cmap_diff</span> <span class="o">=</span> <span class="n">cmap_diff</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_r_r&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">cmaps</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmap</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">cmap_diff</span><span class="p">]</span>
-    
-    <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Required data does not exist&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_mothership_advantage_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_mothership_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">-</span> 
-            <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_drip_ship_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
-    
-        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-    
-        <span class="c1"># Set up columns to map</span>
-        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="sa">f</span><span class="s1">&#39;weighted_drip_ship_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
-            <span class="sa">f</span><span class="s1">&#39;weighted_mothership_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s1">&#39;weighted_mothership_advantage_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
-    
-        <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="sa">f</span><span class="s1">&#39;Weighted drip and ship for </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s1">&#39;Weighted mothership for </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s1">&#39;Weighted advantage of mothership for </span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
-    
-        <span class="c1"># Find absolute maximum of data extent</span>
-        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]])</span>
-        <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]])</span>
-    
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
-            <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    
-            <span class="c1"># Radjust vmin and max for advantage plot</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">vmax</span> <span class="o">=</span> <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-                <span class="n">vmin</span> <span class="o">=</span> <span class="n">lsoa_data_gdf</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-                <span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">vmax</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">vmin</span><span class="p">))</span>
-                <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">vmax</span>
-    
-            <span class="c1"># Plot data</span>
-            <span class="n">lsoa_data_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="c1"># Set which axes to use for plot (only one here)</span>
-                        <span class="n">column</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="c1"># Column to apply colour</span>
-                        <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># Avoids artifact boundry lines</span>
-                        <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="c1"># Make LSOA boundry same colour as area</span>
-                        <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="c1"># Manual scale min (remove to make automatic)</span>
-                        <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="c1"># Manual scale max (remove to make automatic)</span>
-                        <span class="n">cmap</span><span class="o">=</span><span class="n">cmaps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="c1"># Colour map to use</span>
-                        <span class="c1"># Adjust size of colourmap key, and add label</span>
-                        <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shrink&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">},</span>
-                        <span class="c1"># Set to display legend</span>
-                        <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            
-            <span class="c1"># Add country boarder</span>
-            <span class="n">outline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-            
-            <span class="c1"># Add hospitals</span>
-            <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_ivt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-            <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-            <span class="n">mask</span> <span class="o">=</span> <span class="n">hospitals_gdf</span><span class="p">[</span><span class="s1">&#39;use_mt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-            <span class="n">hospitals_gdf</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-    
-            <span class="c1"># Tighten map around mainland England and Wales</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">120000</span><span class="p">)</span>
-    
-            <span class="c1"># Add title</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span> <span class="c1"># Turn of axis line and numbers</span>
-        
-        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_weighted_results.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_field</span> <span class="o">=</span> <span class="s1">&#39;added_utility&#39;</span>
+
+<span class="n">vmin_scenarios</span><span class="p">,</span> <span class="n">vmax_scenarios</span> <span class="o">=</span> <span class="n">find_vlims_scenarios</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">)</span>
+<span class="n">vmin_diff</span><span class="p">,</span> <span class="n">vmax_diff</span> <span class="o">=</span> <span class="n">find_vlims_diff</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">)</span>
+
+<span class="n">params_added_utility</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;shared&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="n">vmin_scenarios</span><span class="p">,</span>
+        <span class="s1">&#39;vmax&#39;</span><span class="p">:</span> <span class="n">vmax_scenarios</span><span class="p">,</span>
+        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;inferno&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cbar_label&#39;</span><span class="p">:</span> <span class="s1">&#39;Added utility&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;diff&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="n">vmin_diff</span><span class="p">,</span>
+        <span class="s1">&#39;vmax&#39;</span><span class="p">:</span> <span class="n">vmax_diff</span><span class="p">,</span>
+        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;bwr_r&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cbar_label&#39;</span><span class="p">:</span> <span class="s1">&#39;Advantage of Mothership (added utility)&#39;</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">axs_cols_added_utility</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># First row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;drip_ship_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;drip_ship_lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;drip_ship_weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">],</span>
+    <span class="c1"># Second row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mothership_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;mothership_lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;mothership_weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">],</span>
+    <span class="c1"># Third row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">],</span>   
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_three</span><span class="p">(</span>
-    <span class="s1">&#39;added_utility&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;added utility&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_nine</span><span class="p">(</span>
     <span class="n">lsoa_data_gdf</span><span class="p">,</span>
-    <span class="n">hospitals_gdf</span><span class="p">,</span>
-    <span class="n">outline</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/e993a1b00123973ba6c8a2d275fce565bd065db81c80cba40520c719beba88ef.png" src="../_images/e993a1b00123973ba6c8a2d275fce565bd065db81c80cba40520c719beba88ef.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_three</span><span class="p">(</span>
-    <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;added mRS &lt;= 2&#39;</span><span class="p">,</span>
-    <span class="n">lsoa_data_gdf</span><span class="p">,</span>
-    <span class="n">hospitals_gdf</span><span class="p">,</span>
-    <span class="n">outline</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/a738562e846cec58624f68280628dc11fea77599f69246272679d67c0e5c5976.png" src="../_images/a738562e846cec58624f68280628dc11fea77599f69246272679d67c0e5c5976.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_three</span><span class="p">(</span>
-    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;mRS mean shift&#39;</span><span class="p">,</span>
-    <span class="n">lsoa_data_gdf</span><span class="p">,</span>
+    <span class="n">axs_cols_added_utility</span><span class="p">,</span>
+    <span class="n">axs_params</span><span class="p">,</span>
+    <span class="n">params_added_utility</span><span class="p">,</span>
     <span class="n">hospitals_gdf</span><span class="p">,</span>
     <span class="n">outline</span><span class="p">,</span>
-    <span class="n">reverse_cmaps</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">col_titles</span><span class="p">,</span>
+    <span class="n">row_titles</span><span class="p">,</span>
+    <span class="n">savename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_nine_in_one.jpg&#39;</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/96d45487989a2e76c524b6063b909e3ddd8bd76e57b8a5496fd262a84d41f207.png" src="../_images/96d45487989a2e76c524b6063b909e3ddd8bd76e57b8a5496fd262a84d41f207.png" />
+<img alt="../_images/b18396d951348e4274d01f980bdecafc4c922f84c633fb16a693215fa1c58b72.png" src="../_images/b18396d951348e4274d01f980bdecafc4c922f84c633fb16a693215fa1c58b72.png" />
 </div>
 </div>
+<p>Settings for mRS shift:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_field</span> <span class="o">=</span> <span class="s1">&#39;mrs_shift&#39;</span>
+
+<span class="n">vmin_scenarios</span><span class="p">,</span> <span class="n">vmax_scenarios</span> <span class="o">=</span> <span class="n">find_vlims_scenarios</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">)</span>
+<span class="n">vmin_diff</span><span class="p">,</span> <span class="n">vmax_diff</span> <span class="o">=</span> <span class="n">find_vlims_diff</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">)</span>
+
+<span class="n">params_mrs_shift</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;shared&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="n">vmin_scenarios</span><span class="p">,</span>
+        <span class="s1">&#39;vmax&#39;</span><span class="p">:</span> <span class="n">vmax_scenarios</span><span class="p">,</span>
+        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;inferno_r&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cbar_label&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean mRS shift&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;diff&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="n">vmin_diff</span><span class="p">,</span>
+        <span class="s1">&#39;vmax&#39;</span><span class="p">:</span> <span class="n">vmax_diff</span><span class="p">,</span>
+        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;bwr&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cbar_label&#39;</span><span class="p">:</span> <span class="s1">&#39;Advantage of Mothership (mean mRS shift)&#39;</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">axs_cols_mrs_shift</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># First row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;drip_ship_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;drip_ship_lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;drip_ship_weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">],</span>
+    <span class="c1"># Second row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mothership_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;mothership_lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;mothership_weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">],</span>
+    <span class="c1"># Third row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">],</span>   
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_nine</span><span class="p">(</span>
+    <span class="n">lsoa_data_gdf</span><span class="p">,</span>
+    <span class="n">axs_cols_mrs_shift</span><span class="p">,</span>
+    <span class="n">axs_params</span><span class="p">,</span>
+    <span class="n">params_mrs_shift</span><span class="p">,</span>
+    <span class="n">hospitals_gdf</span><span class="p">,</span>
+    <span class="n">outline</span><span class="p">,</span>
+    <span class="n">col_titles</span><span class="p">,</span>
+    <span class="n">row_titles</span><span class="p">,</span>
+    <span class="n">savename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_nine_in_one.jpg&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6db0d0f46575c80b0a3e99e4abd340d7f94413d75e42f995cee82546eff53e88.png" src="../_images/6db0d0f46575c80b0a3e99e4abd340d7f94413d75e42f995cee82546eff53e88.png" />
+</div>
+</div>
+<p>Settings for proportion with mRS less than or equal to 2:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_field</span> <span class="o">=</span> <span class="s1">&#39;added_mrs_less_equal_2&#39;</span>
+
+<span class="n">vmin_scenarios</span><span class="p">,</span> <span class="n">vmax_scenarios</span> <span class="o">=</span> <span class="n">find_vlims_scenarios</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">)</span>
+<span class="n">vmin_diff</span><span class="p">,</span> <span class="n">vmax_diff</span> <span class="o">=</span> <span class="n">find_vlims_diff</span><span class="p">(</span><span class="n">lsoa_data_gdf</span><span class="p">,</span> <span class="n">data_field</span><span class="p">,</span> <span class="n">cohorts</span><span class="p">)</span>
+
+<span class="n">params_added_mrs_less_equal_2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;shared&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="n">vmin_scenarios</span><span class="p">,</span>
+        <span class="s1">&#39;vmax&#39;</span><span class="p">:</span> <span class="n">vmax_scenarios</span><span class="p">,</span>
+        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;inferno&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cbar_label&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;Added mRS$\leq$2&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;diff&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="n">vmin_diff</span><span class="p">,</span>
+        <span class="s1">&#39;vmax&#39;</span><span class="p">:</span> <span class="n">vmax_diff</span><span class="p">,</span>
+        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;bwr_r&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cbar_label&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;Advantage of Mothership (added mRS$\leq$2)&#39;</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">axs_cols_added_mrs_less_equal_2</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># First row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;drip_ship_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;drip_ship_lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;drip_ship_weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">],</span>
+    <span class="c1"># Second row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mothership_nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;mothership_lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;mothership_weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">],</span>
+    <span class="c1"># Third row:</span>
+    <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;nlvo_ivt_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;lvo_mix_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">,</span>
+     <span class="sa">f</span><span class="s1">&#39;weighted_treated_</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_mothership_minus_dripship&#39;</span><span class="p">],</span>   
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_nine</span><span class="p">(</span>
+    <span class="n">lsoa_data_gdf</span><span class="p">,</span>
+    <span class="n">axs_cols_added_mrs_less_equal_2</span><span class="p">,</span>
+    <span class="n">axs_params</span><span class="p">,</span>
+    <span class="n">params_added_mrs_less_equal_2</span><span class="p">,</span>
+    <span class="n">hospitals_gdf</span><span class="p">,</span>
+    <span class="n">outline</span><span class="p">,</span>
+    <span class="n">col_titles</span><span class="p">,</span>
+    <span class="n">row_titles</span><span class="p">,</span>
+    <span class="n">savename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_field</span><span class="si">}</span><span class="s1">_nine_in_one.jpg&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f9802bd6df5e6c227da97f08654d17b724a68760dec53f929fc8c0cdfa1c83e6.png" src="../_images/f9802bd6df5e6c227da97f08654d17b724a68760dec53f929fc8c0cdfa1c83e6.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>The maps show similar results for the three outcome types: added utility, mean shift in mRS, and proportion with mRS score of 2 or less.</p>
+<p>The advantage of mothership is worse for nLVO patients (the map is mostly red), better for LVO patients (the map is mostly blue), and generally slightly better overall for this mix of treated ischaemic patients.</p>
+<p>Some parts of the combined treated ischaemic maps break the trend and have worse outcomes with mothership (drawn in red). The easiest to spot on this map is half-way up the west coast of Wales near Aberystwyth. The following notebook digs into these outlier areas more to see why they break the trend.</p>
 </section>
 </section>
 
@@ -1744,20 +1987,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="01_model_outcomes.html"
+       href="intro_results.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Model outcomes for drip’and’ship vs mothership based on greography</p>
+        <p class="prev-next-title">Results</p>
       </div>
     </a>
     <a class="right-next"
-       href="../streamlit/streamlit.html"
+       href="04_outlier_areas.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Streamlit app</p>
+        <p class="prev-next-title">Mapping outliers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1776,7 +2019,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proportions-of-stroke-types-analysis-of-samuel-data">Proportions of stroke types: Analysis of SAMueL data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">Import packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-shape-file">Load shape file</a></li>
@@ -1785,7 +2030,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-difference-between-mothership-and-drip-and-ship">Calculate difference between Mothership and Drip and Ship</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-plot">Basic plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-the-plots">Draw the plots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 

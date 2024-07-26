@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'general_results/04_matrix';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Distance-based treatment effects" href="05_geography.html" />
-    <link rel="prev" title="Demo: discrete outcome model" href="../package_docs/demo_discrete_outcomes.html" />
+    <link rel="next" title="Quantifying added utility depending on time to IVT and MT" href="04b_matrix_maths.html" />
+    <link rel="prev" title="Example patient population and pathway timings" href="01b_population.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,43 +165,69 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/paper.html">Paper creation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/intro_extra.html">Extra details</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01b_population.html">Example patient population and pathway timings</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04b_matrix_maths.html">Quantifying added utility depending on time to IVT and MT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧭 Generic geography</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="05_geography.html">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_geography_outcomes.html">Calculate distance-based treatment effects for many cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05c_geography_outcomes_plots.html">Plot distance-based treatment effects for many cohorts</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../england_wales/intro_data.html">Data creation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Calculate outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01c_weighted_outcomes.html">Combine populations for weighted outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01d_weighted_outcomes_mrs_dists.html">Combine populations for weighted mRS distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../england_wales/intro_results.html">Results</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
 <ul class="nav bd-sidenav">
@@ -247,6 +273,21 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+<a href="https://github.com/samuel-book/stroke_outcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
 
 
 
@@ -352,6 +393,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-model">Set up model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-treatment-effects">Individual treatment effects</a><ul class="nav section-nav flex-column">
@@ -366,8 +410,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-patient-groups">Combining patient groups</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-outcomes-for-the-combined-cohorts">Calculate outcomes for the combined cohorts:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-lvo-mix">Plot LVO mix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-mixed-cohort">Plot the mixed cohort</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -382,20 +429,46 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="demonstration-of-added-utility-depending-on-time-to-ivt-and-mt">
 <h1>Demonstration of added utility depending on time to IVT and MT<a class="headerlink" href="#demonstration-of-added-utility-depending-on-time-to-ivt-and-mt" title="Permalink to this heading">#</a></h1>
 <p>In this notebook we examine the relationship between time to treatment and the effect of treatment.</p>
-<p>Outcome results are calculated for three patients groups:</p>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>Generally we expect a patient’s outcome after stroke to depend on how quickly they were treated. The longer between the start of the stroke and the treatment, the less benefit there will be from the treatment.</p>
+<p>This document creates a series of graphs to show how the expected benefits vary with time. We first look at the change in added utility, change in average mRS, and change in proportion of patients with an mRS score of two or less. We find how these vary with time to treatment for separate stroke type and treatment combinations.</p>
+<p>Then we consider the case where patients receive both IVT and MT. We create a grid of treatment times so we can pick out any combination of time to IVT and time to MT on the grid. On this grid we show the expected change in added utility and in average mRS at any combination of treatment times.</p>
+<p>We also combine all of the different combinations of stroke type and treatment type into one big grid of outcomes so that we can see the effect of time to treatment on the whole population.</p>
+</section>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>To create a line graph of changing outcome with time for each stroke type and treatment type combination.</p></li>
+<li><p>To create a grid of changing outcomes with time for every combination of treatment times for both treatments.</p></li>
+</ol>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>We set up a series of treatment times running from 0 minutes after onset to the time of no effect.</p>
+<ul class="simple">
+<li><p>For IVT, times run from 0 to 6.3 hours (378 minutes) in steps of 10 minutes</p></li>
+<li><p>For MT, times run from 0 to 8 hours (480 minutes) in steps of 10 minutes</p></li>
+</ul>
+<p><strong>Individual treatment effects</strong></p>
+<p>First, we feed these times into the stroke outcome model and calculate the outcomes for each treatment type separately. We then plot the changing outcome with increasing time.</p>
+<p><strong>Outcome matrix</strong></p>
+<p>We then combine these into a grid of treatment times so that any pair of time to IVT and time to MT can be picked.</p>
+<p>All of these treatment time combinations can then be fed into the stroke outcome model to calculate the outcomes after treatment at those times. This builds up a grid of outcomes at any pair of treatment times.</p>
+<p>Outcome results are calculated for four patient groups:</p>
 <ol class="arabic simple">
 <li><p>nLVO receiving IVT</p></li>
 <li><p>LVO receiving IVT only</p></li>
-<li><p>LVO receiving MT (data based on trails where 85% had also received IVT)</p></li>
+<li><p>LVO receiving MT only</p></li>
+<li><p>LVO receiving both IVT and MT</p></li>
 </ol>
-<p>When we look at combined effect of these groups, we make some basic assumptions (which are used as being ‘reasonable’ rather than ‘definitive’):</p>
+<p>And the outcome types shown here are:</p>
 <ul class="simple">
-<li><p>20% of all ischaemic stroke admissions receive IVT and/or MT.</p></li>
-<li><p>35% of our treated population have LVO.</p></li>
-<li><p>28.6% of LVO receive MT (this gives 10% of all ischaemic strokes receiving MT)</p></li>
-<li><p>85% of LVO receiving MT have received IVT (from clinical trials  data); for those 85% if the benefit of IVT exceed the benefit of MT (e.g. very early IVT, and very late MT), then the benefit is based on IVT.</p></li>
-<li><p>15.5% nLVO receive thrombolysis (this brings total IVT to 20% use).</p></li>
+<li><p>Added utility compared with no treatment</p></li>
+<li><p>Shift in mean mRS compared with no treatment</p></li>
 </ul>
+<p>We then use the standard <a class="reference internal" href="01b_population.html"><span class="doc std std-doc">patient population</span></a> to combine the four patient groups into the outcomes after treatment for the whole population.</p>
+</section>
 <section id="load-packages">
 <h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -406,11 +479,27 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">stroke_outcome.continuous_outcome</span> <span class="kn">import</span> <span class="n">Continuous_outcome</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geography_calc</span> <span class="kn">import</span> <span class="n">create_outcome_model_inputs</span><span class="p">,</span> <span class="n">run_outcome_model</span><span class="p">,</span> <span class="n">combine_outcomes_treated_ischaemic</span><span class="p">,</span> <span class="n">combine_outcomes_lvo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_output</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
+<span class="n">dir_images</span> <span class="o">=</span> <span class="s1">&#39;images&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -446,9 +535,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_patients</span> <span class="o">=</span> <span class="mi">21</span>
-<span class="n">treatment_times_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span><span class="p">,</span> <span class="n">n_patients</span><span class="p">)</span>
-<span class="n">treatment_times_mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_time_to_mt</span><span class="p">,</span> <span class="n">n_patients</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_step</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># minutes</span>
+<span class="n">treatment_times_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span> <span class="o">+</span> <span class="n">t_step</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+<span class="n">treatment_times_mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_time_to_mt</span> <span class="o">+</span> <span class="n">t_step</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -486,7 +575,7 @@ document.write(`
 <span class="n">df_patients_lvo_mt</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treatment_times_mt</span>
 <span class="n">df_patients_lvo_mt</span><span class="p">[</span><span class="s1">&#39;onset_to_puncture_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treatment_times_mt</span>
 <span class="n">df_patients_lvo_mt</span><span class="p">[</span><span class="s1">&#39;stroke_type_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">df_patients_lvo_mt</span><span class="p">[</span><span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df_patients_lvo_mt</span><span class="p">[</span><span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">df_patients_lvo_mt</span><span class="p">[</span><span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">df_patients_lvo_mt</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lvo_mt&#39;</span>
 </pre></div>
@@ -549,8 +638,8 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
-      <td>18.9</td>
-      <td>18.9</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
@@ -558,8 +647,8 @@ document.write(`
     </tr>
     <tr>
       <th>2</th>
-      <td>37.8</td>
-      <td>37.8</td>
+      <td>2.0</td>
+      <td>2.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
@@ -567,8 +656,8 @@ document.write(`
     </tr>
     <tr>
       <th>3</th>
-      <td>56.7</td>
-      <td>56.7</td>
+      <td>3.0</td>
+      <td>3.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
@@ -576,8 +665,8 @@ document.write(`
     </tr>
     <tr>
       <th>4</th>
-      <td>75.6</td>
-      <td>75.6</td>
+      <td>4.0</td>
+      <td>4.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
@@ -593,53 +682,53 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
-      <th>58</th>
-      <td>384.0</td>
-      <td>384.0</td>
+      <th>1234</th>
+      <td>476.0</td>
+      <td>476.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
     </tr>
     <tr>
-      <th>59</th>
-      <td>408.0</td>
-      <td>408.0</td>
+      <th>1235</th>
+      <td>477.0</td>
+      <td>477.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
     </tr>
     <tr>
-      <th>60</th>
-      <td>432.0</td>
-      <td>432.0</td>
+      <th>1236</th>
+      <td>478.0</td>
+      <td>478.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
     </tr>
     <tr>
-      <th>61</th>
-      <td>456.0</td>
-      <td>456.0</td>
+      <th>1237</th>
+      <td>479.0</td>
+      <td>479.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
     </tr>
     <tr>
-      <th>62</th>
+      <th>1238</th>
       <td>480.0</td>
       <td>480.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
     </tr>
   </tbody>
 </table>
-<p>63 rows × 6 columns</p>
+<p>1239 rows × 6 columns</p>
 </div></div></div>
 </div>
 <p>Calculate outcomes:</p>
@@ -724,51 +813,51 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
-      <td>18.9</td>
-      <td>18.9</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
       <td>nlvo_ivt</td>
-      <td>0.151213</td>
-      <td>1.432844</td>
-      <td>0.744359</td>
+      <td>0.157768</td>
+      <td>1.393199</td>
+      <td>0.751600</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>37.8</td>
-      <td>37.8</td>
+      <td>2.0</td>
+      <td>2.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
       <td>nlvo_ivt</td>
-      <td>0.144153</td>
-      <td>1.475256</td>
-      <td>0.736566</td>
+      <td>0.157405</td>
+      <td>1.395401</td>
+      <td>0.751199</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>56.7</td>
-      <td>56.7</td>
+      <td>3.0</td>
+      <td>3.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
       <td>nlvo_ivt</td>
-      <td>0.136951</td>
-      <td>1.518219</td>
-      <td>0.728622</td>
+      <td>0.157042</td>
+      <td>1.397603</td>
+      <td>0.750797</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>75.6</td>
-      <td>75.6</td>
+      <td>4.0</td>
+      <td>4.0</td>
       <td>1</td>
       <td>1</td>
       <td>0</td>
       <td>nlvo_ivt</td>
-      <td>0.129607</td>
-      <td>1.561715</td>
-      <td>0.720528</td>
+      <td>0.156678</td>
+      <td>1.399808</td>
+      <td>0.750396</td>
     </tr>
     <tr>
       <th>...</th>
@@ -783,72 +872,80 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
-      <th>58</th>
-      <td>384.0</td>
-      <td>384.0</td>
+      <th>1234</th>
+      <td>476.0</td>
+      <td>476.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
-      <td>0.038204</td>
-      <td>3.470366</td>
-      <td>0.305938</td>
+      <td>-0.011106</td>
+      <td>3.722407</td>
+      <td>0.257007</td>
     </tr>
     <tr>
-      <th>59</th>
-      <td>408.0</td>
-      <td>408.0</td>
+      <th>1235</th>
+      <td>477.0</td>
+      <td>477.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
-      <td>0.025056</td>
-      <td>3.537691</td>
-      <td>0.292678</td>
+      <td>-0.011625</td>
+      <td>3.725058</td>
+      <td>0.256505</td>
     </tr>
     <tr>
-      <th>60</th>
-      <td>432.0</td>
-      <td>432.0</td>
+      <th>1236</th>
+      <td>478.0</td>
+      <td>478.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
-      <td>0.012103</td>
-      <td>3.603895</td>
-      <td>0.279761</td>
+      <td>-0.012144</td>
+      <td>3.727707</td>
+      <td>0.256002</td>
     </tr>
     <tr>
-      <th>61</th>
-      <td>456.0</td>
-      <td>456.0</td>
+      <th>1237</th>
+      <td>479.0</td>
+      <td>479.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
-      <td>-0.000646</td>
-      <td>3.668993</td>
-      <td>0.267198</td>
+      <td>-0.012662</td>
+      <td>3.730355</td>
+      <td>0.255501</td>
     </tr>
     <tr>
-      <th>62</th>
+      <th>1238</th>
       <td>480.0</td>
       <td>480.0</td>
       <td>2</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>lvo_mt</td>
-      <td>-0.011680</td>
-      <td>3.723000</td>
+      <td>-0.013180</td>
+      <td>3.733000</td>
       <td>0.255000</td>
     </tr>
   </tbody>
 </table>
-<p>63 rows × 9 columns</p>
+<p>1239 rows × 9 columns</p>
 </div></div></div>
 </div>
 <section id="plot-outcomes-with-time">
 <h3>Plot outcomes with time<a class="headerlink" href="#plot-outcomes-with-time" title="Permalink to this heading">#</a></h3>
+<p>The following function plots the outcomes with time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot_matrix</span> <span class="kn">import</span> <span class="n">plot_outcomes_with_time</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Setup for plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -869,7 +966,7 @@ document.write(`
     <span class="n">x_times_scale</span> <span class="o">=</span> <span class="mf">1.0</span>
     <span class="n">xtick_max</span> <span class="o">=</span> <span class="n">max_time_to_mt</span><span class="o">+</span><span class="mi">1</span>
     <span class="n">major_step</span> <span class="o">=</span> <span class="mf">60.0</span>
-    <span class="n">minor_step</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="n">minor_step</span> <span class="o">=</span> <span class="mf">15.0</span>
 
 <span class="c1"># Data setup:</span>
 <span class="c1"># The order of the keys in these dictionaries</span>
@@ -893,63 +990,31 @@ document.write(`
 <p>Plotting:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.4</span><span class="p">})</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">ax3</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">outcome_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outcome_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">cohort_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cohort_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-        <span class="n">data_here</span> <span class="o">=</span> <span class="n">df_patients</span><span class="p">[</span><span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cohort_label</span><span class="p">]</span>
-        <span class="c1"># In this case, onset-to-needle and onset-to-puncture columns</span>
-        <span class="c1"># have identical contents so just use the IVT one each time.</span>
-        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-            <span class="n">data_here</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">x_times_scale</span><span class="p">,</span>
-            <span class="n">data_here</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">],</span>
-            <span class="n">label</span><span class="o">=</span><span class="n">cohort_labels</span><span class="p">[</span><span class="n">cohort_label</span><span class="p">],</span>
-            <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-            <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyles</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-        <span class="p">)</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c1"># Draw legend now to avoid repeating labels:</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.05</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="c1"># Axis setup:</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outcome_labels</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-
-<span class="c1"># Mean mRS</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># mRS &lt;= 2</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Added utility</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">))</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to treatment (&#39;</span><span class="o">+</span><span class="n">unit_str</span><span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">major_step</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">minor_step</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-
-<span class="c1"># plt.tight_layout(pad=2)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./images/time_to_treatment.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_outcomes_with_time</span><span class="p">(</span>
+    <span class="n">df_patients</span><span class="p">,</span>
+    <span class="n">outcome_labels</span><span class="p">,</span>
+    <span class="n">cohort_labels</span><span class="p">,</span>
+    <span class="n">x_times_scale</span><span class="p">,</span>
+    <span class="n">colours</span><span class="p">,</span>
+    <span class="n">linestyles</span><span class="p">,</span>
+    <span class="n">unit_str</span><span class="p">,</span>
+    <span class="n">major_step</span><span class="p">,</span>
+    <span class="n">minor_step</span><span class="p">,</span>
+    <span class="n">savename</span> <span class="o">=</span> <span class="s1">&#39;./images/time_to_treatment.jpg&#39;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/34e84fbd43aaf07f5d9a630a52353b501baaa0222e2ca45607b1475b54fe74c3.png" src="../_images/34e84fbd43aaf07f5d9a630a52353b501baaa0222e2ca45607b1475b54fe74c3.png" />
+<img alt="../_images/f278c484f393f9d6fbc4a8de320f626ac1b8dffba07ce072c66e804ff76f05f9.png" src="../_images/f278c484f393f9d6fbc4a8de320f626ac1b8dffba07ce072c66e804ff76f05f9.png" />
+</div>
+</div>
+<p>Save a copy of the data behind the figure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;mean_outcomes_with_time.csv&#39;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -959,8 +1024,9 @@ document.write(`
 <p>Use these treatment times:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_step</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">time_to_ivt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_ivt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+<span class="n">time_to_mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_time_to_mt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -988,63 +1054,467 @@ document.write(`
 <p>Each cohort uses the same grid of treatment times with different stroke and treatment types:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients_grid_nlvo_ivt</span> <span class="o">=</span> <span class="n">df_patients_grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_patients_grid_nlvo_ivt</span><span class="p">[</span><span class="s1">&#39;stroke_type_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">df_patients_grid_nlvo_ivt</span><span class="p">[</span><span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">df_patients_grid_nlvo_ivt</span><span class="p">[</span><span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">df_patients_grid_nlvo_ivt</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;nlvo_ivt&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dict_df_patients</span> <span class="o">=</span> <span class="n">create_outcome_model_inputs</span><span class="p">(</span><span class="n">df_patients_grid</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients_grid_lvo_ivt</span> <span class="o">=</span> <span class="n">df_patients_grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_patients_grid_lvo_ivt</span><span class="p">[</span><span class="s1">&#39;stroke_type_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">df_patients_grid_lvo_ivt</span><span class="p">[</span><span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">df_patients_grid_lvo_ivt</span><span class="p">[</span><span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">df_patients_grid_lvo_ivt</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lvo_ivt&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dict_df_patients</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients_grid_lvo_mt</span> <span class="o">=</span> <span class="n">df_patients_grid</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_patients_grid_lvo_mt</span><span class="p">[</span><span class="s1">&#39;stroke_type_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">df_patients_grid_lvo_mt</span><span class="p">[</span><span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">df_patients_grid_lvo_mt</span><span class="p">[</span><span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">df_patients_grid_lvo_mt</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lvo_mt&#39;</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nlvo_ivt
 </pre></div>
 </div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_only
+</pre></div>
 </div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_mt
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_mt_only
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="calculate-outcomes-for-each-cohort">
 <h3>Calculate outcomes for each cohort<a class="headerlink" href="#calculate-outcomes-for-each-cohort" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_patients_grid_nlvo_ivt</span><span class="p">,</span> <span class="n">df_patients_grid_lvo_ivt</span><span class="p">,</span> <span class="n">df_patients_grid_lvo_mt</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="p">:</span>
-    <span class="n">outcome_model</span><span class="o">.</span><span class="n">assign_patients_to_trial</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    
-    <span class="c1"># Calculate outcomes:</span>
-    <span class="n">patient_data_dict</span><span class="p">,</span> <span class="n">outcomes_by_stroke_type</span><span class="p">,</span> <span class="n">full_cohort_outcomes</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">outcome_model</span><span class="o">.</span><span class="n">calculate_outcomes</span><span class="p">())</span>
-    
-    <span class="c1"># Make a copy of the results:</span>
-    <span class="n">outcomes_by_stroke_type</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">outcomes_by_stroke_type</span><span class="p">)</span>
-    <span class="n">full_cohort_outcomes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">full_cohort_outcomes</span><span class="p">)</span>
-    
-    <span class="c1"># Place the relevant results into the starting dataframe:</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_utility_shift&#39;</span><span class="p">]</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mean_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_post_stroke&#39;</span><span class="p">]</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_dist_post_stroke&#39;</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">]</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mrs_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_shift&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dict_df_patients</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">run_outcome_model</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dict_df_patients</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nlvo_ivt
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.158130</td>
+      <td>1.391000</td>
+      <td>0.752000</td>
+      <td>-0.889000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.154488</td>
+      <td>1.413068</td>
+      <td>0.747977</td>
+      <td>-0.866932</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_only
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.089380</td>
+      <td>3.176000</td>
+      <td>0.361000</td>
+      <td>-0.464000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.086467</td>
+      <td>3.192402</td>
+      <td>0.357948</td>
+      <td>-0.447598</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_mt
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_mt_only
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>onset_to_needle_mins</th>
+      <th>onset_to_puncture_mins</th>
+      <th>stroke_type_code</th>
+      <th>ivt_chosen_bool</th>
+      <th>mt_chosen_bool</th>
+      <th>added_utility</th>
+      <th>mean_mrs</th>
+      <th>mrs_less_equal_2</th>
+      <th>mrs_shift</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.2646</td>
+      <td>2.244</td>
+      <td>0.548</td>
+      <td>-1.396</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="plot-outcomes-for-each-cohort">
@@ -1057,9 +1527,12 @@ document.write(`
 <span class="c1"># use this extent to scale the row, column numbers to the times.</span>
 <span class="c1"># Extra division by 60 for conversion to hours.</span>
 <span class="n">grid_extent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">),</span>  <span class="c1"># x-limits</span>
-    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span>     <span class="c1"># y-limits</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">)</span> <span class="o">+</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># x-limits</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span> <span class="o">+</span> <span class="n">t_step</span> <span class="o">*</span> <span class="mf">0.5</span>     <span class="c1"># y-limits</span>
 <span class="p">])</span> <span class="o">/</span> <span class="mf">60.0</span>
+
+<span class="c1"># How many rows and columns of data are there?</span>
+<span class="n">grid_shape</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">))</span>
 
 <span class="c1"># Data setup:</span>
 <span class="c1"># The order of the keys in these dictionaries</span>
@@ -1072,15 +1545,17 @@ document.write(`
 <span class="p">}</span>
 <span class="n">cohort_labels</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="s1">&#39;nLVO treated with IVT&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with IVT&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;lvo_mt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with MT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with IVT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with MT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">:</span> <span class="s1">&#39;LVO treated with IVT and MT&#39;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="c1"># Data sources:</span>
 <span class="n">dfs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="n">df_patients_grid_nlvo_ivt</span><span class="p">,</span>
-    <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">:</span> <span class="n">df_patients_grid_lvo_ivt</span><span class="p">,</span>
-    <span class="s1">&#39;lvo_mt&#39;</span><span class="p">:</span> <span class="n">df_patients_grid_lvo_mt</span><span class="p">,</span>
+    <span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">:</span> <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">],</span>
 <span class="p">}</span>
 
 <span class="c1"># Colour setup.</span>
@@ -1108,221 +1583,168 @@ document.write(`
 <p>Plotting:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">cohort_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cohort_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-    <span class="c1"># Make an extra empty subplot in the middle for spacing:</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
-        <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-        <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot_matrix</span> <span class="kn">import</span> <span class="n">plot_matrices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cohort_name</span><span class="p">,</span> <span class="n">cohort_label</span> <span class="ow">in</span> <span class="n">cohort_labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plot_matrices</span><span class="p">(</span>
+        <span class="n">dfs</span><span class="p">[</span><span class="n">cohort_name</span><span class="p">],</span>
+        <span class="n">outcome_labels</span><span class="p">,</span>
+        <span class="n">grid_shape</span><span class="p">,</span>
+        <span class="n">grid_extent</span><span class="p">,</span>
+        <span class="n">vlims</span><span class="p">,</span>
+        <span class="n">major_step</span><span class="p">,</span>
+        <span class="n">minor_step</span><span class="p">,</span>
+        <span class="n">levels</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">cohort_label</span><span class="p">,</span>
+        <span class="n">cmaps</span><span class="o">=</span><span class="n">cmaps</span><span class="p">,</span>
+        <span class="n">savename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_images</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;matrix_utility_and_mRS_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">)</span>
     <span class="p">)</span>
-    
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">outcome_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outcome_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-        <span class="c1"># Pick out which axes to plot the grid and the colour bar on:</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">cax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-
-        <span class="c1"># Pick out the data for the grid.</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="n">cohort_label</span><span class="p">][</span><span class="n">outcome_label</span><span class="p">]</span>
-        <span class="c1"># Turn the column of data into a grid:</span>
-        <span class="n">outcome_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">))</span>
-
-        
-        <span class="n">img1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
-            <span class="n">outcome_data</span><span class="p">,</span>
-            <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-            <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="n">vlims</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="n">vlims</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
-            <span class="n">extent</span><span class="o">=</span><span class="n">grid_extent</span><span class="p">,</span>
-            <span class="c1"># aspect=aspect,</span>
-            <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">]</span>
-        <span class="p">)</span>
-        
-        <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-        
-        <span class="c1"># Plotting:</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
-            <span class="n">outcome_data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grid_extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmaps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="n">vlims</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vlims</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
-        <span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">outcome_labels</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">])</span>
-    
-    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to IVT (hours)</span><span class="se">\n</span><span class="s1">if applicable&#39;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time to MT (hours)</span><span class="se">\n</span><span class="s1">if applicable&#39;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">major_step</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">minor_step</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">major_step</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">minor_step</span><span class="p">))</span>
-        
-    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">cohort_labels</span><span class="p">[</span><span class="n">cohort_label</span><span class="p">])</span>
-    <span class="c1"># Make the extra empty subplot invisible:</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dda8faf1277d2c7e2a547cbd77c707bedc7d8e230ef9bbdabce2de0b0a76e55c.png" src="../_images/dda8faf1277d2c7e2a547cbd77c707bedc7d8e230ef9bbdabce2de0b0a76e55c.png" />
-<img alt="../_images/d8c26fda86b8afbfcfaef2624b2e9e4c95803f4da506725559f778dc5dec29f8.png" src="../_images/d8c26fda86b8afbfcfaef2624b2e9e4c95803f4da506725559f778dc5dec29f8.png" />
-<img alt="../_images/1892bdbf6acf3714c2709e7383202868d8162c7aa0b1375bb8734a0ad784a6d6.png" src="../_images/1892bdbf6acf3714c2709e7383202868d8162c7aa0b1375bb8734a0ad784a6d6.png" />
+<img alt="../_images/8c1bb395f54c122bd82d536a617e0ccc34656912dba2a495459777dbfc45a0e7.png" src="../_images/8c1bb395f54c122bd82d536a617e0ccc34656912dba2a495459777dbfc45a0e7.png" />
+<img alt="../_images/2415dc1353a4c4b5311feef9044de41cf595c7ed79d385af38926d0236ac91d1.png" src="../_images/2415dc1353a4c4b5311feef9044de41cf595c7ed79d385af38926d0236ac91d1.png" />
+<img alt="../_images/0d45e3e6f779e96d11c31d463f909e932997841400e97cf95b06d50f95f7cf83.png" src="../_images/0d45e3e6f779e96d11c31d463f909e932997841400e97cf95b06d50f95f7cf83.png" />
+<img alt="../_images/e46dd3fe361f2fb242a780da9c90eed9b85017b0db7e859cc499ba30e9f1715b.png" src="../_images/e46dd3fe361f2fb242a780da9c90eed9b85017b0db7e859cc499ba30e9f1715b.png" />
 </div>
 </div>
+<p>The spacing between contours in terms of time isn’t necessarily exactly equal for each pair of adjacent contours. From eyeballing these charts, we find:</p>
+<ul class="simple">
+<li><p>nLVO with IVT:</p>
+<ul>
+<li><p>around extra two hours to treatment –&gt; drop in added utility of 0.05.</p></li>
+<li><p>around extra hour and a half to treatment –&gt; worsening of mean mRS of 0.2.</p></li>
+</ul>
+</li>
+<li><p>LVO with IVT only:</p>
+<ul>
+<li><p>around extra three hours to treatment –&gt; drop in added utility of 0.05.</p></li>
+<li><p>around extra two and a quarter hours to treatment –&gt; worsening of mean mRS of 0.2.</p></li>
+</ul>
+</li>
+<li><p>LVO with MT only:</p>
+<ul>
+<li><p>around extra hour and a half to treatment –&gt; drop in added utility of 0.05.</p></li>
+<li><p>around extra hours to treatment –&gt; worsening of mean mRS of 0.2.</p></li>
+</ul>
+</li>
+<li><p>LVO with IVT only:</p>
+<ul>
+<li><p>uses the results from MT only in a certain regime and the results from IVT only outside it. The regime is when MT has been given approximately four and three quarters of an hour plus half the time to IVT. MT = 4.75 + 0.5*IVT.</p></li>
+</ul>
+</li>
+</ul>
+<p>The following notebook <strong>TO DO LINK ME</strong> makes more thorough estimates of the changing outcomes with time.</p>
 </section>
 </section>
 <section id="combining-patient-groups">
 <h2>Combining patient groups<a class="headerlink" href="#combining-patient-groups" title="Permalink to this heading">#</a></h2>
 <p>Here we examined the combined effect of IVT and MT on outcomes across nLVO and LVO ischaemic strokes.</p>
-<p>In this example, we make some basic assumptions:</p>
-<ul class="simple">
-<li><p>20% of all stroke admissions receive IVT and/or MT.</p></li>
-<li><p>35% of our treated population have LVO.</p></li>
-<li><p>28.6% of LVO receive MT (this gives 10% of all ischaemic strokes receiving MT)</p></li>
-<li><p>85% of LVO receiving MT have received IVT (from clinical trials  data); for those 85% if the benefit of IVT exceed the benefit of MT (e.g. very early IVT, and very late MT), then the benefit is based on IVT.</p></li>
-<li><p>15.5% nLVO receive thrombolysis (this brings total IVT to 20% use).</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_props</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">lvo</span> <span class="o">=</span> <span class="mf">0.35</span><span class="p">,</span>
-    <span class="n">nlvo</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="c1"># 1-LVO</span>
-    <span class="n">lvo_mt_also_receiving_ivt</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">,</span>
-    <span class="n">lvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="n">lvo_treated_ivt_mt</span> <span class="o">=</span> <span class="mf">0.286</span><span class="p">,</span>    <span class="c1"># 0.286 gives 10% final MT if 35%LVO</span>
-    <span class="n">nlvo_treated_ivt_only</span> <span class="o">=</span> <span class="mf">0.155</span><span class="p">,</span> <span class="c1"># 0.155 gives final 20% IVT</span>
-    <span class="p">)</span>
-
-<span class="n">treated_population</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo_treated_ivt_only&#39;</span><span class="p">]</span> <span class="o">+</span>
-    <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_mt&#39;</span><span class="p">]</span> <span class="o">+</span>
-    <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_only&#39;</span><span class="p">]</span>
-    <span class="p">)</span>
-
-<span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;treated_population&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treated_population</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_proportions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;england_wales&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;patient_proportions.csv&#39;</span><span class="p">),</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">patient_props</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> 
-    <span class="n">index</span><span class="o">=</span><span class="n">patient_props</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Proportion of patient population&#39;</span><span class="p">])</span>
-<span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;Comment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;Proportion of LVO&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Proportion of nLVO&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;Proportion LVO MT also receiving IVT&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Proportion LVO admissions treated with IVT only&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Proportion LVO admissions treated with MT&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Proportion nLVO admissions treated with IVT&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Proportion all admissions treated&#39;</span>
-    <span class="p">]</span>
-
-<span class="n">df_patients</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_proportions</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Proportion of patient population</th>
-      <th>Comment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>lvo</th>
-      <td>0.35000</td>
-      <td>Proportion of LVO</td>
-    </tr>
-    <tr>
-      <th>nlvo</th>
-      <td>0.65000</td>
-      <td>Proportion of nLVO</td>
-    </tr>
-    <tr>
-      <th>lvo_mt_also_receiving_ivt</th>
-      <td>0.85000</td>
-      <td>Proportion LVO MT also receiving IVT</td>
-    </tr>
-    <tr>
-      <th>lvo_treated_ivt_only</th>
-      <td>0.00000</td>
-      <td>Proportion LVO admissions treated with IVT only</td>
-    </tr>
-    <tr>
-      <th>lvo_treated_ivt_mt</th>
-      <td>0.28600</td>
-      <td>Proportion LVO admissions treated with MT</td>
-    </tr>
-    <tr>
-      <th>nlvo_treated_ivt_only</th>
-      <td>0.15500</td>
-      <td>Proportion nLVO admissions treated with IVT</td>
-    </tr>
-    <tr>
-      <th>treated_population</th>
-      <td>0.20085</td>
-      <td>Proportion all admissions treated</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+haemorrhagic         0.13600
+lvo_no_treatment     0.14648
+lvo_ivt_only         0.00840
+lvo_ivt_mt           0.08500
+lvo_mt_only          0.01500
+nlvo_no_treatment    0.50252
+nlvo_ivt             0.10660
+Name: 1, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <section id="calculate-outcomes-for-the-combined-cohorts">
 <h3>Calculate outcomes for the combined cohorts:<a class="headerlink" href="#calculate-outcomes-for-the-combined-cohorts" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_mrs&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_shift&#39;</span><span class="p">]</span>
-
-<span class="c1"># Combine the outcomes:</span>
-<span class="n">df_mixed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span>
-        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;nlvo_treated_ivt_only&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_patients_grid_nlvo_ivt</span><span class="p">[</span><span class="n">outcome_cols</span><span class="p">],</span>
-        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_only&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_patients_grid_lvo_ivt</span><span class="p">[</span><span class="n">outcome_cols</span><span class="p">],</span>
-        <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;lvo_treated_ivt_mt&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_patients_grid_lvo_mt</span><span class="p">[</span><span class="n">outcome_cols</span><span class="p">],</span>
-    <span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
-    <span class="n">columns</span><span class="o">=</span><span class="n">outcome_cols</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_lvo</span> <span class="o">=</span> <span class="n">combine_outcomes_lvo</span><span class="p">(</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">],</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">],</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">],</span>
+    <span class="n">patient_proportions</span><span class="p">,</span>
+    <span class="n">outcome_cols</span><span class="o">=</span><span class="p">[]</span>
 <span class="p">)</span>
-
-<span class="c1"># Adjust outcomes for just the treated population:</span>
-<span class="n">df_mixed</span> <span class="o">=</span> <span class="n">df_mixed</span> <span class="o">/</span> <span class="n">patient_props</span><span class="p">[</span><span class="s1">&#39;treated_population&#39;</span><span class="p">]</span>
-
-<span class="c1"># Copy over the treatment times.</span>
-<span class="c1"># They&#39;re the same times in all three dataframes so just pick the nLVO IVT df:</span>
-<span class="n">df_mixed</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_patients_grid_nlvo_ivt</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span>
-<span class="n">df_mixed</span><span class="p">[</span><span class="s1">&#39;onset_to_puncture_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_patients_grid_nlvo_ivt</span><span class="p">[</span><span class="s1">&#39;onset_to_puncture_mins&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mixed</span> <span class="o">=</span> <span class="n">combine_outcomes_treated_ischaemic</span><span class="p">(</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">],</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">],</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">],</span>
+    <span class="n">dict_df_patients</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">],</span>
+    <span class="n">patient_proportions</span><span class="p">,</span>
+    <span class="n">outcome_cols</span><span class="o">=</span><span class="p">[]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_lvo</span>
+<span class="n">dfs</span><span class="p">[</span><span class="s1">&#39;treated_ischaemic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_mixed</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-lvo-mix">
+<h3>Plot LVO mix<a class="headerlink" href="#plot-lvo-mix" title="Permalink to this heading">#</a></h3>
+<p>Plot the LVO mix with the same colour settings as the previous figures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_matrices</span><span class="p">(</span>
+    <span class="n">df_lvo</span><span class="p">,</span>
+    <span class="n">outcome_labels</span><span class="p">,</span>
+    <span class="n">grid_shape</span><span class="p">,</span>
+    <span class="n">grid_extent</span><span class="p">,</span>
+    <span class="n">vlims</span><span class="p">,</span>
+    <span class="n">major_step</span><span class="p">,</span>
+    <span class="n">minor_step</span><span class="p">,</span>
+    <span class="n">levels</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;LVO mix&#39;</span><span class="p">,</span>
+    <span class="n">cmaps</span><span class="o">=</span><span class="n">cmaps</span><span class="p">,</span>
+    <span class="n">savename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_images</span><span class="p">,</span> <span class="s1">&#39;matrix_utility_and_mRS_lvo.jpg&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/05c1c68bfea426ace9e2c43a7df9cb5731787b6f91c7074258c79cadebe29375.png" src="../_images/05c1c68bfea426ace9e2c43a7df9cb5731787b6f91c7074258c79cadebe29375.png" />
+</div>
+</div>
+</section>
+<section id="plot-the-mixed-cohort">
+<h3>Plot the mixed cohort<a class="headerlink" href="#plot-the-mixed-cohort" title="Permalink to this heading">#</a></h3>
 <p>Setup for plots:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instead of the axes showing the row, column numbers of the grid,</span>
-<span class="c1"># use this extent to scale the row, column numbers to the times.</span>
-<span class="c1"># Extra division by 60 for conversion to hours.</span>
-<span class="n">grid_extent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">),</span>  <span class="c1"># x-limits</span>
-    <span class="nb">min</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">)</span>     <span class="c1"># y-limits</span>
-<span class="p">])</span> <span class="o">/</span> <span class="mf">60.0</span>
-
-<span class="c1"># Data setup:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data setup:</span>
 <span class="c1"># The order of the keys in these dictionaries</span>
 <span class="c1"># sets up which outcome goes in which axis, and</span>
 <span class="c1"># which cohort uses each colour and linestyle.</span>
@@ -1339,6 +1761,12 @@ document.write(`
     <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">),</span>
     <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
 <span class="p">}</span>
+
+<span class="c1"># Use default colour limits:</span>
+<span class="n">vlims</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;added_utility&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="s1">&#39;mrs_shift&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -1346,58 +1774,24 @@ document.write(`
 <p>Make the plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make an extra empty subplot in the middle for spacing:</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
-    <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
-    <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;wspace&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_matrices</span><span class="p">(</span>
+    <span class="n">df_mixed</span><span class="p">,</span>
+    <span class="n">outcome_labels</span><span class="p">,</span>
+    <span class="n">grid_shape</span><span class="p">,</span>
+    <span class="n">grid_extent</span><span class="p">,</span>
+    <span class="n">vlims</span><span class="p">,</span>
+    <span class="n">major_step</span><span class="p">,</span>
+    <span class="n">minor_step</span><span class="p">,</span>
+    <span class="n">levels</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mixed LVO/nLVO (treated population)&#39;</span><span class="p">,</span>
+    <span class="n">cmaps</span><span class="o">=</span><span class="n">cmaps</span><span class="p">,</span>
+    <span class="n">savename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_images</span><span class="p">,</span> <span class="s1">&#39;matrix_utility_and_mRS_mixed.jpg&#39;</span><span class="p">)</span>
 <span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">outcome_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outcome_labels</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-    <span class="c1"># Pick out which axes to plot the grid and the colour bar on:</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">cax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="c1"># Pick out the data for the grid.</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df_mixed</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">]</span>
-    <span class="c1"># Turn the column of data into a grid:</span>
-    <span class="n">outcome_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_to_mt</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_to_ivt</span><span class="p">))</span>
-
-    <span class="n">img1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
-        <span class="n">outcome_data</span><span class="p">,</span>
-        <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">extent</span><span class="o">=</span><span class="n">grid_extent</span><span class="p">,</span>
-        <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">]</span>
-    <span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="c1"># Plotting:</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
-        <span class="n">outcome_data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">grid_extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmaps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-    <span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">outcome_labels</span><span class="p">[</span><span class="n">outcome_label</span><span class="p">])</span>
-
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time to IVT (hours)</span><span class="se">\n</span><span class="s1">if applicable&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time to MT (hours)</span><span class="se">\n</span><span class="s1">if applicable&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">major_step</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">minor_step</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">major_step</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="n">minor_step</span><span class="p">))</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Mixed LVO/nLVO (treated population)&#39;</span><span class="p">)</span>
-<span class="c1"># Make the extra empty subplot invisible:</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./images/matrix_utility_and_mRS.jpg&#39;</span><span class="p">,</span>
-            <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/63192698a06aef4ba9e27ab15d3e4fc7bd77466cc670feda123400af8efd4b1b.png" src="../_images/63192698a06aef4ba9e27ab15d3e4fc7bd77466cc670feda123400af8efd4b1b.png" />
+<img alt="../_images/159f54fed3826ed8deca5c73f391ab504ae2620e8dabf23d5ea774adebee6a47.png" src="../_images/159f54fed3826ed8deca5c73f391ab504ae2620e8dabf23d5ea774adebee6a47.png" />
 </div>
 </div>
 <p>Data ranges:</p>
@@ -1441,19 +1835,59 @@ document.write(`
   <tbody>
     <tr>
       <th>Minimum</th>
-      <td>-0.005896</td>
-      <td>-1.14168</td>
+      <td>-0.006181</td>
+      <td>-1.108209</td>
     </tr>
     <tr>
       <th>Maximum</th>
-      <td>0.211193</td>
-      <td>0.04515</td>
+      <td>0.204965</td>
+      <td>0.046879</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>Save a copy of the data behind these matrices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;outcome_matrix_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Print the names that went into the names of the files we just saved to make it easier to import them all again later:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;nlvo_ivt&#39;, &#39;lvo_ivt_only&#39;, &#39;lvo_mt_only&#39;, &#39;lvo_ivt_mt&#39;, &#39;lvo&#39;, &#39;mixed&#39;, &#39;treated_ischaemic&#39;])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p><strong>Individual treatment effects</strong></p>
+<p><img alt="Line graphs of benefit in outcomes with time to treatment for the separate stroke types and treatment types." src="../_images/time_to_treatment.jpg" /></p>
+<p>Over time:</p>
+<ul class="simple">
+<li><p>the mean mRS increases. The average disability score gets worse.</p></li>
+<li><p>the proportion of patients with an mRS score of 2 or less decreases. Fewer patients have a “good” outcome after stroke.</p></li>
+<li><p>the added utility compared with no treatment decreases. The drop in added utility is most drastic (the line is steepest) for MT.</p></li>
+</ul>
+<p>The different patient groups show the same trends although the start and end points and the steepness of each line are different.</p>
+<p>The results <em>look</em> quite like straight lines, i.e. the benefits worsen linearly with time, but they are not defined as such and are not actually quite straight. The difference between these benefits with time and straight line fits to them are shown in the following notebook.</p>
+<p><strong>Outcome matrices</strong></p>
+<p><img alt="Grid of outcomes with time to IVT and time to MT for a mix of treated ischaemic patients." src="../_images/matrix_utility_and_mRS_mixed.jpg" /></p>
+<p>The final plot of the grids of outcomes for the mixed treated population show that the improvement in outcomes is best when the times to treatment are lower, i.e. the colours on the plot are lighter in the bottom-left corner. The contour lines of constant outcomes show that the same benefit from treatment can be achieved when the time for one treatment is decreased and the time for the other is increased.</p>
+<p>A different trend is seen when there is low time to IVT and high time to MT, i.e. in the top-left corner of the grid. Still generally lower treatment times give better outcomes, but the combination of treatment times that give the same benefit are different, i.e. the contours have a different slope. This different trend originates in the LVO-only data. When patients are treated with both IVT and MT, the outcome model checks which treatment would give the better outcomes (the higher added utility) and uses the results from only that treatment. For most cases in the grid, MT gives better outcomes and so the MT results are used. When time to IVT is low and time to MT is high in that top-left corner, IVT gives better outcomes and so the IVT results are used. The diagonal line where the contours bend marks the location of the change from the MT-better regime to the IVT-better regime.</p>
+<p>The following notebook digs more into the maths in these matrices to quantify these findings.</p>
 </section>
 </section>
 
@@ -1488,20 +1922,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../package_docs/demo_discrete_outcomes.html"
+       href="01b_population.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Demo: discrete outcome model</p>
+        <p class="prev-next-title">Example patient population and pathway timings</p>
       </div>
     </a>
     <a class="right-next"
-       href="05_geography.html"
+       href="04b_matrix_maths.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Distance-based treatment effects</p>
+        <p class="prev-next-title">Quantifying added utility depending on time to IVT and MT</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1520,6 +1954,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-model">Set up model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-treatment-effects">Individual treatment effects</a><ul class="nav section-nav flex-column">
@@ -1534,8 +1971,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-patient-groups">Combining patient groups</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-outcomes-for-the-combined-cohorts">Calculate outcomes for the combined cohorts:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-lvo-mix">Plot LVO mix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-mixed-cohort">Plot the mixed cohort</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 

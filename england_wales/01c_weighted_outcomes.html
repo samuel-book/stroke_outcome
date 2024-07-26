@@ -1,0 +1,1123 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Combine populations for weighted outcomes &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'england_wales/01c_weighted_outcomes';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Combine populations for weighted mRS distributions" href="01d_weighted_outcomes_mrs_dists.html" />
+    <link rel="prev" title="Calculate outcomes" href="01_model_outcomes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/paper.html">Paper creation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/intro_extra.html">Extra details</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/01b_population.html">Example patient population and pathway timings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04b_matrix_maths.html">Quantifying added utility depending on time to IVT and MT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧭 Generic geography</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography_outcomes.html">Calculate distance-based treatment effects for many cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05c_geography_outcomes_plots.html">Plot distance-based treatment effects for many cohorts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_data.html">Data creation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_model_outcomes.html">Calculate outcomes</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Combine populations for weighted outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01d_weighted_outcomes_mrs_dists.html">Combine populations for weighted mRS distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro_results.html">Results</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_lsoa_analysis_added_utility.html">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/samuel-book/stroke_outcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/england_wales/01c_weighted_outcomes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Combine populations for weighted outcomes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-outcomes">Mean outcomes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-lvo-results">Combine LVO results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-separate-added-utility-for-sharing">Save separate added utility for sharing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="combine-populations-for-weighted-outcomes">
+<h1>Combine populations for weighted outcomes<a class="headerlink" href="#combine-populations-for-weighted-outcomes" title="Permalink to this heading">#</a></h1>
+<p>Use the patient population to combine the outcomes from the separate cohorts. This notebook combines the added utility, shift in mean mRS, and proportion with mRS&lt;=2. The following notebook combines the mRS distributions.</p>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>In the previous notebook we calculated outcomes for patients across all of England and Wales. This assumed fixed times to treatment except for travel times to the stroke units. We calculated one set of times for the drip-and-ship scenario, where patients first go to their nearest stroke unit and are later transferred to the MT unit if they need thrombectomy, and a second set of times for the mothership scenario, where every patient goes directly to the MT unit.</p>
+<p>The existing data has separate entries for each cohort of patients:</p>
+<ul class="simple">
+<li><p>patients with an nLVO treated with IVT</p></li>
+<li><p>patients with a LVO treated with IVT only</p></li>
+<li><p>patients with a LVO treated with MT only</p></li>
+<li><p>patients with a LVO treated with both IVT and MT</p></li>
+</ul>
+<p>In this notebook we will combine the data of multiple groups of patients.</p>
+</section>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this heading">#</a></h2>
+<p>To find the averaged outcome data for added utility, shift in mean mRS, and proportion with an mRS score of 2 or less for the following groups:</p>
+<ul class="simple">
+<li><p>patients with a LVO and a mix of the available treatment types</p></li>
+<li><p>patients with an nLVO and patients with a LVO and a mix of the available treatment types</p></li>
+</ul>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>Use the example patient proportions to calculate a weighted sum of the separate cohorts.</p>
+</section>
+<section id="notebook-setup">
+<h2>Notebook setup<a class="headerlink" href="#notebook-setup" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">stroke_outcome.outcome_utilities</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_output</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-data">
+<h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this heading">#</a></h2>
+<p>Patient proportions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;patient_proportions.csv&#39;</span><span class="p">),</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proportions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+haemorrhagic         0.13600
+lvo_no_treatment     0.14648
+lvo_ivt_only         0.00840
+lvo_ivt_mt           0.08500
+lvo_mt_only          0.01500
+nlvo_no_treatment    0.50252
+nlvo_ivt             0.10660
+Name: 1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Calculate some additional proportions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion of treated LVO patients:</span>
+<span class="n">prop_lvo_treated</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">proportions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="p">((</span><span class="s1">&#39;lvo&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="s1">&#39;nlvo&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="s1">&#39;no_treat&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">prop_lvo_treated</span> <span class="o">+=</span> <span class="n">value</span>
+
+<span class="n">prop_lvo_treated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_only
+lvo_ivt_mt
+lvo_mt_only
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10840000000000001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion of treated ischaemic patients:</span>
+<span class="n">prop_ischaemic_treated</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">proportions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="p">((</span><span class="s1">&#39;lvo&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="s1">&#39;no_treat&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">prop_ischaemic_treated</span> <span class="o">+=</span> <span class="n">value</span>
+
+<span class="n">prop_ischaemic_treated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lvo_ivt_only
+lvo_ivt_mt
+lvo_mt_only
+nlvo_ivt
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.21500000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion of ischaemic patients:</span>
+<span class="n">prop_ischaemic</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;haemorrhagic&#39;</span><span class="p">]</span>
+
+<span class="n">prop_ischaemic</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.864
+</pre></div>
+</div>
+</div>
+</div>
+<p>Outcomes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;cohort_outcomes.csv&#39;</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 34752 entries, Adur 001A to York 024F
+Data columns (total 51 columns):
+ #   Column                                        Non-Null Count  Dtype  
+---  ------                                        --------------  -----  
+ 0   closest_ivt_time                              34752 non-null  float64
+ 1   closest_ivt_unit                              34752 non-null  object 
+ 2   closest_mt_time                               34752 non-null  float64
+ 3   closest_mt_unit                               34752 non-null  object 
+ 4   transfer_mt_time                              34752 non-null  float64
+ 5   transfer_mt_unit                              34752 non-null  object 
+ 6   mt_transfer_required                          34752 non-null  bool   
+ 7   ivt_drip_ship                                 34752 non-null  float64
+ 8   mt_drip_ship                                  34752 non-null  float64
+ 9   ivt_mothership                                34752 non-null  float64
+ 10  mt_mothership                                 34752 non-null  float64
+ 11  drip_ship_nlvo_ivt_added_utility              34752 non-null  float64
+ 12  drip_ship_nlvo_ivt_mean_mrs                   34752 non-null  float64
+ 13  drip_ship_nlvo_ivt_mrs_less_equal_2           34752 non-null  float64
+ 14  drip_ship_nlvo_ivt_mrs_shift                  34752 non-null  float64
+ 15  drip_ship_nlvo_ivt_added_mrs_less_equal_2     34752 non-null  float64
+ 16  drip_ship_lvo_ivt_added_utility               34752 non-null  float64
+ 17  drip_ship_lvo_ivt_mean_mrs                    34752 non-null  float64
+ 18  drip_ship_lvo_ivt_mrs_less_equal_2            34752 non-null  float64
+ 19  drip_ship_lvo_ivt_mrs_shift                   34752 non-null  float64
+ 20  drip_ship_lvo_ivt_added_mrs_less_equal_2      34752 non-null  float64
+ 21  drip_ship_lvo_ivt_mt_added_utility            34752 non-null  float64
+ 22  drip_ship_lvo_ivt_mt_mean_mrs                 34752 non-null  float64
+ 23  drip_ship_lvo_ivt_mt_mrs_less_equal_2         34752 non-null  float64
+ 24  drip_ship_lvo_ivt_mt_mrs_shift                34752 non-null  float64
+ 25  drip_ship_lvo_ivt_mt_added_mrs_less_equal_2   34752 non-null  float64
+ 26  drip_ship_lvo_mt_added_utility                34752 non-null  float64
+ 27  drip_ship_lvo_mt_mean_mrs                     34752 non-null  float64
+ 28  drip_ship_lvo_mt_mrs_less_equal_2             34752 non-null  float64
+ 29  drip_ship_lvo_mt_mrs_shift                    34752 non-null  float64
+ 30  drip_ship_lvo_mt_added_mrs_less_equal_2       34752 non-null  float64
+ 31  mothership_nlvo_ivt_added_utility             34752 non-null  float64
+ 32  mothership_nlvo_ivt_mean_mrs                  34752 non-null  float64
+ 33  mothership_nlvo_ivt_mrs_less_equal_2          34752 non-null  float64
+ 34  mothership_nlvo_ivt_mrs_shift                 34752 non-null  float64
+ 35  mothership_nlvo_ivt_added_mrs_less_equal_2    34752 non-null  float64
+ 36  mothership_lvo_ivt_added_utility              34752 non-null  float64
+ 37  mothership_lvo_ivt_mean_mrs                   34752 non-null  float64
+ 38  mothership_lvo_ivt_mrs_less_equal_2           34752 non-null  float64
+ 39  mothership_lvo_ivt_mrs_shift                  34752 non-null  float64
+ 40  mothership_lvo_ivt_added_mrs_less_equal_2     34752 non-null  float64
+ 41  mothership_lvo_ivt_mt_added_utility           34752 non-null  float64
+ 42  mothership_lvo_ivt_mt_mean_mrs                34752 non-null  float64
+ 43  mothership_lvo_ivt_mt_mrs_less_equal_2        34752 non-null  float64
+ 44  mothership_lvo_ivt_mt_mrs_shift               34752 non-null  float64
+ 45  mothership_lvo_ivt_mt_added_mrs_less_equal_2  34752 non-null  float64
+ 46  mothership_lvo_mt_added_utility               34752 non-null  float64
+ 47  mothership_lvo_mt_mean_mrs                    34752 non-null  float64
+ 48  mothership_lvo_mt_mrs_less_equal_2            34752 non-null  float64
+ 49  mothership_lvo_mt_mrs_shift                   34752 non-null  float64
+ 50  mothership_lvo_mt_added_mrs_less_equal_2      34752 non-null  float64
+dtypes: bool(1), float64(47), object(3)
+memory usage: 13.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-outcomes">
+<h2>Mean outcomes<a class="headerlink" href="#mean-outcomes" title="Permalink to this heading">#</a></h2>
+<section id="combine-lvo-results">
+<h3>Combine LVO results<a class="headerlink" href="#combine-lvo-results" title="Permalink to this heading">#</a></h3>
+<p>Combine the separate IVT, MT, and IVT and MT cohorts for LVO into one “LVO” group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">outcome_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_shift&#39;</span><span class="p">,</span> <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">]:</span>
+        <span class="c1"># New column for results:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_mix_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span>
+        
+        <span class="c1"># Combine results:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">])</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Divide by proportion of LVO patients:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_lvo_treated</span>
+        
+        <span class="c1"># Round the results:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">
+<h3>Calculate treatment rates based on expected proportions of LVO/nLVO<a class="headerlink" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo" title="Permalink to this heading">#</a></h3>
+<p>Add weighted benefit based on proportions of treated LVO and nLVO: Add weighted utility, mrs&lt;=2, and mean_shift based on stroke type and treatment rates.</p>
+<p>The expected shift from the no-treatment outcomes is zero for the following groups:</p>
+<ul class="simple">
+<li><p>Haemorrhagic</p></li>
+<li><p>LVO no treatment</p></li>
+<li><p>nLVO no treatment</p></li>
+</ul>
+<p>so we can skip adding them in the following equation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">outcome_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_shift&#39;</span><span class="p">,</span> <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">]:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_weighted_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_nlvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="c1"># Remove proportion of non-ischaemic patients:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_ischaemic</span>
+
+        <span class="c1"># Round the results:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">outcome_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_shift&#39;</span><span class="p">,</span> <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">]:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_weighted_treated_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_nlvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_only&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_mt_only&#39;</span><span class="p">])</span> <span class="o">+</span>
+            <span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">proportions</span><span class="p">[</span><span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="c1"># Remove proportion of non-ischaemic patients:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">/</span> <span class="n">prop_ischaemic_treated</span>
+
+        <span class="c1"># Round the results:</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show results</span>
+<span class="n">df_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>LSOA</th>
+      <th>Adur 001A</th>
+      <th>Adur 001B</th>
+      <th>Adur 001C</th>
+      <th>Adur 001D</th>
+      <th>Adur 001E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>closest_ivt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>17.6</td>
+      <td>17.6</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>closest_ivt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+      <td>BN112DH</td>
+    </tr>
+    <tr>
+      <th>closest_mt_time</th>
+      <td>17.6</td>
+      <td>18.7</td>
+      <td>19.8</td>
+      <td>19.8</td>
+      <td>19.8</td>
+    </tr>
+    <tr>
+      <th>closest_mt_unit</th>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+      <td>BN25BE</td>
+    </tr>
+    <tr>
+      <th>transfer_mt_time</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>31.6</td>
+      <td>31.6</td>
+      <td>31.6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>drip_ship_weighted_treated_added_mrs_less_equal_2</th>
+      <td>0.14571</td>
+      <td>0.14512</td>
+      <td>0.11861</td>
+      <td>0.11861</td>
+      <td>0.11918</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_added_utility</th>
+      <td>0.13633</td>
+      <td>0.13579</td>
+      <td>0.13525</td>
+      <td>0.13525</td>
+      <td>0.13525</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_mrs_less_equal_2</th>
+      <td>0.56689</td>
+      <td>0.5663</td>
+      <td>0.56571</td>
+      <td>0.56571</td>
+      <td>0.56571</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_mrs_shift</th>
+      <td>-0.71592</td>
+      <td>-0.7129</td>
+      <td>-0.70988</td>
+      <td>-0.70988</td>
+      <td>-0.70988</td>
+    </tr>
+    <tr>
+      <th>mothership_weighted_treated_added_mrs_less_equal_2</th>
+      <td>0.14571</td>
+      <td>0.14512</td>
+      <td>0.14453</td>
+      <td>0.14453</td>
+      <td>0.14453</td>
+    </tr>
+  </tbody>
+</table>
+<p>75 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>Save to file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save</span>
+<span class="n">df_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;cohort_outcomes_weighted.csv&#39;</span><span class="p">),</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;lsoa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">df_results</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">summary</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;cohort_outcomes_weighted_summary.csv&#39;</span><span class="p">),</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;lsoa&#39;</span><span class="p">)</span>
+<span class="n">summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_49202/164885061.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying &#39;numeric_only=None&#39; is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+  summary = df_results.mean(axis=0).T
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>closest_ivt_time                                       19.548181
+closest_mt_time                                        34.939310
+transfer_mt_time                                       27.509447
+mt_transfer_required                                    0.675098
+ivt_drip_ship                                         109.548181
+                                                         ...    
+drip_ship_weighted_treated_added_mrs_less_equal_2       0.124662
+mothership_weighted_treated_added_utility               0.127779
+mothership_weighted_treated_mrs_less_equal_2            0.557609
+mothership_weighted_treated_mrs_shift                  -0.668417
+mothership_weighted_treated_added_mrs_less_equal_2      0.136428
+Length: 72, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-separate-added-utility-for-sharing">
+<h3>Save separate added utility for sharing<a class="headerlink" href="#save-separate-added-utility-for-sharing" title="Permalink to this heading">#</a></h3>
+<p>These saved files are pretty big (several 10s of megabytes). The stroke outcome paper shows only the added utility, so create a separate file that contains only the added utility information in the maps to save file space.</p>
+<p>Keep the following columns, which are anything to do with treatment or travel times or added utility:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols_to_keep</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">,</span> <span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;closest_mt_time&#39;</span><span class="p">,</span> <span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">,</span> <span class="s1">&#39;transfer_mt_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ivt_mothership&#39;</span><span class="p">,</span> <span class="s1">&#39;mt_mothership&#39;</span>
+<span class="p">]</span>
+
+<span class="n">cols_to_keep</span> <span class="o">+=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df_results</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;added_utility&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
+
+<span class="n">df_added_utility</span> <span class="o">=</span> <span class="n">df_results</span><span class="p">[</span><span class="n">cols_to_keep</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save this data to file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_added_utility</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;fig_data_englandwales_maps_added_utility.csv&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This file does not include the “Advantage of mothership” data because it takes up more file space and is simple enough to calculate later.</p>
+<p>To find this information, take the difference between matching data in the mothership and the drip and ship columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">]</span>
+<span class="n">cohort_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nlvo_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_ivt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_mt&#39;</span><span class="p">,</span> <span class="s1">&#39;lvo_mix&#39;</span><span class="p">,</span> <span class="s1">&#39;weighted&#39;</span><span class="p">,</span> <span class="s1">&#39;weighted_treated&#39;</span><span class="p">]</span>
+
+<span class="n">cols_diff</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mothership_minus_dripship_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">o</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cohort_names</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">outcome_names</span><span class="p">]</span>
+<span class="n">cols_moth</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mothership_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">o</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cohort_names</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">outcome_names</span><span class="p">]</span>
+<span class="n">cols_drip</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;drip_ship_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">o</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cohort_names</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">outcome_names</span><span class="p">]</span>
+
+<span class="n">df_added_utility</span><span class="p">[</span><span class="n">cols_diff</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_added_utility</span><span class="p">[</span><span class="n">cols_moth</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">df_added_utility</span><span class="p">[</span><span class="n">cols_drip</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Round the values again in case of floating point error:</span>
+<span class="n">df_added_utility</span><span class="p">[</span><span class="n">cols_diff</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_added_utility</span><span class="p">[</span><span class="n">cols_diff</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_added_utility</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 34752 entries, Adur 001A to York 024F
+Data columns (total 31 columns):
+ #   Column                                                    Non-Null Count  Dtype  
+---  ------                                                    --------------  -----  
+ 0   closest_ivt_time                                          34752 non-null  float64
+ 1   closest_ivt_unit                                          34752 non-null  object 
+ 2   closest_mt_time                                           34752 non-null  float64
+ 3   closest_mt_unit                                           34752 non-null  object 
+ 4   transfer_mt_time                                          34752 non-null  float64
+ 5   transfer_mt_unit                                          34752 non-null  object 
+ 6   mt_transfer_required                                      34752 non-null  bool   
+ 7   ivt_drip_ship                                             34752 non-null  float64
+ 8   mt_drip_ship                                              34752 non-null  float64
+ 9   ivt_mothership                                            34752 non-null  float64
+ 10  mt_mothership                                             34752 non-null  float64
+ 11  drip_ship_nlvo_ivt_added_utility                          34752 non-null  float64
+ 12  drip_ship_lvo_ivt_added_utility                           34752 non-null  float64
+ 13  drip_ship_lvo_ivt_mt_added_utility                        34752 non-null  float64
+ 14  drip_ship_lvo_mt_added_utility                            34752 non-null  float64
+ 15  mothership_nlvo_ivt_added_utility                         34752 non-null  float64
+ 16  mothership_lvo_ivt_added_utility                          34752 non-null  float64
+ 17  mothership_lvo_ivt_mt_added_utility                       34752 non-null  float64
+ 18  mothership_lvo_mt_added_utility                           34752 non-null  float64
+ 19  drip_ship_lvo_mix_added_utility                           34752 non-null  float64
+ 20  mothership_lvo_mix_added_utility                          34752 non-null  float64
+ 21  drip_ship_weighted_added_utility                          34752 non-null  float64
+ 22  mothership_weighted_added_utility                         34752 non-null  float64
+ 23  drip_ship_weighted_treated_added_utility                  34752 non-null  float64
+ 24  mothership_weighted_treated_added_utility                 34752 non-null  float64
+ 25  mothership_minus_dripship_nlvo_ivt_added_utility          34752 non-null  float64
+ 26  mothership_minus_dripship_lvo_ivt_added_utility           34752 non-null  float64
+ 27  mothership_minus_dripship_lvo_mt_added_utility            34752 non-null  float64
+ 28  mothership_minus_dripship_lvo_mix_added_utility           34752 non-null  float64
+ 29  mothership_minus_dripship_weighted_added_utility          34752 non-null  float64
+ 30  mothership_minus_dripship_weighted_treated_added_utility  34752 non-null  float64
+dtypes: bool(1), float64(27), object(3)
+memory usage: 8.3+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>We have calculated a weighted sum of the separate patient cohorts to find outcome data for a mix of LVO patients and for the treated ischaemic population.</p>
+<p>We have also saved a file with just the added utility results from all of the patient cohorts. This file contains a copy of the data that will be used to create maps of added utility around England and Wales, and is saved separately so that this data can be shared without everyone needing to download a massive file of mostly irrelevant data.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./england_wales"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_model_outcomes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calculate outcomes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01d_weighted_outcomes_mrs_dists.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Combine populations for weighted mRS distributions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-setup">Notebook setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">Import data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-outcomes">Mean outcomes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-lvo-results">Combine LVO results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-separate-added-utility-for-sharing">Save separate added utility for sharing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1001 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Show all results &#8212; Stroke outcome modelling</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'plot_bars';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Emergency stroke admissions predictions" href="admission_prediction/01_msoa_regression.html" />
+    <link rel="prev" title="Distance-based treatment effects for many cohorts" href="general_results/05_geography_outcomes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Stroke outcome modelling</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">📚 Definitions reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="definitions_reference/paper.html">Paper creation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="package_docs/intro.html">Stroke outcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general_results/05_geography.html">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="england_wales/01b_population.html">Example patient population</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general_results/05_geography_outcomes.html">Distance-based treatment effects for many cohorts</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Show all results</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="mRS_dist_resample_summary.html">Outcome resampling</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="england_wales/02_lsoa_analysis_added_utility.html">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="england_wales/04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="england_wales/03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="streamlit/streamlit.html">Streamlit app</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/plot_bars.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Show all results</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Show all results</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions">Plot distributions</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="show-all-results">
+<h1>Show all results<a class="headerlink" href="#show-all-results" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_distributions_bins_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_distributions_bins</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./outcome_utilities/mrs_dist_probs_bins.csv&#39;</span><span class="p">,</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+<span class="n">all_distributions_bins_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.5829</td>
+      <td>0.1625</td>
+      <td>0.1034</td>
+      <td>0.1022</td>
+      <td>0.0420</td>
+      <td>0.0069</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_nlvo_ivt_deaths</th>
+      <td>0.5765</td>
+      <td>0.1608</td>
+      <td>0.1023</td>
+      <td>0.1011</td>
+      <td>0.0415</td>
+      <td>0.0069</td>
+      <td>0.0110</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.4179</td>
+      <td>0.1430</td>
+      <td>0.1184</td>
+      <td>0.1642</td>
+      <td>0.1138</td>
+      <td>0.0427</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_ivt_deaths</th>
+      <td>0.4036</td>
+      <td>0.1381</td>
+      <td>0.1144</td>
+      <td>0.1586</td>
+      <td>0.1099</td>
+      <td>0.0413</td>
+      <td>0.0341</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_mt_deaths</th>
+      <td>0.4012</td>
+      <td>0.1372</td>
+      <td>0.1137</td>
+      <td>0.1576</td>
+      <td>0.1092</td>
+      <td>0.0410</td>
+      <td>0.0400</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.1971</td>
+      <td>0.2629</td>
+      <td>0.1200</td>
+      <td>0.1277</td>
+      <td>0.1479</td>
+      <td>0.0620</td>
+      <td>0.0823</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.1973</td>
+      <td>0.2627</td>
+      <td>0.1176</td>
+      <td>0.1247</td>
+      <td>0.1430</td>
+      <td>0.0592</td>
+      <td>0.0955</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.4298</td>
+      <td>0.2002</td>
+      <td>0.1082</td>
+      <td>0.1102</td>
+      <td>0.0808</td>
+      <td>0.0271</td>
+      <td>0.0437</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.0500</td>
+      <td>0.0790</td>
+      <td>0.1360</td>
+      <td>0.1640</td>
+      <td>0.2470</td>
+      <td>0.1350</td>
+      <td>0.1890</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.0479</td>
+      <td>0.0757</td>
+      <td>0.1303</td>
+      <td>0.1571</td>
+      <td>0.2366</td>
+      <td>0.1293</td>
+      <td>0.2231</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.0475</td>
+      <td>0.0751</td>
+      <td>0.1293</td>
+      <td>0.1559</td>
+      <td>0.2348</td>
+      <td>0.1283</td>
+      <td>0.2290</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.1129</td>
+      <td>0.0871</td>
+      <td>0.1274</td>
+      <td>0.1574</td>
+      <td>0.2135</td>
+      <td>0.1132</td>
+      <td>0.1886</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.3128</td>
+      <td>0.1217</td>
+      <td>0.1176</td>
+      <td>0.1572</td>
+      <td>0.1406</td>
+      <td>0.0629</td>
+      <td>0.0872</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_distributions_cumsum_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_distributions_cumsum</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">all_distributions_cumsum_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./outcome_utilities/mrs_dist_probs_cumsum.csv&#39;</span><span class="p">,</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;Stroke type&#39;</span><span class="p">)</span>
+<span class="n">all_distributions_cumsum_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pre_stroke_nlvo</th>
+      <td>0.5829</td>
+      <td>0.7454</td>
+      <td>0.8489</td>
+      <td>0.9511</td>
+      <td>0.9931</td>
+      <td>1.0000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_nlvo_ivt_deaths</th>
+      <td>0.5765</td>
+      <td>0.7372</td>
+      <td>0.8395</td>
+      <td>0.9406</td>
+      <td>0.9821</td>
+      <td>0.9890</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo</th>
+      <td>0.4179</td>
+      <td>0.5609</td>
+      <td>0.6793</td>
+      <td>0.8435</td>
+      <td>0.9573</td>
+      <td>1.0000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_ivt_deaths</th>
+      <td>0.4036</td>
+      <td>0.5417</td>
+      <td>0.6561</td>
+      <td>0.8147</td>
+      <td>0.9246</td>
+      <td>0.9659</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>pre_stroke_lvo_mt_deaths</th>
+      <td>0.4012</td>
+      <td>0.5384</td>
+      <td>0.6521</td>
+      <td>0.8098</td>
+      <td>0.9190</td>
+      <td>0.9600</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_nlvo</th>
+      <td>0.1971</td>
+      <td>0.4600</td>
+      <td>0.5800</td>
+      <td>0.7078</td>
+      <td>0.8557</td>
+      <td>0.9177</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_nlvo_ivt_deaths</th>
+      <td>0.1973</td>
+      <td>0.4600</td>
+      <td>0.5776</td>
+      <td>0.7023</td>
+      <td>0.8452</td>
+      <td>0.9045</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_nlvo_ivt</th>
+      <td>0.4298</td>
+      <td>0.6300</td>
+      <td>0.7382</td>
+      <td>0.8484</td>
+      <td>0.9292</td>
+      <td>0.9563</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_treatment_lvo</th>
+      <td>0.0500</td>
+      <td>0.1290</td>
+      <td>0.2650</td>
+      <td>0.4290</td>
+      <td>0.6760</td>
+      <td>0.8110</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_ivt_deaths</th>
+      <td>0.0479</td>
+      <td>0.1236</td>
+      <td>0.2539</td>
+      <td>0.4110</td>
+      <td>0.6476</td>
+      <td>0.7769</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>no_effect_lvo_mt_deaths</th>
+      <td>0.0475</td>
+      <td>0.1226</td>
+      <td>0.2519</td>
+      <td>0.4078</td>
+      <td>0.6427</td>
+      <td>0.7710</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_ivt</th>
+      <td>0.1129</td>
+      <td>0.2000</td>
+      <td>0.3274</td>
+      <td>0.4848</td>
+      <td>0.6982</td>
+      <td>0.8114</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>t0_treatment_lvo_mt</th>
+      <td>0.3128</td>
+      <td>0.4345</td>
+      <td>0.5521</td>
+      <td>0.7093</td>
+      <td>0.8499</td>
+      <td>0.9127</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="plot-distributions">
+<h1>Plot distributions<a class="headerlink" href="#plot-distributions" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outcome_utilities.dist_plot</span> <span class="kn">import</span> <span class="n">draw_horizontal_bar</span><span class="p">,</span> \
+    <span class="n">draw_connections</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Define plot colour scheme</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-colorblind&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_34593/1159425588.py:1: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+  plt.style.use(&#39;seaborn-colorblind&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.1129
+1    0.0871
+2    0.1274
+3    0.1574
+4    0.2135
+5    0.1132
+6    0.1886
+Name: t0_treatment_lvo_ivt, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_info</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_effect_nlvo_ivt_deaths&#39;</span><span class="p">],</span> 
+     <span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_nlvo_ivt&#39;</span><span class="p">],</span> 
+     <span class="s1">&#39;nLVO treated with IVT&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_ivt_deaths&#39;</span><span class="p">],</span> 
+     <span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_ivt&#39;</span><span class="p">],</span> 
+     <span class="s1">&#39;LVO treated with IVT&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;no_effect_lvo_mt_deaths&#39;</span><span class="p">],</span> 
+     <span class="n">all_distributions_bins_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;t0_treatment_lvo_mt&#39;</span><span class="p">],</span> 
+     <span class="s1">&#39;LVO treated with MT&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">})</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">info</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plot_info</span><span class="p">):</span>
+    <span class="n">ylabel_top</span> <span class="o">=</span> <span class="s1">&#39;Time = 0 hours&#39;</span> <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39; &#39;</span>
+    <span class="n">ylabel_bottom</span> <span class="o">=</span> <span class="s1">&#39;Time of no effect&#39;</span> <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;  &#39;</span>
+    <span class="n">y_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ylabel_top</span><span class="p">,</span> <span class="n">ylabel_bottom</span><span class="p">]</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="c1"># Draw no effect distribution</span>
+    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># Add legend now to prevent doubling all the labels:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;mRS&#39;</span><span class="p">,</span> 
+                   <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1</span><span class="p">])</span>   <span class="c1"># Legend below axis.</span>
+    
+    <span class="c1"># Draww t=0 distribution</span>
+    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    
+    <span class="c1"># Darw connecting lines</span>
+    <span class="n">draw_connections</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    
+    <span class="c1"># Add general content</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y_vals</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">y_labels</span><span class="p">)</span>
+    
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./images/dist_bars.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c46aba352a8becc7d4f6f4a62eaaa132e6eb4bb358cefcb07f2ed31f9f455f92.png" src="_images/c46aba352a8becc7d4f6f4a62eaaa132e6eb4bb358cefcb07f2ed31f9f455f92.png" />
+</div>
+</div>
+<p>Plot individual plots</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">info</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plot_info</span><span class="p">):</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">})</span>
+    <span class="n">y_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">ylabel_top</span> <span class="o">=</span> <span class="s1">&#39;Time = 0 hours&#39;</span>
+    <span class="n">ylabel_bottom</span> <span class="o">=</span> <span class="s1">&#39;Time of no effect&#39;</span>
+    <span class="n">y_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ylabel_top</span><span class="p">,</span> <span class="n">ylabel_bottom</span><span class="p">]</span>
+    
+    <span class="c1"># Draw no effect distribution</span>
+    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;mRS&#39;</span><span class="p">,</span> 
+                   <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.0</span><span class="p">])</span>   <span class="c1"># Legend below axis.</span>
+    
+    <span class="c1"># Draww t=0 distribution</span>
+    <span class="n">draw_horizontal_bar</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    
+    <span class="c1"># Darw connecting lines</span>
+    <span class="n">draw_connections</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    
+    <span class="c1"># Add general content</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y_vals</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">y_labels</span><span class="p">)</span>
+    
+    <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./images/dist_bars_</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ce847fffdaaf43f8b0128feb719725f85d1575dccf00a85d5e3e6c18f8cbc094.png" src="_images/ce847fffdaaf43f8b0128feb719725f85d1575dccf00a85d5e3e6c18f8cbc094.png" />
+<img alt="_images/33ae455681e99c90b08861eb98228a70f6485b2e09b57607d7da27ff1c26bf8e.png" src="_images/33ae455681e99c90b08861eb98228a70f6485b2e09b57607d7da27ff1c26bf8e.png" />
+<img alt="_images/15b65da27997d61d9d43483183a56c2d68d1909041f0821206c016215f2dcaa8.png" src="_images/15b65da27997d61d9d43483183a56c2d68d1909041f0821206c016215f2dcaa8.png" />
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="general_results/05_geography_outcomes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Distance-based treatment effects for many cohorts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="admission_prediction/01_msoa_regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Emergency stroke admissions predictions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Show all results</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions">Plot distributions</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Anna Laws, Kerry Pearn, Michael Allen, Peter McMeekin, and Martin James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

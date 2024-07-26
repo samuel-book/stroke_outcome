@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'admission_prediction/01_msoa_regression';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Model outcomes for drip’and’ship vs mothership based on greography" href="../england_wales/01_model_outcomes.html" />
-    <link rel="prev" title="Demo: discrete outcome model" href="../package_docs/demo_discrete_outcomes.html" />
+    <link rel="next" title="Calculate outcomes" href="../england_wales/01_model_outcomes.html" />
+    <link rel="prev" title="Data creation" href="../england_wales/intro_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,61 +165,73 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/paper.html">Paper creation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/intro_extra.html">Extra details</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/01b_population.html">Example patient population and pathway timings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04b_matrix_maths.html">Quantifying added utility depending on time to IVT and MT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧭 Generic geography</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography_outcomes.html">Calculate distance-based treatment effects for many cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05c_geography_outcomes_plots.html">Plot distance-based treatment effects for many cohorts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../england_wales/intro_data.html">Data creation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Calculate outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01c_weighted_outcomes.html">Combine populations for weighted outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/01d_weighted_outcomes_mrs_dists.html">Combine populations for weighted mRS distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../england_wales/intro_results.html">Results</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../england_wales/03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../streamlit/streamlit.html">Streamlit app</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
-
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Application to England and Wales</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Emergency stroke admissions predictions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/01_model_outcomes.html">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/02_lsoa_analysis_added_utility.html">Analysis of LSOA results: Added utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/03_lsoa_analysis_mrs_less_equal_2.html">Analysis of LSOA results: change in mRS less than three</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../england_wales/04_lsoa_analysis_mrs_mean_shift.html">Analysis of LSOA results: mRS mean shift</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other to sort</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../03_demo_of_outcome_model.html">Example output from stroke outcome model</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05_geography.html">Distance-based treatment effects</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../05a_geography_stroke_types.html">Distance-based treatment effects (plot for different stroke types)</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../06_show_outcome_model_code.html">Show outcome model python code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../90_proportion_ischaemic_with_lvo.html">Proportion of ischaemic patients with LVO</a></li>
 </ul>
 
     </div>
@@ -261,6 +273,21 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+<a href="https://github.com/samuel-book/stroke_outcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
 
 
 
@@ -386,6 +413,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="emergency-stroke-admissions-predictions">
 <h1>Emergency stroke admissions predictions<a class="headerlink" href="#emergency-stroke-admissions-predictions" title="Permalink to this heading">#</a></h1>
+<p><strong>TO DO</strong> why MSOA? Presumably LSOA are too small? (AL 11/Jul/24)</p>
 <p>The aim of this notebook is to predict admissions at a MSOA level, based on demographic data. This allows for:</p>
 <ol class="arabic simple">
 <li><p>Projection of admissions into the future based on age profile changes (if nothing else changes)</p></li>
@@ -831,12 +859,12 @@ dtype: float64
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../package_docs/demo_discrete_outcomes.html"
+       href="../england_wales/intro_data.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Demo: discrete outcome model</p>
+        <p class="prev-next-title">Data creation</p>
       </div>
     </a>
     <a class="right-next"
@@ -844,7 +872,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model outcomes for drip’and’ship vs mothership based on greography</p>
+        <p class="prev-next-title">Calculate outcomes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

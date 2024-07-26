@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Model outcomes for drip’and’ship vs mothership based on greography &#8212; Stroke outcome modelling</title>
+    <title>Calculate outcomes &#8212; Stroke outcome modelling</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'england_wales/01_model_outcomes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mapping LSOA results" href="02_lsoa_analysis_added_utility.html" />
-    <link rel="prev" title="Distance-based treatment effects" href="../general_results/05_geography.html" />
+    <link rel="next" title="Combine populations for weighted outcomes" href="01c_weighted_outcomes.html" />
+    <link rel="prev" title="Emergency stroke admissions predictions" href="../admission_prediction/01_msoa_regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,43 +165,69 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_stroke.html">Definitions for stroke</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../definitions_reference/definitions_maths.html">Definitions for maths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../definitions_reference/paper.html">Paper creation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🧮 Outcome model methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/01_mrs_dist_derivation.html">Derivation of mRS distributions from reference data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01b_excess_deaths.html">Excess death rate calculations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01c_extrapolate_time_zero.html">Extrapolating a known odds ratio back to time zero</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/01d_lvo_proportion.html">Proportion of ischaemic patients with LVO</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02_probs_with_time.html">Calculating outcome probabilities with time to treatment</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../outcome_model_methods/intro_extra.html">Extra details</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02b_formulae.html">Extra: Formulae for probabilities with time</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../outcome_model_methods/02c_extra_maths.html">Extra: Logistic functions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📦 stroke-outcome package</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../package_docs/intro.html">Stroke outcome</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_continuous_outcome.html">Documentation: Continuous outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_continuous_outcomes.html">Demo: Continuous outcome model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/docs_discrete_outcome.html">Documentation: Discrete outcome model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package_docs/demo_discrete_outcomes.html">Demo: discrete outcome model</a></li>
 
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">📈 General results</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../general_results/01b_population.html">Example patient population and pathway timings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general_results/04_matrix.html">Demonstration of added utility depending on time to IVT and MT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/04b_matrix_maths.html">Quantifying added utility depending on time to IVT and MT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🧭 Generic geography</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography.html">Distance-based treatment effects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05_geography_outcomes.html">Calculate distance-based treatment effects for many cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general_results/05c_geography_outcomes_plots.html">Plot distance-based treatment effects for many cohorts</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🌍 Application to England and Wales</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Model outcomes for drip’and’ship vs mothership based on greography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_lsoa_analysis_added_utility.html">Mapping LSOA results</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_data.html">Data creation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../admission_prediction/01_msoa_regression.html">Emergency stroke admissions predictions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Calculate outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01c_weighted_outcomes.html">Combine populations for weighted outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01d_weighted_outcomes_mrs_dists.html">Combine populations for weighted mRS distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro_results.html">Results</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_lsoa_analysis_added_utility.html">Mapping outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_outlier_areas.html">Mapping outliers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_national_mrs_dists.html">National mRS distributions</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">👑 Interactive demo</span></p>
 <ul class="nav bd-sidenav">
@@ -247,6 +273,21 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+<a href="https://github.com/samuel-book/stroke_outcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
 
 
 
@@ -342,7 +383,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Model outcomes for drip’and’ship vs mothership based on greography</h1>
+    <h1>Calculate outcomes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -352,6 +393,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-data">Load and parse data</a><ul class="nav section-nav flex-column">
@@ -362,9 +406,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-on-stroke-pathway-timings">Add on stroke pathway timings</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-outcomes">Calculate outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-results">Show results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculate outcomes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results-to-file">Save results to file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -376,9 +422,56 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="model-outcomes-for-drip-and-ship-vs-mothership-based-on-greography">
-<h1>Model outcomes for drip’and’ship vs mothership based on greography<a class="headerlink" href="#model-outcomes-for-drip-and-ship-vs-mothership-based-on-greography" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="calculate-outcomes">
+<h1>Calculate outcomes<a class="headerlink" href="#calculate-outcomes" title="Permalink to this heading">#</a></h1>
 <p>This notebook calculates outcomes based on travel times from Lower Super Output Areas (LSOAs) to nearest (in time) acute stroke units that provide thrombolysis and/or thrombectomy.</p>
+<p>This notebook calculates the outcomes using the stroke outcome model. The following notebooks combine different cohorts of patients to find the results for a mixed population, and then further notebooks plot the results.</p>
+<section id="plain-english-summary">
+<h2>Plain English summary<a class="headerlink" href="#plain-english-summary" title="Permalink to this heading">#</a></h2>
+<p>We would like to know how travel time to stroke units affects patient outcomes for different parts of England and Wales. We can explore this by keeping the same timings for everything else between the start of the stroke and the beginning of treatment and only adjusting the travel time. For example, a patient who lives 20 minutes further away from the stroke unit than another patient will have an onset to treatment time 20 minutes longer.</p>
+<p>In this notebook we look at each Lower Super Output Area (LSOA), a small region of the country that contains a couple of thousand people. For an idea of scale, the city of Exeter is split into around 70 or 80 LSOA. In a more rural location, a larger geographical area must be covered to collect a couple of thousand people and so the LSOAs are larger.</p>
+<p>We find a few travel times:</p>
+<ul class="simple">
+<li><p>the travel time from each LSOA to its nearest stroke unit</p></li>
+<li><p>the travel time from each LSOA to its nearest thrombectomy unit</p></li>
+<li><p>the travel time between each LSOA’s nearest stroke unit and its nearest thrombectomy unit, for transfers between hospitals</p></li>
+</ul>
+<p>We then add these to fixed stroke pathway times to calculate a few times to treatment:</p>
+<ul class="simple">
+<li><p>time to IVT when travelling directly to the nearest stroke unit</p></li>
+<li><p>time to MT after a transfer from the nearest stroke unit to the MT unit</p></li>
+<li><p>time to IVT when travelling directly to the MT unit</p></li>
+<li><p>time to MT when travelling directly to the MT unit</p></li>
+</ul>
+<p>In the UK most of the stroke units will provide thrombolysis but not thrombectomy. Some patients will live nearest to an MT unit and so both of their sets of times will be identical. For most patients though, the time to IVT will be longer if travelling to the MT unit because the unit is further away than their nearest unit. The time to MT is usually longer if a transfer is required than if the patient went directly to the MT unit to start with, partly because the patient spends more time travelling between units and partly because there are delays in getting the patient ready to travel between hospitals.</p>
+<p>We can then feed these treatment times into the stroke outcome model. This will give us two sets of outcomes for patients in each LSOA in England and Wales: one set for patients who travel directly to the nearest stroke unit, and a second set for patients who travel directly to the MT centre.</p>
+</section>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this heading">#</a></h2>
+<p>Calculate outcomes after treatment for these cohorts:</p>
+<ul class="simple">
+<li><p>nLVO with IVT</p></li>
+<li><p>LVO with IVT only</p></li>
+<li><p>LVO with MT only</p></li>
+<li><p>LVO with both IVT and MT</p></li>
+</ul>
+<p>Calculate outcomes after treatment for these timings:</p>
+<ul class="simple">
+<li><p>IVT at the nearest stroke unit</p></li>
+<li><p>MT after transfer to the MT unit</p></li>
+<li><p>IVT after redirection to the MT unit</p></li>
+<li><p>MT after redirection to the MT unit</p></li>
+</ul>
+<p>Then save the outcome data to file for later use.</p>
+<p>Two sets of outcomes will be saved:</p>
+<ul class="simple">
+<li><p>population-averaged added utility, shift in mean mRS, proportion with mRS&lt;=2</p></li>
+<li><p>mRS distribution after treatment</p></li>
+</ul>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>The travel times are calculated from each LSOA centroid to the location of each stroke unit.</p>
 <p>Travel times are estimated using Open Street Map[1], accessed by routino [2].</p>
 <p>[1] <a class="reference external" href="https://www.openstreetmap.org/">https://www.openstreetmap.org/</a></p>
 <p>[2] <a class="reference external" href="https://packages.debian.org/sid/routino">https://packages.debian.org/sid/routino</a></p>
@@ -388,6 +481,7 @@ document.write(`
 <li><p>Add on fixed pathway timings (onset to call, ambulance on scene, door-in-door-out etc.) to find time to thrombolysis and time to thrombectomy</p></li>
 <li><p>Feed treatment times into the outcome model to find outcomes for each patient subgroup at those treatment times.</p></li>
 </ul>
+</section>
 <section id="load-packages">
 <h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -395,9 +489,17 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dir_output</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -414,6 +516,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stroke_maps</span>
 <span class="kn">import</span> <span class="nn">stroke_outcome</span>
+
+<span class="kn">import</span> <span class="nn">stroke_outcome.outcome_utilities</span>
 </pre></div>
 </div>
 </div>
@@ -962,35 +1066,35 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy over IVT unit info:</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">df_catchment_ivt</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+<span class="n">df_pathway</span> <span class="o">=</span> <span class="n">df_catchment_ivt</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_pathway</span> <span class="o">=</span> <span class="n">df_pathway</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;unit_travel_time&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">,</span>
     <span class="s1">&#39;unit_postcode&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_ivt_unit&#39;</span>
 <span class="p">})</span>
 
 <span class="c1"># Merge in MT unit info:</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-    <span class="n">results</span><span class="p">,</span> <span class="n">df_catchment_mt</span><span class="p">,</span>
+<span class="n">df_pathway</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">df_pathway</span><span class="p">,</span> <span class="n">df_catchment_mt</span><span class="p">,</span>
     <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
 <span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+<span class="n">df_pathway</span> <span class="o">=</span> <span class="n">df_pathway</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;unit_travel_time&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_mt_time&#39;</span><span class="p">,</span>
     <span class="s1">&#39;unit_postcode&#39;</span><span class="p">:</span> <span class="s1">&#39;closest_mt_unit&#39;</span>
 <span class="p">})</span>
 
 <span class="c1"># Merge in transfer unit info:</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
-    <span class="n">results</span><span class="p">,</span> <span class="n">df_transfer</span><span class="p">,</span>
+<span class="n">df_pathway</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">df_pathway</span><span class="p">,</span> <span class="n">df_transfer</span><span class="p">,</span>
     <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
 <span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+<span class="n">df_pathway</span> <span class="o">=</span> <span class="n">df_pathway</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;transfer_unit_travel_time&#39;</span><span class="p">:</span> <span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">,</span>
     <span class="s1">&#39;transfer_unit_postcode&#39;</span><span class="p">:</span> <span class="s1">&#39;transfer_mt_unit&#39;</span>
 <span class="p">})</span>
 
 <span class="c1"># Is a transfer required?</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">])</span>
+<span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;closest_ivt_unit&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;closest_mt_unit&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1011,28 +1115,28 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drip-and-ship:</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;ivt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
     <span class="n">arrival_to_ivt</span>
 <span class="p">)</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>   
+<span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;mt_drip_ship&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>   
     <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">+</span> 
+    <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;closest_ivt_time&#39;</span><span class="p">]</span> <span class="o">+</span> 
     <span class="c1"># The times in the following line are only added on if a transfer is required:</span>
-    <span class="p">((</span><span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">])</span> <span class="o">+</span>
+    <span class="p">((</span><span class="n">net_operational_delay_to_mt_for_transfer</span> <span class="o">+</span> <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;transfer_mt_time&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;mt_transfer_required&#39;</span><span class="p">])</span> <span class="o">+</span>
     <span class="n">arrival_to_mt</span>
 <span class="p">)</span>
 
 <span class="c1"># Mothership:</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;ivt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;ivt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
     <span class="n">arrival_to_ivt</span>
 <span class="p">)</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;mt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;mt_mothership&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">onset_to_ambulance_arrival</span> <span class="o">+</span>
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">df_pathway</span><span class="p">[</span><span class="s1">&#39;closest_mt_time&#39;</span><span class="p">]</span> <span class="o">+</span>
     <span class="n">arrival_to_mt</span>
 <span class="p">)</span>
 </pre></div>
@@ -1041,8 +1145,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show results</span>
-<span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show df_pathway</span>
+<span class="n">df_pathway</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
@@ -1167,8 +1271,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="calculate-outcomes">
-<h2>Calculate outcomes<a class="headerlink" href="#calculate-outcomes" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Calculate outcomes<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Calculate the proportion mRS&lt;=2 in the no-treatment population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1355,9 +1459,14 @@ document.write(`
         <span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s1">&#39;lvo_mt&#39;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;lvo_ivt_mt&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">&#39;stroke_type_code&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;lvo_mt&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;stroke_type_code&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;ivt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s1">&#39;mt_chosen_bool&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">}</span>
@@ -1368,11 +1477,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_patients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># Store averaged outcomes in here:</span>
 <span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
+<span class="c1"># Store mRS distributions in here:</span>
+<span class="n">df_mrs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
 <span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]:</span>
-    <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;ivt_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
-    <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;onset_to_puncture_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mt_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+    <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;onset_to_needle_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pathway</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;ivt_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+    <span class="n">df_patients</span><span class="p">[</span><span class="s1">&#39;onset_to_puncture_mins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pathway</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mt_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
 
     <span class="c1"># df_results[f&#39;{model_name}_onset_to_needle_mins&#39;] = df_patients[&#39;onset_to_needle_mins&#39;].copy()</span>
     <span class="c1"># df_results[f&#39;{model_name}_onset_to_puncture_mins&#39;] = df_patients[&#39;onset_to_puncture_mins&#39;].copy()</span>
@@ -1394,15 +1508,16 @@ document.write(`
         <span class="n">outcomes_by_stroke_type</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">outcomes_by_stroke_type</span><span class="p">)</span>
         <span class="n">full_cohort_outcomes</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">full_cohort_outcomes</span><span class="p">)</span>
         
-        <span class="c1"># Place the relevant results into the results dataframe:</span>
-        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_utility_shift&#39;</span><span class="p">])</span>
-        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mean_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_post_stroke&#39;</span><span class="p">])</span>
-        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_dist_post_stroke&#39;</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">])</span>
-        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_shift&#39;</span><span class="p">])</span>        
+        <span class="c1"># Place the relevant results into the results dataframe.</span>
+        <span class="c1"># Round them to 5 decimal places which should be plenty.</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_added_utility&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_utility_shift&#39;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mean_mrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_post_stroke&#39;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_dist_post_stroke&#39;</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span>
+            <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_shift&#39;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>        
 
         <span class="c1"># Calculate the shift in the proportion mRS&lt;=2</span>
         <span class="c1"># compared with the no-treatment population.</span>
@@ -1410,11 +1525,19 @@ document.write(`
             <span class="n">no_treatment_mrsleq2</span> <span class="o">=</span> <span class="n">no_treatment_nlvo_mrsleq2</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">no_treatment_mrsleq2</span> <span class="o">=</span> <span class="n">no_treatment_lvo_mrsleq2</span>
-        
+
+        <span class="c1"># Round the results again to avoid floating point errors.</span>
         <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_added_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">-</span>
-            <span class="n">no_treatment_mrsleq2</span>
-            <span class="p">)</span>            
+            <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span>
+                <span class="n">df_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_less_equal_2&#39;</span><span class="p">]</span> <span class="o">-</span>
+                <span class="n">no_treatment_mrsleq2</span>
+            <span class="p">),</span> <span class="mi">5</span><span class="p">))</span>
+
+        <span class="c1"># Copy over the mRS distributions:</span>
+        <span class="c1"># # One list of mRS values per row (patient) in the data.</span>
+        <span class="n">outs</span> <span class="o">=</span> <span class="n">full_cohort_outcomes</span><span class="p">[</span><span class="s1">&#39;each_patient_mrs_dist_post_stroke&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">outs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">outs</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">df_mrs</span><span class="p">[[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">cohort_name</span><span class="si">}</span><span class="s1">_mrs_dists_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]]</span> <span class="o">=</span> <span class="n">outs</span>
 </pre></div>
 </div>
 </div>
@@ -1422,15 +1545,15 @@ document.write(`
 <p>Merge the outcome results into the travel time dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">index</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">results</span><span class="p">,</span> <span class="n">df_results</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_pathway</span><span class="o">.</span><span class="n">index</span>
+<span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_pathway</span><span class="p">,</span> <span class="n">df_results</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
@@ -1551,343 +1674,339 @@ document.write(`
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_added_utility</th>
-      <td>0.116854</td>
-      <td>0.116409</td>
-      <td>0.116854</td>
-      <td>0.116854</td>
-      <td>0.117299</td>
+      <td>0.11685</td>
+      <td>0.11641</td>
+      <td>0.11685</td>
+      <td>0.11685</td>
+      <td>0.1173</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_mean_mrs</th>
-      <td>1.636531</td>
-      <td>1.639129</td>
-      <td>1.636531</td>
-      <td>1.636531</td>
-      <td>1.633936</td>
+      <td>1.63653</td>
+      <td>1.63913</td>
+      <td>1.63653</td>
+      <td>1.63653</td>
+      <td>1.63394</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_mrs_less_equal_2</th>
-      <td>0.706494</td>
-      <td>0.706005</td>
-      <td>0.706494</td>
-      <td>0.706494</td>
-      <td>0.706984</td>
+      <td>0.70649</td>
+      <td>0.706</td>
+      <td>0.70649</td>
+      <td>0.70649</td>
+      <td>0.70698</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_mrs_shift</th>
-      <td>-0.643469</td>
-      <td>-0.640871</td>
-      <td>-0.643469</td>
-      <td>-0.643469</td>
-      <td>-0.646064</td>
+      <td>-0.64347</td>
+      <td>-0.64087</td>
+      <td>-0.64347</td>
+      <td>-0.64347</td>
+      <td>-0.64606</td>
     </tr>
     <tr>
       <th>drip_ship_nlvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.126494</td>
-      <td>0.126005</td>
-      <td>0.126494</td>
-      <td>0.126494</td>
-      <td>0.126984</td>
+      <td>0.12649</td>
+      <td>0.126</td>
+      <td>0.12649</td>
+      <td>0.12649</td>
+      <td>0.12698</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_added_utility</th>
-      <td>0.058718</td>
-      <td>0.058412</td>
-      <td>0.058718</td>
-      <td>0.058718</td>
-      <td>0.059024</td>
+      <td>0.05872</td>
+      <td>0.05841</td>
+      <td>0.05872</td>
+      <td>0.05872</td>
+      <td>0.05902</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_mean_mrs</th>
-      <td>3.346549</td>
-      <td>3.348226</td>
-      <td>3.346549</td>
-      <td>3.346549</td>
+      <td>3.34655</td>
+      <td>3.34823</td>
+      <td>3.34655</td>
+      <td>3.34655</td>
       <td>3.34487</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_mrs_less_equal_2</th>
-      <td>0.328789</td>
-      <td>0.328468</td>
-      <td>0.328789</td>
-      <td>0.328789</td>
-      <td>0.329111</td>
+      <td>0.32879</td>
+      <td>0.32847</td>
+      <td>0.32879</td>
+      <td>0.32879</td>
+      <td>0.32911</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_mrs_shift</th>
-      <td>-0.293451</td>
-      <td>-0.291774</td>
-      <td>-0.293451</td>
-      <td>-0.293451</td>
+      <td>-0.29345</td>
+      <td>-0.29177</td>
+      <td>-0.29345</td>
+      <td>-0.29345</td>
       <td>-0.29513</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.063789</td>
-      <td>0.063468</td>
-      <td>0.063789</td>
-      <td>0.063789</td>
-      <td>0.064111</td>
+      <td>0.06379</td>
+      <td>0.06347</td>
+      <td>0.06379</td>
+      <td>0.06379</td>
+      <td>0.06411</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_added_utility</th>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.10928</td>
+      <td>0.10928</td>
+      <td>0.10992</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_mean_mrs</th>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>3.10174</td>
+      <td>3.10174</td>
+      <td>3.09835</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_mrs_less_equal_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.37981</td>
+      <td>0.37981</td>
+      <td>0.38049</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_mrs_shift</th>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.53826</td>
+      <td>-0.53826</td>
+      <td>-0.54165</td>
+    </tr>
+    <tr>
+      <th>drip_ship_lvo_ivt_mt_added_mrs_less_equal_2</th>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.11481</td>
+      <td>0.11481</td>
+      <td>0.11549</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_added_utility</th>
-      <td>0.163611</td>
-      <td>0.162952</td>
-      <td>0.109278</td>
-      <td>0.109278</td>
-      <td>0.109921</td>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.10928</td>
+      <td>0.10928</td>
+      <td>0.10992</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_mean_mrs</th>
-      <td>2.811357</td>
-      <td>2.814939</td>
-      <td>3.101739</td>
-      <td>3.101739</td>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>3.10174</td>
+      <td>3.10174</td>
       <td>3.09835</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_mrs_less_equal_2</th>
-      <td>0.438069</td>
-      <td>0.437356</td>
-      <td>0.379811</td>
-      <td>0.379811</td>
-      <td>0.380494</td>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.37981</td>
+      <td>0.37981</td>
+      <td>0.38049</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_mrs_shift</th>
-      <td>-0.828643</td>
-      <td>-0.825061</td>
-      <td>-0.538261</td>
-      <td>-0.538261</td>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.53826</td>
+      <td>-0.53826</td>
       <td>-0.54165</td>
     </tr>
     <tr>
       <th>drip_ship_lvo_mt_added_mrs_less_equal_2</th>
-      <td>0.173069</td>
-      <td>0.172356</td>
-      <td>0.114811</td>
-      <td>0.114811</td>
-      <td>0.115494</td>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.11481</td>
+      <td>0.11481</td>
+      <td>0.11549</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_added_utility</th>
-      <td>0.116854</td>
-      <td>0.116409</td>
-      <td>0.115963</td>
-      <td>0.115963</td>
-      <td>0.115963</td>
+      <td>0.11685</td>
+      <td>0.11641</td>
+      <td>0.11596</td>
+      <td>0.11596</td>
+      <td>0.11596</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_mean_mrs</th>
-      <td>1.636531</td>
-      <td>1.639129</td>
-      <td>1.641728</td>
-      <td>1.641728</td>
-      <td>1.641728</td>
+      <td>1.63653</td>
+      <td>1.63913</td>
+      <td>1.64173</td>
+      <td>1.64173</td>
+      <td>1.64173</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_mrs_less_equal_2</th>
-      <td>0.706494</td>
-      <td>0.706005</td>
-      <td>0.705514</td>
-      <td>0.705514</td>
-      <td>0.705514</td>
+      <td>0.70649</td>
+      <td>0.706</td>
+      <td>0.70551</td>
+      <td>0.70551</td>
+      <td>0.70551</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_mrs_shift</th>
-      <td>-0.643469</td>
-      <td>-0.640871</td>
-      <td>-0.638272</td>
-      <td>-0.638272</td>
-      <td>-0.638272</td>
+      <td>-0.64347</td>
+      <td>-0.64087</td>
+      <td>-0.63827</td>
+      <td>-0.63827</td>
+      <td>-0.63827</td>
     </tr>
     <tr>
       <th>mothership_nlvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.126494</td>
-      <td>0.126005</td>
-      <td>0.125514</td>
-      <td>0.125514</td>
-      <td>0.125514</td>
+      <td>0.12649</td>
+      <td>0.126</td>
+      <td>0.12551</td>
+      <td>0.12551</td>
+      <td>0.12551</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_added_utility</th>
-      <td>0.058718</td>
-      <td>0.058412</td>
-      <td>0.058107</td>
-      <td>0.058107</td>
-      <td>0.058107</td>
+      <td>0.05872</td>
+      <td>0.05841</td>
+      <td>0.05811</td>
+      <td>0.05811</td>
+      <td>0.05811</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_mean_mrs</th>
-      <td>3.346549</td>
-      <td>3.348226</td>
-      <td>3.349902</td>
-      <td>3.349902</td>
-      <td>3.349902</td>
+      <td>3.34655</td>
+      <td>3.34823</td>
+      <td>3.3499</td>
+      <td>3.3499</td>
+      <td>3.3499</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_mrs_less_equal_2</th>
-      <td>0.328789</td>
-      <td>0.328468</td>
-      <td>0.328146</td>
-      <td>0.328146</td>
-      <td>0.328146</td>
+      <td>0.32879</td>
+      <td>0.32847</td>
+      <td>0.32815</td>
+      <td>0.32815</td>
+      <td>0.32815</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_mrs_shift</th>
-      <td>-0.293451</td>
-      <td>-0.291774</td>
-      <td>-0.290098</td>
-      <td>-0.290098</td>
-      <td>-0.290098</td>
+      <td>-0.29345</td>
+      <td>-0.29177</td>
+      <td>-0.2901</td>
+      <td>-0.2901</td>
+      <td>-0.2901</td>
     </tr>
     <tr>
       <th>mothership_lvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.063789</td>
-      <td>0.063468</td>
-      <td>0.063146</td>
-      <td>0.063146</td>
-      <td>0.063146</td>
+      <td>0.06379</td>
+      <td>0.06347</td>
+      <td>0.06315</td>
+      <td>0.06315</td>
+      <td>0.06315</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_added_utility</th>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.16229</td>
+      <td>0.16229</td>
+      <td>0.16229</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mean_mrs</th>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>2.81852</td>
+      <td>2.81852</td>
+      <td>2.81852</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_less_equal_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_shift</th>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.82148</td>
+      <td>-0.82148</td>
+      <td>-0.82148</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_added_mrs_less_equal_2</th>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.17164</td>
+      <td>0.17164</td>
+      <td>0.17164</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_added_utility</th>
-      <td>0.163611</td>
-      <td>0.162952</td>
-      <td>0.162292</td>
-      <td>0.162292</td>
-      <td>0.162292</td>
+      <td>0.16361</td>
+      <td>0.16295</td>
+      <td>0.16229</td>
+      <td>0.16229</td>
+      <td>0.16229</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_mean_mrs</th>
-      <td>2.811357</td>
-      <td>2.814939</td>
-      <td>2.818519</td>
-      <td>2.818519</td>
-      <td>2.818519</td>
+      <td>2.81136</td>
+      <td>2.81494</td>
+      <td>2.81852</td>
+      <td>2.81852</td>
+      <td>2.81852</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_mrs_less_equal_2</th>
-      <td>0.438069</td>
-      <td>0.437356</td>
-      <td>0.436643</td>
-      <td>0.436643</td>
-      <td>0.436643</td>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_mrs_shift</th>
-      <td>-0.828643</td>
-      <td>-0.825061</td>
-      <td>-0.821481</td>
-      <td>-0.821481</td>
-      <td>-0.821481</td>
+      <td>-0.82864</td>
+      <td>-0.82506</td>
+      <td>-0.82148</td>
+      <td>-0.82148</td>
+      <td>-0.82148</td>
     </tr>
     <tr>
       <th>mothership_lvo_mt_added_mrs_less_equal_2</th>
-      <td>0.173069</td>
-      <td>0.172356</td>
-      <td>0.171643</td>
-      <td>0.171643</td>
-      <td>0.171643</td>
+      <td>0.17307</td>
+      <td>0.17236</td>
+      <td>0.17164</td>
+      <td>0.17164</td>
+      <td>0.17164</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">
-<h2>Calculate treatment rates based on expected proportions of LVO/nLVO<a class="headerlink" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stroke_type_propotions</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;haemorragic&#39;</span><span class="p">:</span> <span class="mf">0.136</span><span class="p">,</span>
-    <span class="s1">&#39;lvo&#39;</span><span class="p">:</span> <span class="mf">0.33</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.136</span><span class="p">),</span>
-    <span class="s1">&#39;nlvo&#39;</span><span class="p">:</span> <span class="mf">0.67</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.136</span><span class="p">)</span>
-<span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mrs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_pathway</span><span class="o">.</span><span class="n">index</span>
+<span class="n">df_mrs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df_pathway</span><span class="p">,</span> <span class="n">df_mrs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_ivt</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">target_mt</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">prop_mt_previously_receiving_ivt</span> <span class="o">=</span> <span class="mf">0.85</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_lvo_receiving_mt</span> <span class="o">=</span> <span class="n">target_mt</span> <span class="o">/</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_lvo_receiving_ivt</span> <span class="o">=</span> <span class="n">prop_lvo_receiving_mt</span> <span class="o">*</span> <span class="n">prop_mt_previously_receiving_ivt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_nlvo_receiving_ivt</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">target_ivt</span> <span class="o">-</span> <span class="p">(</span><span class="n">prop_lvo_receiving_ivt</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]))</span> <span class="o">/</span> 
-    <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check sums</span>
-<span class="n">prop_all_receiving_ivt</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-    <span class="p">(</span><span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO with MT:   </span><span class="si">{</span><span class="n">prop_lvo_receiving_mt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LVO with IVT:  </span><span class="si">{</span><span class="n">prop_lvo_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nLVO with IVT: </span><span class="si">{</span><span class="n">prop_nlvo_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;All with IVT:  </span><span class="si">{</span><span class="n">prop_all_receiving_ivt</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LVO with MT:   0.351
-LVO with IVT:  0.298
-nLVO with IVT: 0.199
-All with IVT:  0.200
-</pre></div>
-</div>
-</div>
-</div>
-<p>Add weighted benefit based on proportions of treated LVO and nLVO: Add weighted utility, mrs&lt;=2, and mean_shift based on stroke type and treatment rates</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;drip_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;mothership&#39;</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">outcome_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;added_utility&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_less_equal_2&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_mrs&#39;</span><span class="p">,</span> <span class="s1">&#39;mrs_shift&#39;</span><span class="p">,</span> <span class="s1">&#39;added_mrs_less_equal_2&#39;</span><span class="p">]:</span>
-        <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;weighted_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_nlvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_nlvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-            <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_ivt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_ivt</span><span class="p">)</span> <span class="o">+</span>
-            <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">_lvo_mt_</span><span class="si">{</span><span class="n">outcome_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">stroke_type_propotions</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">prop_lvo_receiving_mt</span><span class="p">)</span>
-        <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="show-results">
-<h2>Show results<a class="headerlink" href="#show-results" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show results</span>
-<span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mrs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
@@ -2007,399 +2126,542 @@ All with IVT:  0.200
       <td>169.8</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_ivt_added_utility</th>
-      <td>0.116854</td>
-      <td>0.116409</td>
-      <td>0.116854</td>
-      <td>0.116854</td>
-      <td>0.117299</td>
+      <th>drip_ship_nlvo_ivt_mrs_dists_0</th>
+      <td>0.36359</td>
+      <td>0.36279</td>
+      <td>0.36359</td>
+      <td>0.36359</td>
+      <td>0.3644</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_ivt_mean_mrs</th>
-      <td>1.636531</td>
-      <td>1.639129</td>
-      <td>1.636531</td>
-      <td>1.636531</td>
-      <td>1.633936</td>
+      <th>drip_ship_nlvo_ivt_mrs_dists_1</th>
+      <td>0.59059</td>
+      <td>0.59006</td>
+      <td>0.59059</td>
+      <td>0.59059</td>
+      <td>0.59113</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_ivt_mrs_less_equal_2</th>
-      <td>0.706494</td>
-      <td>0.706005</td>
-      <td>0.706494</td>
-      <td>0.706494</td>
-      <td>0.706984</td>
+      <th>drip_ship_nlvo_ivt_mrs_dists_2</th>
+      <td>0.70649</td>
+      <td>0.706</td>
+      <td>0.70649</td>
+      <td>0.70649</td>
+      <td>0.70698</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_ivt_mrs_shift</th>
-      <td>-0.643469</td>
-      <td>-0.640871</td>
-      <td>-0.643469</td>
-      <td>-0.643469</td>
-      <td>-0.646064</td>
+      <th>drip_ship_nlvo_ivt_mrs_dists_3</th>
+      <td>0.82535</td>
+      <td>0.82494</td>
+      <td>0.82535</td>
+      <td>0.82535</td>
+      <td>0.82577</td>
     </tr>
     <tr>
-      <th>drip_ship_nlvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.126494</td>
-      <td>0.126005</td>
-      <td>0.126494</td>
-      <td>0.126494</td>
-      <td>0.126984</td>
+      <th>drip_ship_nlvo_ivt_mrs_dists_4</th>
+      <td>0.92188</td>
+      <td>0.92166</td>
+      <td>0.92188</td>
+      <td>0.92188</td>
+      <td>0.9221</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_ivt_added_utility</th>
-      <td>0.058718</td>
-      <td>0.058412</td>
-      <td>0.058718</td>
-      <td>0.058718</td>
-      <td>0.059024</td>
+      <th>drip_ship_nlvo_ivt_mrs_dists_5</th>
+      <td>0.95555</td>
+      <td>0.95542</td>
+      <td>0.95555</td>
+      <td>0.95555</td>
+      <td>0.95568</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_ivt_mean_mrs</th>
-      <td>3.346549</td>
-      <td>3.348226</td>
-      <td>3.346549</td>
-      <td>3.346549</td>
-      <td>3.34487</td>
+      <th>drip_ship_nlvo_ivt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_ivt_mrs_less_equal_2</th>
-      <td>0.328789</td>
-      <td>0.328468</td>
-      <td>0.328789</td>
-      <td>0.328789</td>
-      <td>0.329111</td>
+      <th>drip_ship_lvo_ivt_mrs_dists_0</th>
+      <td>0.10443</td>
+      <td>0.10411</td>
+      <td>0.10443</td>
+      <td>0.10443</td>
+      <td>0.10475</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_ivt_mrs_shift</th>
-      <td>-0.293451</td>
-      <td>-0.291774</td>
-      <td>-0.293451</td>
-      <td>-0.293451</td>
-      <td>-0.29513</td>
+      <th>drip_ship_lvo_ivt_mrs_dists_1</th>
+      <td>0.19642</td>
+      <td>0.19607</td>
+      <td>0.19642</td>
+      <td>0.19642</td>
+      <td>0.19677</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.063789</td>
-      <td>0.063468</td>
-      <td>0.063789</td>
-      <td>0.063789</td>
-      <td>0.064111</td>
+      <th>drip_ship_lvo_ivt_mrs_dists_2</th>
+      <td>0.32879</td>
+      <td>0.32847</td>
+      <td>0.32879</td>
+      <td>0.32879</td>
+      <td>0.32911</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_mt_added_utility</th>
-      <td>0.163611</td>
-      <td>0.162952</td>
-      <td>0.109278</td>
-      <td>0.109278</td>
-      <td>0.109921</td>
+      <th>drip_ship_lvo_ivt_mrs_dists_3</th>
+      <td>0.49102</td>
+      <td>0.49071</td>
+      <td>0.49102</td>
+      <td>0.49102</td>
+      <td>0.49134</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_mt_mean_mrs</th>
-      <td>2.811357</td>
-      <td>2.814939</td>
-      <td>3.101739</td>
-      <td>3.101739</td>
-      <td>3.09835</td>
+      <th>drip_ship_lvo_ivt_mrs_dists_4</th>
+      <td>0.70919</td>
+      <td>0.70898</td>
+      <td>0.70919</td>
+      <td>0.70919</td>
+      <td>0.70941</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_mt_mrs_less_equal_2</th>
-      <td>0.438069</td>
-      <td>0.437356</td>
-      <td>0.379811</td>
-      <td>0.379811</td>
-      <td>0.380494</td>
+      <th>drip_ship_lvo_ivt_mrs_dists_5</th>
+      <td>0.82359</td>
+      <td>0.82344</td>
+      <td>0.82359</td>
+      <td>0.82359</td>
+      <td>0.82375</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_mt_mrs_shift</th>
-      <td>-0.828643</td>
-      <td>-0.825061</td>
-      <td>-0.538261</td>
-      <td>-0.538261</td>
-      <td>-0.54165</td>
+      <th>drip_ship_lvo_ivt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>drip_ship_lvo_mt_added_mrs_less_equal_2</th>
-      <td>0.173069</td>
-      <td>0.172356</td>
-      <td>0.114811</td>
-      <td>0.114811</td>
-      <td>0.115494</td>
+      <th>drip_ship_lvo_ivt_mt_mrs_dists_0</th>
+      <td>0.17136</td>
+      <td>0.17065</td>
+      <td>0.12027</td>
+      <td>0.12027</td>
+      <td>0.1208</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_added_utility</th>
-      <td>0.116854</td>
-      <td>0.116409</td>
-      <td>0.115963</td>
-      <td>0.115963</td>
-      <td>0.115963</td>
+      <th>drip_ship_lvo_ivt_mt_mrs_dists_1</th>
+      <td>0.29552</td>
+      <td>0.29472</td>
+      <td>0.23375</td>
+      <td>0.23375</td>
+      <td>0.23443</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_mean_mrs</th>
-      <td>1.636531</td>
-      <td>1.639129</td>
-      <td>1.641728</td>
-      <td>1.641728</td>
-      <td>1.641728</td>
+      <th>drip_ship_lvo_ivt_mt_mrs_dists_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.37981</td>
+      <td>0.37981</td>
+      <td>0.38049</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_mrs_less_equal_2</th>
-      <td>0.706494</td>
-      <td>0.706005</td>
-      <td>0.705514</td>
-      <td>0.705514</td>
-      <td>0.705514</td>
+      <th>drip_ship_lvo_ivt_mt_mrs_dists_3</th>
+      <td>0.61042</td>
+      <td>0.60975</td>
+      <td>0.55308</td>
+      <td>0.55308</td>
+      <td>0.55378</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_mrs_shift</th>
-      <td>-0.643469</td>
-      <td>-0.640871</td>
-      <td>-0.638272</td>
-      <td>-0.638272</td>
-      <td>-0.638272</td>
+      <th>drip_ship_lvo_ivt_mt_mrs_dists_4</th>
+      <td>0.79391</td>
+      <td>0.79349</td>
+      <td>0.75647</td>
+      <td>0.75647</td>
+      <td>0.75695</td>
     </tr>
     <tr>
-      <th>mothership_nlvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.126494</td>
-      <td>0.126005</td>
-      <td>0.125514</td>
-      <td>0.125514</td>
-      <td>0.125514</td>
+      <th>drip_ship_lvo_ivt_mt_mrs_dists_5</th>
+      <td>0.87937</td>
+      <td>0.8791</td>
+      <td>0.85488</td>
+      <td>0.85488</td>
+      <td>0.8552</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_added_utility</th>
-      <td>0.058718</td>
-      <td>0.058412</td>
-      <td>0.058107</td>
-      <td>0.058107</td>
-      <td>0.058107</td>
+      <th>drip_ship_lvo_ivt_mt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_mean_mrs</th>
-      <td>3.346549</td>
-      <td>3.348226</td>
-      <td>3.349902</td>
-      <td>3.349902</td>
-      <td>3.349902</td>
+      <th>drip_ship_lvo_mt_mrs_dists_0</th>
+      <td>0.17136</td>
+      <td>0.17065</td>
+      <td>0.12027</td>
+      <td>0.12027</td>
+      <td>0.1208</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_mrs_less_equal_2</th>
-      <td>0.328789</td>
-      <td>0.328468</td>
-      <td>0.328146</td>
-      <td>0.328146</td>
-      <td>0.328146</td>
+      <th>drip_ship_lvo_mt_mrs_dists_1</th>
+      <td>0.29552</td>
+      <td>0.29472</td>
+      <td>0.23375</td>
+      <td>0.23375</td>
+      <td>0.23443</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_mrs_shift</th>
-      <td>-0.293451</td>
-      <td>-0.291774</td>
-      <td>-0.290098</td>
-      <td>-0.290098</td>
-      <td>-0.290098</td>
+      <th>drip_ship_lvo_mt_mrs_dists_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.37981</td>
+      <td>0.37981</td>
+      <td>0.38049</td>
     </tr>
     <tr>
-      <th>mothership_lvo_ivt_added_mrs_less_equal_2</th>
-      <td>0.063789</td>
-      <td>0.063468</td>
-      <td>0.063146</td>
-      <td>0.063146</td>
-      <td>0.063146</td>
+      <th>drip_ship_lvo_mt_mrs_dists_3</th>
+      <td>0.61042</td>
+      <td>0.60975</td>
+      <td>0.55308</td>
+      <td>0.55308</td>
+      <td>0.55378</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_added_utility</th>
-      <td>0.163611</td>
-      <td>0.162952</td>
-      <td>0.162292</td>
-      <td>0.162292</td>
-      <td>0.162292</td>
+      <th>drip_ship_lvo_mt_mrs_dists_4</th>
+      <td>0.79391</td>
+      <td>0.79349</td>
+      <td>0.75647</td>
+      <td>0.75647</td>
+      <td>0.75695</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_mean_mrs</th>
-      <td>2.811357</td>
-      <td>2.814939</td>
-      <td>2.818519</td>
-      <td>2.818519</td>
-      <td>2.818519</td>
+      <th>drip_ship_lvo_mt_mrs_dists_5</th>
+      <td>0.87937</td>
+      <td>0.8791</td>
+      <td>0.85488</td>
+      <td>0.85488</td>
+      <td>0.8552</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_mrs_less_equal_2</th>
-      <td>0.438069</td>
-      <td>0.437356</td>
-      <td>0.436643</td>
-      <td>0.436643</td>
-      <td>0.436643</td>
+      <th>drip_ship_lvo_mt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_mrs_shift</th>
-      <td>-0.828643</td>
-      <td>-0.825061</td>
-      <td>-0.821481</td>
-      <td>-0.821481</td>
-      <td>-0.821481</td>
+      <th>mothership_nlvo_ivt_mrs_dists_0</th>
+      <td>0.36359</td>
+      <td>0.36279</td>
+      <td>0.36199</td>
+      <td>0.36199</td>
+      <td>0.36199</td>
     </tr>
     <tr>
-      <th>mothership_lvo_mt_added_mrs_less_equal_2</th>
-      <td>0.173069</td>
-      <td>0.172356</td>
-      <td>0.171643</td>
-      <td>0.171643</td>
-      <td>0.171643</td>
+      <th>mothership_nlvo_ivt_mrs_dists_1</th>
+      <td>0.59059</td>
+      <td>0.59006</td>
+      <td>0.58952</td>
+      <td>0.58952</td>
+      <td>0.58952</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_added_utility</th>
-      <td>0.03479</td>
-      <td>0.034647</td>
-      <td>0.029357</td>
-      <td>0.029357</td>
-      <td>0.029499</td>
+      <th>mothership_nlvo_ivt_mrs_dists_2</th>
+      <td>0.70649</td>
+      <td>0.706</td>
+      <td>0.70551</td>
+      <td>0.70551</td>
+      <td>0.70551</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mrs_less_equal_2</th>
-      <td>0.153001</td>
-      <td>0.152846</td>
-      <td>0.147175</td>
-      <td>0.147175</td>
-      <td>0.147327</td>
+      <th>mothership_nlvo_ivt_mrs_dists_3</th>
+      <td>0.82535</td>
+      <td>0.82494</td>
+      <td>0.82453</td>
+      <td>0.82453</td>
+      <td>0.82453</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mean_mrs</th>
-      <td>0.753793</td>
-      <td>0.754593</td>
-      <td>0.782832</td>
-      <td>0.782832</td>
-      <td>0.782052</td>
+      <th>mothership_nlvo_ivt_mrs_dists_4</th>
+      <td>0.92188</td>
+      <td>0.92166</td>
+      <td>0.92144</td>
+      <td>0.92144</td>
+      <td>0.92144</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_mrs_shift</th>
-      <td>-0.181807</td>
-      <td>-0.181007</td>
-      <td>-0.152768</td>
-      <td>-0.152768</td>
-      <td>-0.153548</td>
+      <th>mothership_nlvo_ivt_mrs_dists_5</th>
+      <td>0.95555</td>
+      <td>0.95542</td>
+      <td>0.95528</td>
+      <td>0.95528</td>
+      <td>0.95528</td>
     </tr>
     <tr>
-      <th>weighted_drip_ship_added_mrs_less_equal_2</th>
-      <td>0.037276</td>
-      <td>0.037121</td>
-      <td>0.03145</td>
-      <td>0.03145</td>
-      <td>0.031602</td>
+      <th>mothership_nlvo_ivt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>weighted_mothership_added_utility</th>
-      <td>0.03479</td>
-      <td>0.034647</td>
-      <td>0.034504</td>
-      <td>0.034504</td>
-      <td>0.034504</td>
+      <th>mothership_lvo_ivt_mrs_dists_0</th>
+      <td>0.10443</td>
+      <td>0.10411</td>
+      <td>0.1038</td>
+      <td>0.1038</td>
+      <td>0.1038</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mrs_less_equal_2</th>
-      <td>0.153001</td>
-      <td>0.152846</td>
-      <td>0.152691</td>
-      <td>0.152691</td>
-      <td>0.152691</td>
+      <th>mothership_lvo_ivt_mrs_dists_1</th>
+      <td>0.19642</td>
+      <td>0.19607</td>
+      <td>0.19572</td>
+      <td>0.19572</td>
+      <td>0.19572</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mean_mrs</th>
-      <td>0.753793</td>
-      <td>0.754593</td>
-      <td>0.755392</td>
-      <td>0.755392</td>
-      <td>0.755392</td>
+      <th>mothership_lvo_ivt_mrs_dists_2</th>
+      <td>0.32879</td>
+      <td>0.32847</td>
+      <td>0.32815</td>
+      <td>0.32815</td>
+      <td>0.32815</td>
     </tr>
     <tr>
-      <th>weighted_mothership_mrs_shift</th>
-      <td>-0.181807</td>
-      <td>-0.181007</td>
-      <td>-0.180208</td>
-      <td>-0.180208</td>
-      <td>-0.180208</td>
+      <th>mothership_lvo_ivt_mrs_dists_3</th>
+      <td>0.49102</td>
+      <td>0.49071</td>
+      <td>0.49039</td>
+      <td>0.49039</td>
+      <td>0.49039</td>
     </tr>
     <tr>
-      <th>weighted_mothership_added_mrs_less_equal_2</th>
-      <td>0.037276</td>
-      <td>0.037121</td>
-      <td>0.036966</td>
-      <td>0.036966</td>
-      <td>0.036966</td>
+      <th>mothership_lvo_ivt_mrs_dists_4</th>
+      <td>0.70919</td>
+      <td>0.70898</td>
+      <td>0.70876</td>
+      <td>0.70876</td>
+      <td>0.70876</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mrs_dists_5</th>
+      <td>0.82359</td>
+      <td>0.82344</td>
+      <td>0.82329</td>
+      <td>0.82329</td>
+      <td>0.82329</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_dists_0</th>
+      <td>0.17136</td>
+      <td>0.17065</td>
+      <td>0.16995</td>
+      <td>0.16995</td>
+      <td>0.16995</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_dists_1</th>
+      <td>0.29552</td>
+      <td>0.29472</td>
+      <td>0.29393</td>
+      <td>0.29393</td>
+      <td>0.29393</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_dists_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_dists_3</th>
+      <td>0.61042</td>
+      <td>0.60975</td>
+      <td>0.60907</td>
+      <td>0.60907</td>
+      <td>0.60907</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_dists_4</th>
+      <td>0.79391</td>
+      <td>0.79349</td>
+      <td>0.79306</td>
+      <td>0.79306</td>
+      <td>0.79306</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_dists_5</th>
+      <td>0.87937</td>
+      <td>0.8791</td>
+      <td>0.87882</td>
+      <td>0.87882</td>
+      <td>0.87882</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_ivt_mt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_dists_0</th>
+      <td>0.17136</td>
+      <td>0.17065</td>
+      <td>0.16995</td>
+      <td>0.16995</td>
+      <td>0.16995</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_dists_1</th>
+      <td>0.29552</td>
+      <td>0.29472</td>
+      <td>0.29393</td>
+      <td>0.29393</td>
+      <td>0.29393</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_dists_2</th>
+      <td>0.43807</td>
+      <td>0.43736</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
+      <td>0.43664</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_dists_3</th>
+      <td>0.61042</td>
+      <td>0.60975</td>
+      <td>0.60907</td>
+      <td>0.60907</td>
+      <td>0.60907</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_dists_4</th>
+      <td>0.79391</td>
+      <td>0.79349</td>
+      <td>0.79306</td>
+      <td>0.79306</td>
+      <td>0.79306</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_dists_5</th>
+      <td>0.87937</td>
+      <td>0.8791</td>
+      <td>0.87882</td>
+      <td>0.87882</td>
+      <td>0.87882</td>
+    </tr>
+    <tr>
+      <th>mothership_lvo_mt_mrs_dists_6</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<section id="save-results-to-file">
+<h3>Save results to file<a class="headerlink" href="#save-results-to-file" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save</span>
-<span class="n">results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">,</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;lsoa&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;cohort_outcomes.csv&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">summary</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s1">_summary.csv&#39;</span><span class="p">,</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;lsoa&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_mrs</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;cohort_mrs_dists.csv&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Calculate summary stats for the outcomes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_results</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">summary</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_output</span><span class="p">,</span> <span class="s1">&#39;cohort_outcomes_summary.csv&#39;</span><span class="p">),</span> <span class="n">index_label</span><span class="o">=</span><span class="s1">&#39;lsoa&#39;</span><span class="p">)</span>
 <span class="n">summary</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>closest_ivt_time                               19.548181
-closest_mt_time                                34.939310
-transfer_mt_time                               27.509447
-mt_transfer_required                            0.675098
-ivt_drip_ship                                 109.548181
-mt_drip_ship                                  237.563499
-ivt_mothership                                124.939310
-mt_mothership                                 184.939310
-drip_ship_nlvo_ivt_added_utility                0.116051
-drip_ship_nlvo_ivt_mean_mrs                     1.641180
-drip_ship_nlvo_ivt_mrs_less_equal_2             0.705613
-drip_ship_nlvo_ivt_mrs_shift                   -0.638820
-drip_ship_nlvo_ivt_added_mrs_less_equal_2       0.125613
-drip_ship_lvo_ivt_added_utility                 0.058182
-drip_ship_lvo_ivt_mean_mrs                      3.349481
-drip_ship_lvo_ivt_mrs_less_equal_2              0.328224
-drip_ship_lvo_ivt_mrs_shift                    -0.290519
-drip_ship_lvo_ivt_added_mrs_less_equal_2        0.063224
-drip_ship_lvo_mt_added_utility                  0.122243
-drip_ship_lvo_mt_mean_mrs                       3.031804
-drip_ship_lvo_mt_mrs_less_equal_2               0.393813
-drip_ship_lvo_mt_mrs_shift                     -0.608196
-drip_ship_lvo_mt_added_mrs_less_equal_2         0.128813
-mothership_nlvo_ivt_added_utility               0.109693
-mothership_nlvo_ivt_mean_mrs                    1.677951
-mothership_nlvo_ivt_mrs_less_equal_2            0.698638
-mothership_nlvo_ivt_mrs_shift                  -0.602049
-mothership_nlvo_ivt_added_mrs_less_equal_2      0.118638
-mothership_lvo_ivt_added_utility                0.053948
-mothership_lvo_ivt_mean_mrs                     3.372610
-mothership_lvo_ivt_mrs_less_equal_2             0.323767
-mothership_lvo_ivt_mrs_shift                   -0.267390
-mothership_lvo_ivt_added_mrs_less_equal_2       0.058767
-mothership_lvo_mt_added_utility                 0.153260
-mothership_lvo_mt_mean_mrs                      2.867150
-mothership_lvo_mt_mrs_less_equal_2              0.426915
-mothership_lvo_mt_mrs_shift                    -0.772850
-mothership_lvo_mt_added_mrs_less_equal_2        0.161915
-weighted_drip_ship_added_utility                0.030516
-weighted_drip_ship_mrs_less_equal_2             0.148426
-weighted_drip_ship_mean_mrs                     0.776622
-weighted_drip_ship_mrs_shift                   -0.158978
-weighted_drip_ship_added_mrs_less_equal_2       0.032701
-weighted_mothership_added_utility               0.032526
-weighted_mothership_mrs_less_equal_2            0.150555
-weighted_mothership_mean_mrs                    0.766351
-weighted_mothership_mrs_shift                  -0.169249
-weighted_mothership_added_mrs_less_equal_2      0.034830
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>closest_ivt_time                                 19.54818
+closest_mt_time                                  34.93931
+transfer_mt_time                                 27.50945
+mt_transfer_required                              0.67510
+ivt_drip_ship                                   109.54818
+mt_drip_ship                                    237.56350
+ivt_mothership                                  124.93931
+mt_mothership                                   184.93931
+drip_ship_nlvo_ivt_added_utility                  0.11605
+drip_ship_nlvo_ivt_mean_mrs                       1.64118
+drip_ship_nlvo_ivt_mrs_less_equal_2               0.70561
+drip_ship_nlvo_ivt_mrs_shift                     -0.63882
+drip_ship_nlvo_ivt_added_mrs_less_equal_2         0.12561
+drip_ship_lvo_ivt_added_utility                   0.05818
+drip_ship_lvo_ivt_mean_mrs                        3.34948
+drip_ship_lvo_ivt_mrs_less_equal_2                0.32822
+drip_ship_lvo_ivt_mrs_shift                      -0.29052
+drip_ship_lvo_ivt_added_mrs_less_equal_2          0.06322
+drip_ship_lvo_ivt_mt_added_utility                0.12224
+drip_ship_lvo_ivt_mt_mean_mrs                     3.03180
+drip_ship_lvo_ivt_mt_mrs_less_equal_2             0.39381
+drip_ship_lvo_ivt_mt_mrs_shift                   -0.60820
+drip_ship_lvo_ivt_mt_added_mrs_less_equal_2       0.12881
+drip_ship_lvo_mt_added_utility                    0.12223
+drip_ship_lvo_mt_mean_mrs                         3.03199
+drip_ship_lvo_mt_mrs_less_equal_2                 0.39379
+drip_ship_lvo_mt_mrs_shift                       -0.60801
+drip_ship_lvo_mt_added_mrs_less_equal_2           0.12879
+mothership_nlvo_ivt_added_utility                 0.10969
+mothership_nlvo_ivt_mean_mrs                      1.67795
+mothership_nlvo_ivt_mrs_less_equal_2              0.69864
+mothership_nlvo_ivt_mrs_shift                    -0.60205
+mothership_nlvo_ivt_added_mrs_less_equal_2        0.11864
+mothership_lvo_ivt_added_utility                  0.05395
+mothership_lvo_ivt_mean_mrs                       3.37261
+mothership_lvo_ivt_mrs_less_equal_2               0.32377
+mothership_lvo_ivt_mrs_shift                     -0.26739
+mothership_lvo_ivt_added_mrs_less_equal_2         0.05877
+mothership_lvo_ivt_mt_added_utility               0.15326
+mothership_lvo_ivt_mt_mean_mrs                    2.86715
+mothership_lvo_ivt_mt_mrs_less_equal_2            0.42692
+mothership_lvo_ivt_mt_mrs_shift                  -0.77285
+mothership_lvo_ivt_mt_added_mrs_less_equal_2      0.16192
+mothership_lvo_mt_added_utility                   0.15326
+mothership_lvo_mt_mean_mrs                        2.86715
+mothership_lvo_mt_mrs_less_equal_2                0.42692
+mothership_lvo_mt_mrs_shift                      -0.77285
+mothership_lvo_mt_added_mrs_less_equal_2          0.16192
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>We have calculated all of the outcome data for the separate cohorts and for both the drip-and-ship and mothership scenarios.</p>
+<p>The next notebooks combine the cohorts to find the average results for a mixed population.</p>
 </section>
 </section>
 
@@ -2434,20 +2696,20 @@ dtype: float64
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../general_results/05_geography.html"
+       href="../admission_prediction/01_msoa_regression.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Distance-based treatment effects</p>
+        <p class="prev-next-title">Emergency stroke admissions predictions</p>
       </div>
     </a>
     <a class="right-next"
-       href="02_lsoa_analysis_added_utility.html"
+       href="01c_weighted_outcomes.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mapping LSOA results</p>
+        <p class="prev-next-title">Combine populations for weighted outcomes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2466,6 +2728,9 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plain-english-summary">Plain English summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-packages">Load packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-variables-to-use">Global variables to use</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-parse-data">Load and parse data</a><ul class="nav section-nav flex-column">
@@ -2476,9 +2741,11 @@ dtype: float64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-on-stroke-pathway-timings">Add on stroke pathway timings</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-outcomes">Calculate outcomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-treatment-rates-based-on-expected-proportions-of-lvo-nlvo">Calculate treatment rates based on expected proportions of LVO/nLVO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-results">Show results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculate outcomes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results-to-file">Save results to file</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 
